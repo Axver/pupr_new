@@ -175,7 +175,7 @@ else
 											<td><?php echo $informasi['id']; ?></td>
 											<td><?php echo $tabel[$i]->pekerja; ?></td>
 											<td><button class="btn btn-info" onclick="jenis_pekerjaan(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Show</button>
-											<button class="btn btn-info">Cetak</button>
+											<button class="btn btn-info" onclick="cetak_perencanaan(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Cetak</button>
 											</td>
 
 										</tr>
@@ -318,6 +318,11 @@ else
                                             }
                                         });
 
+									}
+
+									function cetak_perencanaan(id_perencanaan)
+									{
+									    window.location='<?php echo base_url("cetak/perencanaan"); ?>';
 									}
 								</script>
 
