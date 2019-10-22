@@ -25,11 +25,25 @@
 				    let save_pekerjaan=$("#id_pekerjaan_modal").val();
 				    let save_waktu=$("#waktu_pengerjaan_modal").val();
 
-				    let x=0;
-				    while (x<53)
+
+
+				    let x=1;
+				    while (x<=53)
 					{
                         let data=getDateRangeOfWeek(x);
-                        console.log(data);
+                        data=data.split(" to ");
+                        let middle= new Date(save_waktu);
+                        let start= new Date(data[0]);
+                        let end= new Date(data[1]);
+
+                        if(middle > start && middle < end)
+						{
+						    alert(x);
+						}
+
+                        console.log(start);
+                        console.log(middle);
+                        console.log(end);
 					    x++;
 					}
 
