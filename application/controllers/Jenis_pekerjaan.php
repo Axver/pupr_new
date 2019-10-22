@@ -77,6 +77,7 @@ class Jenis_pekerjaan extends CI_Controller
             $this->create();
         } else {
             $data = array(
+				'id' => $this->input->post('id',TRUE),
 		'nama_jenis' => $this->input->post('nama_jenis',TRUE),
 	    );
 

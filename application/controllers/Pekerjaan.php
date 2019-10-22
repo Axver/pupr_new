@@ -23,13 +23,14 @@ class Pekerjaan extends CI_Controller
 	{
       $data=$this->input->post();
       $id_paket=$data['id_paket'];
+      $id=$data['id'];
       $id_pekerjaan=$data['id_pekerjaan'];
       $tahun=$data['tahun'];
       $tukang=$data['tukang'];
       $pekerja=$data['pekerja'];
 
       $list_data= array(
-      	'id'=>$id_pekerjaan,
+      	'id'=>$id,
 		  'id_paket'=>$id_paket,
 		  "tahun"=>$tahun,
 		  "tukang"=>$tukang,
@@ -37,17 +38,18 @@ class Pekerjaan extends CI_Controller
 		  "id_lap_perencanaan"=>$id_pekerjaan
 	  );
 
-//      $insert=$this->db->insert("detail_jenis_pekerjaan",$list_data);
-//      if($insert)
-//	  {
-//	  	echo "Success";
-//	  }
-//      else
-//	  {
-//	  	echo "Failed";
-//	  }
+      $insert=$this->db->insert("detail_jenis_pekerjaan",$list_data);
+      if($insert)
+	  {
+	  	echo "Success";
+	  }
+      else
+	  {
+	  	echo "Failed";
+	  }
 //		var_dump($list_data);
-		print_r($_POST);
+//		print_r($list_data);
+//		print_r($_POST);
 	}
 
 

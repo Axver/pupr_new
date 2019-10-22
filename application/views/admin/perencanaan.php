@@ -41,6 +41,7 @@ else
 	<!-- Sidebar -->
 	<?php $this->load->view('component/sidebar'); ?>
 	<?php $this->load->view('modal/add_perencanaan') ?>
+	<?php $this->load->view('modal/waktu_perencanaan') ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -208,6 +209,7 @@ else
 
                                     function jenis_pekerjaan(id_perencanaan)
 									{
+									    let id_perencanaan1=id_perencanaan;
 									    alert("Showing: "+id_perencanaan);
 									    removeContent();
 									    // alert(id_perencanaan);
@@ -253,7 +255,7 @@ else
                                                         let i=0;
                                                         while (i<length)
 														{
-                                                            newRowContent = "<tr><td>" + result[i].id + "</td><td>" + result[i].tahun + "</td><td>" + result[i].tukang + "</td><td>"+result[i].pekerja+"</td><td><button class='btn btn-danger'>Delete</button></td></tr>";
+                                                            newRowContent = "<tr><td>" + result[i].id + "</td><td>" + result[i].tahun + "</td><td>" + result[i].tukang + "</td><td>"+result[i].id+"</td><td><button class='btn btn-danger'>Delete</button><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Add Date</button><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Show</button></td></tr>";
                                                             $("#tabel_pekerjaan tbody").append(newRowContent);
 														    i++;
 														}
@@ -324,6 +326,13 @@ else
 									{
 									    window.location='<?php echo base_url("cetak/perencanaan"); ?>';
 									}
+
+									function addWaktuKerja(id_pekerjaan,id_perencanaan) {
+                                        $("#id_perencanaan_modal").val(id_perencanaan);
+                                        $("#id_pekerjaan_modal").val(id_pekerjaan);
+
+                                        $('#waktuPerencanaan').modal('show');
+                                    }
 								</script>
 
 							</div>

@@ -45,7 +45,8 @@
 		<div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Setting</h6>
-				<a class="collapse-item" href="<?php echo base_url('paket') ?>">Jenis Alat Bahan</a>
+				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat') ?>">Jenis Alat Bahan</a>
+				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
 
 

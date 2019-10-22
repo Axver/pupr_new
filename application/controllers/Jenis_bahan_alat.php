@@ -77,6 +77,7 @@ class Jenis_bahan_alat extends CI_Controller
             $this->create();
         } else {
             $data = array(
+				'id_jenis_bahan_alat' => $this->input->post('id_jenis_bahan_alat',TRUE),
 		'jenis_bahan_alat' => $this->input->post('jenis_bahan_alat',TRUE),
 	    );
 
