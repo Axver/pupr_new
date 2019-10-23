@@ -71,7 +71,7 @@ else
 			margin-top:20px;
 			width:auto;
 		}
-
+	
 		.imgInp{
 			width:150px;
 			margin-top:10px;
@@ -111,6 +111,7 @@ else
 		.credit a:visited{
 			color:MediumPurple;
 		}
+
 	</style>
 
 
@@ -293,7 +294,6 @@ else
 									<div class="col-sm-6" id="gambar">
 										<b>Sketsa Kerja</b>
 
-										<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 										<div class="contain animated bounce">
 											<form id="form1" runat="server">
 												<div class="alert"></div>
