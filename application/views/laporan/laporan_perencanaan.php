@@ -433,7 +433,7 @@ else
 		    var data=pekerjaan_id+"_"+x;
 		    data=data.toString();
 		    console.log(data);
-			var newCol="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai('"+data+"')\" id='"+data+"'></td>";
+			var newCol="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai('"+data+"')\" id='"+data+"' class='nonActive'></td>";
             $("#pekerjaan_id"+pekerjaan_id).append(newCol);
 		    x++;
 		}
@@ -445,8 +445,21 @@ else
 
 	function warnai(id)
 	{
-      alert(id);
-      console.log(id);
+     let col_id=$("#"+id);
+     let class_=col_id.attr('class');
+     if(class_=="nonActive")
+	 {
+         col_id.css("background-color","yellow");
+         col_id.removeClass("nonActive");
+         col_id.addClass("Active");
+	 }
+     else
+	 {
+         col_id.css("background-color","white");
+         col_id.removeClass("Active");
+         col_id.addClass("nonActive");
+	 }
+
 	}
 </script>
 
