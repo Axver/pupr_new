@@ -12,6 +12,7 @@
 				<input type="text" class="form form-control" id="id_perencanaan_modal">
 				<input type="text" class="form form-control" id="id_pekerjaan_modal">
 				<input type="date" class="form form-control" id="waktu_pengerjaan_modal">
+				<input type="text" class="form form-control" id="jumlah_pekerja_modal" placeholder="Jumlah Pekerja">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

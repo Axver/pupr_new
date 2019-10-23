@@ -255,7 +255,7 @@ else
                                                         let i=0;
                                                         while (i<length)
 														{
-                                                            newRowContent = "<tr><td>" + result[i].id + "</td><td>" + result[i].tahun + "</td><td>" + result[i].tukang + "</td><td>"+result[i].id+"</td><td><button class='btn btn-danger'>Delete</button><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Add Date</button><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Show</button></td></tr>";
+                                                            newRowContent = "<tr><td>" + result[i].id + "</td><td>" + result[i].tahun + "</td><td>" + result[i].tukang + "</td><td>"+result[i].id+"</td><td><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Tanggal</button></td></tr>";
                                                             $("#tabel_pekerjaan tbody").append(newRowContent);
 														    i++;
 														}
