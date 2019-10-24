@@ -41,6 +41,11 @@ else
 			border-width: 5px;
 		}
 
+		#border{
+			border-style: solid;
+			border-width: 5px;
+		}
+
 		body{
 			/*background-color:#add8e6;  */
 		}
@@ -71,7 +76,7 @@ else
 			margin-top:20px;
 			width:auto;
 		}
-	
+
 		.imgInp{
 			width:150px;
 			margin-top:10px;
@@ -125,6 +130,7 @@ else
 	<!-- Sidebar -->
 	<?php $this->load->view('component/sidebar'); ?>
 	<?php $this->load->view('modal/add_waktu'); ?>
+	<?php $this->load->view('modal/add_alat_bahan'); ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -561,18 +567,29 @@ else
 								<br/>
 								<div class="row">
 									<div class="col-sm-2">
-										<button class="btn btn-info" style="width:100%">Add</button>
+										<button onclick="addBahanAlat()" class="btn btn-info" style="width:100%">Add</button>
 									</div>
 									<div class="col-sm-4">
 										<select id="alat_bahan" class="form form-control">
+											<?php
 
+											  $count=count($alat);
+											  $i=0;
+											  while($i<$count)
+											  {
+											  	?>
+												  <option value="<?php echo $alat[$i]->id_jenis_bahan_alat ?>"><?php echo $alat[$i]->jenis_bahan_alat; ?></option>
+											<?php
+											  	$i++;
+											  }
+											?>
 										</select>
 										<a href="#">New</a>
 									</div>
 
 								</div>
 								<br/>
-								<table id="tabel_jumlah" class="table table-striped" cellspacing="0" border="0">
+								<table id="tabel_alat" class="table table-striped" cellspacing="0" border="0">
 
 									<tr>
 										<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000" colspan="6" rowspan="4" height="80" align="center" valign="middle"><font face="Comic Sans MS" color="#000000">Jenis Bahan/Alat</font></td>
@@ -681,6 +698,57 @@ else
 
 									</tbody>
 								</table>
+
+<!--								Bagian Bawah-->
+							<div class="row">
+								<div class="col-sm-6" id="border">
+									<b>Informasi</b>
+									<br/>
+									<label for="">Lokasi</label>
+									<input type="text" class="form form-control" placeholder="Lokasi">
+									<label for="">Jenis Pekerjaan</label>
+									<input type="text" class="form form-control" placeholder="Jenis Pekerjaan">
+									<label for="">Panjang Penanganan</label>
+									<input type="text" class="form form-control" placeholder="Panjang Penanganan">
+									<label for="">Keterangan Dimensi</label>
+									<input type="text" class="form form-control" placeholder="Keterangan Dimensi">
+									<label for="">Keterengan</label>
+									<input type="text" class="form form-control" placeholder="Keterangan">
+
+
+
+								</div>
+
+								<div class="col-sm-6" id="border">
+									<b>Tandatangan</b>
+									<a href="#">New</a>
+									<br/>
+									Disetujui Oleh:
+									<select class="form form-control">
+
+									</select>
+									<br/>
+									<b>Diperiksa Oleh:</b>
+									<select class="form form-control">
+
+									</select>
+									<br/>
+									<b>Dibuat Oleh:</b>
+									<select class="form form-control">
+
+									</select>
+
+								</div>
+							</div>
+
+								<br/>
+								<br/>
+								<div class="row">
+									<div class="col-sm-3">
+										<button class="btn btn-warning">Save</button>
+										<button class="btn btn-danger">Cancel</button>
+									</div>
+								</div>
 
 
 
@@ -865,6 +933,64 @@ else
         $(".alert").show();
         $(".alert").text(text).addClass("loading");
     }
+
+    function addBahanAlat()
+	{
+	    let alat_bahan=$("#alat_bahan").val();
+	    let alat_bahan_text=$("#alat_bahan option:selected").text();
+	    // alert(alat_bahan);
+	    // alert(alat_bahan_text);
+
+        var newRowX="\t<tr id='pekerjaan_waktu_"+alat_bahan+"'>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+alat_bahan_text+"</td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+            "\n" +
+            "\n" +
+            "\t\t\t\t\t\t\t\t\t</tr>";
+        $("#tabel_alat").append(newRowX);
+        let x=1;
+        while(x<=60)
+        {
+            let data=alat_bahan+"__"+x;
+
+
+
+            data=data.toString();
+
+            console.log(data);
+            var newColX="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"tambahAngka('"+data+"')\" id='"+data+"' class='nonActive'></td>";
+            $("#pekerjaan_waktu_"+alat_bahan).append(newColX);
+            x++;
+        }
+	}
+
+
+	function tambahAngka(id)
+	{
+	    // alert(id);
+		let col_=id;
+		console.log("------");
+		console.log(col_);
+        console.log("------");
+		// alert(col_);
+		$("#id_column_alat").val(col_);
+        $('#modalAlat').modal('show');
+
+	}
+
+	function addValueAlat()
+	{
+	    let col_=$("#id_column_alat").val();
+	    let valuenya=$("#jumlah_alat").val();
+        alert("Sukses Ditambahkan!");
+	    $("#"+col_).text(valuenya);
+
+		console.log(col_);
+	}
 </script>
 
 </body>
