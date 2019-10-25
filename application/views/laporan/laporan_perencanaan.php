@@ -216,7 +216,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+
 
 				<!-- Content Row -->
 
@@ -227,7 +227,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Laporan Perencanaan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -253,7 +253,22 @@ else
 										<div class="row">
 											<div class="col-sm-3">Nama Paket</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="nama_paket"></div>
+											<div class="col-sm-8"><select id="nama_paket" class="form form-control">
+													<?php
+													$jum_paket=count($paket);
+													$i=0;
+													while($i<$jum_paket)
+													{
+														?>
+														<option value="<?php echo $paket[$i]->id_paket.'_'.$paket[$i]->tahun; ?>"><?php echo $paket[$i]->nama ?></option>
+													<?php
+
+														$i++;
+													}
+													?>
+												</select>
+											    <a href="#">New</a>
+											</div>
 
 										</div>
 										<div class="row">
@@ -745,7 +760,7 @@ else
 								<br/>
 								<div class="row">
 									<div class="col-sm-3">
-										<button class="btn btn-warning">Save</button>
+										<button class="btn btn-warning" onclick="savePerencanaan()">Save</button>
 										<button class="btn btn-danger">Cancel</button>
 									</div>
 								</div>
@@ -991,6 +1006,64 @@ else
 
 		console.log(col_);
 	}
+
+	function savePerencanaan() {
+
+
+
+        let i=0;
+        let dataArray=new Array();
+
+        $(".Active").each(function (index, element) {
+            // element == this
+            // if ($(this).attr("src") == "style/EmptyStar.png") {
+            //     return false;
+            // }
+            // else {
+            //     score = score + 1;
+            // };
+
+
+			dataArray[i]=$(this).attr("id");
+			i++;
+        });
+
+
+        let nama_paket=$("#nama_paket").val();
+        let nilai_paket=$("#nilai_paket").val();
+        let jumlah_tahap=$("#jumlah_tahap").val();
+        let jenis_pekerjaan=$("#jenis_pelaksanaan").val();
+        let masa_pelaksanaan=$("#masa_pelaksanaan").val();
+        let lokasi=$("#lokasi").val();
+        let tahun_anggaran=$("#tahun_anggaran").val();
+
+        //Check jika kosong atau tidak
+		console.log("a");
+		if(nama_paket=="" || nilai_paket==""|| jumlah_tahap==""||jenis_pekerjaan==""||masa_pelaksanaan==""||lokasi==""||tahun_anggaran=="")
+		{
+		    alert("Data Tidak Boleh Kosong!!");
+		}
+		else
+		{
+		    console.log("b");
+		//    Jika data berisi maka lanjut di proses
+		//Tambahkan Laporan Perencanaan Ke Database
+            $.ajax({
+                type : "POST",
+                url : "http://localhost/pupr_new/laporan_perencanaan/add_perencanaan",
+                cache:false,
+				async:false,
+                dataType : "text",
+                data : {"id_paket" : nama_paket, "tahun" : tahun_anggaran},
+                success : function(data) {
+
+                }
+            });
+		}
+
+
+
+    }
 </script>
 
 </body>
