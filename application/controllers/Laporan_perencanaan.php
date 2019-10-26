@@ -17,11 +17,65 @@ class Laporan_perencanaan extends CI_Controller {
 	public function add_perencanaan()
 	{
        $id_paket=$this->input->post('id_paket');
-       $tahun=$this->input->post('tahun');
+
+       $id_paket=explode("_",$id_paket);
+       $id_paket_=$id_paket[0];
+		  $tahun=$id_paket[1];
+//       $tahun=$this->input->post('tahun');
 
 //       Getting Last Input Id
+		$max=$this->db->query("SELECT MAX(id_lap_perencanaan) as id FROM lap_perencanaan")->result();
+		$max_id=$max[0]->id;
+		$max_id=$max_id+1;
+		$data=array(
+			'id_lap_perencanaan'=>$max_id,
+			'id_paket'=>$id_paket_,
+			'tahun'=>$tahun,
+
+		);
+
+//		$this->db->insert("lap_perencanaan",$data);
+
+//		var_dump($data);;
 
 //		Input Laporan Perencanaan
+
+
+	}
+
+	public function add_jenis_pekerjaan()
+	{
+
+		$data=$this->input->post("data");
+		$jumlah=$this->input->post("data1");
+
+//		Select id First
+		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(id_lap_perencanaan) FROM lap_perencanaan)")->result();
+//        var_dump($lap_perencanaan[0]->id_lap_perencanaan);
+        $id_lap_perencanaan=$lap_perencanaan[0]->id_lap_perencanaan;
+        $id_paket=$lap_perencanaan[0]->id_paket;
+        $tahun=$lap_perencanaan[0]->tahun;
+
+        $data_length=count($data);
+        $i=0;
+
+        while($i<$data_length)
+		{
+            $data_=explode("_",$data[$i]);
+            $id=$data_[0];
+            $pekerja=$jumlah[$i];
+			$i++;
+
+			echo $id;
+			echo $pekerja;
+
+//			Input data tabel Jenis Pekerjaan Disini
+		}
+
+//		Input data ke tabel waktu_pekerjaan Disini
+		
+
+
 
 
 	}

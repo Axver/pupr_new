@@ -859,12 +859,12 @@ else
         while(x<=60)
 		{
 		    var data=pekerjaan_id+"_"+x;
-            var data1=pekerjaan_id+"-"+x;
+            var data1=pekerjaan_id+"__"+x;
 		    data=data.toString();
 		    data1=data1.toString();
 		    console.log(data);
 			var newCol="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai('"+data+"')\" id='"+data+"' class='nonActive'></td>";
-            var newCol1="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai1('"+data1+"')\" id='"+data1+"' class='nonActive'></td>";
+            var newCol1="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai1('"+data1+"')\" id='"+data1+"' class='nonActive1'></td>";
             $("#pekerjaan_id"+pekerjaan_id).append(newCol);
             $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
 		    x++;
@@ -902,17 +902,34 @@ else
 	function addValue()
 	{
       let id_col=$("#id_column").val();
-      alert(id_col);
-      id_col=id_col.replace('_','-');
+      // alert(id_col);
+      col_id=id_col.replace('_','__');
+      // alert(col_id);
       let jumlah=$("#jumlah_kerja").val();
-      $("#"+id_col).text(jumlah);
+      $("#"+col_id).text(jumlah);
+      console.log(col_id);
+      console.log($("#"+col_id).attr('class'));
+      let data_class=$("#"+col_id).attr('class');
+
+      if(data_class=="nonActive1")
+	  {
+		  $("#"+col_id).removeClass("nonActive1");
+          $("#"+col_id).addClass("Active1");
+	  }
+      else
+	  {
+          $("#"+col_id).removeClass("Active1");
+          $("#"+col_id).addClass("nonActive1");
+	  }
+
+
 	}
 
     function removeValue(id)
     {
         let id_col=$("#id_column").val();
         alert(id_col);
-        id_col=id_col.replace('_','-');
+        id_col=id_col.replace('_','__');
 
         $("#"+id_col).text("");
     }
@@ -1013,6 +1030,7 @@ else
 
         let i=0;
         let dataArray=new Array();
+        let dataArray1=new Array();
 
         $(".Active").each(function (index, element) {
             // element == this
@@ -1026,6 +1044,13 @@ else
 
 			dataArray[i]=$(this).attr("id");
 			i++;
+        });
+
+        let x=0;
+        $(".Active1").each(function (index, element) {
+
+            dataArray1[x]=$(this).text();
+            x++;
         });
 
 
@@ -1056,6 +1081,22 @@ else
                 dataType : "text",
                 data : {"id_paket" : nama_paket, "tahun" : tahun_anggaran},
                 success : function(data) {
+
+                    // console.log(data);
+
+                }
+            });
+        //    Tambahkan Jenis Pekerjaan
+            $.ajax({
+                type : "POST",
+                url : "http://localhost/pupr_new/laporan_perencanaan/add_jenis_pekerjaan",
+                cache:false,
+                async:false,
+                dataType : "text",
+                data : {"data" : dataArray,"data1":dataArray1},
+                success : function(data) {
+
+                    console.log(data);
 
                 }
             });
