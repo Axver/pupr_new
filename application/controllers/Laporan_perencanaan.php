@@ -61,19 +61,30 @@ class Laporan_perencanaan extends CI_Controller {
 
         while($i<$data_length)
 		{
-            $data_=explode("_",$data[$i]);
+			$data_=explode("_",$data[$i]);
+			$jumlah_=explode("_",$jumlah[$i]);
             $id=$data_[0];
-            $pekerja=$jumlah[$i];
-			$i++;
+            $pekerja=$jumlah_[0];
 
-			echo $id;
-			echo $pekerja;
+            $data_input= array(
+            	"id"=>$id,
+				"id_lap_perencanaan"=>$id_lap_perencanaan,
+				"id_paket"=>$id_paket,
+				"tahun"=>$tahun,
+				"tukang"=>"",
+				"pekerja"=>$pekerja
+			);
+
+            var_dump($data_input);
+
 
 //			Input data tabel Jenis Pekerjaan Disini
+
+			$i++;
 		}
 
 //		Input data ke tabel waktu_pekerjaan Disini
-		
+
 
 
 

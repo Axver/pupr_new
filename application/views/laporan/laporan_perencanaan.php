@@ -902,11 +902,12 @@ else
 	function addValue()
 	{
       let id_col=$("#id_column").val();
+      let tanggal_kerja=$("#tanggal_kerja").val();
       // alert(id_col);
       col_id=id_col.replace('_','__');
       // alert(col_id);
       let jumlah=$("#jumlah_kerja").val();
-      $("#"+col_id).text(jumlah);
+      $("#"+col_id).text(jumlah+"_"+tanggal_kerja);
       console.log(col_id);
       console.log($("#"+col_id).attr('class'));
       let data_class=$("#"+col_id).attr('class');
