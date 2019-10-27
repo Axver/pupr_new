@@ -988,14 +988,14 @@ else
         let x=1;
         while(x<=60)
         {
-            let data=alat_bahan+"__"+x;
+            let data=alat_bahan+"___"+x;
 
 
 
             data=data.toString();
 
             console.log(data);
-            var newColX="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"tambahAngka('"+data+"')\" id='"+data+"' class='nonActive'></td>";
+            var newColX="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"tambahAngka('"+data+"')\" id='"+data+"' class='nonActive2'></td>";
             $("#pekerjaan_waktu_"+alat_bahan).append(newColX);
             x++;
         }
@@ -1084,23 +1084,26 @@ else
                 success : function(data) {
 
                     // console.log(data);
+					let max_id=data;
+
+                    $.ajax({
+                        type : "POST",
+                        url : "http://localhost/pupr_new/laporan_perencanaan/add_jenis_pekerjaan",
+                        cache:false,
+                        async:false,
+                        dataType : "text",
+                        data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
+                        success : function(data) {
+
+                           alert(data);
+
+                        }
+                    });
 
                 }
             });
         //    Tambahkan Jenis Pekerjaan
-            $.ajax({
-                type : "POST",
-                url : "http://localhost/pupr_new/laporan_perencanaan/add_jenis_pekerjaan",
-                cache:false,
-                async:false,
-                dataType : "text",
-                data : {"data" : dataArray,"data1":dataArray1},
-                success : function(data) {
 
-                    console.log(data);
-
-                }
-            });
 		}
 
 

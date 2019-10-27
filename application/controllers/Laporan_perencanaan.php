@@ -34,8 +34,9 @@ class Laporan_perencanaan extends CI_Controller {
 
 		);
 
-//		$this->db->insert("lap_perencanaan",$data);
+		$this->db->insert("lap_perencanaan",$data);
 
+		echo $max_id;
 //		var_dump($data);;
 
 //		Input Laporan Perencanaan
@@ -56,7 +57,12 @@ class Laporan_perencanaan extends CI_Controller {
         $id_paket=$lap_perencanaan[0]->id_paket;
         $tahun=$lap_perencanaan[0]->tahun;
 
-        $data_length=count($data);
+
+        var_dump($data);
+
+        $data_length=count($jumlah);
+
+        var_dump($data_length);
         $i=0;
 
         while($i<$data_length)
@@ -65,6 +71,8 @@ class Laporan_perencanaan extends CI_Controller {
 			$jumlah_=explode("_",$jumlah[$i]);
             $id=$data_[0];
             $pekerja=$jumlah_[0];
+            $tanggal=$jumlah_[1];
+            $minggu=$data_[1];
 
             $data_input= array(
             	"id"=>$id,
@@ -72,18 +80,23 @@ class Laporan_perencanaan extends CI_Controller {
 				"id_paket"=>$id_paket,
 				"tahun"=>$tahun,
 				"tukang"=>"",
-				"pekerja"=>$pekerja
+				"pekerja"=>$pekerja,
+				"tanggal"=>$tanggal,
+				"minggu"=>$minggu
 			);
 
-            var_dump($data_input);
+//            var_dump($data_input);
 
 
 //			Input data tabel Jenis Pekerjaan Disini
+			$this->db->insert("detail_jenis_pekerjaan",$data_input);
 
 			$i++;
 		}
 
-//		Input data ke tabel waktu_pekerjaan Disini
+		echo "Success";
+
+
 
 
 
