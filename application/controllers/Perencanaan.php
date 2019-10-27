@@ -5,7 +5,7 @@ class Perencanaan extends CI_Controller {
 
 	public function index($id)
 	{
-		$query = $this->db->query('SELECT * FROM lap_perencanaan WHERE id_paket='."'".$id."'");
+		$query = $this->db->query('SELECT id_lap_perencanaan,lap_perencanaan.id_paket as id_paket,tukang,pekerja,paket.nama as nama_paket,paket.tahun as tahun FROM lap_perencanaan INNER JOIN paket ON lap_perencanaan.id_paket=paket.id_paket WHERE lap_perencanaan.id_paket='."'".$id."'");
 
 		$data['informasi']=array(
 			'id'=>$id,

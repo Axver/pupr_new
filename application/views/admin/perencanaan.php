@@ -30,7 +30,6 @@ else
 	<?php $this->load->view('component/header') ?>
 
 
-
 </head>
 
 <body id="page-top">
@@ -40,8 +39,6 @@ else
 
 	<!-- Sidebar -->
 	<?php $this->load->view('component/sidebar'); ?>
-	<?php $this->load->view('modal/add_perencanaan') ?>
-	<?php $this->load->view('modal/waktu_perencanaan') ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -127,7 +124,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+
 
 				<!-- Content Row -->
 
@@ -138,7 +135,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Laporan Perencanaan</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Daftar Laporan Perencanaan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -149,190 +146,52 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<button style="margin:10px;" class="btn btn-info" data-toggle="modal" data-target="#add_perencanaan">Tambah</button>
-								<table class="table table-bordered" id="perencanaan" style="margin-bottom: 10px">
+
+								<?php
+                                  $data_length=count($tabel);
+
+							    ?>
+
+								<table id="example" class="display" style="width:100%">
 									<thead>
 									<tr>
-										<th>No</th>
-										<th>Tukang</th>
-										<th>Paket</th>
-										<th>Pekerja</th>
-										<th>Action</th>
-
+										<th>Id Perencanaan</th>
+										<th>Id Paket</th>
+										<th>Nama Paket</th>
+										<th>Edit</th>
+										<th>Cetak</th>
 									</tr>
 									</thead>
-
-
 									<tbody>
 									<?php
-									$count=count($tabel);
+
 									$i=0;
-									while($i<$count)
+									while($i<$data_length)
 									{
 										?>
-										<tr>
-											<td><?php echo $i+1; ?></td>
-											<td><?php echo $tabel[$i]->tukang; ?></td>
-											<td><?php echo $informasi['id']; ?></td>
-											<td><?php echo $tabel[$i]->pekerja; ?></td>
-											<td><button class="btn btn-info" onclick="jenis_pekerjaan(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Show</button>
-											<button class="btn btn-info" onclick="cetak_perencanaan(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Cetak</button>
-											</td>
-
-										</tr>
+									<tr>
+										<td><?php echo $tabel[$i]->id_lap_perencanaan; ?></td>
+										<td><?php echo $tabel[$i]->id_paket; ?></td>
+										<td><?php echo $tabel[$i]->nama_paket; ?></td>
+										<td><button class="btn btn-info" onclick="edit(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Edit</button></td>
+										<td><button class="btn btn-warning">Cetak</button></td>
+									</tr>
 									<?php
+
 										$i++;
 									}
 
-
 									?>
-
 									</tbody>
+									<tfoot>
 
-
-
+									</tfoot>
 								</table>
 
-
-
-								<div id="pekerja_container" class="pekerja">
-									Informasi Pekerja
-
-
-								</div>
-
 								<script>
-                                    $(document).ready( function () {
-                                        $('#perencanaan').DataTable();
-
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
                                     } );
-
-                                    function jenis_pekerjaan(id_perencanaan)
-									{
-									    let id_perencanaan1=id_perencanaan;
-									    alert("Showing: "+id_perencanaan);
-									    removeContent();
-									    // alert(id_perencanaan);
-                                        $('.pekerja').append("<div id='data_"+id_perencanaan+"'></div>");
-                                        $('#data_'+id_perencanaan).append("<select class='form form-control' id='select_data'></select>");
-                                        $('#data_'+id_perencanaan).append("<input type='text' class='form form-control' id='tahun1' placeholder='Tahun'>");
-                                        $('#data_'+id_perencanaan).append("<input type='text' class='form form-control' id='tukang1' placeholder='Jumlah Tukang'>");
-                                        $('#data_'+id_perencanaan).append("<input type='text' class='form form-control' id='pekerja1' placeholder='Jumlah Pekerja'>");
-                                        $('#data_'+id_perencanaan).append("<button class='btn btn-info' onclick='savePekerjaan("+id_perencanaan+")'>Add</button>");
-
-
-                                        $.ajax({url: "<?php echo base_url('index.php/pekerjaan') ?>",async:false, success: function(result){
-                                               result=JSON.parse(result);
-                                                console.log(result);
-                                                // alert(result.length);
-												length=result.length;
-                                                let i=0;
-                                                while(i<length)
-												{
-                                                    $('#select_data').append("<option value='"+result[i]['id']+"'>"+result[i]['nama_jenis']+"</option>");
-												    i++;
-												}
-
-
-                                                $.ajax({url: "<?php echo base_url('index.php/pekerjaan/data_pekerjaan') ?>",async:false, success: function(result){
-                                                       result=JSON.parse(result);
-                                                       console.log(result[0].id);
-                                                       length=result.length;
-                                                       console.log(length);
-                                                        $('#data_'+id_perencanaan).append("<br/><h3>Detil Pekerjaan</h3>");
-                                                    //    Generate Table
-                                                        $('#data_'+id_perencanaan).append("<table class='table table-bordered' id='tabel_pekerjaan'>\t\t<thead>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t\t<th>Id</th>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t\t<th>Tahun</th>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t\t<th>Tukang</th>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t\t<th>Pekerja</th>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t\t<th>Action</th>\n" +
-                                                            "\n" +
-                                                            "\t\t\t\t\t\t\t\t\t</tr>\n" +
-                                                            "\t\t\t\t\t\t\t\t\t</thead><tbody></tbody></table>");
-
-                                                        let i=0;
-                                                        while (i<length)
-														{
-                                                            newRowContent = "<tr><td>" + result[i].id + "</td><td>" + result[i].tahun + "</td><td>" + result[i].tukang + "</td><td>"+result[i].id+"</td><td><button onclick='addWaktuKerja("+result[i].id+","+id_perencanaan+")' class='btn btn-info'>Tanggal</button></td></tr>";
-                                                            $("#tabel_pekerjaan tbody").append(newRowContent);
-														    i++;
-														}
-
-
-                                                        $('#tabel_pekerjaan').DataTable();
-
-
-                                                        console.log(result);
-                                                    }});
-
-                                        }});
-
-                                        // $.each(data, function (index, value) {
-                                        //     $('#data_'+id_perencanaan+'').append($('<option/>', {
-                                        //         value: index,
-                                        //         text : value
-                                        //     }));
-                                        // });
-
-                                    }
-
-									function removeContent()
-									{
-									    $(".pekerja").empty();
-									}
-
-									function savePekerjaan(id_pekerjaan)
-									{
-
-									    let id_paket;
-									    id_paket=window.location.href;
-									    id_paket=id_paket.split("/");
-									    let length=id_paket.length;
-									    id_paket=id_paket[length-1];
-									    let tahun=document.getElementById("tahun1").value;
-									    let tukang=document.getElementById("tukang1").value;
-                                        let pekerja=document.getElementById("pekerja1").value;
-                                        let id=document.getElementById("select_data").value;
-
-                                        console.log("-----");
-                                        console.log(id);
-                                        console.log(id_paket);
-                                        console.log(id_pekerjaan);
-                                        console.log(tahun);
-                                        console.log(tukang);
-                                        console.log(pekerja);
-                                        console.log("-------");
-
-
-									//    Ajax For Insert Data
-
-
-
-                                        $.ajax({
-											async:false,
-                                            type: "POST",
-                                            data: {"id":id,"id_paket":id_paket,"id_pekerjaan":id_pekerjaan,"tahun":tahun,"tukang":tukang,"pekerja":pekerja},
-                                            url: "<?php echo base_url('index.php/pekerjaan/add_detail_pekerjaan') ?>",
-                                            success: function(msg){
-                                                alert(msg);
-                                            }
-                                        });
-
-									}
-
-									function cetak_perencanaan(id_perencanaan)
-									{
-									    window.location='<?php echo base_url("cetak/perencanaan"); ?>';
-									}
-
-									function addWaktuKerja(id_pekerjaan,id_perencanaan) {
-                                        $("#id_perencanaan_modal").val(id_perencanaan);
-                                        $("#id_pekerjaan_modal").val(id_pekerjaan);
-
-                                        $('#waktuPerencanaan').modal('show');
-                                    }
 								</script>
 
 							</div>
@@ -389,6 +248,17 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+	function edit(id_perencanaan)
+	{
+	    window.location="<?php echo base_url('edit_perencanaan/') ?>"+id_perencanaan;
+
+	}
+
+</script>
 
 
 
