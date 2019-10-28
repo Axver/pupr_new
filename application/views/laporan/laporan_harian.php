@@ -57,6 +57,7 @@ else
 
 	<!-- Sidebar -->
 	<?php $this->load->view('component/sidebar'); ?>
+
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -64,6 +65,8 @@ else
 
 		<!-- Main Content -->
 		<div id="content">
+
+			<?php $this->load->view("modal/laporan_harian_row"); ?>
 
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -166,14 +169,28 @@ else
 
 								<b>*Pilih Paket dan Lapoan Perencanaan Terlebih Dahulu</b> <br/>
 								<label>Paket:</label>
-								<select class="form form-control" id="paket"></select>
+
+								<select id="paket" class="form form-control" id="paket" onchange="perencanaan()">
+									<option value="0">--Pilih Paket--</option>
+									<?php
+									$paket_length=count($paket);
+									$i=0;
+									while ($i<$paket_length)
+									{?>
+										<option value="<?php echo $paket[$i]->id_paket; ?>" ><?php echo $paket[$i]->nama; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+								</select>
 								Laporan Perencanaan:
 								<select class="form form-control" id="lap_perencanaan"></select>
 
 <!--								Tabel Pertama-->
 								<br/>
 
-								<button class="btn btn-info">Add Row</button>
+								<button class="btn btn-info" onclick="addRow()">Add Row</button>
 
 								<br/>
 
@@ -351,6 +368,48 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+	function perencanaan()
+	{
+	    let paket=$("#paket").val();
+
+        $.ajax({
+            type : "POST",
+            url : "http://localhost/pupr_new/laporan_harian/perencanaan",
+            cache:false,
+            async:false,
+            dataType : "text",
+            data : {"id" : paket},
+            success : function(data) {
+
+            //    Getting Laporan Perencanaan
+				data=JSON.parse(data);
+				console.log(data);
+
+				let data_length=data.length;
+				let i=0;
+				while (i<data_length)
+				{
+                    $('#lap_perencanaan').append(`<option value="${data[i].id_lap_perencanaan}">
+                                       ${data[i].id_lap_perencanaan}
+                                  </option>`);
+
+
+                    i++;
+				}
+
+            }
+        });
+	}
+
+	function addRow()
+	{
+	    // alert("test");
+		$("#laporan_harian").modal('show');
+	}
+</script>
 
 
 
