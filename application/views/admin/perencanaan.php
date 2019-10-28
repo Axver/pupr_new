@@ -174,7 +174,7 @@ else
 										<td><?php echo $tabel[$i]->id_paket; ?></td>
 										<td><?php echo $tabel[$i]->nama_paket; ?></td>
 										<td><button class="btn btn-info" onclick="edit(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Edit</button></td>
-										<td><button class="btn btn-warning">Cetak</button></td>
+										<td><button class="btn btn-warning" onclick="cetak(<?php echo $tabel[$i]->id_lap_perencanaan; ?>)">Cetak</button></td>
 									</tr>
 									<?php
 
@@ -257,6 +257,12 @@ else
 	    window.location="<?php echo base_url('edit_perencanaan/') ?>"+id_perencanaan;
 
 	}
+
+    function cetak(id_perencanaan)
+    {
+        window.location="<?php echo base_url('cetak_perencanaan/') ?>"+id_perencanaan;
+
+    }
 
 </script>
 
