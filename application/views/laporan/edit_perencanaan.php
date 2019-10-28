@@ -1129,8 +1129,66 @@ else
         data : {"id_lap_perencanaan" : id_laporan},
         success : function(data) {
 
-            data=JSON.parse(data);
-            console.log(data);
+            let data1=JSON.parse(data);
+            console.log(data1);
+        //    Getting data Length
+			data_length=data1.length;
+			let x=0;
+
+			while(x<data_length)
+			{
+
+                let pekerjaan_id=data1[x].id;
+                let pekerjaan_text=data1[x].nama_jenis;
+                console.log(pekerjaan_text);
+
+
+                var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t\t\t\t</tr>";
+
+                $("#tabel_jadwal").append(newRow);
+
+                let y=1;
+
+                while(y<=60)
+                {
+                    var data_=pekerjaan_id+"_"+y;
+                    console.log(data_);
+                    // var data1=pekerjaan_id+"__"+y;
+                    data_=data_.toString();
+                    // data1=data1.toString();
+                    // console.log(data);
+                    let newCol="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai('"+data_+"')\" id='"+data_+"' class='nonActive'></td>";
+                    // var newCol1="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"warnai1('"+data1+"')\" id='"+data1+"' class='nonActive1'></td>";
+                    $("#"+data1[x].id+pekerjaan_id).append(newCol);
+                    // $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
+                    y++;
+                }
+
+
+			    x++;
+			}
+
+		//	Berikan dia warna
+
+			let z=0;
+			while(z<data_length)
+			{
+			    let text_builder=data1[z].id+"_"+data1[z].minggu;
+			    console.log(text_builder);
+
+               let selector=$("#"+text_builder).css("background-color","black");
+
+			    z++;
+			}
 
         }
     });
