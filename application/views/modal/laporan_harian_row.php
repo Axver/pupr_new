@@ -9,15 +9,20 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				Minggu
+				<input type="text"  class="form form-control" name="daterange" value="01/01/2018 - 01/15/2018" />
 
+				Jenis Pekerja
+				<input type="text" id="jenis_pekerja" class="form form-control">
+				Jumlah Pekerja
+				<input type="text" id="jumlah_pekerja" class="form form-control">
 				Jenis Alat dan Bahan
 				<select name="alat_bahan" id="alat_bahan" class="form form-control"></select>
 				Satuan
 				<select name="satuan" id="satuan" class="form form-control"></select>
-				Jumlah
+				Jumlah Alat Bahan
 				<input type="text" class="form form-control" id="jumlah">
-				Minggu
-				<input type="date" id="minggu" class="form form-control">
+
 
 			</div>
 			<div class="modal-footer">
@@ -30,8 +35,51 @@
 
 <script>
 
+//	Pilih Data dari Laporan Perencanaan Terlebih Dahulu
+function changeDate()
+{
+    let lap1=$("#lap_perencanaan").val();
+//Ajax It
+    $.ajax({
+        type : "POST",
+        url : "http://localhost/pupr_new/laporan_harian/perencanaan_date",
+        cache:false,
+        async:false,
+        dataType : "text",
+        data : {"id" : lap1},
+        success : function(data) {
+
+            alert(data);
+
+        }
+    });
+}
+
+
+function tambahJenis()
+{
+
+    $("#mJenisPekerjaan").modal("show");
+}
+
+
+
+
+//	Date Range Picker
+$(function() {
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+    }, function(start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+});
+
+
+
 	function tambah_row()
 	{
+	    let jenis_pekerja=$("#jenis_pekerja").val();
+	    let jumlah_pekerja=$("#jumlah_pekerja").val();
 	    let jenis=$("#alat_bahan").val();
 	    let satuan=$("#satuan").val();
 	    let jumlah=$("#jumlah").val();
@@ -54,7 +102,15 @@
 
 			if(mulai<minggu && minggu<selesai)
 			{
-			    alert("Benar");
+			    alert(i);
+			//    Append Table
+				$("#tabel_harian").append("\t<tr>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+jenis_pekerja+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+jumlah_pekerja+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+jenis+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+satuan+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+jumlah+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t</tr>");
 			}
 
 
@@ -87,7 +143,62 @@
         d1.setDate(d1.getDate() + 6);
         var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
         return rangeIsFrom + " to "+rangeIsTo;
-    };
+    }
+
+
+    $.ajax({
+        type : "POST",
+        url : "http://localhost/pupr_new/laporan_harian/jenis_alat",
+        cache:false,
+        async:false,
+        dataType : "text",
+        data : {"id" : "1"},
+        success : function(data) {
+
+        data=JSON.parse(data);
+        console.log(data);
+
+        let data_length=data.length;
+        let i=0;
+
+        while(i<data_length)
+		{
+            $('#alat_bahan').append(`<option value="${data[i].id_jenis_bahan_alat}">
+                                       ${data[i].jenis_bahan_alat}
+                                  </option>`);
+		    i++;
+		}
+
+        }
+    });
+
+
+//	Satuan
+    $.ajax({
+        type : "POST",
+        url : "http://localhost/pupr_new/laporan_harian/jenis_satuan",
+        cache:false,
+        async:false,
+        dataType : "text",
+        data : {"id" : "1"},
+        success : function(data) {
+
+            data=JSON.parse(data);
+            console.log(data);
+
+            let data_length=data.length;
+            let i=0;
+
+            while(i<data_length)
+            {
+                $('#satuan').append(`<option value="${data[i].id_satuan}">
+                                       ${data[i].satuan}
+                                  </option>`);
+                i++;
+            }
+
+        }
+    });
 
 
 </script>

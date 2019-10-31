@@ -67,6 +67,8 @@ else
 		<div id="content">
 
 			<?php $this->load->view("modal/laporan_harian_row"); ?>
+			<?php $this->load->view("modal/laporan_harian_jp"); ?>
+			<?php $this->load->view("modal/laporan_harian_sk"); ?>
 
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -185,7 +187,7 @@ else
 									?>
 								</select>
 								Laporan Perencanaan:
-								<select class="form form-control" id="lap_perencanaan"></select>
+								<select onchange="changeDate()" class="form form-control" id="lap_perencanaan"></select>
 
 <!--								Tabel Pertama-->
 								<br/>
@@ -203,6 +205,8 @@ else
 									</div>
 
 									<div class="col-sm-4">
+
+										<input type="text" class="form form-control" id="nama_paket">
 
 									</div>
 
@@ -222,7 +226,7 @@ else
 									</div>
 
 									<div class="col-sm-4">
-
+										<input type="text" class="form form-control" id="lokasi">
 									</div>
 								</div>
 
@@ -236,7 +240,7 @@ else
 									</div>
 
 									<div class="col-sm-4">
-
+										<input type="text" class="form form-control" id="hari_tanggal">
 									</div>
 								</div>
 
@@ -249,14 +253,14 @@ else
 									</div>
 
 									<div class="col-sm-4">
-
+										<input type="text" class="form form-control" id="keterangan">
 									</div>
 								</div>
 
 								<br/>
 
 
-								<table class="table">
+								<table class="table" id="tabel_harian">
 									<tr>
 										<th class="tg-cly1" colspan="2">Pekerja</th>
 										<th class="tg-0lax" colspan="3">Bahan</th>
@@ -268,24 +272,12 @@ else
 										<td class="tg-0lax">Satuan</td>
 										<td class="tg-0lax">Jumlah</td>
 									</tr>
-									<tr>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-									</tr>
-									<tr>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-										<td class="tg-0lax"></td>
-									</tr>
+
+
 								</table>
 
 								<br/>
-								<button class="btn btn-info">Add Row</button>
+
 								<br/>
 
 								<b>Gambar Sket/Kerja</b>
@@ -299,11 +291,16 @@ else
 										<th class="tg-cly1">Keterangan Dimensi</th>
 									</tr>
 									<tr style="height:200px;">
-										<td class="tg-cly1"></td>
-										<td class="tg-cly1"></td>
-										<td class="tg-cly1"></td>
-										<td class="tg-cly1"></td>
-										<td class="tg-cly1"></td>
+										<td class="tg-cly1" onclick="tambahJenis()" id="mJenis"></td>
+										<td class="tg-cly1" onclick="tambahKerja()" id="mKerja"></td>
+										<script>
+											function tambahKerja() {
+												$("#mSketsaKerja").modal("show");
+                                            }
+										</script>
+										<td class="tg-cly1" id="mLokasi"> <textarea></textarea></td>
+										<td class="tg-cly1" id="mPenanganan"><textarea></textarea></td>
+										<td class="tg-cly1" id="mDimensi"><textarea></textarea></td>
 									</tr>
 								</table>
 
