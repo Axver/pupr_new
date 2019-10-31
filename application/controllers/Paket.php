@@ -46,11 +46,13 @@ class Paket extends CI_Controller
     public function read($id) 
     {
         $row = $this->Paket_model->get_by_id($id);
+        $detil=$this->db->get_where("detail_paket",array("id_paket",$id))->result();
         if ($row) {
             $data = array(
 		'id_paket' => $row->id_paket,
 		'tahun' => $row->tahun,
 		'nama' => $row->nama,
+				'detil'=>$detil,
 	    );
             $this->load->view('admin/paket/paket_read', $data);
         } else {
@@ -151,6 +153,31 @@ class Paket extends CI_Controller
 	$this->form_validation->set_rules('id_paket', 'id_paket', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
+
+
+    public function save_paket()
+	{
+		$nip=$this->input->post("nip");
+//		echo $nip;
+		$paket=$this->input->post("id_paket");
+
+//		Get Tahun
+		$tahun=$this->db->get_where("paket",array("id_paket",$paket))->result();
+//		var_dump($tahun[0]->tahun);
+		$tahun_=$tahun[0]->tahun;
+
+//		Input data
+		$data=array(
+		"id_paket"=>$paket,
+		"tahun"=>$tahun_,
+		"nip"=>$nip
+		);
+
+		var_dump($data);
+
+//		Input data
+		$this->db->insert("detail_paket",$data);
+	}
 
 }
 

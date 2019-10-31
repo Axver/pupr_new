@@ -145,6 +145,34 @@ else
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
+								<input type="hidden" id="nip_hidden" value="<?php echo $this->session->userdata("nip"); ?>">
+								<input type="hidden" id="privilage_hidden" value="<?php echo $this->session->userdata("privilage"); ?>">
+
+<!--								Save Id Nya-->
+								<input type="hidden" id="id_paket" value="<?php echo $this->uri->segment('3'); ?>">
+
+
+								<?php
+								$data=$detil;
+								$length=count($data);
+
+								if($length>=1)
+								{
+//									Jika Data Sudah Ada Maka DI Tampilkan
+
+									?>
+									Id Paket:
+									<input type="text" class="form form-control" disabled value="<?php echo $detil[0]->id_paket; ?>">
+									Nip:
+									<input type="text" class="form form-control" disabled value="<?php echo $detil[0]->nip; ?>">
+								<?php
+
+								}
+								else
+								{
+									echo "<button class='form form-control' onclick='addDetil()'>Add Detil</button>";
+								}
+								?>
 								<table class="table">
 									<tr><td>Nama</td><td><?php echo $nama; ?></td></tr>
 									<tr><td></td><td><a href="<?php echo site_url('paket') ?>" class="btn btn-default">Cancel</a></td></tr>
@@ -203,6 +231,34 @@ else
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+	function addDetil()
+	{
+	   let nip_hidden=$("#nip_hidden").val();
+	   let privilage_hidden=$("#privilage_hidden").val();
+	   let id_paket=$("#id_paket").val();
+
+	   alert(id_paket);
+
+	   alert(nip_hidden);
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/index.php/paket/save_paket",
+            data: {"nip": nip_hidden,"id_paket":id_paket},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    alert(data);
+                }
+        });
+
+	}
+</script>
 
 
 
