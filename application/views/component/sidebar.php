@@ -70,12 +70,28 @@
 				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat') ?>">Jenis Alat Bahan</a>
 				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
+				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
 
 
 			</div>
 		</div>
 	</li>
 
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo121" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Pengawasan</span>
+		</a>
+		<div id="collapseTwo121" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Setting</h6>
+				<a class="collapse-item" href="<?php echo base_url('pengawasan') ?>">Pengawasan</a>
+
+
+
+			</div>
+		</div>
+	</li>
 
 
 
