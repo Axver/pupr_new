@@ -195,9 +195,9 @@ else
 										:
 									</div>
 
-									<div class="col-sm-4">
+									<div class="col-sm-4" id="nama_paket">
 
-										<input type="text" class="form form-control" id="nama_paket">
+
 
 									</div>
 
@@ -392,6 +392,23 @@ $.ajax({
 
 		       i++;
 		   }
+        }
+});// you have missed this bracket
+
+
+//	Ajax Untuk Paket
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/mingguan/paket",
+    data: {"id_perencanaan":id_perencanaan},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+           data=JSON.parse(data);
+           console.log(data);
+           $("#nama_paket").text(data[0].nama);
         }
 });// you have missed this bracket
 

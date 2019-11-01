@@ -28,5 +28,21 @@ class Mingguan extends CI_Controller {
 		echo json_encode($select_data);
 	}
 
+	public function paket()
+	{
+		$id=$this->input->post("id_perencanaan");
+		$this->db->select('*');
+		$this->db->from('lap_perencanaan');
+		$this->db->join('paket', 'lap_perencanaan.id_paket = paket.id_paket');
+		$this->db->join('detail_paket', 'paket.id_paket = detail_paket.id_paket');
+		$this->db->where('lap_perencanaan.id_lap_perencanaan',$id);
+		$query = $this->db->get()->result();
+
+		echo json_encode($query);
+
+
+
+	}
+
 
 }
