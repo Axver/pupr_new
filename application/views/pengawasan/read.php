@@ -26,7 +26,7 @@ else
 <html lang="en">
 
 <head>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 	<?php $this->load->view('component/header') ?>
 
 

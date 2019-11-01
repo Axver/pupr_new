@@ -124,7 +124,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+
 
 				<!-- Content Row -->
 
@@ -135,7 +135,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Laporan Harian-Mingguan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -146,7 +146,47 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<canvas id="myChart"></canvas>
+							
+
+								<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+										<th>No</th>
+										<th>Id Lap</th>
+										<th>Id Perencanaan</th>
+										<th>Show Harian</th>
+
+									</tr>
+									</thead>
+									<tbody>
+									<?php
+									$count=count($harian['harian']);
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+										<tr>
+											<td><?php echo $i+1; ?></td>
+											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
+											<td><?php echo $harian['harian'][$i]->id_lap_perencanaan; ?></td>
+
+											<td><button class="btn btn-info" onclick="showHarian(<?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?>,<?php echo $harian['harian'][$i]->id_lap_perencanaan; ?>)" >Show</button></td>
+										</tr>
+									<?php
+										$i++;
+									}
+									?>
+									</tbody>
+								</table>
+
+								<script>
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
+                                    } );
+								</script>
+
+
 
 							</div>
 						</div>
@@ -204,40 +244,7 @@ else
 </div>
 
 
-<script>
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/pupr_new/admin/hitung/",
-        data: {"id": "1"},
-        dataType: "text",
-        cache:false,
-        success:
-            function(data){
-                data=JSON.parse(data);
-                console.log(data);
-                console.log(data.harian[0].harian);
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    // The type of chart we want to create
-                    type: 'line',
 
-                    // The data for our dataset
-                    data: {
-                        labels: ['Paket', 'Laporan Harian', 'Lapoan Pengawasan', 'Laporan Perencanaan'],
-                        datasets: [{
-                            label: 'Jumlah Laporan',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [data.paket[0].paket, data.harian[0].harian, data.pengawasan[0].pengawasan, data.perencanaan[0].perencanaan]
-                        }]
-                    },
-
-                    // Configuration options go here
-                    options: {}
-                });
-            }
-    });
-</script>
 
 
 

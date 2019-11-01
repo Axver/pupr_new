@@ -28,7 +28,7 @@
 						<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
 					</div>
 					<div class="col-auto">
-						<a href="<?php echo base_url('index.php/mingguan/'.$this->uri->segment('3')) ?>"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+						<a href="<?php echo base_url('/mingguan/index/'.$this->uri->segment('3')) ?>"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
 
 					</div>
 				</div>
