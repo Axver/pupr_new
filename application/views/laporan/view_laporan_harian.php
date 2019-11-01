@@ -29,6 +29,24 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+	<style>
+		td{
+			border:2px solid black;
+		}
+
+		tr{
+			border:2px solid black;
+		}
+
+		th{
+			border:2px solid black;
+		}
+
+		table{
+			border:2px solid black;
+		}
+	</style>
+
 
 </head>
 
@@ -39,6 +57,7 @@ else
 
 	<!-- Sidebar -->
 	<?php $this->load->view('component/sidebar'); ?>
+
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -46,6 +65,10 @@ else
 
 		<!-- Main Content -->
 		<div id="content">
+
+			<?php $this->load->view("modal/laporan_harian_row"); ?>
+			<?php $this->load->view("modal/laporan_harian_jp"); ?>
+			<?php $this->load->view("modal/laporan_harian_sk"); ?>
 
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -135,7 +158,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Laporan Harian-Mingguan</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Laporan Harian</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -147,46 +170,137 @@ else
 							<div class="card-body">
 
 
+								<!--								Tabel Pertama-->
+								<br/>
+                             <b>
+								<?php
+								echo $this->uri->segment("3");
+								echo "->";
+								echo $this->uri->segment("4");
+								?>
+							 </b>
 
-								<table id="example" class="display" style="width:100%">
-									<thead>
+								<input type="hidden" id="id_lap_harian" value="<?php echo $this->uri->segment("3"); ?>">
+								<input type="hidden" id="id_lap_perencanaan" value="<?php echo $this->uri->segment("4"); ?>">
+								<br/>
+
+								<br/>
+
+
+								<div class="row">
+									<div class="col-sm-2">
+										Nama Paket
+									</div>
+									<div class="col-sm-1">
+										:
+									</div>
+
+									<div class="col-sm-4">
+
+										<input type="text" class="form form-control" id="nama_paket">
+
+									</div>
+
+
+
+
+
+
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">
+										Lokasi
+									</div>
+									<div class="col-sm-1">
+										:
+									</div>
+
+									<div class="col-sm-4">
+										<input type="text" class="form form-control" id="lokasi">
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-2">
+										Hari/Tanggal
+									</div>
+									<div class="col-sm-1">
+										:
+									</div>
+
+									<div class="col-sm-4">
+										<input type="text" class="form form-control" id="hari_tanggal">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">
+										Keterangan Pekerja/Bahan
+									</div>
+									<div class="col-sm-1">
+										:
+									</div>
+
+									<div class="col-sm-4">
+										<input type="text" class="form form-control" id="keterangan">
+									</div>
+								</div>
+
+								<br/>
+
+
+								<table class="table" id="tabel_harian">
 									<tr>
-										<th>No</th>
-										<th>Id Lap</th>
-										<th>Id Perencanaan</th>
-										<th>Show Harian</th>
-
+										<th class="tg-cly1" colspan="2">Pekerja</th>
+										<th class="tg-0lax" colspan="3">Bahan</th>
 									</tr>
-									</thead>
-									<tbody>
-									<?php
-									$count=count($harian['harian']);
-									$i=0;
+									<tr>
+										<td class="tg-0lax">Jenis</td>
+										<td class="tg-0lax">Jumlah</td>
+										<td class="tg-0lax">Jenis</td>
+										<td class="tg-0lax">Satuan</td>
+										<td class="tg-0lax">Jumlah</td>
+									</tr>
 
-									while($i<$count)
-									{
-										?>
-										<tr>
-											<td><?php echo $i+1; ?></td>
-											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
-											<td><?php echo $harian['harian'][$i]->id_lap_perencanaan; ?></td>
 
-											<td><button class="btn btn-info" onclick="showHarian('<?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian['harian'][$i]->id_lap_perencanaan; ?>')" >Show</button></td>
-										</tr>
-									<?php
-										$i++;
-									}
-									?>
-									</tbody>
+
+
 								</table>
 
-								<script>
-                                    $(document).ready(function() {
-                                        $('#example').DataTable();
-                                    } );
-								</script>
+								<br/>
 
+								<br/>
 
+								<b>Gambar Sket/Kerja</b>
+
+								<table class="table">
+									<tr>
+										<th class="tg-cly1">Jenis Pekerjaan</th>
+										<th class="tg-cly1">Sket Kerja</th>
+										<th class="tg-cly1">Lokasi</th>
+										<th class="tg-cly1">Panjang Penanganan</th>
+										<th class="tg-cly1">Keterangan Dimensi</th>
+									</tr>
+									<tr style="height:200px;">
+										<td class="tg-cly1" id="mJenis"></td>
+										<td class="tg-cly1" id="mKerja"></td>
+										<script>
+
+										</script>
+										<td class="tg-cly1" id="mLokasi"> <textarea></textarea></td>
+										<td class="tg-cly1" id="mPenanganan"><textarea></textarea></td>
+										<td class="tg-cly1" id="mDimensi"><textarea></textarea></td>
+									</tr>
+								</table>
+
+								<br/>
+
+								<br/>
+
+								<button class="btn btn-success">Cetak</button>
+								<button class="btn btn-danger">Download</button>
 
 							</div>
 						</div>
@@ -245,14 +359,43 @@ else
 
 
 <script>
+<!--	Generate Data-->
 
-	function showHarian(lap,per)
-	{
+	let id_lap_harian=$("#id_lap_harian").val();
+let id_perencanaan=$("#id_lap_perencanaan").val();
 
-	    window.location="http://localhost/pupr_new/mingguan/cetak/"+lap+"/"+per;
-	}
+//Ajax Post Here
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/mingguan/data",
+    data: {"id_lap_harian":id_lap_harian,"id_lap_perencanaan":id_perencanaan},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+           data=JSON.parse(data);
+           console.log(data);
+
+           let length=data.length;
+           let i=0;
+           while(i<length)
+		   {
+
+		       $("#tabel_harian").append("\t\t<tr>\n" +
+                   "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+data[i].id_jenis_bahan_alat+"</td>\n" +
+                   "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\"></td>\n" +
+                   "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+data[i].id_jenis_bahan_alat+"</td>\n" +
+                   "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\">"+data[i].id_satuan+"</td>\n" +
+                   "\t\t\t\t\t\t\t\t\t\t<td class=\"tg-0lax\"></td>\n" +
+                   "\t\t\t\t\t\t\t\t\t</tr>");
+
+		       i++;
+		   }
+        }
+});// you have missed this bracket
+
 </script>
-
 
 
 

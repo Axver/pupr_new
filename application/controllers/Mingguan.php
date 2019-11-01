@@ -12,5 +12,21 @@ class Mingguan extends CI_Controller {
 		$this->load->view("admin/harian_/list",$data);
 	}
 
+	public function cetak($lap,$per)
+	{
+       $this->load->view("laporan/view_laporan_harian");
+	}
+
+	public function data()
+	{
+		$id_lap_harian=$this->input->post("id_lap_harian");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+
+		$select_data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$id_lap_harian' AND id_lap_perencanaan='$id_lap_perencanaan'")->result();
+
+
+		echo json_encode($select_data);
+	}
+
 
 }
