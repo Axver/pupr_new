@@ -261,18 +261,19 @@ else
 
 	function minggu()
 	{
-      alert("minggu");
+      alert("Minggu");
       window.location="http://localhost/pupr_new/mingguan/minggu";
 	}
 
 	function bulan()
 	{
-
+      alert("Bulan");
+      window.location="http://localhost/pupr_new/mingguan/bulan"
 	}
 
 	function caturwulan()
 	{
-
+      alert("Caturwulan");
 	}
 </script>
 

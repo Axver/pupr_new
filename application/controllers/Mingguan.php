@@ -49,5 +49,34 @@ class Mingguan extends CI_Controller {
 		$this->load->view("admin/harian_/report_minggu");
 	}
 
+	public function bulan()
+	{
+
+	}
+
+	public function jenis_pekerjaan()
+    {
+
+	$select_jenis=$this->db->query("SELECT * FROM detail_jenis_pekerjaan INNER JOIN jenis_pekerjaan ON detail_jenis_pekerjaan.id=jenis_pekerjaan.id")->result();
+
+	echo json_encode($select_jenis);
+    }
+
+
+    public function all_harian()
+	{
+		$select_data=$this->db->get("lap_harian_mingguan")->result();
+		echo json_encode($select_data);
+	}
+
+	public function count()
+	{
+		$between=$this->input->post("id");
+//		Select Count Disini
+		$data=$this->db->query("SELECT COUNT(id_lap_harian_mingguan) as jumlah FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$between'")->result();
+
+		echo json_encode($data);
+	}
+
 
 }
