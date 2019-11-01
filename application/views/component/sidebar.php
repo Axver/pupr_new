@@ -87,6 +87,7 @@
 				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
 				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
+				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
 
 
 			</div>

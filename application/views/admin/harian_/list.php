@@ -146,6 +146,13 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<div class="row">
+									<div class="col-sm-1"><button class="btn btn-info" style="width:100%" onclick="minggu()">Minggu</button></div>
+									<div class="col-sm-1"><button class="btn btn-info" style="width:100%" onclick="bulan()">Bulan</button></div>
+									<div class="col-sm-1"><button class="btn btn-info" style="width:100%" onclick="caturwulan()">Catur</button></div>
+									<div class="col-sm-1"></div>
+								</div>
+
 
 
 								<table id="example" class="display" style="width:100%">
@@ -250,6 +257,22 @@ else
 	{
 
 	    window.location="http://localhost/pupr_new/mingguan/cetak/"+lap+"/"+per;
+	}
+
+	function minggu()
+	{
+      alert("minggu");
+      window.location="http://localhost/pupr_new/mingguan/minggu";
+	}
+
+	function bulan()
+	{
+
+	}
+
+	function caturwulan()
+	{
+
 	}
 </script>
 

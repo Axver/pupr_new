@@ -44,5 +44,10 @@ class Mingguan extends CI_Controller {
 
 	}
 
+	public function minggu()
+	{
+		$this->load->view("admin/harian_/report_minggu");
+	}
+
 
 }

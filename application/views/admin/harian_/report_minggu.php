@@ -124,7 +124,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+
 
 				<!-- Content Row -->
 
@@ -135,7 +135,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Report Minggu</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -146,72 +146,148 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<div class="row" style="margin-bottom: 10px">
-									<div class="col-md-4">
-										<?php echo anchor(site_url('konfigurasi/create'),'Create', 'class="btn btn-primary"'); ?>
-									</div>
-									<div class="col-md-4 text-center">
-										<div style="margin-top: 8px" id="message">
-											<?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="row">
+											Nama Paket:
+										</div>
+										<div class="row">
+											Jenis Pekerjaan:
+										</div>
+										<div class="row">
+											Lokasi:
+										</div>
+										<div class="row">
+											Pagu :
 										</div>
 									</div>
-									<div class="col-md-1 text-right">
-									</div>
-									<div class="col-md-3 text-right">
-										<form action="<?php echo site_url('konfigurasi/index'); ?>" class="form-inline" method="get">
-											<div class="input-group">
-												<input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-												<span class="input-group-btn">
-                            <?php
-							if ($q <> '')
-							{
-								?>
-								<a href="<?php echo site_url('konfigurasi'); ?>" class="btn btn-default">Reset</a>
-								<?php
-							}
-							?>
-                          <button class="btn btn-primary" type="submit">Search</button>
-                        </span>
-											</div>
-										</form>
+
+									<div class="col-sm-6" style="border:2px solid black;">
+										<div class="row">Progres Pekerjaan:</div>
+										<div class="row">Progres Fisik Periode Lalu:</div>
+										<div class="row">Progres Fisik Minggu 1:</div>
+										<div class="row">Progres Selanjutnya:</div>
+										<div class="row">Progres Fisik Total:</div>
 									</div>
 								</div>
-								<table class="table table-bordered" style="margin-bottom: 10px">
+<!--								Tabel Disini-->
+								<table class="tg table" >
 									<tr>
-										<th>No</th>
-										<th>Nama</th>
-										<th>Nip</th>
-										<th>Action</th>
-									</tr><?php
-									foreach ($konfigurasi_data as $konfigurasi)
-									{
-										?>
-										<tr>
-											<td width="80px"><?php echo ++$start ?></td>
-											<td><?php echo $konfigurasi->nama ?></td>
-											<td><?php echo $konfigurasi->nip ?></td>
-											<td style="text-align:center" width="200px">
-												<?php
-												echo anchor(site_url('konfigurasi/read/'.$konfigurasi->id_konfigurasi),'Read');
-												echo ' | ';
-												echo anchor(site_url('konfigurasi/update/'.$konfigurasi->id_konfigurasi),'Update');
-												echo ' | ';
-												echo anchor(site_url('konfigurasi/delete/'.$konfigurasi->id_konfigurasi),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-												?>
-											</td>
-										</tr>
-										<?php
-									}
-									?>
+										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-nrix" colspan="15">Tahap 1</th>
+									</tr>
+									<tr>
+										<td class="tg-nrix" colspan="5">Bulan X</td>
+										<td class="tg-baqh" colspan="5">Bulan X</td>
+										<td class="tg-baqh" colspan="5">Bulan X</td>
+									</tr>
+									<tr>
+										<td class="tg-0lax">1</td>
+										<td class="tg-0lax">2</td>
+										<td class="tg-0lax">3</td>
+										<td class="tg-0lax">4</td>
+										<td class="tg-0lax">5</td>
+										<td class="tg-0lax">1</td>
+										<td class="tg-0lax">2</td>
+										<td class="tg-0lax">3</td>
+										<td class="tg-0lax">4</td>
+										<td class="tg-0lax">5</td>
+										<td class="tg-0lax">1</td>
+										<td class="tg-0lax">2</td>
+										<td class="tg-0lax">3</td>
+										<td class="tg-0lax">4</td>
+										<td class="tg-0lax">5</td>
+									</tr>
+									<tr>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-0lax"></td>
+									</tr>
 								</table>
+
+								<b>Rekapilutasi Pekerja Minggu 1</b>
+								<table class="tg table">
+									<tr>
+										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-cly1" colspan="7"></th>
+									</tr>
+									<tr>
+										<td class="tg-nrix" colspan="7">(Bulan) Minggu Ke X</td>
+									</tr>
+									<tr>
+										<td class="tg-cly1">Hari 1</td>
+										<td class="tg-cly1">Hari 2</td>
+										<td class="tg-cly1">Hari 3</td>
+										<td class="tg-cly1">Hari 4</td>
+										<td class="tg-cly1">Hari 5</td>
+										<td class="tg-cly1">Hari 6</td>
+										<td class="tg-cly1">Hari 7</td>
+									</tr>
+									<tr>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+									</tr>
+								</table>
+								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu Ke X</b>
+								<table class="tg table">
+									<tr>
+										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-baqh" rowspan="3">Satuan</th>
+										<th class="tg-cly1" colspan="7"></th>
+									</tr>
+									<tr>
+										<td class="tg-nrix" colspan="7">(Bulan) Minggu Ke X</td>
+									</tr>
+									<tr>
+										<td class="tg-cly1">Hari 1</td>
+										<td class="tg-cly1">Hari 2</td>
+										<td class="tg-cly1">Hari 3</td>
+										<td class="tg-cly1">Hari 4</td>
+										<td class="tg-cly1">Hari 5</td>
+										<td class="tg-cly1">Hari 6</td>
+										<td class="tg-cly1">Hari 7</td>
+									</tr>
+									<tr>
+										<td class="tg-cly1"></td>
+										<td class="tg-0lax"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+										<td class="tg-cly1"></td>
+									</tr>
+								</table>
+
 								<div class="row">
-									<div class="col-md-6">
-										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-									</div>
-									<div class="col-md-6 text-right">
-										<?php echo $pagination ?>
-									</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2"><b>Dibuat Oleh</b></div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2"><b>Di Tandatangani Oleh</b></div>
+									<div class="col-sm-2"></div>
 								</div>
+
 
 							</div>
 						</div>
