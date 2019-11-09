@@ -238,6 +238,8 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<input type="hidden" id="uri_nya" value="<?php echo $this->uri->segment('3'); ?>">
+
 
 
 
@@ -253,20 +255,8 @@ else
 										<div class="row">
 											<div class="col-sm-3">Nama Paket</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><select id="nama_paket" class="form form-control">
-													<?php
-													$jum_paket=count($paket);
-													$i=0;
-													while($i<$jum_paket)
-													{
-														?>
-														<option value="<?php echo $paket[$i]->id_paket.'_'.$paket[$i]->tahun; ?>"><?php echo $paket[$i]->nama ?></option>
-														<?php
-
-														$i++;
-													}
-													?>
-												</select>
+											<div class="col-sm-8">
+												<input type="text" id="nama_paket" class="form form-control">
 												<a href="#">New</a>
 											</div>
 
@@ -824,6 +814,7 @@ else
 
 <script>
     let save_pekerjaan= new Array();
+
     function tambahPekerjaan()
     {
         let pekerjaan_id=$("#pekerjaan").val();
@@ -1109,6 +1100,32 @@ else
 
 
     }
+
+
+//    Ambil data paket
+	let uri_nya=$("#uri_nya").val();
+//   Getting Package Data
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/user/detail_paket/",
+        data: {"id_paket":uri_nya},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+
+                $("#nama_paket").val(data[0].nama);
+                $("#jumlah_tahap").val(data[0].jumlah_tahap);
+                $("#jenis_pelaksanaan").val(data[0].jenis_pekerjaan);
+                $("#masa_pelaksanaan").val(data[0].masa_pelaksanaan);
+                $("#lokasi").val(data[0].lokasi);
+                $("#tahun_anggaran").val(data[0].tahun_anggaran);
+            }
+    });
+
 </script>
 
 </body>
