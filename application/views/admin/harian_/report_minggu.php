@@ -835,6 +835,9 @@ else
                                                             $("#"+x+"_"+data_[j].id_lap_perencanaan).text(data[0].jumlah);
                                                             console.log("jesijesijesi");
                                                             console.log(x+"_"+data_[j].id_lap_perencanaan);
+                                                            //Beri Warna Disini
+                                                            $("#"+x+"_"+data_[j].id_lap_perencanaan).css("background-color", "yellow");
+
                                                             console.log("jesijesijesi");
                                                         }
                                                 });// you have missed this bracket

@@ -95,6 +95,24 @@
 	</li>
 
 
+	<!-- Nav Item - Pages Collapse Menu -->
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo112" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Paket User</span>
+		</a>
+		<div id="collapseTwo112" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Paket Untuk User</h6>
+				<a class="collapse-item" href="<?php echo base_url('paket_user') ?>">Paket User</a>
+
+
+
+			</div>
+		</div>
+	</li>
+
+
 
 
 
