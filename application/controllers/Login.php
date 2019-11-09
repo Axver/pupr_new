@@ -29,6 +29,10 @@ class Login extends CI_Controller {
 
 				redirect(base_url()."admin");
 			}
+			else if($privilage==2)
+			{
+				redirect(base_url()."user");
+			}
 
 		} else {
 			redirect(base_url());
