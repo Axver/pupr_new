@@ -18,7 +18,10 @@ class Laporan_perencanaan extends CI_Controller {
 	{
        $id_paket=$this->input->post('id_paket');
 
+
+
        $id_paket=explode("_",$id_paket);
+
        $id_paket_=$id_paket[0];
 		  $tahun=$id_paket[1];
 //       $tahun=$this->input->post('tahun');
@@ -34,10 +37,11 @@ class Laporan_perencanaan extends CI_Controller {
 
 		);
 
+
 		$this->db->insert("lap_perencanaan",$data);
 
 		echo $max_id;
-//		var_dump($data);;
+
 
 //		Input Laporan Perencanaan
 

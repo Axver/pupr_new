@@ -257,7 +257,7 @@ else
 											<div class="col-sm-1">:</div>
 											<div class="col-sm-8">
 												<input type="text" id="nama_paket" class="form form-control">
-												<a href="#">New</a>
+
 											</div>
 
 										</div>
@@ -729,19 +729,44 @@ else
 										<a href="#">New</a>
 										<br/>
 										Disetujui Oleh:
-										<select class="form form-control">
+										<select class="form form-control" id="disetujui_oleh">
+
+											<?php
+											$query=$this->db->get("konfigurasi")->result();
+											$count=count($query);
+
+											$i=0;
+											while($i<$count)
+											{
+												?>
+												<option value="<?php echo $query[$i]->id_konfigurasi; ?>"><?php echo $query[$i]->nama; ?></option>
+											<?php
+
+												$i++;
+											}
+											?>
 
 										</select>
 										<br/>
 										<b>Diperiksa Oleh:</b>
-										<select class="form form-control">
+										<select class="form form-control" id="diperiksa_oleh">
 
-										</select>
-										<br/>
-										<b>Dibuat Oleh:</b>
-										<select class="form form-control">
+											<?php
+											$query=$this->db->get("konfigurasi")->result();
+											$count=count($query);
 
+											$i=0;
+											while($i<$count)
+											{
+												?>
+												<option value="<?php echo $query[$i]->id_konfigurasi; ?>"><?php echo $query[$i]->nama; ?></option>
+												<?php
+
+												$i++;
+											}
+											?>
 										</select>
+
 
 									</div>
 								</div>
@@ -928,6 +953,7 @@ else
 
     $("#inputGroupFile01").change(function(event) {
         RecurFadeIn();
+        console.log(this);
         readURL(this);
     });
     $("#inputGroupFile01").on('click',function(event){
@@ -946,6 +972,7 @@ else
                 $('.custom-file-label').text(filename);
             }
             reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
         }
         $(".alert").removeClass("loading").hide();
     }
@@ -1075,6 +1102,7 @@ else
                 success : function(data) {
 
                     // console.log(data);
+
                     let max_id=data;
 
                     $.ajax({
@@ -1090,6 +1118,10 @@ else
 
                         }
                     });
+
+					console.log("-----");
+					console.log(max_id);
+					console.log("------");
 
                 }
             });
@@ -1117,7 +1149,7 @@ else
                 data=JSON.parse(data);
                 console.log(data);
 
-                $("#nama_paket").val(data[0].nama);
+                $("#nama_paket").val(data[0].id_paket+"_"+data[0].tahun);
                 $("#jumlah_tahap").val(data[0].jumlah_tahap);
                 $("#jenis_pelaksanaan").val(data[0].jenis_pekerjaan);
                 $("#masa_pelaksanaan").val(data[0].masa_pelaksanaan);
@@ -1125,6 +1157,51 @@ else
                 $("#tahun_anggaran").val(data[0].tahun_anggaran);
             }
     });
+
+    function savePerencanaan_()
+	{
+
+
+        $("#inputGroupFile01").each(function(){
+            $(this);
+            console.log(this);
+            saveReadURL(this);
+        });
+
+
+	}
+
+    function saveReadURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var filename = $("#inputGroupFile01").val();
+            filename = filename.substring(filename.lastIndexOf('\\')+1);
+            reader.onload = function(e) {
+                debugger;
+                $('#blah').attr('src', e.target.result);
+                $('#blah').hide();
+                $('#blah').fadeIn(500);
+                $('.custom-file-label').text(filename);
+            }
+            reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
+        //    Ajax Disini Untuk Menyimpan Data
+            // $.ajax({
+            //     url: 'http://localhost/pupr_new/user/upload',
+            //     dataType: 'text',
+            // 	async:false,
+            //     cache: false,
+            //     contentType: false,
+            //     processData: false,
+            //     data: form_data,
+            //     type: 'post',
+            //     success: function(php_script_response){
+            //         alert(php_script_response);
+            //     }
+            // });
+        }
+        $(".alert").removeClass("loading").hide();
+    }
 
 </script>
 

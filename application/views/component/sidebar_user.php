@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin'); ?>">
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user'); ?>">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -30,7 +30,28 @@
 		<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Daftar Laporan</h6>
-				<a class="collapse-item" href="<?php echo base_url('paket_anda') ?>">Paket Anda</a>
+				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket Anda</a>
+
+			</div>
+		</div>
+	</li>
+
+	<!-- Nav Item - Pages Collapse Menu -->
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo113" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Paket User</span>
+		</a>
+		<div id="collapseTwo113" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">My Word</h6>
+				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
+				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
+				<a class="collapse-item" href="<?php echo base_url('user_harian') ?>">Laporan Harian</a>
+				<a class="collapse-item" href="<?php echo base_url('user_pengawasan') ?>">Laporan Pengawasan</a>
+				<a class="collapse-item" href="<?php echo base_url('user_pelaksanaan') ?>">Laporan Pelaksanaan</a>
+
+
 
 			</div>
 		</div>
