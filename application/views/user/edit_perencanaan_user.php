@@ -128,7 +128,7 @@ else
 <div id="wrapper">
 
 	<!-- Sidebar -->
-	<?php $this->load->view('component/sidebar'); ?>
+	<?php $this->load->view('component/sidebar_user'); ?>
 	<?php $this->load->view('modal/add_waktu'); ?>
 	<?php $this->load->view('modal/add_alat_bahan'); ?>
 	<!-- End of Sidebar -->
@@ -1118,8 +1118,8 @@ else
 
 <!--Ambil Data Yang Lama dari detil jenis pekerjaan-->
 <script>
-	let id_laporan="<?php echo $id ?>";
-	console.log(id_laporan);
+    let id_laporan="<?php echo $id ?>";
+    console.log(id_laporan);
     $.ajax({
         type : "POST",
         url : "http://localhost/pupr_new/index.php/edit/edit_perencanaan",
@@ -1131,12 +1131,12 @@ else
 
             let data1=JSON.parse(data);
             console.log(data1);
-        //    Getting data Length
-			data_length=data1.length;
-			let x=0;
+            //    Getting data Length
+            data_length=data1.length;
+            let x=0;
 
-			while(x<data_length)
-			{
+            while(x<data_length)
+            {
 
                 let pekerjaan_id=data1[x].id;
                 let pekerjaan_text=data1[x].nama_jenis;
@@ -1189,23 +1189,23 @@ else
                 }
 
 
-			    x++;
-			}
+                x++;
+            }
 
-		//	Berikan dia warna
+            //	Berikan dia warna
 
-			let z=0;
-			while(z<data_length)
-			{
-			    let text_builder=data1[z].id+"_"+data1[z].minggu;
-			    let text_builder1=data1[z].id+"__"+data1[z].minggu;
-			    console.log(text_builder);
+            let z=0;
+            while(z<data_length)
+            {
+                let text_builder=data1[z].id+"_"+data1[z].minggu;
+                let text_builder1=data1[z].id+"__"+data1[z].minggu;
+                console.log(text_builder);
 
-               let selector=$("#"+text_builder).css("background-color","black");
-               let selector1=$("#"+text_builder1).text(data1[z].pekerja);
+                let selector=$("#"+text_builder).css("background-color","black");
+                let selector1=$("#"+text_builder1).text(data1[z].pekerja);
 
-			    z++;
-			}
+                z++;
+            }
 
         }
     });
