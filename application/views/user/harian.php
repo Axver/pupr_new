@@ -295,15 +295,23 @@ else
 										<th class="tg-cly1">Panjang Penanganan</th>
 										<th class="tg-cly1">Keterangan Dimensi</th>
 									</tr>
-									<tr style="height:200px;">
-										<td class="tg-cly1" onclick="tambahJenis()" id="mJenis"></td>
-										<td class="tg-cly1" onclick="tambahKerja()" id="mKerja"></td>
-										<script>
-                                            function tambahKerja() {
-                                                $("#mSketsaKerja").modal("show");
-                                            }
-										</script>
-										<td class="tg-cly1" id="mLokasi"> </td>
+									<tr>
+										<td class="tg-cly1"  ><button class="btn btn-info" onclick="mJenis()">+</button></td>
+										<td class="tg-cly1"  ></td>
+										<td class="tg-cly1" ><button class="btn btn-info" onclick="mLokasi()">+</button></td>
+										<td class="tg-cly1" ><button class="btn btn-info" onclick="mPenanganan()">+</button></td>
+										<td class="tg-cly1" ><button class="btn btn-info" onclick="mDimensi()">+</button></td>
+									</tr>
+
+									<tr style="height: 200px;">
+										<td class="tg-cly1"  id="mJenis"></td>
+										<td class="tg-cly1"  id="mKerja">
+											<form runat="server">
+												<input type='file' id="imgInp" />
+												<img id="blah" src="#" style="width:200px;" alt="your image" />
+											</form>
+										</td>
+										<td class="tg-cly1" id="mLokasi"></td>
 										<td class="tg-cly1" id="mPenanganan"></td>
 										<td class="tg-cly1" id="mDimensi"></td>
 									</tr>
@@ -432,8 +440,10 @@ else
         var classname = document.getElementsByClassName("klik_harian");
 
         var myFunction = function() {
-            var attribute = this;
+            var attribute = this.id;
             console.log(attribute);
+            $("#id_column").val(attribute);
+            $("#myModal").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -442,8 +452,132 @@ else
 
 	}
 
+	function dataRow()
+	{
+	    isi_row=$("#data_column").val();
+	    id_row=$("#id_column").val();
+
+	//    Masukkan data ke tabel
+		$("#"+id_row).text(isi_row);
+        $("#myModal").modal("hide");
+	}
+
+
+	function mJenis()
+	{
+      $("#modalJenis").modal("show");
+	}
+
+	function dataJenis()
+	{
+     let data_jenis=$("#data_jenis").val();
+
+		$("#modalJenis").modal("hide");
+
+
+		$("#mJenis").text(data_jenis);
+	}
+
+	function mKerja()
+	{
+	    $("#modalKerja").modal("show");
+	}
+
+	function dataKerja()
+	{
+
+	}
+
+	function mLokasi() {
+        alert("test");
+    }
+
+    function mPenanganan()
+	{
+        alert("test");
+	}
+
+	function mDimensi()
+	{
+        alert("test");
+	}
+
+
+//	Upload Image
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function() {
+        readURL(this);
+    });
+
 
 </script>
+
+
+
+
+<!--Modal DIsini-->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+				<input type="text" id="id_column" class="form form-control" disabled>
+				<input type="text" id="data_column" class="form form-control">
+
+				<button class="btn btn-info" onclick="dataRow()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!--Modal Jenis-->
+<!-- Modal -->
+<div id="modalJenis" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+
+				<input type="text" id="data_jenis" class="form form-control">
+
+				<button class="btn btn-info" onclick="dataJenis()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
 
 
 
