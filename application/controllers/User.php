@@ -38,6 +38,12 @@ class User extends CI_Controller {
 	}
 
 
+	public function user_harian($i)
+	{
+        $this->load->view("user/harian");
+	}
+
+
 
 
 

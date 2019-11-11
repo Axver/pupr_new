@@ -236,7 +236,11 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<div class="card-body">
+							<button class="btn btn-danger" id="cmd">CETAK</button>
+
+							<div id="editor"></div>
+
+							<div class="card-body" id="cetakIni">
 
 
 
@@ -1210,6 +1214,27 @@ else
         }
     });
 </script>
+
+
+<script>var doc = new jsPDF();
+    var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    };
+
+    $('#cmd').click(function () {
+        console.log($('body').html());
+        doc.fromHTML($('body').html(), 15, 15, {
+            'width': 1700,
+            'elementHandlers': specialElementHandlers
+        });
+        doc.save('sample-file.pdf');
+    });
+</script>
+
+
+
 
 
 </body>

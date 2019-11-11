@@ -148,7 +148,7 @@ else
 
 								<div class="row">
 									<div class="col-sm-3"><a href="../perencanaan/<?php echo $this->uri->segment('3'); ?>">Laporan Perencanaan</a> </div>
-									<div class="col-sm-3"><a href="">Laporan Harian</a></div>
+									<div class="col-sm-3"><a href="../user_harian/<?php echo $this->uri->segment('3'); ?>">Laporan Harian</a></div>
 									<div class="col-sm-3"><a href="">Laporan Pengawasan</a></div>
 									<div class="col-sm-3"><a href="">Laporan Pelaksanaan</a></div>
 								</div>

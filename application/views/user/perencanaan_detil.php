@@ -158,8 +158,8 @@ else
 										<th>Tahun</th>
 										<th>Tukang</th>
 										<th>Pekerja</th>
-										<th>Edit</th>
-										<th>Cetak</th>
+										<th>View</th>
+
 									</tr>
 									</thead>
 									<tbody>
@@ -177,7 +177,7 @@ else
 											<td><?php echo $data[$i][0]->tukang ?></td>
 											<td><?php echo $data[$i][0]->pekerja ?></td>
 											<td><button class="btn btn-danger" onclick="redEdit('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Edit</button></td>
-											<td><button class="btn btn-danger" onclick="redCetak('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Cetak</button></td>
+
 											<td></td>
 										</tr>
 									<?php
