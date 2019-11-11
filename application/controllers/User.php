@@ -57,6 +57,7 @@ class User extends CI_Controller {
 	{
        $id_paket=$this->input->post("id_paket");
        $id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+       $hari_tanggal=$this->input->post("hari_tanggal");
 
 //       Getting Tahun Paket From DB
 		$getTahun=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
@@ -67,21 +68,63 @@ class User extends CI_Controller {
 //		$max=$max+1;
 		$this->db->select_max('id_lap_harian_mingguan');
 		$this->db->from('lap_harian_mingguan');
-		$query = $this->db->get()->result();
 
-		$max=$query[0]->id_lap_harian_mingguan+1;
+
+
 
         $data= array(
-        	"id_lap_harian_mingguan"=>$max,
+        	"id_lap_harian_mingguan"=>$hari_tanggal,
         "id_lap_perencanaan"=>$id_lap_perencanaan,
 		"id_paket"=>$id_paket,
-		"tahun"=>$tahun
+		"tahun"=>$tahun,
+			"hari_tanggal"=>$hari_tanggal,
+
 		);
 
 //        Save Data Then (Simpan Data Laporan Harian DI Database)
 
-       var_dump($data);
+//		$this->db->insert("lap_harian_mingguan",$data);
+
+//       var_dump($data);
 	}
+
+
+//	Fungsi detail harian
+
+public function detail_harian()
+{
+	$data=$this->input->post("data");
+	$count=count($data);
+
+
+	$i=0;
+	$j=0;
+	$x=0;
+
+
+	while($i<$count)
+	{
+		if($i!=0&&$i%5!=0)
+		{
+			$hasilData[$x][$j]=$data[$i];
+			$j++;
+		}
+		else
+		{
+			$x++;
+
+			$j=0;
+		}
+
+		$i++;
+
+	}
+	var_dump($hasilData);
+
+var_dump($data);
+
+
+}
 
 
 

@@ -569,17 +569,18 @@ else
 	{
 	    let id_paket_=$("#paket").val();
 	    let id_laper=$("#lap_perencanaan").val();
+	    let hari_tanggal=$("#hari_tanggal").val();
 
         $.ajax({
             type: "POST",
 			async:false,
             url: "http://localhost/pupr_new/user/save_harian",
-            data: {"id_paket":id_paket_,"id_lap_perencanaan":id_laper},
+            data: {"id_paket":id_paket_,"id_lap_perencanaan":id_laper,"hari_tanggal":hari_tanggal},
             dataType: "text",
             cache:false,
             success:
                 function(data){
-                    alert(data);  //as a debugging message.
+                    console.log(data);  //as a debugging message.
                 }
         });
 
@@ -595,6 +596,20 @@ else
 			xo++;
 
 
+        });
+
+        //Setelah Laporan Harian Disimpan Maka Masukkan Detailnya
+        $.ajax({
+            type: "POST",
+			async:false,
+            url: "http://localhost/pupr_new/user/detail_harian",
+            data: {"data":dataArray},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    console.log(data);
+                }
         });
 
 
