@@ -308,7 +308,7 @@ else
 										<td class="tg-cly1"  id="mKerja">
 											<form runat="server">
 												<input type='file' id="imgInp" />
-												<img id="blah" src="#" style="width:200px;" alt="your image" />
+												<img id="blah" src="#" style="width:400px;" alt="your image" />
 											</form>
 										</td>
 										<td class="tg-cly1" id="mLokasi"></td>
@@ -489,17 +489,42 @@ else
 	}
 
 	function mLokasi() {
-        alert("test");
+        $("#modalLokasi").modal("show");
     }
+
+    function dataLokasi()
+	{
+	//    Admbil data Modal
+		data_lokasi=$("#data_lokasi").val();
+		$("#mLokasi").text(data_lokasi);
+		$("#modalLokasi").modal("hide");
+	}
 
     function mPenanganan()
 	{
-        alert("test");
+     $("#modalPenanganan").modal("show");
+	}
+
+	function dataPenanganan()
+	{
+	    data_penanganan=$("#data_penanganan").val();
+	    $("#mPenanganan").text(data_penanganan);
+	    $("#modalPenanganan").modal("hide");
+	}
+
+	function dataDimensi()
+	{
+	    panjang=$("#panjang").val();
+	    lebar=$("#lebar").val();
+	    volume=$("#volume").val();
+
+	    $("#mDimensi").text("p:"+panjang+","+"l:"+lebar+","+"v:"+volume+",");
+	    $("#modalDimensi").modal("hide");
 	}
 
 	function mDimensi()
 	{
-        alert("test");
+        $("#modalDimensi").modal("show");
 	}
 
 
@@ -568,6 +593,90 @@ else
 				<input type="text" id="data_jenis" class="form form-control">
 
 				<button class="btn btn-info" onclick="dataJenis()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!--Modal Lokasi-->
+<!-- Modal -->
+<div id="modalLokasi" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+
+				<input type="text" id="data_lokasi" class="form form-control">
+
+				<button class="btn btn-info" onclick="dataLokasi()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<!--Modal Dimensi-->
+<!-- Modal -->
+<div id="modalDimensi" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+                P:
+				<input type="text" id="panjang" class="form form-control">
+				L:
+				<input type="text" id="lebar" class="form form-control">
+				V:
+				<input type="text" id="volume" class="form form-control">
+
+				<button class="btn btn-info" onclick="dataDimensi()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!--Modal Penanganan-->
+<!-- Modal -->
+<div id="modalPenanganan" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+
+				<input type="text" id="data_penanganan" class="form form-control">
+
+
+				<button class="btn btn-info" onclick="dataPenanganan()">Tambah</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
