@@ -245,7 +245,7 @@ else
 									</div>
 
 									<div class="col-sm-4">
-										<input type="text" class="form form-control" id="hari_tanggal">
+										<input type="date" class="form form-control" id="hari_tanggal">
 									</div>
 								</div>
 
@@ -322,7 +322,7 @@ else
 
 								<br/>
 
-								<button class="btn btn-success">Save</button>
+								<button class="btn btn-success" onclick="saveHarian()">Save</button>
 								<button class="btn btn-danger">Cancel</button>
 
 							</div>
@@ -428,11 +428,11 @@ else
 
 
       $("#tabel_harian").append('\t\t<tr>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian" id="'+row_table+'_1"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian" id="'+row_table+'_2"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian" id="'+row_table+'_3"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian" id="'+row_table+'_4"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian" id="'+row_table+'_5"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_2"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_3"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_satuan data_jesi" id="'+row_table+'_4"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_5"></td>\n' +
           '\t\t\t\t\t\t\t\t\t</tr>');
 
       row_table=row_table+1;
@@ -445,6 +445,20 @@ else
             console.log(attribute);
             $("#id_column").val(attribute);
             $("#myModal").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+    //    Event Listener Untuk Satuan
+        var classname = document.getElementsByClassName("klik_satuan");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_satuan").val(attribute);
+            $("#myModalSatuan").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -547,6 +561,67 @@ else
     });
 
 
+
+
+//    Save Laporan Harian
+
+	function saveHarian()
+	{
+	    let id_paket_=$("#paket").val();
+	    let id_laper=$("#lap_perencanaan").val();
+
+        $.ajax({
+            type: "POST",
+			async:false,
+            url: "http://localhost/pupr_new/user/save_harian",
+            data: {"id_paket":id_paket_,"id_lap_perencanaan":id_laper},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    alert(data);  //as a debugging message.
+                }
+        });
+
+	    let xo=0;
+	    let dataArray=[];
+	//    Ekstrak data dari Tabel dahulu
+        $(".data_jesi").each(function() {
+            // alert($(this).text());
+        //    Fokus di Save
+        //    Lakukan perulangan Per 5 Kali
+
+			dataArray[xo]=$(this).text();
+			xo++;
+
+
+        });
+
+
+        console.log(dataArray);
+
+	}
+
+
+//	Ajax POSTs Untuk Mengisi Column Kosong
+	let send_data=$("#paket").val();
+    $.ajax({
+        type: "POST",
+		async:false,
+        url: "http://localhost/pupr_new/user/paket_info_harian",
+        data: {"send_data":send_data},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+                $("#nama_paket").val(data[0].nama);
+                $("#lokasi").val(data[0].lokasi);
+            }
+    });
+
+
 </script>
 
 <script>
@@ -596,6 +671,16 @@ else
         // Choose the element and save the PDF for our user.
         html2pdf().from(element).save();
     }
+
+    //Tambah data satuan
+    function dataSatuan()
+	{
+	    id_column=$("#id_satuan").val();
+	    informasi=$("#data_satuan").val();
+
+	//    Tambahkan data ke column
+		$("#"+id_column).text(informasi);
+	}
 </script>
 
 
@@ -727,6 +812,52 @@ else
 
 
 				<button class="btn btn-info" onclick="dataPenanganan()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!--Modal Penanganan-->
+<!-- Modal -->
+<div id="myModalSatuan" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+
+				<b>Modal Satuan</b>
+				<br/>
+<!--				Data satuan Disini-->
+				<input type="text" id="id_satuan" class="form form-control" disabled>
+
+				<select id="data_satuan" class="form form-control">
+					<?php
+					$satuan_db=$this->db->get("satuan")->result();
+					$count=count($satuan_db);
+					$i=0;
+
+					while($i<$count)
+					{?>
+					<option value="<?php echo $satuan_db[$i]->id_satuan; ?>"><?php echo $satuan_db[$i]->satuan; ?></option>
+					<?php
+
+						$i++;
+					}
+					?>
+				</select>
+
+
+				<button class="btn btn-info" onclick="dataSatuan()">Tambah</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
