@@ -165,7 +165,8 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<div class="card-body">
+							<button onclick="generatePDF()" class="btn btn-info">Generate PDF</button>
+							<div class="card-body" id="cetak_pdf">
 
 								<b>*Pilih Paket dan Lapoan Perencanaan Terlebih Dahulu</b> <br/>
 								<label>Paket:</label>
@@ -546,6 +547,55 @@ else
     });
 
 
+</script>
+
+<script>
+    //Global Variable Declaration
+    var base64Img = null;
+    margins = {
+        top: 70,
+        bottom: 40,
+        left: 30,
+        width: 550
+    };
+
+    /* append other function below: */
+
+</script>
+
+<script>
+    // generate = function()
+    // {
+    //     var pdf = new jsPDF('p', 'pt', 'a4');
+    //     pdf.setFontSize(18);
+    //     pdf.fromHTML(document.getElementById('cetak_pdf'),
+    //         margins.left, // x coord
+    //         margins.top,
+    //         {
+    //             // y coord
+    //             width: margins.width// max width of content on PDF
+    //         },function(dispose) {
+    //             headerFooterFormatting(pdf)
+    //         },
+    //         margins);
+	//
+    //     var iframe = document.createElement('iframe');
+    //     iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:650px; padding:20px;');
+    //     document.body.appendChild(iframe);
+	//
+    //     iframe.src = pdf.output('datauristring');
+    // };
+
+
+</script>
+
+<script>
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak_pdf");
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
+    }
 </script>
 
 
