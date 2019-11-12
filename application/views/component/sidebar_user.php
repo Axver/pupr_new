@@ -44,7 +44,7 @@
 		</a>
 		<div id="collapseTwo113" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">My Word</h6>
+				<h6 class="collapse-header">Paket User</h6>
 				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
 				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
 				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
@@ -56,6 +56,29 @@
 			</div>
 		</div>
 	</li>
+
+
+	<!-- Nav Item - Pages Collapse Menu -->
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo114" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Generate</span>
+		</a>
+		<div id="collapseTwo114" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Generate</h6>
+				<a class="collapse-item" href="<?php echo base_url('generate_minggu') ?>">Laporan Mingguan</a>
+				<a class="collapse-item" href="<?php echo base_url('generate_bulan') ?>">Laporan Bulanan</a>
+				<a class="collapse-item" href="<?php echo base_url('generate_catur') ?>">Laporan Caturwulan</a>
+
+
+
+
+			</div>
+		</div>
+	</li>
+
+
 
 
 
