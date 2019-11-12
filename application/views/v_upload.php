@@ -146,8 +146,8 @@ else
 							<div class="card-body">
 
 								<?php echo $error;?>
-
-								<?php echo form_open_multipart('upload/aksi_upload');?>
+                                <?php $id=$this->uri->segment("3"); ?>
+								<?php echo form_open_multipart('upload/aksi_upload/'.$id);?>
 
 								<input type="file" name="berkas" class="btn btn-info"/>
 
