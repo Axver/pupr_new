@@ -181,9 +181,44 @@ else
 									}
 									?>
 								</select>
+								<b>Bulan Pertama</b>
+								<select id="bulan_pertama" class="form form-control">
+									<?php
+									$i=1;
+									while($i<=12)
+									{
+										?>
+									<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+								</select>
+								<b>Bulan Terakhir</b>
+								<select id="bulan_terakhir" class="form form-control">
+									<?php
+									$i=1;
+									while($i<=12)
+									{
+										?>
+										<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+										<?php
+
+										$i++;
+									}
+									?>
+								</select>
 								<br/>
 
-								<button class="btn btn-info">Generate</button>
+								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
+
+
+<!--								Disini Posisi Tabelnya-->
+								<div id="cetak_tabel">
+									<center><b>Cetak Tabel</b></center>
+
+								</div>
 
 
 
@@ -251,6 +286,33 @@ else
 	{
 	    $data=$("#id_paket").val();
 	    alert($data);
+	    //Isi Select Laporan Perencanaan
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/generate_minggu/laporan_perencanaan",
+            data: {"id_paket":$data},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    length=data.length;
+                    let i=0;
+                    while(i<length)
+					{
+					    //Append Option ke Select
+						$("#id_lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].id_lap_perencanaan+'</option>');
+
+					    i++;
+					}
+                }
+        });
+	}
+
+
+	function generateTabel()
+	{
+	    alert("Generate Tabelnya!!");
 	}
 </script>
 
