@@ -47,7 +47,7 @@
 				<h6 class="collapse-header">My Word</h6>
 				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
 				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
-				<a class="collapse-item" href="<?php echo base_url('user_harian') ?>">Laporan Harian</a>
+				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
 				<a class="collapse-item" href="<?php echo base_url('user_pengawasan') ?>">Laporan Pengawasan</a>
 				<a class="collapse-item" href="<?php echo base_url('user_pelaksanaan') ?>">Laporan Pelaksanaan</a>
 
