@@ -153,7 +153,7 @@ else
 										<th>Tanggal</th>
 										<th>View</th>
 										<th>Edit</th>
-										<th>Cetak</th>
+										<th>Upload Image</th>
 
 									</tr>
 									</thead>
@@ -173,7 +173,7 @@ else
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
 											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">View</button></td>
 											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Edit</button></td>
-											<td><button class="btn btn-info" onclick="cetak('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Cetak</button></td>
+											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Cetak</button></td>
 										</tr>
 									<?php
 
@@ -259,9 +259,9 @@ else
 
 	}
 
-	function cetak()
+	function upload()
 	{
-
+        window.location="upload";
 	}
 </script>
 

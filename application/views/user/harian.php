@@ -307,10 +307,8 @@ else
 									<tr style="height: 200px;">
 										<td class="tg-cly1"  id="mJenis"></td>
 										<td class="tg-cly1"  id="mKerja">
-											<form runat="server">
-												<input type='file' id="imgInp" />
-												<img id="blah" src="#" style="width:400px;" alt="your image" />
-											</form>
+<!--											Upload Image Disini-->
+
 										</td>
 										<td class="tg-cly1" id="mLokasi"></td>
 										<td class="tg-cly1" id="mPenanganan"></td>
@@ -627,6 +625,7 @@ else
         });
 
 
+    //    Simpan Yang Bawah Juga
 
 
 
