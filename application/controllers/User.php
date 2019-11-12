@@ -96,6 +96,73 @@ public function detail_harian()
 	$data=$this->input->post("data");
 	$count=count($data);
 
+	$perulangan=$count/5;
+
+
+	$i=0;
+	$x=0;
+	$arr3=array(
+
+	);
+	while($i<$perulangan)
+	{
+		$j=0;
+		while ($j<5)
+		{
+			echo $x;
+			if($j==0)
+			{
+				$final=array(
+					'a'=>$data[$x],
+				);
+			}
+			else if($j==1)
+			{
+				$final=array(
+					'b'=>$data[$x],
+				);
+			}
+
+			else if($j==2)
+			{
+				$final=array(
+					'c'=>$data[$x],
+				);
+			}
+			else if($j==3)
+			{
+				$final=array(
+					'd'=>$data[$x],
+				);
+			}
+			else if($j==4)
+			{
+				$final=array(
+					'e'=>$data[$x],
+				);
+			}
+            $arr3=$arr3+$final;
+
+            $x++;
+			$j++;
+		}
+
+		echo "hahahaha";
+		var_dump($arr3);
+		echo "hahaha";
+
+		$arr3=array(
+
+		);
+
+
+		$i++;
+	}
+
+
+
+
+
 
 	$i=0;
 	$j=0;
@@ -119,9 +186,9 @@ public function detail_harian()
 		$i++;
 
 	}
-	var_dump($hasilData);
 
-var_dump($data);
+	$totalData=count($hasilData);
+
 
 
 }
