@@ -83,7 +83,7 @@ class User extends CI_Controller {
 
 //        Save Data Then (Simpan Data Laporan Harian DI Database)
 
-//		$this->db->insert("lap_harian_mingguan",$data);
+		$this->db->insert("lap_harian_mingguan",$data);
 
 //       var_dump($data);
 
@@ -169,7 +169,9 @@ public function detail_harian()
 		}
 
 //		echo "hahahaha";
-		var_dump($arr3+$inti);
+//		var_dump($arr3+$inti);
+		$arr3=$arr3+$inti;
+		$this->db->insert("detail_bahan_alat_harian",$arr3);
 //		echo "hahaha";
 
 		$arr3=array(
