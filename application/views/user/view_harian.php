@@ -278,7 +278,7 @@ else
 									</tr>
 									<tr>
 										<td class="tg-cly1"  ></td>
-										<td class="tg-cly1"  ></td>
+										<td class="tg-cly1" id="mSket"  ></td>
 										<td class="tg-cly1" ></td>
 										<td class="tg-cly1" ></td>
 										<td class="tg-cly1" ></td>
@@ -393,6 +393,25 @@ function generatePDF() {
     // Choose the element and save the PDF for our user.
     html2pdf().from(element).save();
 }
+
+
+//Ajax Untuk Mendapatkan Gambar
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/get_gambar",
+    data: {"id_harian":id_harian_asli},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log(data);
+            $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[0].gambar+'">');
+
+        }
+});
+
+
 </script>
 
 

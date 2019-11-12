@@ -30,4 +30,16 @@ class View_harian extends CI_Controller {
 	}
 
 
+	public function get_gambar()
+	{
+		$id_lap=$this->input->post("id_harian");
+
+//		Ambil nama gambar didatabase
+//
+		$data=$this->db->get_where("gambar_harian",array("id_lap_harian"=>$id_lap))->result();
+
+		echo json_encode($data);
+	}
+
+
 }
