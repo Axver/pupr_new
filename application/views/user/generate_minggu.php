@@ -171,11 +171,25 @@ else
 								<select class="form form-control" id="id_minggu">
 									<?php
 									$i=1;
-									while($i<=54)
+									while($i<=5)
 									{
 										?>
 										<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 									<?php
+
+										$i++;
+									}
+									?>
+								</select>
+								<b>Pilih Bulan Diinginkan</b>
+								<select class="form form-control" id="bulan_diinginkan">
+									<?php
+									$i=1;
+									while($i<=12)
+									{
+										?>
+										<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+										<?php
 
 										$i++;
 									}
@@ -258,6 +272,31 @@ else
 
 
 				</div>
+
+				<script>
+
+                    function getWeeksInMonth(month_number, year) {
+                        console.log("year - "+year+" month - "+month_number+1);
+
+                        var day = 0;
+                        var firstOfMonth = new Date(year, month_number, 1);
+                        var lastOfMonth = new Date(year, parseInt(month_number)+1, 0);
+
+                        if (firstOfMonth.getDay() == 0) {
+                            day = 2;
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        } else if (firstOfMonth.getDay() != 1) {
+                            day = 9-(firstOfMonth.getDay());
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        }
+
+                        var days = (lastOfMonth.getDate() - firstOfMonth.getDate())+1
+                        return Math.ceil( days / 7);
+                    }
+
+				</script>
 
 
 
