@@ -86,6 +86,8 @@ class User extends CI_Controller {
 //		$this->db->insert("lap_harian_mingguan",$data);
 
 //       var_dump($data);
+
+		echo $hari_tanggal;
 	}
 
 
@@ -94,6 +96,25 @@ class User extends CI_Controller {
 public function detail_harian()
 {
 	$data=$this->input->post("data");
+	$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+	$id_paket=$this->input->post("id_paket");
+//	Dapatkan Tahun
+
+	$getTahun=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+	$tahun=$getTahun[0]->tahun;
+
+//	Dapatkan Id Detail Laporan Harian
+
+	$id_lapharian_mingguan=$this->input->post("id_lapharmin");
+
+	$inti= array(
+		"id_lap_harian_mingguan"=>$id_lapharian_mingguan,
+		"id_lap_perencanaan"=>$id_lap_perencanaan,
+		"id_paket"=>$id_paket,
+		"tahun"=>$tahun
+	);
+
+
 	$count=count($data);
 
 	$perulangan=$count/5;
@@ -109,36 +130,36 @@ public function detail_harian()
 		$j=0;
 		while ($j<5)
 		{
-			echo $x;
+//			echo $x;
 			if($j==0)
 			{
 				$final=array(
-					'a'=>$data[$x],
+					'jenis_pekerja'=>$data[$x],
 				);
 			}
 			else if($j==1)
 			{
 				$final=array(
-					'b'=>$data[$x],
+					'jumlah_pekerja'=>$data[$x],
 				);
 			}
 
 			else if($j==2)
 			{
 				$final=array(
-					'c'=>$data[$x],
+					'id_jenis_bahan_alat'=>$data[$x],
 				);
 			}
 			else if($j==3)
 			{
 				$final=array(
-					'd'=>$data[$x],
+					'id_satuan'=>$data[$x],
 				);
 			}
 			else if($j==4)
 			{
 				$final=array(
-					'e'=>$data[$x],
+					'jumlah_bahan'=>$data[$x],
 				);
 			}
             $arr3=$arr3+$final;
@@ -147,9 +168,9 @@ public function detail_harian()
 			$j++;
 		}
 
-		echo "hahahaha";
-		var_dump($arr3);
-		echo "hahaha";
+//		echo "hahahaha";
+		var_dump($arr3+$inti);
+//		echo "hahaha";
 
 		$arr3=array(
 
