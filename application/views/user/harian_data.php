@@ -259,9 +259,9 @@ else
 
 	}
 
-	function upload()
+	function upload(id)
 	{
-        window.location="upload";
+        window.location="upload/index/"+id;
 	}
 </script>
 

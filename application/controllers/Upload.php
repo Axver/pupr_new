@@ -7,7 +7,7 @@ class Upload extends CI_Controller{
 		$this->load->helper(array('form', 'url'));
 	}
 
-	public function index(){
+	public function index($id){
 		$this->load->view('v_upload', array('error' => ' ' ));
 	}
 
