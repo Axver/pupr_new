@@ -225,28 +225,7 @@ else
 <!--									Tabelnya-->
 									<table class="tg table table-bordered" id="buat_tabel">
 
-<!--										<tr>-->
-<!--											<td class="tg-cly1" colspan="5">Bulan</td>-->
-<!--											<td class="tg-cly1" colspan="5">Bulan</td>-->
-<!--											<td class="tg-0lax" colspan="5">Bulan</td>-->
-<!--										</tr>-->
-<!--										<tr>-->
-<!--											<td class="tg-cly1">1</td>-->
-<!--											<td class="tg-cly1">2</td>-->
-<!--											<td class="tg-cly1">3</td>-->
-<!--											<td class="tg-cly1">4</td>-->
-<!--											<td class="tg-cly1">5</td>-->
-<!--											<td class="tg-cly1">1</td>-->
-<!--											<td class="tg-cly1">2</td>-->
-<!--											<td class="tg-cly1">3</td>-->
-<!--											<td class="tg-0lax">4</td>-->
-<!--											<td class="tg-0lax">5</td>-->
-<!--											<td class="tg-0lax">1</td>-->
-<!--											<td class="tg-0lax">2</td>-->
-<!--											<td class="tg-0lax">3</td>-->
-<!--											<td class="tg-0lax">4</td>-->
-<!--											<td class="tg-0lax">5</td>-->
-<!--										</tr>-->
+<!--
 <!--										<tr>-->
 <!--											<td class="tg-cly1"></td>-->
 <!--											<td class="tg-cly1"></td>-->
@@ -404,6 +383,42 @@ else
 		}
 
 		$("#minggu").append($stringBuilder);
+
+		let id_lap_perencanaan=$("#id_lap_perencanaan").val();
+
+		//Dapatkan Jenis Pekerjaan Pada Laporan Perencanaan Yang Dibuat sesuai dengan data pada Tabel Detail Bahan Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
+            data: {"id_lap_perencanaan":id_lap_perencanaan},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    console.log(data);
+
+                    let length=data.length;
+                    let z=0;
+                    while(z<length)
+					{
+					    $("#buat_tabel").append("<tr id='"+z+"'></tr>");
+
+					    //String Builder
+						let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
+						let v=0;
+						while(v<colspan1)
+						{
+                            strNew=strNew+'<td class="tg-cly1"></td>';
+						    v++;
+						}
+                        $("#"+z).append(strNew);
+						// console.log(strNew);
+
+					    z++;
+					}
+                }
+        });
 
 	    alert(rentang);
 	}
