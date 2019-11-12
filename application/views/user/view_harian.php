@@ -366,6 +366,24 @@ $.ajax({
         function(data){
             data=JSON.parse(data);
             console.log(data);
+            length=data.length;
+
+            let i=0;
+            while(i<length)
+			{
+			    console.log("waha");
+
+			    $("#tabel_harian").append('\t\t<tr>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jenis_pekerja+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jumlah_pekerja+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].id_jenis_bahan_alat+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].id_satuan+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jumlah_bahan+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t</tr>');
+
+			    i++;
+			}
+
         }
 });
 </script>
