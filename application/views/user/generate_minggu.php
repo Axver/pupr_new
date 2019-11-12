@@ -209,14 +209,63 @@ else
 									}
 									?>
 								</select>
+								<b>Nama Tahap</b>
+								<input type="text" class="form form-control" id="nama_tahap">
 								<br/>
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
+								<br/>
+								<br/>
 
-
+                                 <button class="btn btn-success" style="width:100%;">Generate PDF</button>
 <!--								Disini Posisi Tabelnya-->
 								<div id="cetak_tabel">
 									<center><b>Cetak Tabel</b></center>
+
+<!--									Tabelnya-->
+									<table class="tg table table-bordered" id="buat_tabel">
+
+<!--										<tr>-->
+<!--											<td class="tg-cly1" colspan="5">Bulan</td>-->
+<!--											<td class="tg-cly1" colspan="5">Bulan</td>-->
+<!--											<td class="tg-0lax" colspan="5">Bulan</td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td class="tg-cly1">1</td>-->
+<!--											<td class="tg-cly1">2</td>-->
+<!--											<td class="tg-cly1">3</td>-->
+<!--											<td class="tg-cly1">4</td>-->
+<!--											<td class="tg-cly1">5</td>-->
+<!--											<td class="tg-cly1">1</td>-->
+<!--											<td class="tg-cly1">2</td>-->
+<!--											<td class="tg-cly1">3</td>-->
+<!--											<td class="tg-0lax">4</td>-->
+<!--											<td class="tg-0lax">5</td>-->
+<!--											<td class="tg-0lax">1</td>-->
+<!--											<td class="tg-0lax">2</td>-->
+<!--											<td class="tg-0lax">3</td>-->
+<!--											<td class="tg-0lax">4</td>-->
+<!--											<td class="tg-0lax">5</td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-cly1"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--										</tr>-->
+									</table>
 
 								</div>
 
@@ -313,8 +362,57 @@ else
 	function generateTabel()
 	{
 	    alert("Generate Tabelnya!!");
+	    let minggu=$("#id_minggu").val();
+	    let bulan_pertama=$("#bulan_pertama").val();
+	    let bulan_terakhir=$("#bulan_terakhir").val();
+	    let nama_tahap=$("#nama_tahap").val();
+
+	    let rentang=bulan_terakhir-bulan_pertama+1;
+	    let colspan1=rentang*5;
+
+	    $("#buat_tabel").append('<tr>\n' +
+            '\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
+            '\t<th class="tg-nrix" colspan="'+colspan1+'">Tahap</th>\n' +
+            '</tr>');
+        let daftar_bulam=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+	    //append new row again
+		$("#buat_tabel").append("<tr id='bulan'></tr>");
+        let start_bulan=bulan_pertama;
+	    let i=0;
+	    while(i<rentang)
+		{
+		    $("#bulan").append('<td class="tg-cly1" colspan="5">'+daftar_bulam[start_bulan-1]+'</td>');
+		    start_bulan++;
+
+		    i++;
+		}
+
+		//Buat Perulangan Untuk Minggunya
+		$("#buat_tabel").append("<tr id='minggu'></tr>");
+
+	    //String Builder Untuk Minggunya
+		let y=0;
+		$stringBuilder="";
+		while(y<rentang)
+		{
+           $stringBuilder=$stringBuilder+"<td class=\"tg-cly1\">1</td>\n" +
+               "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"tg-cly1\">2</td>\n" +
+               "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"tg-cly1\">3</td>\n" +
+               "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"tg-cly1\">4</td>\n" +
+               "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"tg-cly1\">5</td>";
+		    y++;
+		}
+
+		$("#minggu").append($stringBuilder);
+
+	    alert(rentang);
 	}
 </script>
+
+
+
+
+
 
 
 
