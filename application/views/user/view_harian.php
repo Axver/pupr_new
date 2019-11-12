@@ -170,6 +170,11 @@ else
 
 
 
+								<input type="hidden" value="<?php echo $lapar['lapar'][0]->id_paket?>" id="id_paket_asli">
+								<input type="hidden" id="id_harian_asli" value="<?php echo $this->uri->segment('3'); ?>">
+
+
+
 								<!--								Tabel Pertama-->
 								<br/>
 
@@ -221,7 +226,7 @@ else
 									</div>
 
 									<div class="col-sm-4" id="hari_tanggal">
-
+                                     <?php echo $this->uri->segment("3"); ?>
 									</div>
 								</div>
 
@@ -326,6 +331,44 @@ else
 
 
 
+<script>
+<!--	Ajax untuk mengisi data paket-->
+
+let id_paket_asli=$("#id_paket_asli").val();
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/get_paket",
+    data: {"id_paket":id_paket_asli},
+    dataType: "text",
+	async:false,
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log(data);
+
+            $("#nama_paket").text(data[0].nama);
+            $("#lokasi").text(data[0].lokasi);
+        }
+});
+
+//Kemudian Load Data Untuk Tabelnya
+let id_harian_asli=$("#id_harian_asli").val();
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/data_tabel",
+    data: {"id_harian":id_harian_asli},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log(data);
+        }
+});
+</script>
 
 
 
