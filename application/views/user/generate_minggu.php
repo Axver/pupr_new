@@ -167,6 +167,7 @@ else
 								</select>
 								<b>Laporan Perencanaan</b>
 								<select class="form form-control" id="id_lap_perencanaan"></select>
+								<input type="hidden" id="tahun_hidden">
 								<b>Pilih Minggu:</b>
 								<select class="form form-control" id="id_minggu">
 									<?php
@@ -369,7 +370,7 @@ else
 					{
 					    //Append Option ke Select
 						$("#id_lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].id_lap_perencanaan+'</option>');
-
+                        $("#tahun_hidden").val(data[i].tahun);
 					    i++;
 					}
                 }
@@ -460,7 +461,78 @@ else
         });
 
 	    alert(rentang);
+
+	//	Dapatkan Jumlah Minggu masing-masing bulan
+	//	Check apakah minggunya memang tersedia
+		let id_minggu=$("#id_minggu").val();
+		let bulan_diinginkan=$("#bulan_diinginkan").val();
+		let tahun_hidden=$("#tahun_hidden").val();
+
+		let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+		alert(check);
+
+		if(id_minggu<=check)
+		{
+		//    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+			let y=1;
+			let total_minggu=0;
+
+			while(y<=bulan_diinginkan)
+			{
+			    total_minggu=total_minggu+getWeeksInMonth(y, tahun_hidden)
+			    //hitung jumlah minggu yang ada
+
+			    y++;
+			}
+
+			total_minggu=parseInt(total_minggu)-parseInt(check)+parseInt(id_minggu);
+            console.log("-------");
+            console.log(total_minggu);
+            console.log("--------");
+
+        //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari=getDateRangeOfWeek(total_minggu);
+            console.log(rentang_hari);
+
+        //    Dapatkan Start dan ENd Dari Tanggal Tersebut
+			
+
+
+		}
+		else
+		{
+		    alert("Bulan Dipilih Tidak Memiliki Minggu Dipilih");
+		}
 	}
+
+
+
+//	Mencari rentang tanggal minggu tertentu
+    Date.prototype.getWeek = function () {
+        var target  = new Date(this.valueOf());
+        var dayNr   = (this.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        var firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() != 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
+    }
+
+    function getDateRangeOfWeek(weekNo){
+        var d1 = new Date();
+        numOfdaysPastSinceLastMonday = eval(d1.getDay()- 1);
+        d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+        var weekNoToday = d1.getWeek();
+        var weeksInTheFuture = eval( weekNo - weekNoToday );
+        d1.setDate(d1.getDate() + eval( 7 * weeksInTheFuture ));
+        var rangeIsFrom = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear();
+        d1.setDate(d1.getDate() + 6);
+        var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
+        return rangeIsFrom + " to "+rangeIsTo;
+    };
 </script>
 
 
