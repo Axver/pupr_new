@@ -562,6 +562,22 @@ else
                                 }
                                 else
                                 {
+                                //    Kalau bulannya ada beberapa maka lakukan beberapa langkah berikut
+
+
+
+
+									console.log("hehehe");
+                                    let bulan_n=bulan_posisi*5;
+									console.log(bulan_n);
+                                    bulan_n=parseInt(bulan_n)+parseInt(minggu);
+									console.log(bulan_n);
+									console.log("hehehe");
+
+                                    let jn1=document.getElementById(data[i].jenis_pekerja+"_"+bulan_n);
+                                    jn1.style.backgroundColor = "lightblue";
+
+
 
                                 }
 
@@ -613,6 +629,12 @@ else
         var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
         return rangeIsFrom + " to "+rangeIsTo;
     };
+
+
+	function hapusTabel()
+	{
+
+	}
 </script>
 
 
