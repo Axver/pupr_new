@@ -42,7 +42,7 @@ class Generate_minggu extends CI_Controller {
 
 //		Select Beetween
 		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan>='$start' AND id_lap_harian_mingguan<='$end'")->result();
-		var_dump($data);
+		echo json_encode($data);
 	}
 
 

@@ -229,6 +229,7 @@ else
 								<br/>
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
+								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>
 								<br/>
 								<br/>
 
@@ -353,7 +354,7 @@ else
 	function addPerencanaan()
 	{
 	    $data=$("#id_paket").val();
-	    alert($data);
+	    // alert($data);
 	    //Isi Select Laporan Perencanaan
         $.ajax({
             type: "POST",
@@ -380,7 +381,7 @@ else
 
 	function generateTabel()
 	{
-	    alert("Generate Tabelnya!!");
+	    // alert("Generate Tabelnya!!");
 	    let minggu=$("#id_minggu").val();
 	    let bulan_pertama=$("#bulan_pertama").val();
 	    let bulan_terakhir=$("#bulan_terakhir").val();
@@ -430,6 +431,7 @@ else
         $.ajax({
             type: "POST",
             url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
+			asynd:false,
             data: {"id_lap_perencanaan":id_lap_perencanaan},
             dataType: "text",
             cache:false,
@@ -446,10 +448,12 @@ else
 
 					    //String Builder
 						let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
+						console.log(data);
 						let v=0;
 						while(v<colspan1)
 						{
-                            strNew=strNew+'<td class="tg-cly1"></td>';
+						    n=v+1;
+                            strNew=strNew+'<td class="tg-cly1 warnaJesi" id="'+data[z].id+'_'+n+'"></td>';
 						    v++;
 						}
                         $("#"+z).append(strNew);
@@ -460,65 +464,126 @@ else
                 }
         });
 
-	    alert(rentang);
 
-	//	Dapatkan Jumlah Minggu masing-masing bulan
-	//	Check apakah minggunya memang tersedia
-		let id_minggu=$("#id_minggu").val();
-		let bulan_diinginkan=$("#bulan_diinginkan").val();
-		let tahun_hidden=$("#tahun_hidden").val();
+	}
 
-		let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
-		alert(check);
 
-		if(id_minggu<=check)
-		{
-		//    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
-			let y=1;
-			let total_minggu=0;
+	function testJesi()
+	{
+        // alert(rentang);
 
-			while(y<=bulan_diinginkan)
-			{
-			    total_minggu=total_minggu+getWeeksInMonth(y, tahun_hidden)
-			    //hitung jumlah minggu yang ada
+        //	Dapatkan Jumlah Minggu masing-masing bulan
+        //	Check apakah minggunya memang tersedia
+        let id_minggu=$("#id_minggu").val();
+        let bulan_diinginkan=$("#bulan_diinginkan").val();
+        let tahun_hidden=$("#tahun_hidden").val();
 
-			    y++;
-			}
+        let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        // alert(check);
 
-			total_minggu=parseInt(total_minggu)-parseInt(check)+parseInt(id_minggu);
+        if(id_minggu<=check)
+        {
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y=1;
+            let total_minggu=0;
+
+            while(y<=bulan_diinginkan)
+            {
+                total_minggu=total_minggu+getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu=parseInt(total_minggu)-parseInt(check)+parseInt(id_minggu);
             console.log("-------");
             console.log(total_minggu);
             console.log("--------");
 
-        //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
             let rentang_hari=getDateRangeOfWeek(total_minggu);
 
 
-        //    Dapatkan Start dan ENd Dari Tanggal Tersebut
+            //    Dapatkan Start dan ENd Dari Tanggal Tersebut
             rentang_hari = rentang_hari.split(" to ");
             console.log(rentang_hari);
-        //    Select Beetwen Date From Database
+            //    Select Beetwen Date From Database
 
             $.ajax({
                 type: "POST",
                 url: "http://localhost/pupr_new/generate_minggu/between_date",
                 data: {"start":rentang_hari[0],"end":rentang_hari[1]},
-				async:false,
+                async:false,
                 dataType: "text",
                 cache:false,
                 success:
                     function(data){
+                        data=JSON.parse(data);
+                        console.log("&&&&&&&&");
                         console.log(data);
+                        console.log("&&&&&&&&");
+
+                        let length=data.length;
+                        let i=0;
+                        //Tentukan di nomor berapa minggunya
+                        let minggu=$("#id_minggu").val();
+                        let bulan_diinginkan=$("#bulan_diinginkan").val();
+                        let bulan_pertama=$("#bulan_pertama").val();
+                        let bulan_terakhir=$("#bulan_terakhir").val();
+
+                        bulan_diinginkan=parseInt(bulan_diinginkan);
+                        bulan_pertama=parseInt(bulan_pertama);
+                        bulan_terakhir=parseInt(bulan_terakhir);
+
+                        while(i<length)
+                        {
+                            //Cek apakah bulan diinginkan antara bulan pertama dan bulan terakhir
+
+                            if(bulan_diinginkan>=bulan_pertama&&bulan_diinginkan<=bulan_terakhir)
+                            {
+                                //Periksa posisi ke berapa bulan diinginkan
+                                let bulan_posisi=bulan_diinginkan-bulan_pertama;
+                                let x=0;
+                                if(bulan_posisi==0)
+                                {
+                                    //    Jika bulannya cuma satu append langsung
+
+                                    // $("#"+data[i].jenis_pekerja+"_"+minggu).text("Haha");
+
+                                    console.log("----");
+
+                                    let jn=document.getElementById(data[i].jenis_pekerja+"_"+minggu);
+                                    jn.style.backgroundColor = "lightblue";
+
+
+                                    console.log("-----");
+
+                                }
+                                else
+                                {
+
+                                }
+
+
+
+
+                            }
+
+
+                            i++;
+                        }
+
+                        //    Sekarang warnai Tabelnya
                     }
             });
 
 
-		}
-		else
-		{
-		    alert("Bulan Dipilih Tidak Memiliki Minggu Dipilih");
-		}
+        }
+        else
+        {
+            alert("Bulan Dipilih Tidak Memiliki Minggu Dipilih");
+        }
 	}
 
 
