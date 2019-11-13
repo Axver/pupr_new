@@ -30,5 +30,20 @@ class Generate_minggu extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function between_date()
+	{
+		$start=$this->input->post('start');
+		$end=$this->input->post("end");
+
+        $start=strtotime($start);
+        $end=strtotime($end);
+		$start = date('Y-m-d',$start);
+		$end = date('Y-m-d',$end);
+
+//		Select Beetween
+		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan>='$start' AND id_lap_harian_mingguan<='$end'")->result();
+		var_dump($data);
+	}
+
 
 }

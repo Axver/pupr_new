@@ -493,10 +493,25 @@ else
         //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
             let rentang_hari=getDateRangeOfWeek(total_minggu);
-            console.log(rentang_hari);
+
 
         //    Dapatkan Start dan ENd Dari Tanggal Tersebut
-			
+            rentang_hari = rentang_hari.split(" to ");
+            console.log(rentang_hari);
+        //    Select Beetwen Date From Database
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/generate_minggu/between_date",
+                data: {"start":rentang_hari[0],"end":rentang_hari[1]},
+				async:false,
+                dataType: "text",
+                cache:false,
+                success:
+                    function(data){
+                        console.log(data);
+                    }
+            });
 
 
 		}
