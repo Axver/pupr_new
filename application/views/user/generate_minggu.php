@@ -618,120 +618,108 @@ else
     }
 
 
-	function testJesi()
-	{
+	function testJesi() {
         // alert(rentang);
 
         //	Dapatkan Jumlah Minggu masing-masing bulan
         //	Check apakah minggunya memang tersedia
-        let id_minggu=$("#id_minggu").val();
-        let bulan_diinginkan=$("#bulan_diinginkan").val();
-        let tahun_hidden=$("#tahun_hidden").val();
+        let id_minggu = $("#id_minggu").val();
+        let bulan_diinginkan = $("#bulan_diinginkan").val();
+        let tahun_hidden = $("#tahun_hidden").val();
 
-        let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        let check = getWeeksInMonth(bulan_diinginkan, tahun_hidden);
         // alert(check);
 
-        if(id_minggu<=check)
-        {
+        if (id_minggu <= check) {
             //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
-            let y=1;
-            let total_minggu=0;
+            let y = 1;
+            let total_minggu = 0;
 
-            while(y<=bulan_diinginkan)
-            {
-                total_minggu=total_minggu+getWeeksInMonth(y, tahun_hidden)
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
                 //hitung jumlah minggu yang ada
 
                 y++;
             }
 
-            total_minggu=parseInt(total_minggu)-parseInt(check)+parseInt(id_minggu);
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
             console.log("-------");
             console.log(total_minggu);
             console.log("--------");
 
             //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
-            let rentang_hari=getDateRangeOfWeek(total_minggu);
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
 
 
             //    Dapatkan Start dan ENd Dari Tanggal Tersebut
             rentang_hari = rentang_hari.split(" to ");
             console.log(rentang_hari);
             //    Select Beetwen Date From Database
+            let id_lap_perencanaan_baru=$("#id_lap_perencanaan").val();
 
             $.ajax({
                 type: "POST",
                 url: "http://localhost/pupr_new/generate_minggu/between_date",
-                data: {"start":rentang_hari[0],"end":rentang_hari[1]},
-                async:false,
+                data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
+                async: false,
                 dataType: "text",
-                cache:false,
+                cache: false,
                 success:
-                    function(data){
-                        data=JSON.parse(data);
+                    function (data) {
+                        data = JSON.parse(data);
                         console.log("&&&&&&&&");
                         console.log(data);
                         console.log("&&&&&&&&");
 
-                        let length=data.length;
-                        let i=0;
+                        let length = data.length;
+                        let i = 0;
                         //Tentukan di nomor berapa minggunya
-                        let minggu=$("#id_minggu").val();
-                        let bulan_diinginkan=$("#bulan_diinginkan").val();
-                        let bulan_pertama=$("#bulan_pertama").val();
-                        let bulan_terakhir=$("#bulan_terakhir").val();
+                        let minggu = $("#id_minggu").val();
+                        let bulan_diinginkan = $("#bulan_diinginkan").val();
+                        let bulan_pertama = $("#bulan_pertama").val();
+                        let bulan_terakhir = $("#bulan_terakhir").val();
 
-                        bulan_diinginkan=parseInt(bulan_diinginkan);
-                        bulan_pertama=parseInt(bulan_pertama);
-                        bulan_terakhir=parseInt(bulan_terakhir);
+                        bulan_diinginkan = parseInt(bulan_diinginkan);
+                        bulan_pertama = parseInt(bulan_pertama);
+                        bulan_terakhir = parseInt(bulan_terakhir);
 
-                        while(i<length)
-                        {
+                        while (i < length) {
                             //Cek apakah bulan diinginkan antara bulan pertama dan bulan terakhir
 
-                            if(bulan_diinginkan>=bulan_pertama&&bulan_diinginkan<=bulan_terakhir)
-                            {
+                            if (bulan_diinginkan >= bulan_pertama && bulan_diinginkan <= bulan_terakhir) {
                                 //Periksa posisi ke berapa bulan diinginkan
-                                let bulan_posisi=bulan_diinginkan-bulan_pertama;
-                                let x=0;
-                                if(bulan_posisi==0)
-                                {
+                                let bulan_posisi = bulan_diinginkan - bulan_pertama;
+                                let x = 0;
+                                if (bulan_posisi == 0) {
                                     //    Jika bulannya cuma satu append langsung
 
                                     // $("#"+data[i].jenis_pekerja+"_"+minggu).text("Haha");
 
                                     console.log("----");
 
-                                    let jn=document.getElementById(data[i].jenis_pekerja+"_"+minggu);
+                                    let jn = document.getElementById(data[i].jenis_pekerja + "_" + minggu);
                                     jn.style.backgroundColor = "lightblue";
 
 
                                     console.log("-----");
 
-                                }
-                                else
-                                {
-                                //    Kalau bulannya ada beberapa maka lakukan beberapa langkah berikut
+                                } else {
+                                    //    Kalau bulannya ada beberapa maka lakukan beberapa langkah berikut
 
 
+                                    console.log("hehehe");
+                                    let bulan_n = bulan_posisi * 5;
+                                    console.log(bulan_n);
+                                    bulan_n = parseInt(bulan_n) + parseInt(minggu);
+                                    console.log(bulan_n);
+                                    console.log("hehehe");
 
-
-									console.log("hehehe");
-                                    let bulan_n=bulan_posisi*5;
-									console.log(bulan_n);
-                                    bulan_n=parseInt(bulan_n)+parseInt(minggu);
-									console.log(bulan_n);
-									console.log("hehehe");
-
-                                    let jn1=document.getElementById(data[i].jenis_pekerja+"_"+bulan_n);
+                                    let jn1 = document.getElementById(data[i].jenis_pekerja + "_" + bulan_n);
                                     jn1.style.backgroundColor = "lightblue";
 
 
-
                                 }
-
-
 
 
                             }
@@ -745,12 +733,118 @@ else
             });
 
 
-        }
-        else
-        {
+        } else {
             alert("Bulan Dipilih Tidak Memiliki Minggu Dipilih");
         }
-	}
+
+
+        //    Generate Data Untuk Pekerja dan Tukang
+
+        //	Dapatkan tanggalnya cari minggu keberapa dia
+        // alert(rentang);
+
+        //	Dapatkan Jumlah Minggu masing-masing bulan
+        //	Check apakah minggunya memang tersedia
+        // let id_minggu=$("#id_minggu").val();
+        // let bulan_diinginkan=$("#bulan_diinginkan").val();
+        // let tahun_hidden=$("#tahun_hidden").val();
+        //
+        // let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        // alert(check);
+
+        if (id_minggu <= check) {
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y = 1;
+            let total_minggu = 0;
+
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+            console.log("-------");
+            console.log(total_minggu);
+            console.log("--------");
+
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
+            rentang_hari = rentang_hari.split(" to ");
+            console.log(rentang_hari);
+            let dataX = rentang_hari[0].split("/");
+            let dataStart = dataX[1];
+            let dateY = rentang_hari[1].split("/");
+            let dataEnd = dateY[1];
+
+            // let bm=0;
+            // while(bm<7)
+            // {
+            //
+            //     bm++;
+            //     dataStart++;
+            // }
+
+            //	Append Data String ke Tr Sebelumnya
+
+
+            //Ubah Format Date
+
+            var start = new Date(rentang_hari[0]);
+            var end = new Date(rentang_hari[1]);
+            var newend = end.setDate(end.getDate() + 1);
+            var end = new Date(newend);
+            let batas_tabel=1;
+            while (start < end) {
+                console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                console.log(start); // ISO Date format
+                day = start.toLocaleDateString();
+
+                console.log("wihihihihi");
+                console.log(day);
+                console.log("wihihihihi");
+                //dapatkan day nya dan append gan
+                // $pekerjaString = $pekerjaString + '<td class="tg-cly1">' + day + '</td>';
+
+				//Ajax Untuk Mencari Data tanggal tersebut
+                let id_lap_perencanaan_baru=$("#id_lap_perencanaan").val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/pupr_new/generate_minggu/pekerjaan_tanggal",
+                    data: {"tanggal":day,'id_lap_perencanaan':id_lap_perencanaan_baru},
+					async:false,
+                    dataType: "text",
+                    cache:false,
+                    success:
+                        function(data){
+                            data=JSON.parse(data);
+                            console.log("iniininin");
+                            console.log(data);
+                            console.log("inininiini");
+                            let length=data.length;
+                            let i=0;
+                            while(i<length)
+							{
+							    data[i].jumlah_pekerja;
+							    $("#"+data[i].jenis_pekerja+"_"+batas_tabel+"_pekerja").append(data[i].jumlah_pekerja);
+
+							    i++;
+							}
+
+                        }
+                });
+
+                var newDate = start.setDate(start.getDate() + 1);
+
+                batas_tabel++;
+            }
+
+        }
+    }
 
 
 

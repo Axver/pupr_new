@@ -34,6 +34,7 @@ class Generate_minggu extends CI_Controller {
 	{
 		$start=$this->input->post('start');
 		$end=$this->input->post("end");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
 
         $start=strtotime($start);
         $end=strtotime($end);
@@ -41,8 +42,29 @@ class Generate_minggu extends CI_Controller {
 		$end = date('Y-m-d',$end);
 
 //		Select Beetween
-		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan>='$start' AND id_lap_harian_mingguan<='$end'")->result();
+		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan>='$start' AND id_lap_harian_mingguan<='$end' AND id_lap_perencanaan='$id_lap_perencanaan'")->result();
 		echo json_encode($data);
+	}
+
+
+	public function pekerjaan_tanggal()
+	{
+		$tanggal=$this->input->post("tanggal");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+//		echo $tanggal;
+
+		$tanggal=explode('/',$tanggal);
+
+		$strTangga=$tanggal[2]."/".$tanggal[1]."/".$tanggal[0];
+		$strTangga=strtotime($strTangga);
+		$strTangga = date('Y-m-d',$strTangga);
+//		echo $strTangga;
+
+//		Select data dari database
+		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$strTangga' AND id_lap_perencanaan='$id_lap_perencanaan'")->result();
+		echo json_encode($data);
+//		echo "SELECT * FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$tanggal'";
+
 	}
 
 
