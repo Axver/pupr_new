@@ -557,6 +557,50 @@ else
             $("#hari_nya").append($pekerjaString);
 
         //    Append kan semua pekerjaan yang ada
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
+                asynd:false,
+                data: {"id_lap_perencanaan":id_lap_perencanaan},
+                dataType: "text",
+                cache:false,
+                success:
+                    function(data){
+                        data=JSON.parse(data);
+                        console.log(data);
+
+                        let length=data.length;
+                        let z=0;
+                        while(z<length)
+                        {
+                            $("#buat_pekerja").append("<tr id='"+z+'_'+"'></tr>");
+                            $("#buat_pekerja").append("<tr id='"+z+'_tukang'+"'></tr>");
+                            $("#buat_pekerja").append("<tr id='"+z+'_pekerja'+"'></tr>");
+
+                            //String Builder
+                            let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
+                            let strTukang='<td class="tg-cly1"><center>Tukang</center></td>';
+                            let strPekerja='<td class="tg-cly1"><center>Pekerja</center></td>';
+                            console.log(data);
+                            let v=0;
+                            while(v<7)
+                            {
+                                n=v+1;
+                                strNew=strNew+'<td class="tg-cly1 warnaJesi" id="'+data[z].id+'_'+n+'_'+'"></td>';
+                                strTukang=strTukang+'<td class="tg-cly1 warnaJesi" id="'+data[z].id+'_'+n+'_tukang'+'"></td>';
+                                strPekerja=strPekerja+'<td class="tg-cly1 warnaJesi" id="'+data[z].id+'_'+n+'_pekerja'+'"></td>';
+                                v++;
+                            }
+                            $("#"+z+'_').append(strNew);
+                            $("#"+z+'_tukang').append(strTukang);
+                            $("#"+z+'_pekerja').append(strPekerja);
+                            // console.log(strNew);
+
+                            z++;
+                        }
+                    }
+            });
         }
 
 
