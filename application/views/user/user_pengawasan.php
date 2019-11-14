@@ -146,7 +146,7 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
                                  <b>Id Paket</b>
-								<input type="text" class="form form-control" id="id_paket">
+								<input type="text" class="form form-control" id="id_paket" value="<?php echo $this->uri->segment('3'); ?>" disabled>
 								<b>Pilih Minggu</b>
 								<select id="minggu" class="form form-control">
 									<?php
@@ -179,6 +179,8 @@ else
 									</tr>
 
 								</table>
+
+								<button class="btn btn-info" onclick="saveData()">Save Data</button>
 
 
 
@@ -441,12 +443,12 @@ else
 	// 	alert("test");
 
 		$("#tabel_pengawasan").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_pekerjaan" id="'+rowCount+"_"+1+'"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah_pekerja" id="'+rowCount+"_"+2+'"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_satuan" id="'+rowCount+"_"+3+'"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 satuan" id="'+rowCount+"_"+4+'"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah_satuan" id="'+rowCount+"_"+5+'"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 progres" id="'+rowCount+"_"+6+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 jenis_pekerjaan" id="'+rowCount+"_"+1+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 jumlah_pekerja" id="'+rowCount+"_"+2+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 jenis_satuan" id="'+rowCount+"_"+3+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 satuan" id="'+rowCount+"_"+4+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 jumlah_satuan" id="'+rowCount+"_"+5+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="row_jes tg-cly1 progres" id="'+rowCount+"_"+6+'"></td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
 
 		rowCount++;
@@ -551,6 +553,44 @@ else
             classname[i].addEventListener('click', myFunction, false);
         }
     }
+
+
+//    Save Data
+	function saveData()
+	{
+	    let i=0;
+	    let arrayJes=[];
+
+	    //Ajax Untuk menyimpan data laporan pengawasan terlebih dahulu
+
+        $(".row_jes").each(function() {
+
+            if(i<6)
+			{
+
+                arrayJes[i]=$(this).text();
+
+                if(i==5)
+				{
+				    console.log(arrayJes);
+				    console.log("input data disini");
+
+				    //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
+					i=0;
+				}
+                else
+				{
+                    i++;
+				}
+
+
+
+			}
+
+
+        });
+	}
+
 </script>
 
 
