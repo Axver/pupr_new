@@ -259,6 +259,36 @@ public function save_pengawasan()
 }
 
 
+public function tambah_detail_pengawasan()
+{
+	$dataArray=$this->input->post("dataArray");
+	$id_pengawasan=$this->input->post("id_pengawasan");
+
+//	Ambil id
+	$id_nya=$this->db->query("SELECT MAX(id) as max FROM detail_laporan_pengawasan")->result();
+
+	$id=$id_nya[0]->max;
+	$id=$id+1;
+
+	$input=array(
+    "id"=>$id,
+		"id_lap_pengawasan"=>$id_pengawasan,
+		"jenis_pekerjaan"=>$dataArray[0],
+		"jumlah_pekerja"=>$dataArray[1],
+		"jenis_satuan"=>$dataArray[2],
+		"satuan"=>$dataArray[3],
+		"jumlah_satuan"=>$dataArray[4],
+		"progres"=>$dataArray[5],
+	);
+
+//	Input data
+	$this->db->insert("detail_laporan_pengawasan",$input);
+//	var_dump($input);
+
+
+}
+
+
 
 
 

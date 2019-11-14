@@ -603,10 +603,23 @@ else
 
                             if(i==5)
                             {
-                                console.log(arrayJes);
-                                console.log("input data disini");
+
 
                                 //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
+                                $.ajax({
+                                    type: "POST",
+									async:false,
+                                    url: "http://localhost/pupr_new/user/tambah_detail_pengawasan",
+                                    data: {"dataArray":arrayJes,'id_pengawasan':data},
+                                    dataType: "text",
+                                    cache:false,
+                                    success:
+                                        function(data){
+                                            console.log("------");
+                                            console.log(data);
+                                            console.log("------");
+                                        }
+                                });
                                 i=0;
                             }
                             else
