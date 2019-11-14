@@ -233,7 +233,7 @@ else
 								<br/>
 								<br/>
 
-                                 <button class="btn btn-success" style="width:100%;">Generate PDF</button>
+                                 <button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
 <!--								Disini Posisi Tabelnya-->
 								<div id="cetak_tabel">
 									<center><b>Cetak Tabel</b></center>
@@ -879,6 +879,13 @@ else
 	{
 
 	}
+
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak_tabel");
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
+    }
 </script>
 
 
