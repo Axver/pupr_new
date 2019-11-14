@@ -227,7 +227,35 @@ public function user_pengawasan_create($i)
 
 public function save_pengawasan()
 {
- echo "Save Laporan Pengawasan";
+// Dapatkan id laporan pengawasan
+//	$get_id=$this->db->query("SELECT MAX(id_lap_pengawasan) as max FROM lap_pengawasan")->result();
+//	$max=$get_id[0]->max;
+//	$max=$max+1;
+
+
+
+	$id_paket=$this->input->post("id_paket");
+	$minggu=$this->input->post("minggu");
+	$id_lap_perencanaan=$this->input->post("id_laper");
+	$id_lap_pengawasan=date("Y/m/d");
+
+//	Dapatkan Tahunnya
+	$tahun=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+	$tahun=$tahun[0]->tahun;
+
+
+	$data=array(
+		"id_paket"=>$id_paket,
+		"minggu"=>$minggu,
+		"id_lap_perencanaan"=>$id_lap_perencanaan,
+		"id_lap_pengawasan"=>$id_lap_pengawasan,
+		"tahun"=>$tahun,
+	);
+
+	$input=$this->db->insert("lap_pengawasan",$data);
+
+	echo $id_lap_pengawasan;
+
 }
 
 

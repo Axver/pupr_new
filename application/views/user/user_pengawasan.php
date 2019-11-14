@@ -592,36 +592,39 @@ else
             cache:false,
             success:
                 function(data){
-                    alert(data);  //as a debugging message.
+                //   id laporan pengawasn didapatkan
+				//	Input detail kemudian
+                    $(".row_jes").each(function() {
+
+                        if(i<6)
+                        {
+
+                            arrayJes[i]=$(this).text();
+
+                            if(i==5)
+                            {
+                                console.log(arrayJes);
+                                console.log("input data disini");
+
+                                //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
+                                i=0;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+
+
+                        }
+
+
+                    });
+
                 }
         });
 
-        $(".row_jes").each(function() {
 
-            if(i<6)
-			{
-
-                arrayJes[i]=$(this).text();
-
-                if(i==5)
-				{
-				    console.log(arrayJes);
-				    console.log("input data disini");
-
-				    //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
-					i=0;
-				}
-                else
-				{
-                    i++;
-				}
-
-
-
-			}
-
-
-        });
 	}
 
 </script>
