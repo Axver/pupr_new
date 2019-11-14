@@ -262,6 +262,9 @@ else
 <!--										</tr>-->
 									</table>
 
+									<table class="tg table table-bordered" id="buat_pekerja">
+									</table>
+
 								</div>
 
 
@@ -465,7 +468,110 @@ else
         });
 
 
+    //    Generate Tabel Detail Pekerja
+		$("#buat_pekerja").append('<tr>\n' +
+            '\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
+            '\t<th class="tg-cly1" colspan="7"></th>\n' +
+            '</tr>\n' +
+            '<tr>\n' +
+            '\t<td class="tg-cly1" colspan="7">Bulan(Minggu X)</td>\n' +
+            '</tr>');
+
+	//	String Builder Untuk Tanggalnya
+		$("#buat_pekerja").append("<tr id='hari_nya'></tr>")
+		$pekerjaString="";
+
+	//	Dapatkan tanggalnya cari minggu keberapa dia
+        // alert(rentang);
+
+        //	Dapatkan Jumlah Minggu masing-masing bulan
+        //	Check apakah minggunya memang tersedia
+        let id_minggu=$("#id_minggu").val();
+        let bulan_diinginkan=$("#bulan_diinginkan").val();
+        let tahun_hidden=$("#tahun_hidden").val();
+
+        let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        // alert(check);
+
+        if(id_minggu<=check) {
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y = 1;
+            let total_minggu = 0;
+
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+            console.log("-------");
+            console.log(total_minggu);
+            console.log("--------");
+
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
+            rentang_hari=rentang_hari.split(" to ");
+            console.log(rentang_hari);
+            let dataX=rentang_hari[0].split("/");
+            let dataStart=dataX[1];
+            let dateY=rentang_hari[1].split("/");
+            let dataEnd=dateY[1];
+
+            // let bm=0;
+            // while(bm<7)
+			// {
+            //
+			//     bm++;
+			//     dataStart++;
+			// }
+
+		//	Append Data String ke Tr Sebelumnya
+
+
+            //Ubah Format Date
+
+            var start = new Date(rentang_hari[0]);
+            var end = new Date(rentang_hari[1]);
+            var newend = end.setDate(end.getDate()+1);
+            var end = new Date(newend);
+            while(start < end){
+                console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                console.log(start); // ISO Date format
+				day=start.toLocaleDateString();
+
+				console.log(day);
+				//dapatkan day nya dan append gan
+                $pekerjaString=$pekerjaString+'<td class="tg-cly1">'+day+'</td>';
+
+
+                var newDate = start.setDate(start.getDate() + 1);
+
+
+
+
+            }
+
+            $("#hari_nya").append($pekerjaString);
+
+        //    Append kan semua pekerjaan yang ada
+        }
+
+
 	}
+
+
+    function getDates(startDate, stopDate) {
+        var dateArray = new Array();
+        var currentDate = startDate;
+        while (currentDate <= stopDate) {
+            dateArray.push(new Date (currentDate));
+            currentDate = currentDate.addDays(1);
+        }
+        return dateArray;
+    }
 
 
 	function testJesi()
@@ -640,6 +746,45 @@ else
 
 
 
+<!--<tr>-->
+<!--	<td class="tg-cly1">Tanggal 1</td>-->
+<!--	<td class="tg-cly1">Tanggal 2</td>-->
+<!--	<td class="tg-cly1">Tanggal 3</td>-->
+<!--	<td class="tg-cly1">Tanggal 4</td>-->
+<!--	<td class="tg-cly1">Tanggal 5</td>-->
+<!--	<td class="tg-cly1">Tanggal 6</td>-->
+<!--	<td class="tg-cly1">Tanggal 7</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--	<td class="tg-cly1"></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--	<td class="tg-0lax"></td>-->
+<!--</tr>-->
 
 
 
