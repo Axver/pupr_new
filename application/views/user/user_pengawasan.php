@@ -135,7 +135,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Paket <?php echo $this->uri->segment("3"); ?></h6>
+								<h6 class="m-0 font-weight-bold text-primary">Laporan Pengawasan Anda</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -145,22 +145,47 @@ else
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
+                                 <b>Id Paket</b>
+								<input type="text" class="form form-control" id="id_paket">
+								<b>Pilih Minggu</b>
+								<select id="minggu" class="form form-control">
+									<?php
+									$i=1;
+									while($i<=53)
+									{
+										?>
+										<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+									<?php
 
-								<div class="row">
-									<div class="col-sm-4"><a href="../perencanaan/<?php echo $this->uri->segment('3'); ?>">Laporan Perencanaan</a> </div>
-									<div class="col-sm-4"><a href="../user_harian/<?php echo $this->uri->segment('3'); ?>">Laporan Harian</a></div>
-									<div class="col-sm-4"><a href="../user_pengawasan_create/<?php echo $this->uri->segment('3'); ?>">Laporan Pengawasan</a></div>
+										$i++;
+									}
+									?>
+								</select>
 
-								</div>
+								<h4><b>Isi Tabel Berikut:</b></h4>
+								<button class="btn btn-info" onclick="tambahRow()">+</button>
+								<b>*Klik Kolom Untuk Menambahkan Data</b>
+								<table class="tg table table-bordered" id="tabel_pengawasan">
+									<tr>
+										<th class="tg-cly1" rowspan="2">Jenis Pekerjaan</th>
+										<th class="tg-cly1" rowspan="2">Jumlah Pekerja</th>
+										<th class="tg-cly1" colspan="3">Jumlah Satuan</th>
+										<th class="tg-cly1" rowspan="2">Progress Pekerjaan (%)</th>
+									</tr>
+									<tr>
+										<td class="tg-cly1">Jenis</td>
+										<td class="tg-cly1">Satuan</td>
+										<td class="tg-cly1">Jumlah</td>
+									</tr>
 
-								<br>
-								<b>Grafik</b>
-								<div class="panel panel-info">
-									<div class="panel-head"></div>
-									<div class="panel-body" style="height:300px; background-color: #6e707e"></div>
-								</div>
+								</table>
+
+
+
 
 							</div>
+
+
 						</div>
 					</div>
 
@@ -218,6 +243,100 @@ else
 
 
 
+<script>
+	let rowCount=1;
+	function  tambahRow() {
+	//    Tambah Row Disini
+	// 	alert("test");
+
+		$("#tabel_pengawasan").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_pekerjaan" id="'+rowCount+"_"+1+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah_pekerja" id="'+rowCount+"_"+2+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_satuan" id="'+rowCount+"_"+3+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 satuan" id="'+rowCount+"_"+4+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah_satuan" id="'+rowCount+"_"+5+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 progres" id="'+rowCount+"_"+6+'"></td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>');
+
+		rowCount++;
+
+	//	Event Listener Disini
+        var classname = document.getElementsByClassName("jenis_pekerjaan");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+            var data=this.id;
+            console.log(data);
+
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("jumlah_pekerja");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("jenis_satuan");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("satuan");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("jumlah_satuan");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("progres");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+    }
+</script>
 
 
 

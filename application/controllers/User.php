@@ -218,6 +218,14 @@ public function detail_harian()
 
 
 
+public function user_pengawasan_create($i)
+
+{
+   $this->load->view("user/user_pengawasan");
+}
+
+
+
 
 
 }
