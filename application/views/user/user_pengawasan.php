@@ -240,6 +240,197 @@ else
 	</div>
 </div>
 
+<!--Modal Jenis Pekerjaan-->
+<!-- Modal -->
+<div class="modal fade" id="jenisPekerjaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="jenis_pekerjaan_row" class="form form-control" disabled>
+				<input type="text" id="jenis_pekerjaan_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="savePekerjaan()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Modal Jenis Pekerjaan-->
+<!-- Modal -->
+<div class="modal fade" id="jumlahPekerja" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="jumlah_pekerja_row" class="form form-control" disabled>
+				<input type="text" id="jumlah_pekerja_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="savePekerja()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Modal Jenis Pekerjaan-->
+<!-- Modal -->
+<div class="modal fade" id="jenisSatuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="jenis_satuan_row" class="form form-control" disabled>
+				<input type="text" id="jenis_satuan_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveJenisSatuan()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Modal Jenis Pekerjaan-->
+<!-- Modal -->
+<div class="modal fade" id="satuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="satuan_row" class="form form-control" disabled>
+				<input type="text" id="satuan_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveSatuan()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="jumlahSatuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="jumlah_satuan_row" class="form form-control" disabled>
+				<input type="text" id="jumlah_satuan_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveJumlahSatuan()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="progres" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="progres_row" class="form form-control" disabled>
+				<input type="text" id="progres_text" class="form form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveProgres()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+    function savePekerjaan() {
+        let jenis_pekerjaan_row=$("#jenis_pekerjaan_row").val();
+        let jenis_pekerjaan_text=$("#jenis_pekerjaan_text").val();
+
+        $("#"+jenis_pekerjaan_row).text(jenis_pekerjaan_text);
+        $("#jenisPekerjaan").modal("hide");
+
+    }
+
+    function savePekerja() {
+        let jumlah_pekerja_row=$("#jumlah_pekerja_row").val();
+        let jumlah_pekerja_text=$("#jumlah_pekerja_text").val();
+
+        $("#"+jumlah_pekerja_row).text(jumlah_pekerja_text);
+        $("#jumlahPekerja").modal("hide");
+
+    }
+
+    function saveJenisSatuan() {
+        let jenis_satuan_row=$("#jenis_satuan_row").val();
+        let jenis_satuan_text=$("#jenis_satuan_text").val();
+
+        $("#"+jenis_satuan_row).text(jenis_satuan_text);
+        $("#jenisSatuan").modal("hide");
+
+    }
+
+    function saveSatuan() {
+        let satuan_row=$("#satuan_row").val();
+        let satuan_text=$("#satuan_text").val();
+
+        $("#"+satuan_row).text(satuan_text);
+        $("#satuan").modal("hide");
+
+    }
+
+
+    function saveJumlahSatuan() {
+        let jumlah_satuan_row=$("#jumlah_satuan_row").val();
+        let jumlah_satuan_text=$("#jumlah_satuan_text").val();
+
+        $("#"+jumlah_satuan_row).text(jumlah_satuan_text);
+        $("#jumlahSatuan").modal("hide");
+
+    }
+
+    function saveProgres() {
+        let progres_row=$("#progres_row").val();
+        let progres_text=$("#progres_text").val();
+
+        $("#"+progres_row).text(progres_text);
+        $("#progres").modal("hide");
+
+    }
+</script>
 
 
 
@@ -268,12 +459,16 @@ else
             // alert(attribute);
             var data=this.id;
             console.log(data);
+            $("#jenis_pekerjaan_row").val(data);
+            $("#jenisPekerjaan").modal("show");
 
         };
 
         for (var i = 0; i < classname.length; i++) {
             classname[i].addEventListener('click', myFunction, false);
         }
+        
+
 
         //	Event Listener Disini
         var classname = document.getElementsByClassName("jumlah_pekerja");
@@ -281,6 +476,10 @@ else
         var myFunction = function() {
             // var attribute = this.getAttribute("data-myattribute");
             // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#jumlah_pekerja_row").val(data);
+            $("#jumlahPekerja").modal("show");
 
         };
 
@@ -294,6 +493,10 @@ else
         var myFunction = function() {
             // var attribute = this.getAttribute("data-myattribute");
             // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#jenis_satuan_row").val(data);
+            $("#jenisSatuan").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -306,6 +509,10 @@ else
         var myFunction = function() {
             // var attribute = this.getAttribute("data-myattribute");
             // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#satuan_row").val(data);
+            $("#satuan").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -318,6 +525,10 @@ else
         var myFunction = function() {
             // var attribute = this.getAttribute("data-myattribute");
             // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#jumlah_satuan_row").val(data);
+            $("#jumlahSatuan").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -330,6 +541,10 @@ else
         var myFunction = function() {
             // var attribute = this.getAttribute("data-myattribute");
             // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#progres_row").val(data);
+            $("#progres").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
