@@ -161,6 +161,24 @@ else
 									}
 									?>
 								</select>
+								<b>Pilih Laporan Perencanaan</b>
+								<select id="id_lap_perencanaan" class="form form-control">
+									<?php
+									$data=$this->db->get_where("lap_perencanaan",array("id_paket"=>$this->uri->segment("3")))->result();
+									$count=count($data);
+
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->id_lap_perencanaan; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+								</select>
 
 								<h4><b>Isi Tabel Berikut:</b></h4>
 								<button class="btn btn-info" onclick="tambahRow()">+</button>
@@ -560,8 +578,23 @@ else
 	{
 	    let i=0;
 	    let arrayJes=[];
+	    let id_paket_asli=$("#id_paket").val();
+	    let minggu=$("#minggu").val();
+	    let lap_perencanaan=$("#id_lap_perencanaan").val();
 
 	    //Ajax Untuk menyimpan data laporan pengawasan terlebih dahulu
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/user/save_pengawasan",
+			async:false,
+            data: {"id_paket":id_paket_asli,"minggu":minggu,"id_laper":lap_perencanaan},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    alert(data);  //as a debugging message.
+                }
+        });
 
         $(".row_jes").each(function() {
 

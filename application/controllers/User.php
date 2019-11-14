@@ -225,6 +225,12 @@ public function user_pengawasan_create($i)
 }
 
 
+public function save_pengawasan()
+{
+ echo "Save Laporan Pengawasan";
+}
+
+
 
 
 
