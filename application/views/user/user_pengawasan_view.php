@@ -144,8 +144,8 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<button class="btn btn-info">Generate PDF</button>
-							<div class="card-body">
+							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>
+							<div class="card-body" id="cetak_tabel">
 
 								<table class="tg table table-bordered" id="tabel_pengawasan">
 									<tr>
@@ -243,6 +243,16 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak_tabel");
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
+    }
+</script>
 
 
 
