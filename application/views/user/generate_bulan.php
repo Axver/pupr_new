@@ -361,7 +361,7 @@ else
         //Isi Select Laporan Perencanaan
         $.ajax({
             type: "POST",
-            url: "http://localhost/pupr_new/generate_minggu/laporan_perencanaan",
+            url: "http://localhost/pupr_new/generate_bulan/laporan_perencanaan",
             data: {"id_paket":$data},
             dataType: "text",
             cache:false,
@@ -433,7 +433,7 @@ else
         //Dapatkan Jenis Pekerjaan Pada Laporan Perencanaan Yang Dibuat sesuai dengan data pada Tabel Detail Bahan Alat
         $.ajax({
             type: "POST",
-            url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
+            url: "http://localhost/pupr_new/generate_bulan/jenis_pekerjaan",
             asynd:false,
             data: {"id_lap_perencanaan":id_lap_perencanaan},
             dataType: "text",
@@ -551,7 +551,7 @@ else
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
+                url: "http://localhost/pupr_new/generate_bulan/jenis_pekerjaan",
                 asynd:false,
                 data: {"id_lap_perencanaan":id_lap_perencanaan},
                 dataType: "text",
@@ -643,7 +643,7 @@ else
             let rentang_hari = getDateRangeOfWeek(total_minggu);
 
 
-            //    Dapatkan Start dan ENd Dari Tanggal Tersebut
+            //    Dapatkan Start dan ENd Dari Tanggal Tersebut (Start itu awal dari minggu satu dan end nya akhir dari minggu terakhir)
             rentang_hari = rentang_hari.split(" to ");
             console.log(rentang_hari);
             //    Select Beetwen Date From Database
@@ -651,7 +651,7 @@ else
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost/pupr_new/generate_minggu/between_date",
+                url: "http://localhost/pupr_new/generate_bulan/between_date",
                 data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
                 async: false,
                 dataType: "text",
@@ -805,7 +805,7 @@ else
 
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost/pupr_new/generate_minggu/pekerjaan_tanggal",
+                    url: "http://localhost/pupr_new/generate_bulan/pekerjaan_tanggal",
                     data: {"tanggal":day,'id_lap_perencanaan':id_lap_perencanaan_baru},
                     async:false,
                     dataType: "text",
