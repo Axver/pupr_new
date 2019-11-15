@@ -236,7 +236,7 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<button class="btn btn-danger" id="cmd">CETAK</button>
+							<button class="btn btn-danger" onclick="generatePDF('<?php echo $this->uri->Segment("3"); ?>')" >Generate PDF</button>
 
 							<div id="editor"></div>
 
@@ -848,6 +848,7 @@ else
             "\t\t\t\t\t\t\t\t\t</tr>";
 
         $("#tabel_jadwal").append(newRow);
+
         var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
@@ -1145,32 +1146,38 @@ else
                 let pekerjaan_id=data1[x].id;
                 let pekerjaan_text=data1[x].nama_jenis;
                 console.log(pekerjaan_text);
+                if($("#" +data1[x].id+pekerjaan_id).length == 0) {
+                    //it doesn't exist
+
+                    var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+                        "\n" +
+                        "\n" +
+                        "\t\t\t\t\t\t\t\t\t</tr>";
+
+                    $("#tabel_jadwal").append(newRow);
+
+                    var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+                        "\n" +
+                        "\n" +
+                        "\t\t\t\t\t\t\t\t\t</tr>";
+                    $("#tabel_jumlah").append(newRow);
+                }
 
 
-                var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t\t\t\t\t\t</tr>";
 
-                $("#tabel_jadwal").append(newRow);
 
-                var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t\t\t\t\t\t</tr>";
-                $("#tabel_jumlah").append(newRow);
 
 
 
@@ -1216,22 +1223,16 @@ else
 </script>
 
 
-<script>var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
+<script>
+function generatePDF(id) {
 
-    $('#cmd').click(function () {
-        console.log($('body').html());
-        doc.fromHTML($('body').html(), 15, 15, {
-            'width': 1700,
-            'elementHandlers': specialElementHandlers
-        });
-        doc.save('sample-file.pdf');
-    });
+    window.location="http://localhost/pupr_new/cetak_perencanaan/"+id;
+
+}
 </script>
+
+
+
 
 
 

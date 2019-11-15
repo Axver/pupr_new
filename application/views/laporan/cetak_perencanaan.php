@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==1)
+	if($this->session->userdata("privilage")==1 || $this->session->userdata("privilage")==2)
 	{
 
 	}
@@ -123,12 +123,12 @@ else
 
 </head>
 
-<body id="page-top">
+<body  id="cetakini">
+
+<button class="btn btn-info" onclick="generatePDF()">Cetak</button>
 
 
-
-
-<div class="row">
+<div class="row" >
 	<div class="col-sm-6">
 		<div class="row" style="text-align: center">
 			<b>
@@ -952,6 +952,16 @@ else
 
         }
     });
+</script>
+
+
+<script>
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetakini");
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
+    }
 </script>
 
 

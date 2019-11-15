@@ -302,23 +302,7 @@ else
 
 										</div>
 									</div>
-									<div class="col-sm-6" id="gambar">
-										<b>Sketsa Kerja</b>
 
-										<div class="contain animated bounce">
-											<form id="form1" runat="server">
-												<div class="alert"></div>
-												<div id='img_contain'><img id="blah" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title=''/></div>
-												<div class="input-group">
-													<div class="custom-file">
-														<input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
-														<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-													</div>
-												</div>
-											</form>
-											<div class="credit">Modified using <a target="_blank" href="https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded">Ivan Baev's</a> code.</div>
-										</div>
-									</div>
 								</div>
 								<br/>
 
