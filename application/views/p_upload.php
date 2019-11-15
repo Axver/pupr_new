@@ -124,10 +124,9 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+
 
 				<!-- Content Row -->
-
 				<div class="row">
 
 					<!-- Area Chart -->
@@ -135,7 +134,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Laporan Perencanaan Saya</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Uplaod Gambar Perencanaan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -146,62 +145,28 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<?php echo $error;?>
+								<?php $id=$this->uri->segment("3"); ?>
+								<?php echo form_open_multipart('upload/aksi_upload_perencanaan/'.$id);?>
 
+								<input type="file" name="berkas" class="btn btn-info"/>
 
+								<br /><br />
 
-<!--								Data Table Here-->
-								<table id="example" class="display" style="width:100%">
-									<thead>
-									<tr>
-										<th>No</th>
-										<th>Id Paket</th>
-										<th>Tahun</th>
-										<th>Tukang</th>
-										<th>Pekerja</th>
-										<th>View</th>
-										<th>Upload</th>
+								<input type="submit" value="upload" class="btn btn-info"/>
 
-									</tr>
-									</thead>
-									<tbody>
-									<?php
-
-									$count=count($data);
-									$i=0;
-									while($i<$count)
-									{
-										?>
-										<tr>
-											<td><?php echo $i+1; ?></td>
-											<td><?php echo $data[$i][0]->id_paket ?></td>
-											<td><?php echo $data[$i][0]->tahun ?></td>
-											<td><?php echo $data[$i][0]->tukang ?></td>
-											<td><?php echo $data[$i][0]->pekerja ?></td>
-											<td><button class="btn btn-danger" onclick="redEdit('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Edit</button></td>
-											<td><button class="btn btn-info" onclick="upload('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Image</button></td>
-
-											<td></td>
-										</tr>
-									<?php
-										$i++;
-									}
-									?>
-									</tbody>
-								</table>
+								</form>
 
 
 							</div>
 
-							<script>
-                                $(document).ready(function() {
-                                    $('#example').DataTable();
-                                } );
-							</script>
 						</div>
 					</div>
 
 
 				</div>
+
+
 
 
 
@@ -253,23 +218,12 @@ else
 
 
 <script>
-	function redEdit(data)
-	{
-	    window.location="edit_perencanaan_user/data/"+data;
+    function lihatData(data)
+    {
 
-	}
-
-	function redCetak(data)
-	{
-	alert(data);
+        window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
     }
-
-    function upload(id)
-	{
-	    window.location="http://localhost/pupr_new/upload/perencanaan/"+id;
-	}
 </script>
-
 
 
 

@@ -324,7 +324,10 @@ else
 										<div class="contain animated bounce">
 											<form id="form1" runat="server">
 												<div class="alert"></div>
-												<div id='img_contain'><img id="blah" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title=''/></div>
+												<?php
+												$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("3")))->result();
+												?>
+												<div id='img_contain'><img id="blah" align='middle' src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" alt="your image" title=''/></div>
 												<div class="input-group">
 													<div class="custom-file">
 														<input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
