@@ -111,6 +111,14 @@
 			</div>
 		</div>
 	</li>
+	<button class="btn btn-info" onclick="logout()">Logout</button>
+
+	<script>
+        function logout()
+        {
+            window.location="http://localhost/pupr_new/login/logout";
+        }
+	</script>
 
 
 
@@ -124,3 +132,5 @@
 
 
 </ul>
+
+
