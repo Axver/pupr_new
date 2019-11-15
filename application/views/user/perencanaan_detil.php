@@ -145,6 +145,9 @@ else
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
+								<?php
+//								var_dump($data);
+								?>
 
 
 
@@ -166,19 +169,19 @@ else
 									<tbody>
 									<?php
 
-									$count=count($data);
+									$count=count($data[0]);
 									$i=0;
 									while($i<$count)
 									{
 										?>
 										<tr>
 											<td><?php echo $i+1; ?></td>
-											<td><?php echo $data[$i][0]->id_paket ?></td>
-											<td><?php echo $data[$i][0]->tahun ?></td>
-											<td><?php echo $data[$i][0]->tukang ?></td>
-											<td><?php echo $data[$i][0]->pekerja ?></td>
-											<td><button class="btn btn-danger" onclick="redEdit('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Edit</button></td>
-											<td><button class="btn btn-info" onclick="upload('<?php echo $data[$i][0]->id_lap_perencanaan ?>')">Image</button></td>
+											<td><?php echo $data[0][$i]->id_paket ?></td>
+											<td><?php echo $data[0][$i]->tahun ?></td>
+											<td><?php echo $data[0][$i]->tukang ?></td>
+											<td><?php echo $data[0][$i]->pekerja ?></td>
+											<td><button class="btn btn-danger" onclick="redEdit('<?php echo $data[0][$i]->id_lap_perencanaan ?>')">Edit</button></td>
+											<td><button class="btn btn-info" onclick="upload('<?php echo $data[0][$i]->id_lap_perencanaan ?>')">Image</button></td>
 
 											<td></td>
 										</tr>

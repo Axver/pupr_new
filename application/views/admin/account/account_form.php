@@ -147,6 +147,8 @@ else
 							<div class="card-body">
 
 								<form action="<?php echo $action; ?>" method="post">
+									<b>NIP</b>
+									<input type="text" name="nip" class="form form-control" value="<?php echo $nip; ?>" />
 									<div class="form-group">
 										<label for="varchar">Nama <?php echo form_error('nama') ?></label>
 										<input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?php echo $nama; ?>" />
@@ -159,7 +161,7 @@ else
 										<label for="varchar">Privilage <?php echo form_error('privilage') ?></label>
 										<input type="text" class="form-control" name="privilage" id="privilage" placeholder="Privilage" value="<?php echo $privilage; ?>" />
 									</div>
-									<input type="hidden" name="nip" value="<?php echo $nip; ?>" />
+
 									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
 									<a href="<?php echo site_url('account') ?>" class="btn btn-default">Cancel</a>
 								</form>

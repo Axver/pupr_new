@@ -84,6 +84,7 @@ class Account extends CI_Controller
 		'nama' => $this->input->post('nama',TRUE),
 		'password' => $this->input->post('password',TRUE),
 		'privilage' => $this->input->post('privilage',TRUE),
+				'nip' => $this->input->post('nip',TRUE),
 	    );
 
             $this->Account_model->insert($data);
