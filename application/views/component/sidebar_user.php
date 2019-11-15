@@ -48,8 +48,8 @@
 				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
 				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
 				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
-				<a class="collapse-item" href="<?php echo base_url('user_pengawasan') ?>">Laporan Pengawasan</a>
-				<a class="collapse-item" href="<?php echo base_url('user_pelaksanaan') ?>">Laporan Pelaksanaan</a>
+				<a class="collapse-item" href="<?php echo base_url('user_pengawasan_data') ?>">Laporan Pengawasan</a>
+
 
 
 
@@ -69,7 +69,7 @@
 				<h6 class="collapse-header">Generate</h6>
 				<a class="collapse-item" href="<?php echo base_url('generate_minggu') ?>">Laporan Mingguan</a>
 				<a class="collapse-item" href="<?php echo base_url('generate_bulan') ?>">Laporan Bulanan</a>
-				<a class="collapse-item" href="<?php echo base_url('generate_catur') ?>">Laporan Caturwulan</a>
+<!--				<a class="collapse-item" href="--><?php //echo base_url('generate_catur') ?><!--">Laporan Caturwulan</a>-->
 
 
 
