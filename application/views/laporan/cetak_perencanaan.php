@@ -123,9 +123,11 @@ else
 
 </head>
 
+<button class="btn btn-info" onclick="generatePDF()" style="width:100%">Cetak</button>
+
 <body  id="cetakini">
 
-<button class="btn btn-info" onclick="generatePDF()">Cetak</button>
+
 
 
 <div class="row" >
@@ -553,7 +555,13 @@ else
 		</thead>
 		<tbody>
 		<tr style="height:300px;">
-			<td></td>
+			<td>
+				<?php
+				$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
+//
+				?>
+				<img style="width:200px;" src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" />
+			</td>
 			<td></td>
 			<td></td>
 			<td></td>
