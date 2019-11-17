@@ -381,13 +381,15 @@ public function pekerjaan()
 	{
 		$data=$this->input->post("data");
 		$id=$this->input->post("id");
-		$data=array(
-            "lokasi"=>$data[0],
-			"jenis_pekerjaan"=>$data[1],
-			"panjang_penanganan"=>$data[2],
-			"keterangan_dimensi"=>$data[3],
-			"keterangan"=>$data[4],
-		);
+//		$data=array(
+//            "lokasi"=>$data[0],
+//			"jenis_pekerjaan"=>$data[1],
+//			"panjang_penanganan"=>$data[2],
+//			"keterangan_dimensi"=>$data[3],
+//			"keterangan"=>$data[4],
+//		);
+
+		var_dump($data);
 
 //		$this->db->set('lokasi', $data[0]);
 //		$this->db->set('jenis_pekerjaan', $data[1]);
@@ -397,6 +399,15 @@ public function pekerjaan()
 //		$this->db->where('id_lap_perencanaan', $id);
 //		$this->db->update('lap_perencanaan');
 
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan', $data);
+
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan', $data);
+
+		$this->db->query("UPDATE lap_perencanaan SET lokasi = '$data[0]',jenis_pekerjaan = '$data[1]', panjang_penanganan = '$data[2]', keterangan_dimensi = '$data[3]',keterangan = '$data[4]' WHERE id_lap_perencanaan='$id'");
+
+//		echo ("UPDATE lap_perencanaan SET lokasi = '$data[0]',jenis_pekerjaan = '$data[1]', panjang_penanganan = '$data[2]', keterangan_dimensi = '$data[3]',keterangan = '$data[4]' WHERE id_lap_perencanaan='$id'");
 	}
 
 

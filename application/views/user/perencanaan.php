@@ -1195,6 +1195,8 @@ else
                         cache:false,
                         success:
                             function(data){
+                            console.log("jesidisini");
+                            console.log(data);
                                 alert(data);  //as a debugging message.
                             }
                     });
