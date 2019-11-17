@@ -289,6 +289,43 @@ public function tambah_detail_pengawasan()
 }
 
 
+public function pekerjaan()
+{
+//  Get Jenis Pekerjaan
+	$jenis_pekerjaan=$this->input->post("jenis_pekerjaan");
+//	Select Max id
+	$max_id=$this->db->query("SELECT MAX(id) as max FROM jenis_pekerjaan")->result();
+
+	$max=$max_id[0]->max;
+	$max=$max+1;
+//	Input Ke database
+	$data=array(
+	"id"=>$max,
+	"nama_jenis"=>$jenis_pekerjaan,
+	);
+
+	$this->db->insert("jenis_pekerjaan",$data);
+}
+
+	public function bahan()
+	{
+//  Get Jenis Pekerjaan
+		$jenis_bahan=$this->input->post("jenis_bahan");
+//	Select Max id
+		$max_id=$this->db->query("SELECT MAX(id_jenis_bahan_alat) as max FROM jenis_bahan_alat")->result();
+
+		$max=$max_id[0]->max;
+		$max=$max+1;
+//	Input Ke database
+		$data=array(
+			"id_jenis_bahan_alat"=>$max,
+			"jenis_bahan_alat"=>$jenis_bahan,
+		);
+
+		$this->db->insert("jenis_bahan_alat",$data);
+	}
+
+
 
 
 
