@@ -1201,6 +1201,25 @@ else
                             }
                     });
 
+                //    Ajax Untuk Menambahkan Tanda Tangan
+					let disetujui_oleh=$("#disetujui_oleh").val();
+					let diperiksa_oleh=$("#diperiksa_oleh").val();
+                    $.ajax({
+                        type: "POST",
+						async:false,
+                        url: "http://localhost/pupr_new/user/ttd_perencanaan",
+                        data: {"id_perencanaan":max_id,"disetujui_oleh":disetujui_oleh,"diperiksa_oleh":diperiksa_oleh},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                // alert(data);  //as a debugging message.
+								console.log("hmmmm");
+								console.log(data);
+								console.log("hmmmm");
+                            }
+                    });
+
                 }
             });
 

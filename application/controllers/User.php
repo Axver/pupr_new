@@ -411,6 +411,34 @@ public function pekerjaan()
 	}
 
 
+	public function ttd_perencanaan()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$diperiksa_oleh=$this->input->post("diperiksa_oleh");
+		$disetujui_oleh=$this->input->post("disetujui_oleh");
+
+//		Select ID
+		$max_id=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
+		$max_id=$max_id[0]->max;
+		$max=$max_id+1;
+
+		$id_user=$this->session->userdata("nip");
+
+		$data=array(
+			"id_ttd"=>$max,
+			"id_lap_perencanaan"=>$id_perencanaan,
+			"id_disetujui"=>$disetujui_oleh,
+			"id_diperiksa"=>$diperiksa_oleh,
+			"id_user"=>$id_user,
+		);
+
+		var_dump($data);
+		$this->db->insert("ttd_perencanaan",$data);
+
+	}
+
+
 
 
 
