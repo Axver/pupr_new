@@ -334,19 +334,15 @@ public function pekerjaan()
 		$id_paket=$this->input->post("id_paket");
 		$tahun=$this->input->post("tahun");
 
-		var_dump($data);
-         echo "------";
-		var_dump($minggu);
 		$id_paket=explode("_",$id_paket);
-		echo "------";
 
-		echo"-----";
-		var_dump($id_paket[0]);
-		echo "------";
 
 //		Cari Tahu Jumlahnya terlebih dahulu
 		$jumlah=count($minggu);
 		$i=0;
+        echo "*&*&*&*&";
+		echo $jumlah;
+		echo "Xkalskalks";
 
 		while($i<$jumlah)
 		{
@@ -358,17 +354,17 @@ public function pekerjaan()
 
 //			var_dump($tempData);
 
-			$idDetil=$this->db->query("SELECT MAX(id_detail_bahan_alat) as max FROM detail_bahan_alat")->result();
+			$idDetil=$this->db->query("SELECT MAX(CAST(id_detail_bahan_alat AS INT)) as max FROM detail_bahan_alat")->result();
 			$idDetil=$idDetil[0]->max;
 			$idDetil=$idDetil+1;
 
 			$data_final=array(
-			"id_lap_perencanaan"=>$id_lap,
-			"Id_paket"=>$id_paket[0],
-			"tahun"=>$id_paket[1],
-			"id_detail_bahan_alat"=>$idDetil,
-			"id_jenis_bahan_alat"=>$tempData[0],
-			"id_satuan"=>$tempData1[1],
+				"id_lap_perencanaan"=>$id_lap,
+				"Id_paket"=>$id_paket[0],
+				"tahun"=>$id_paket[1],
+				"id_detail_bahan_alat"=>$idDetil,
+				"id_jenis_bahan_alat"=>$tempData[0],
+				"id_satuan"=>$tempData1[1],
 				"jumlah"=>$tempData1[0],
 				"tanggal"=>$tempData1[2],
 				"minggu"=>$tempData[1],
@@ -378,6 +374,29 @@ public function pekerjaan()
 			$this->db->insert("detail_bahan_alat",$data_final);
 			$i++;
 		}
+	}
+
+
+	public function update_info()
+	{
+		$data=$this->input->post("data");
+		$id=$this->input->post("id");
+		$data=array(
+            "lokasi"=>$data[0],
+			"jenis_pekerjaan"=>$data[1],
+			"panjang_penanganan"=>$data[2],
+			"keterangan_dimensi"=>$data[3],
+			"keterangan"=>$data[4],
+		);
+
+//		$this->db->set('lokasi', $data[0]);
+//		$this->db->set('jenis_pekerjaan', $data[1]);
+//		$this->db->set('panjang_penanganan', $data[2]);
+//		$this->db->set('keterangan_dimensi', $data[3]);
+//		$this->db->set('keterangan', $data[4]);
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan');
+
 	}
 
 

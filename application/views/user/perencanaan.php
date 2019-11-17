@@ -712,15 +712,15 @@ else
 										<b>Informasi</b>
 										<br/>
 										<label for="">Lokasi</label>
-										<input type="text" class="form form-control" placeholder="Lokasi">
+										<input type="text" class="form form-control" placeholder="Lokasi" id="u_lokasi">
 										<label for="">Jenis Pekerjaan</label>
-										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan">
+										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan" id="u_jenis_pekerjaan">
 										<label for="">Panjang Penanganan</label>
-										<input type="text" class="form form-control" placeholder="Panjang Penanganan">
+										<input type="text" class="form form-control" placeholder="Panjang Penanganan" id="u_panjang_penanganan">
 										<label for="">Keterangan Dimensi</label>
-										<input type="text" class="form form-control" placeholder="Keterangan Dimensi">
+										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" id="u_keterangan_dimensi">
 										<label for="">Keterengan</label>
-										<input type="text" class="form form-control" placeholder="Keterangan">
+										<input type="text" class="form form-control" placeholder="Keterangan" id="u_keterangan">
 
 
 
@@ -1122,6 +1122,9 @@ else
                         dataType : "text",
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
+                            console.log("&*&*&*&*");
+                            console.log(data);
+                            console.log("&*&*&*&*");
 
                             alert(data);
 
@@ -1171,6 +1174,28 @@ else
                         success:
                             function(data){
                                 console.log(data);
+                            }
+                    });
+
+
+                //    Update Informasi Laporan Perencanaan
+					let u_lokasi=$("#u_lokasi").val();
+					let u_jenis_pekerjaan=$("#u_jenis_pekerjaan").val();
+					let u_panjang_penanganan=$("#u_panjang_penanganan").val();
+					let u_keterangan_dimensi=$("#u_keterangan_dimensi").val();
+					let u_keterangan=$("#u_keterangan").val();
+
+					let updateArray=[u_lokasi,u_jenis_pekerjaan,u_panjang_penanganan,u_keterangan_dimensi,u_keterangan];
+                    $.ajax({
+                        type: "POST",
+						async:false,
+                        url: "http://localhost/pupr_new/user/update_info",
+                        data: {"data":updateArray,"id":data},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                alert(data);  //as a debugging message.
                             }
                     });
 

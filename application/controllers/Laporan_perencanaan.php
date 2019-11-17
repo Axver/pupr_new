@@ -57,7 +57,7 @@ class Laporan_perencanaan extends CI_Controller {
 //		Select id First
 		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(id_lap_perencanaan) FROM lap_perencanaan)")->result();
 //        var_dump($lap_perencanaan[0]->id_lap_perencanaan);
-        $id_lap_perencanaan=$lap_perencanaan[0]->id_lap_perencanaan;
+        $id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
         $id_paket=$lap_perencanaan[0]->id_paket;
         $tahun=$lap_perencanaan[0]->tahun;
 
@@ -89,7 +89,7 @@ class Laporan_perencanaan extends CI_Controller {
 				"minggu"=>$minggu
 			);
 
-//            var_dump($data_input);
+            var_dump($data_input);
 
 
 //			Input data tabel Jenis Pekerjaan Disini
