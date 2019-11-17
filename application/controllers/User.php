@@ -326,6 +326,61 @@ public function pekerjaan()
 	}
 
 
+	public function perencanaan_alat()
+	{
+		$data=$this->input->post("data");
+		$minggu=$this->input->post("minggu");
+		$id_lap=$this->input->post("id_lap");
+		$id_paket=$this->input->post("id_paket");
+		$tahun=$this->input->post("tahun");
+
+		var_dump($data);
+         echo "------";
+		var_dump($minggu);
+		$id_paket=explode("_",$id_paket);
+		echo "------";
+
+		echo"-----";
+		var_dump($id_paket[0]);
+		echo "------";
+
+//		Cari Tahu Jumlahnya terlebih dahulu
+		$jumlah=count($minggu);
+		$i=0;
+
+		while($i<$jumlah)
+		{
+			$tempData=explode("___",$minggu[$i]);
+			echo "#####";
+			var_dump($tempData);
+			echo "####";
+			$tempData1=explode("_",$data[$i]);
+
+//			var_dump($tempData);
+
+			$idDetil=$this->db->query("SELECT MAX(id_detail_bahan_alat) as max FROM detail_bahan_alat")->result();
+			$idDetil=$idDetil[0]->max;
+			$idDetil=$idDetil+1;
+
+			$data_final=array(
+			"id_lap_perencanaan"=>$id_lap,
+			"Id_paket"=>$id_paket[0],
+			"tahun"=>$id_paket[1],
+			"id_detail_bahan_alat"=>$idDetil,
+			"id_jenis_bahan_alat"=>$tempData[0],
+			"id_satuan"=>$tempData1[1],
+				"jumlah"=>$tempData1[0],
+				"tanggal"=>$tempData1[2],
+				"minggu"=>$tempData[1],
+			);
+
+			var_dump($data_final);
+			$this->db->insert("detail_bahan_alat",$data_final);
+			$i++;
+		}
+	}
+
+
 
 
 

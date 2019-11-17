@@ -27,9 +27,9 @@ class Laporan_perencanaan extends CI_Controller {
 //       $tahun=$this->input->post('tahun');
 
 //       Getting Last Input Id
-		$max=$this->db->query("SELECT MAX(id_lap_perencanaan) as id FROM lap_perencanaan")->result();
+		$max=$this->db->query("SELECT MAX(CAST(id_lap_perencanaan AS INT)) as id FROM lap_perencanaan")->result();
 		$max_id=$max[0]->id;
-		$max_id=$max_id+1;
+		$max_id++;
 		$data=array(
 			'id_lap_perencanaan'=>$max_id,
 			'id_paket'=>$id_paket_,

@@ -1039,8 +1039,14 @@ else
     {
         let col_=$("#id_column_alat").val();
         let valuenya=$("#jumlah_alat").val();
+        let satuan=$("#alat_satuan_jesi").val();
+        let tanggal_alat=$("#tanggal_alat").val();
         alert("Sukses Ditambahkan!");
-        $("#"+col_).text(valuenya);
+
+        $("#"+col_).text(valuenya+"_"+satuan+"_"+tanggal_alat);
+        var className = $("#"+col_).attr('class');
+        $("#"+col_).removeClass("nonActive2");
+        $("#"+col_).addClass("Active2");
 
         console.log(col_);
     }
@@ -1106,6 +1112,7 @@ else
                     // console.log(data);
 
                     let max_id=data;
+                    alert(max_id);
 
                     $.ajax({
                         type : "POST",
@@ -1125,9 +1132,51 @@ else
 					console.log(max_id);
 					console.log("------");
 
+                    //    Tambahkan Jenis Pekerjaan
+
+                    let dataArray2=new Array();
+                    let zx=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray2[zx]=$(this).text();
+                        console.log("log");
+                        zx++;
+                    });
+
+
+
+
+                    let dataArray3=new Array();
+                    let zz=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray3[zz]=$(this).attr("id");
+                        console.log("jes");
+                        zz++;
+                    });
+
+                    console.log(dataArray2);
+                    console.log(dataArray3);
+
+                    let nama_paket_baru=$("#nama_paket").val();
+
+                    //    Kemudian save menggunakan Ajax
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/user/perencanaan_alat",
+                        data: {"data":dataArray2,"minggu":dataArray3,"id_lap":max_id,"id_paket":nama_paket_baru,"tahun":tahun_anggaran},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                console.log(data);
+                            }
+                    });
+
                 }
             });
-            //    Tambahkan Jenis Pekerjaan
+
 
         }
 

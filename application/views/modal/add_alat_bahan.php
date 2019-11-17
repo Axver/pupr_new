@@ -11,6 +11,24 @@
 			<div class="modal-body">
 				<input type="hidden" id="id_column_alat">
 				<input type="text" class="form form-control" placeholder="jumlah" id="jumlah_alat">
+				<select class="form form-control" id="alat_satuan_jesi">
+					<?php
+					$data_jenis=$this->db->get("satuan")->result();
+					$length=count($data_jenis);
+
+					$i=0;
+
+					while($i<$length)
+					{
+						?>
+						<option value="<?php echo $data_jenis[$i]->id_satuan; ?>"><?php echo $data_jenis[$i]->satuan; ?></option>
+					<?php
+
+						$i++;
+					}
+					?>
+				</select>
+				<input type="date" class="form form-control" id="tanggal_alat">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
