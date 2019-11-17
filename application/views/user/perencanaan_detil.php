@@ -183,7 +183,7 @@ else
 											<td><button class="btn btn-danger" onclick="redEdit('<?php echo $data[0][$i]->id_lap_perencanaan ?>')">Edit</button></td>
 											<td><button class="btn btn-info" onclick="upload('<?php echo $data[0][$i]->id_lap_perencanaan ?>')">Image</button></td>
 
-											<td></td>
+											
 										</tr>
 									<?php
 										$i++;
