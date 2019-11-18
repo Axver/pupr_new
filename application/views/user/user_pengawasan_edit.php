@@ -123,7 +123,11 @@ else
 							</div>
 							<!-- Card Body -->
 							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>
+
 							<div class="card-body" id="cetak_tabel">
+
+								<button class="btn btn-info" onclick="addRow()">+</button>
+								<b>*Klik Column Untuk Edit dan + untuk Menambah Rows</b>
 
 								<table class="tg table table-bordered" id="tabel_pengawasan">
 									<tr>
@@ -144,12 +148,12 @@ else
 									{
 										?>
 										<tr>
-											<td><?php echo $data[$i]->jenis_pekerjaan; ?></td>
-											<td><?php echo $data[$i]->jumlah_pekerja; ?></td>
-											<td><?php echo $data[$i]->jenis_satuan; ?></td>
-											<td><?php echo $data[$i]->satuan; ?></td>
-											<td><?php echo $data[$i]->jumlah_satuan; ?></td>
-											<td><?php echo $data[$i]->progres; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_1"><?php echo $data[$i]->jenis_pekerjaan; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_2"><?php echo $data[$i]->jumlah_pekerja; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_3"><?php echo $data[$i]->jenis_satuan; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_4"><?php echo $data[$i]->satuan; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_5"><?php echo $data[$i]->jumlah_satuan; ?></td>
+											<td class="jesi" id="<?php echo $i; ?>_6"><?php echo $data[$i]->progres; ?></td>
 										</tr>
 										<?php
 
@@ -157,8 +161,13 @@ else
 									}
 									?>
 
+									<input type="text" id="last_row" disabled class="form form-control" value="<?php echo $i; ?>">
+
 
 								</table>
+
+
+								<button class="btn btn-success">Update</button>
 
 
 
@@ -224,13 +233,100 @@ else
 
 
 <script>
+
+    var classname = document.getElementsByClassName("jesi");
+
+    var myFunction = function() {
+        // var attribute = this.getAttribute("data-myattribute");
+        // alert(attribute);
+        var data=this.id;
+        console.log(data);
+        $("#jesi_row").val(data);
+        $("#mJesi").modal("show");
+    };
+
+    for (var i = 0; i < classname.length; i++) {
+        classname[i].addEventListener('click', myFunction, false);
+    }
     function generatePDF() {
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
         // Choose the element and save the PDF for our user.
         html2pdf().from(element).save();
     }
+
+    let lastRow=$("#last_row").val();
+
+
+    function addRow() {
+
+        // alert("test");
+        $("#tabel_pengawasan").append('<tr>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_1"></td>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_2"></td>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_3"></td>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_4"></td>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_5"></td>\n' +
+            '\t<td class="jesi" id="'+lastRow+'_6"></td>\n' +
+            '</tr>');
+
+        //Buat semuanya bisa di klik
+		//Event Listener Untuk Jesi
+        //	Event Listener Disini
+        var classname = document.getElementsByClassName("jesi");
+
+        var myFunction = function() {
+            // var attribute = this.getAttribute("data-myattribute");
+            // alert(attribute);
+            var data=this.id;
+            console.log(data);
+            $("#jesi_row").val(data);
+            $("#mJesi").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        lastRow=lastRow+1;
+
+    }
+
+
+    function addText() {
+
+		let row=$("#jesi_row").val();
+		let text=$("#text_data").val();
+
+		$("#"+row).text(text);
+
+		$("#mJesi").modal("hide");
+    }
 </script>
+
+
+
+<!--Modal Jesi-->
+<div class="modal fade" id="mJesi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Tambahkan Text</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form form-control" id="jesi_row" disabled>
+				<input type="text" class="form form-control" id="text_data">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="addText()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
