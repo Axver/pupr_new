@@ -130,6 +130,8 @@ else
 									<tr>
 										<th>No</th>
 										<th>Id Perencanaan</th>
+										<th>Minggu</th>
+										<th>Perencanaan</th>
 										<th>View</th>
 
 
@@ -153,7 +155,9 @@ else
 										<tr>
                                          <td ><?php echo $i+1; ?></td>
 											<td><?php echo $query[$i]->id_lap_pengawasan; ?></td>
-											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan; ?>')">View</button></td>
+											<td><?php echo $query[$i]->minggu; ?></td>
+											<td><?php echo $query[$i]->id_lap_perencanaan; ?></td>
+											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">View</button></td>
 										</tr>
 									<?php
 
@@ -236,7 +240,7 @@ else
 	{
 	    let data=id.split(",");
 	    // alert(id);
-	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+data[0]+"/"+data[1];
+	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+data[0]+"/"+data[1]+"/"+data[2];
 	}
 </script>
 

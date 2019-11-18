@@ -264,6 +264,7 @@ public function tambah_detail_pengawasan()
 	$dataArray=$this->input->post("dataArray");
 	$id_pengawasan=$this->input->post("id_pengawasan");
 	$id_laper=$this->input->post("id_laper");
+	$minggu=$this->input->post("minggu");
 
 //	Ambil id
 	$id_nya=$this->db->query("SELECT MAX(id) as max FROM detail_laporan_pengawasan")->result();
@@ -281,6 +282,7 @@ public function tambah_detail_pengawasan()
 		"jumlah_satuan"=>$dataArray[4],
 		"progres"=>$dataArray[5],
 		"id_lap_perencanaan"=>$id_laper,
+		"minggu"=>$minggu,
 	);
 
 //	Input data

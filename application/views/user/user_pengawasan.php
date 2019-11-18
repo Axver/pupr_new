@@ -589,7 +589,7 @@ else
                                     type: "POST",
 									async:false,
                                     url: "http://localhost/pupr_new/user/tambah_detail_pengawasan",
-                                    data: {"dataArray":arrayJes,'id_pengawasan':data,'id_laper':id_lap_perencanaan_fix},
+                                    data: {"dataArray":arrayJes,'id_pengawasan':data,'id_laper':id_lap_perencanaan_fix,"minggu":minggu},
                                     dataType: "text",
                                     cache:false,
                                     success:
