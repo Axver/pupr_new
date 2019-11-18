@@ -107,4 +107,67 @@ class Laporan_perencanaan extends CI_Controller {
 
 
 	}
+
+
+	public function add_jenis_pekerjaan1()
+	{
+
+		$data=$this->input->post("data");
+		$jumlah=$this->input->post("data1");
+
+//		Select id First
+		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(CAST(id_lap_perencanaan AS INT)) FROM lap_perencanaan)")->result();
+//        var_dump($lap_perencanaan[0]->id_lap_perencanaan);
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+		$id_paket=$lap_perencanaan[0]->id_paket;
+		$tahun=$lap_perencanaan[0]->tahun;
+
+		$this->db->query("DELETE FROM detail_jenis_pekerjaan WHERE id_lap_perencanaan='$id_lap_perencanaan'");
+
+
+		var_dump($data);
+
+		$data_length=count($jumlah);
+
+		var_dump($data_length);
+		$i=0;
+
+		while($i<$data_length)
+		{
+			$data_=explode("_",$data[$i]);
+			$jumlah_=explode("_",$jumlah[$i]);
+			$id=$data_[0];
+			$pekerja=$jumlah_[0];
+			$tanggal=$jumlah_[1];
+			$minggu=$data_[1];
+
+			$data_input= array(
+				"id"=>$id,
+				"id_lap_perencanaan"=>$id_lap_perencanaan,
+				"id_paket"=>$id_paket,
+				"tahun"=>$tahun,
+				"tukang"=>"",
+				"pekerja"=>$pekerja,
+				"tanggal"=>$tanggal,
+				"minggu"=>$minggu
+			);
+
+			var_dump($data_input);
+
+
+//			Input data tabel Jenis Pekerjaan Disini
+			$this->db->insert("detail_jenis_pekerjaan",$data_input);
+
+			$i++;
+		}
+
+		echo "Success";
+
+
+
+
+
+
+
+	}
 }

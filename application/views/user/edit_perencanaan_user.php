@@ -252,6 +252,7 @@ else
 											<div class="col-sm-1">:</div>
 											<div class="col-sm-8">
 												<input type="text" class="form form-control" id="nama_paket" value="<?php echo $paket_info[0]->nama; ?>" disabled>
+												<input type="hidden" class="form form-control" id="nama_paket1" value="<?php echo $paket_info[0]->id_paket.'_'.$paket_info[0]->tahun; ?>" >
 
 											</div>
 
@@ -715,15 +716,15 @@ else
 										<b>Informasi</b>
 										<br/>
 										<label for="">Lokasi</label>
-										<input type="text" class="form form-control" placeholder="Lokasi" value="<?php echo $infoPerencanaan[0]->lokasi; ?>">
+										<input type="text" class="form form-control" id="u_lokasi" placeholder="Lokasi" value="<?php echo $infoPerencanaan[0]->lokasi; ?>">
 										<label for="">Jenis Pekerjaan</label>
-										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan" value="<?php echo  $infoPerencanaan[0]->jenis_pekerjaan; ?>">
+										<input type="text" class="form form-control" id="u_jenis_pekerjaan" placeholder="Jenis Pekerjaan" value="<?php echo  $infoPerencanaan[0]->jenis_pekerjaan; ?>">
 										<label for="">Panjang Penanganan</label>
-										<input type="text" class="form form-control" placeholder="Panjang Penanganan" value="<?php echo  $infoPerencanaan[0]->panjang_penanganan; ?>">
+										<input type="text" class="form form-control" id="u_panjang_penanganan" placeholder="Panjang Penanganan" value="<?php echo  $infoPerencanaan[0]->panjang_penanganan; ?>">
 										<label for="">Keterangan Dimensi</label>
-										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" value="<?php echo  $infoPerencanaan[0]->keterangan_dimensi; ?>">
+										<input type="text" class="form form-control" id="u_keterangan_dimensi" placeholder="Keterangan Dimensi" value="<?php echo  $infoPerencanaan[0]->keterangan_dimensi; ?>">
 										<label for="">Keterengan</label>
-										<input type="text" class="form form-control" placeholder="Keterangan" value="<?php echo  $infoPerencanaan[0]->keterangan; ?>">
+										<input type="text" class="form form-control" id="u_keterangan" placeholder="Keterangan" value="<?php echo  $infoPerencanaan[0]->keterangan; ?>">
 
 
 
@@ -738,7 +739,7 @@ else
 
 										?>
 										Disetujui Oleh:
-										<select class="form form-control">
+										<select class="form form-control" id="disetujui_oleh">
 											<?php
 											$count=count($ttd);
 											$i=0;
@@ -754,7 +755,7 @@ else
 										</select>
 										<br/>
 										<b>Diperiksa Oleh:</b>
-										<select class="form form-control">
+										<select class="form form-control" id="diperiksa_oleh">
 
 											<?php
 											$count=count($ttd);
@@ -843,6 +844,7 @@ else
 
 <script>
     let save_pekerjaan= new Array();
+
     function tambahPekerjaan()
     {
         let pekerjaan_id=$("#pekerjaan").val();
@@ -861,7 +863,6 @@ else
             "\t\t\t\t\t\t\t\t\t</tr>";
 
         $("#tabel_jadwal").append(newRow);
-
         var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
@@ -957,6 +958,7 @@ else
 
     $("#inputGroupFile01").change(function(event) {
         RecurFadeIn();
+        console.log(this);
         readURL(this);
     });
     $("#inputGroupFile01").on('click',function(event){
@@ -975,6 +977,7 @@ else
                 $('.custom-file-label').text(filename);
             }
             reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
         }
         $(".alert").removeClass("loading").hide();
     }
@@ -1039,8 +1042,14 @@ else
     {
         let col_=$("#id_column_alat").val();
         let valuenya=$("#jumlah_alat").val();
+        let satuan=$("#alat_satuan_jesi").val();
+        let tanggal_alat=$("#tanggal_alat").val();
         alert("Sukses Ditambahkan!");
-        $("#"+col_).text(valuenya);
+
+        $("#"+col_).text(valuenya+"_"+satuan+"_"+tanggal_alat);
+        var className = $("#"+col_).attr('class');
+        $("#"+col_).removeClass("nonActive2");
+        $("#"+col_).addClass("Active2");
 
         console.log(col_);
     }
@@ -1075,7 +1084,7 @@ else
         });
 
 
-        let nama_paket=$("#nama_paket").val();
+        let nama_paket=$("#nama_paket1").val();
         let nilai_paket=$("#nilai_paket").val();
         let jumlah_tahap=$("#jumlah_tahap").val();
         let jenis_pekerjaan=$("#jenis_pelaksanaan").val();
@@ -1094,35 +1103,121 @@ else
             console.log("b");
             //    Jika data berisi maka lanjut di proses
             //Tambahkan Laporan Perencanaan Ke Database
-            $.ajax({
-                type : "POST",
-                url : "http://localhost/pupr_new/laporan_perencanaan/add_perencanaan",
-                cache:false,
-                async:false,
-                dataType : "text",
-                data : {"id_paket" : nama_paket, "tahun" : tahun_anggaran},
-                success : function(data) {
+
 
                     // console.log(data);
-                    let max_id=data;
+
+                    let max_id=id_perencanaan_hidden;
+                    alert(max_id);
 
                     $.ajax({
                         type : "POST",
-                        url : "http://localhost/pupr_new/laporan_perencanaan/add_jenis_pekerjaan",
+                        url : "http://localhost/pupr_new/laporan_perencanaan/add_jenis_pekerjaan1",
                         cache:false,
                         async:false,
                         dataType : "text",
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
+                            console.log("&*&*&*&*");
+                            console.log(data);
+                            console.log("&*&*&*&*");
 
                             alert(data);
 
                         }
                     });
 
-                }
-            });
-            //    Tambahkan Jenis Pekerjaan
+                    console.log("-----");
+                    console.log(max_id);
+                    console.log("------");
+
+                    //    Tambahkan Jenis Pekerjaan
+
+                    let dataArray2=new Array();
+                    let zx=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray2[zx]=$(this).text();
+                        console.log("log");
+                        zx++;
+                    });
+
+
+
+
+                    let dataArray3=new Array();
+                    let zz=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray3[zz]=$(this).attr("id");
+                        console.log("jes");
+                        zz++;
+                    });
+
+                    console.log(dataArray2);
+                    console.log(dataArray3);
+
+                    let nama_paket_baru=$("#nama_paket1").val();
+
+                    //    Kemudian save menggunakan Ajax
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/user/perencanaan_alat1",
+                        data: {"data":dataArray2,"minggu":dataArray3,"id_lap":max_id,"id_paket":nama_paket_baru,"tahun":tahun_anggaran},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                console.log(data);
+                            }
+                    });
+
+
+                    //    Update Informasi Laporan Perencanaan
+                    let u_lokasi=$("#u_lokasi").val();
+                    let u_jenis_pekerjaan=$("#u_jenis_pekerjaan").val();
+                    let u_panjang_penanganan=$("#u_panjang_penanganan").val();
+                    let u_keterangan_dimensi=$("#u_keterangan_dimensi").val();
+                    let u_keterangan=$("#u_keterangan").val();
+
+                    let updateArray=[u_lokasi,u_jenis_pekerjaan,u_panjang_penanganan,u_keterangan_dimensi,u_keterangan];
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/user/update_info1",
+                        data: {"data":updateArray,"id":id_perencanaan_hidden},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                console.log("jesidisini");
+                                console.log(data);
+                                alert(data);  //as a debugging message.
+                            }
+                    });
+
+                    //    Ajax Untuk Menambahkan Tanda Tangan
+                    let disetujui_oleh=$("#disetujui_oleh").val();
+                    let diperiksa_oleh=$("#diperiksa_oleh").val();
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/user/ttd_perencanaan1",
+                        data: {"id_perencanaan":max_id,"disetujui_oleh":disetujui_oleh,"diperiksa_oleh":diperiksa_oleh},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                // alert(data);  //as a debugging message.
+                                console.log("hmmmm");
+                                console.log(data);
+                                console.log("hmmmm");
+                            }
+                    });
+
+
+
 
         }
 
@@ -1131,6 +1226,74 @@ else
     }
 
 
+    //    Ambil data paket
+    let uri_nya=$("#uri_nya").val();
+    //   Getting Package Data
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/user/detail_paket/",
+        data: {"id_paket":uri_nya},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+
+                $("#nama_paket").val(data[0].id_paket+"_"+data[0].tahun);
+                $("#jumlah_tahap").val(data[0].jumlah_tahap);
+                $("#jenis_pelaksanaan").val(data[0].jenis_pekerjaan);
+                $("#masa_pelaksanaan").val(data[0].masa_pelaksanaan);
+                $("#lokasi").val(data[0].lokasi);
+                $("#tahun_anggaran").val(data[0].tahun_anggaran);
+            }
+    });
+
+    function savePerencanaan_()
+    {
+
+
+        $("#inputGroupFile01").each(function(){
+            $(this);
+            console.log(this);
+            saveReadURL(this);
+        });
+
+
+    }
+
+    function saveReadURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var filename = $("#inputGroupFile01").val();
+            filename = filename.substring(filename.lastIndexOf('\\')+1);
+            reader.onload = function(e) {
+                debugger;
+                $('#blah').attr('src', e.target.result);
+                $('#blah').hide();
+                $('#blah').fadeIn(500);
+                $('.custom-file-label').text(filename);
+            }
+            reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
+            //    Ajax Disini Untuk Menyimpan Data
+            // $.ajax({
+            //     url: 'http://localhost/pupr_new/user/upload',
+            //     dataType: 'text',
+            // 	async:false,
+            //     cache: false,
+            //     contentType: false,
+            //     processData: false,
+            //     data: form_data,
+            //     type: 'post',
+            //     success: function(php_script_response){
+            //         alert(php_script_response);
+            //     }
+            // });
+        }
+        $(".alert").removeClass("loading").hide();
+    }
 
 </script>
 

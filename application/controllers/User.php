@@ -380,8 +380,95 @@ public function pekerjaan()
 		}
 	}
 
+	public function perencanaan_alat1()
+	{
+		$data=$this->input->post("data");
+		$minggu=$this->input->post("minggu");
+		$id_lap=$this->input->post("id_lap");
+		$id_paket=$this->input->post("id_paket");
+		$tahun=$this->input->post("tahun");
+
+//		DELETE
+//		$this->db->query("DELETE FROM detail_bahan_alat WHERE id_lap_perencanaan='$id_lap'");
+
+		$id_paket=explode("_",$id_paket);
+
+
+//		Cari Tahu Jumlahnya terlebih dahulu
+		$jumlah=count($minggu);
+		$i=0;
+		echo "*&*&*&*&";
+		echo $jumlah;
+		echo "Xkalskalks";
+
+		while($i<$jumlah)
+		{
+			$tempData=explode("___",$minggu[$i]);
+			echo "#####";
+			var_dump($tempData);
+			echo "####";
+			$tempData1=explode("_",$data[$i]);
+
+//			var_dump($tempData);
+
+			$idDetil=$this->db->query("SELECT MAX(CAST(id_detail_bahan_alat AS INT)) as max FROM detail_bahan_alat")->result();
+			$idDetil=$idDetil[0]->max;
+			$idDetil=$idDetil+1;
+
+			$data_final=array(
+				"id_lap_perencanaan"=>$id_lap,
+				"Id_paket"=>$id_paket[0],
+				"tahun"=>$id_paket[1],
+				"id_detail_bahan_alat"=>$idDetil,
+				"id_jenis_bahan_alat"=>$tempData[0],
+				"id_satuan"=>$tempData1[1],
+				"jumlah"=>$tempData1[0],
+				"tanggal"=>$tempData1[2],
+				"minggu"=>$tempData[1],
+			);
+
+			var_dump($data_final);
+//			$this->db->insert("detail_bahan_alat",$data_final);
+			$i++;
+		}
+	}
+
 
 	public function update_info()
+	{
+		$data=$this->input->post("data");
+		$id=$this->input->post("id");
+//		$data=array(
+//            "lokasi"=>$data[0],
+//			"jenis_pekerjaan"=>$data[1],
+//			"panjang_penanganan"=>$data[2],
+//			"keterangan_dimensi"=>$data[3],
+//			"keterangan"=>$data[4],
+//		);
+
+		var_dump($data);
+
+//		$this->db->set('lokasi', $data[0]);
+//		$this->db->set('jenis_pekerjaan', $data[1]);
+//		$this->db->set('panjang_penanganan', $data[2]);
+//		$this->db->set('keterangan_dimensi', $data[3]);
+//		$this->db->set('keterangan', $data[4]);
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan');
+
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan', $data);
+
+//		$this->db->where('id_lap_perencanaan', $id);
+//		$this->db->update('lap_perencanaan', $data);
+
+		$this->db->query("UPDATE lap_perencanaan SET lokasi = '$data[0]',jenis_pekerjaan = '$data[1]', panjang_penanganan = '$data[2]', keterangan_dimensi = '$data[3]',keterangan = '$data[4]' WHERE id_lap_perencanaan='$id'");
+
+//		echo ("UPDATE lap_perencanaan SET lokasi = '$data[0]',jenis_pekerjaan = '$data[1]', panjang_penanganan = '$data[2]', keterangan_dimensi = '$data[3]',keterangan = '$data[4]' WHERE id_lap_perencanaan='$id'");
+	}
+
+
+	public function update_info1()
 	{
 		$data=$this->input->post("data");
 		$id=$this->input->post("id");
@@ -421,6 +508,37 @@ public function pekerjaan()
 		$id_perencanaan=$this->input->post("id_perencanaan");
 		$diperiksa_oleh=$this->input->post("diperiksa_oleh");
 		$disetujui_oleh=$this->input->post("disetujui_oleh");
+
+//		Select ID
+		$max_id=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
+		$max_id=$max_id[0]->max;
+		$max=$max_id+1;
+
+		$id_user=$this->session->userdata("nip");
+
+		$data=array(
+			"id_ttd"=>$max,
+			"id_lap_perencanaan"=>$id_perencanaan,
+			"id_disetujui"=>$disetujui_oleh,
+			"id_diperiksa"=>$diperiksa_oleh,
+			"id_user"=>$id_user,
+		);
+
+		var_dump($data);
+		$this->db->insert("ttd_perencanaan",$data);
+
+	}
+
+
+	public function ttd_perencanaan1()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$diperiksa_oleh=$this->input->post("diperiksa_oleh");
+		$disetujui_oleh=$this->input->post("disetujui_oleh");
+
+//		Delete Terlebih Dahulu
+		$this->db->query("DELETE FROM ttd_perencanaan WHERE id_lap_perencanaan='$id_perencanaan'");
 
 //		Select ID
 		$max_id=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
