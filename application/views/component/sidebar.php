@@ -111,22 +111,46 @@
 			</div>
 		</div>
 	</li>
-	<button class="btn btn-info" onclick="logout()">Logout</button>
-
-	<script>
-        function logout()
-        {
-            window.location="http://localhost/pupr_new/login/logout";
-        }
-	</script>
 
 
 
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">
+				<i class="fas fa-fw fa-cog"></i>
+				<span>Laporan</span>
+			</a>
+			<div id="collapseTwo12" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">Setting</h6>
+					<a class="collapse-item" href="<?php echo base_url('read_perencanaan') ?>">Laporan Perencanaan</a>
+					<a class="collapse-item" href="<?php echo base_url('read_harian') ?>">Laporan Harian</a>
+					<a class="collapse-item" href="<?php echo base_url('pead_pengawasan') ?>">Laporan Pengawasan</a>
+					<a class="collapse-item" href="<?php echo base_url('pead_mingguan') ?>">Laporan Mingguan</a>
+					<a class="collapse-item" href="<?php echo base_url('pead_bulanan') ?>">Laporan Bulanan</a>
+					<a class="collapse-item" href="<?php echo base_url('pead_caturwulan') ?>">Catur Wulan</a>
 
 
 
 
-	<!-- Divider -->
+				</div>
+			</div>
+		</li>
+		<button class="btn btn-info" onclick="logout()">Logout</button>
+
+		<script>
+			function logout()
+			{
+				window.location="http://localhost/pupr_new/login/logout";
+			}
+		</script>
+
+
+
+
+
+
+
+		<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
 
 
