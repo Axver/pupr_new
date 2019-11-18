@@ -113,7 +113,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">View User Pengawasan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -122,65 +122,52 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<div class="card-body">
+							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>
+							<div class="card-body" id="cetak_tabel">
 
-
-								<table id="example" class="display" style="width:100%">
-									<thead>
+								<table class="tg table table-bordered" id="tabel_pengawasan">
 									<tr>
-										<th>No</th>
-										<th>Id Perencanaan</th>
-										<th>Minggu</th>
-										<th>Perencanaan</th>
-										<th>View</th>
-										<th>Edit</th>
-
-
+										<th class="tg-cly1" rowspan="2">Jenis Pekerjaan</th>
+										<th class="tg-cly1" rowspan="2">Jumlah Pekerja</th>
+										<th class="tg-cly1" colspan="3">Jumlah Satuan</th>
+										<th class="tg-cly1" rowspan="2">Progress Pekerjaan (%)</th>
 									</tr>
-									</thead>
-									<tbody>
-
+									<tr>
+										<td class="tg-cly1">Jenis</td>
+										<td class="tg-cly1">Satuan</td>
+										<td class="tg-cly1">Jumlah</td>
+									</tr>
 									<?php
-									$this->db->select('*');
-									$this->db->from('lap_pengawasan');
-									$this->db->join('detail_paket', 'lap_pengawasan.id_paket = detail_paket.id_paket');
-									$this->db->where('detail_paket.nip', $this->session->userdata("nip"));
-
-
-									$query = $this->db->get()->result();
-									$length=count($query);
+									$hitung=count($data);
 									$i=0;
-									while($i<$length)
+									while($i<$hitung)
 									{
 										?>
 										<tr>
-                                         <td ><?php echo $i+1; ?></td>
-											<td><?php echo $query[$i]->id_lap_pengawasan; ?></td>
-											<td><?php echo $query[$i]->minggu; ?></td>
-											<td><?php echo $query[$i]->id_lap_perencanaan; ?></td>
-											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">View</button></td>
-											<td><button class="btn btn-warning" onclick="editLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">Edit</button></td>
+											<td><?php echo $data[$i]->jenis_pekerjaan; ?></td>
+											<td><?php echo $data[$i]->jumlah_pekerja; ?></td>
+											<td><?php echo $data[$i]->jenis_satuan; ?></td>
+											<td><?php echo $data[$i]->satuan; ?></td>
+											<td><?php echo $data[$i]->jumlah_satuan; ?></td>
+											<td><?php echo $data[$i]->progres; ?></td>
 										</tr>
-									<?php
+										<?php
 
 										$i++;
 									}
-
 									?>
 
 
-
-
-									</tbody>
 								</table>
+
+
+
+
+
 
 							</div>
 
-							<script>
-                                $(document).ready(function() {
-                                    $('#example').DataTable();
-                                } );
-							</script>
+
 						</div>
 					</div>
 
@@ -237,21 +224,16 @@ else
 
 
 <script>
-
-	function viewLap(id)
-	{
-	    let data=id.split(",");
-	    // alert(id);
-	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+data[0]+"/"+data[1]+"/"+data[2];
-	}
-
-    function editLap(id)
-    {
-        let data=id.split(",");
-        // alert(id);
-        window.location='http://localhost/pupr_new/user_pengawasan_data/edit/'+data[0]+"/"+data[1]+"/"+data[2];
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak_tabel");
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
     }
 </script>
+
+
+
 
 
 

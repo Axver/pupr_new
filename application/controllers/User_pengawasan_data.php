@@ -15,6 +15,12 @@ class User_pengawasan_data extends CI_Controller {
 		$this->load->view('user/user_pengawasan_view',$data);
 	}
 
+	public function edit($id,$id2,$id3)
+	{
+		$data['data']=$this->db->get_where("detail_laporan_pengawasan",array("id_lap_pengawasan"=>$id,"id_lap_perencanaan"=>$id2,"minggu"=>$id3))->result();
+		$this->load->view('user/user_pengawasan_edit',$data);
+	}
+
 
 
 
