@@ -1228,6 +1228,12 @@ else
                 let selector=$("#"+text_builder).css("background-color","black");
                 let selector1=$("#"+text_builder1).text(data1[z].pekerja);
 
+                $("#"+text_builder).removeClass("nonActive");
+                $("#"+text_builder).addClass("Active");
+
+                $("#"+text_builder1).removeClass("nonActive1");
+                $("#"+text_builder1).addClass("Active1");
+
                 z++;
             }
 
@@ -1299,6 +1305,12 @@ $.ajax({
                     $("#pekerjaan_waktu_"+data[i].id_jenis_bahan_alat).append(newColX);
                     x++;
                 }
+
+                // alert(data[i].id_jenis_bahan_alat+"___"+data[i].minggu);
+                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).text(data[i].jumlah);
+                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).removeClass( "nonActive2" );
+                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).addClass( "Active2" );
+
 
 			    i++;
 			}
