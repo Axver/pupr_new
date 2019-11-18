@@ -48,5 +48,15 @@ class View_harian extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function edit($id,$per)
+	{
+		$data=$this->db->get_where("lap_harian_mingguan",array("id_lap_harian_mingguan"=>$id,"id_lap_perencanaan"=>$per))->result();
+		$data['lapar']=array(
+			"lapar"=>$data,
+		);
+
+		$this->load->view("user/view_harian_edit",$data);
+	}
+
 
 }
