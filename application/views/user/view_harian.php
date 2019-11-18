@@ -365,7 +365,9 @@ $.ajax({
     success:
         function(data){
             data=JSON.parse(data);
+            console.log("-----");
             console.log(data);
+            console.log("------");
             length=data.length;
 
             let i=0;
@@ -374,10 +376,10 @@ $.ajax({
 			    console.log("waha");
 
 			    $("#tabel_harian").append('\t\t<tr>\n' +
-                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jenis_pekerja+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].nama_jenis+'</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jumlah_pekerja+'</td>\n' +
-                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].id_jenis_bahan_alat+'</td>\n' +
-                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].id_satuan+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jenis_bahan_alat+'</td>\n' +
+                    '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].satuan+'</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[i].jumlah_bahan+'</td>\n' +
                     '\t\t\t\t\t\t\t\t\t</tr>');
 
@@ -391,7 +393,16 @@ function generatePDF() {
     // Choose the element that our invoice is rendered in.
     const element = document.getElementById("cetak_pdf");
     // Choose the element and save the PDF for our user.
-    html2pdf().from(element).save();
+    var opt = {
+        margin:       0,
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+    };
+    // Choose the element and save the PDF for our user.
+    html2pdf().set(opt).from(element).save();
+    // html2pdf().from(element).save();
 }
 
 
