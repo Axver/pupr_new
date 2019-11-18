@@ -124,7 +124,50 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<canvas id="myChart"></canvas>
+								<b style="color:darkgreen">Laporan Harian</b>
+
+
+								<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+										<th>Tanggal</th>
+										<th>Nama User</th>
+										<th>NIP</th>
+
+									</tr>
+									</thead>
+									<tbody>
+
+									<?php
+									$data=$this->db->query("SELECT * FROM `lap_harian_mingguan` INNER JOIN detail_paket ON lap_harian_mingguan.id_paket=detail_paket.id_paket INNER JOIN account ON detail_paket.nip=account.nip WHERE id_lap_harian_mingguan=CURRENT_DATE()")->result();
+									//									var_dump($data);
+
+									$count=count($data);
+									$i=0;
+									while($i<$count)
+									{
+										?>
+										<tr>
+											<td><?php echo $data[$i]->id_lap_harian_mingguan; ?></td>
+											<td><?php echo $data[$i]->nama; ?></td>
+											<td><?php echo $data[$i]->nip; ?></td>
+
+										</tr>
+										<?php
+
+										$i++;
+									}
+									?>
+									</tbody>
+								</table>
+
+
+								<script>
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
+                                    } );
+								</script>
+
 
 							</div>
 						</div>
