@@ -725,20 +725,44 @@ else
 										<b>Tandatangan</b>
 										<a href="#">New</a>
 										<br/>
+										<?php
+										$ttd=$this->db->get("konfigurasi")->result();
+
+										?>
 										Disetujui Oleh:
 										<select class="form form-control">
+											<?php
+											$count=count($ttd);
+											$i=0;
+											while($i<$count)
+											{
+												?>
+												<option value="<?php echo $ttd[$i]->id_konfigurasi; ?>"><?php echo $ttd[$i]->nama; ?></option>
+											<?php
+												$i++;
+											}
+											?>
 
 										</select>
 										<br/>
 										<b>Diperiksa Oleh:</b>
 										<select class="form form-control">
 
-										</select>
-										<br/>
-										<b>Dibuat Oleh:</b>
-										<select class="form form-control">
+											<?php
+											$count=count($ttd);
+											$i=0;
+											while($i<$count)
+											{
+												?>
+												<option value="<?php echo $ttd[$i]->id_konfigurasi; ?>"><?php echo $ttd[$i]->nama; ?></option>
+												<?php
+												$i++;
+											}
+											?>
 
 										</select>
+										<br/>
+
 
 									</div>
 								</div>

@@ -598,6 +598,35 @@ else
 					 </table>
 				 </div>
 
+<!--				 Tanda Tangan-->
+				 <div class="row">
+					 <div class="col-sm-3">
+						<b> Disetujui Oleh</b>
+						 <div class="row">
+							 <?php
+							 $data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+
+							 $count=count($data);
+
+							 if($count>=1)
+							 {
+							 	echo $data[0]->id_disetujui;
+							 }
+							 ?>
+						 </div>
+					 </div>
+					 <div class="col-sm-2"></div>
+					 <div class="col-sm-3">
+						 <b>Diperiksa Oleh</b>
+						 <div class="row"></div>
+					 </div>
+					 <div class="col-sm-1"></div>
+					 <div class="col-sm-3">
+						 <b>Dibuat Oleh</b>
+						 <div class="row"></div>
+					 </div>
+				 </div>
+
 			 </div>
 
 		 </div>
