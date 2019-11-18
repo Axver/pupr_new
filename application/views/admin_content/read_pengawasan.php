@@ -68,7 +68,7 @@
 
 					</div>
 					<div class="col-auto">
-						<a href="<?php echo base_url('pengawasan/pengawasan/'.$this->uri->segment('3')); ?>"><i style="color:green;" class="fas fa-calendar fa-2x "></i></a>
+						<a href="<?php echo base_url('pengawasan/pengawasan_/'.$this->uri->segment('3')); ?>"><i style="color:green;" class="fas fa-calendar fa-2x "></i></a>
 					</div>
 				</div>
 			</div>
@@ -81,11 +81,11 @@
 			<div class="card-body">
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
-						<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pelaksanaan</div>
+						<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Perencanaan</div>
 
 					</div>
 					<div class="col-auto">
-						<a href="<?php echo base_url('pengawasan/pelaksanaan/'.$this->uri->segment('3')); ?>"><i style="color:green;" class="fas fa-calendar fa-2x "></i></a>
+						<a href="<?php echo base_url('pengawasan/perencanaan/'.$this->uri->segment('3')); ?>"><i style="color:green;" class="fas fa-calendar fa-2x "></i></a>
 					</div>
 				</div>
 			</div>

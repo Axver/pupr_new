@@ -22,6 +22,8 @@ class Pengawasan extends CI_Controller {
 
 	public function hitung()
 	{
+//		get Detail Paket
+		$get=$this->db->get("")/
 		$id_user=$this->input->post("id");
 		$count_perencanaan=$this->db->query("SELECT COUNT(nip)  as perencanaan FROM lap_perencanaan WHERE nip='$id_user'")->result();
 		$count_pengawasan=$this->db->query("SELECT COUNT(nip) as pengawasan FROM lap_pengawasan WHERE nip='$id_user'")->result();
@@ -35,5 +37,25 @@ class Pengawasan extends CI_Controller {
 		);
 
 		echo json_encode($data);
+	}
+
+	public function paket($i)
+	{
+		$this->load->view("pengawasan/paket");
+	}
+
+	public function harian($i)
+	{
+		$this->load->view("pengawasan/harian");
+	}
+
+	public function pengawasan_($i)
+	{
+		$this->load->view("pengawasan/pengawasan");
+	}
+
+	public function perencanaan($i)
+	{
+		$this->load->view("pengawasan/perencanaan");
 	}
 }

@@ -39,24 +39,24 @@
 
 
 	<!-- Nav Item - Pages Collapse Menu -->
-	<li class="nav-item">
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-cog"></i>
-			<span>Tambah Laporan</span>
-		</a>
-		<div id="collapseTwo12" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Setting</h6>
-				<a class="collapse-item" href="<?php echo base_url('laporan_perencanaan') ?>">Laporan Perencanaan</a>
-				<a class="collapse-item" href="<?php echo base_url('laporan_harian') ?>">Laporan Harian</a>
-				<a class="collapse-item" href="<?php echo base_url('laporan_pengawasan') ?>">Laporan Pengawasan</a>
-				<a class="collapse-item" href="<?php echo base_url('laporan_pelaksanaan') ?>">Laporan Pelaksanaan</a>
-
-
-
-			</div>
-		</div>
-	</li>
+<!--	<li class="nav-item">-->
+<!--		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">-->
+<!--			<i class="fas fa-fw fa-cog"></i>-->
+<!--			<span>Tambah Laporan</span>-->
+<!--		</a>-->
+<!--		<div id="collapseTwo12" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">-->
+<!--			<div class="bg-white py-2 collapse-inner rounded">-->
+<!--				<h6 class="collapse-header">Setting</h6>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('laporan_perencanaan') ?><!--">Laporan Perencanaan</a>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('laporan_harian') ?><!--">Laporan Harian</a>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('laporan_pengawasan') ?><!--">Laporan Pengawasan</a>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('laporan_pelaksanaan') ?><!--">Laporan Pelaksanaan</a>-->
+<!---->
+<!---->
+<!---->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</li>-->
 
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo121" aria-expanded="true" aria-controls="collapseTwo">
