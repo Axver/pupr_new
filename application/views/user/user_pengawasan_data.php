@@ -153,7 +153,7 @@ else
 										<tr>
                                          <td ><?php echo $i+1; ?></td>
 											<td><?php echo $query[$i]->id_lap_pengawasan; ?></td>
-											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan; ?>')">View</button></td>
+											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan; ?>')">View</button></td>
 										</tr>
 									<?php
 
@@ -234,8 +234,9 @@ else
 
 	function viewLap(id)
 	{
+	    let data=id.split(",");
 	    // alert(id);
-	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+id;
+	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+data[0]+"/"+data[1];
 	}
 </script>
 

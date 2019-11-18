@@ -581,6 +581,7 @@ else
 
                             if(i==5)
                             {
+                                let id_lap_perencanaan_fix=$("#id_lap_perencanaan").val();
 
 
                                 //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
@@ -588,7 +589,7 @@ else
                                     type: "POST",
 									async:false,
                                     url: "http://localhost/pupr_new/user/tambah_detail_pengawasan",
-                                    data: {"dataArray":arrayJes,'id_pengawasan':data},
+                                    data: {"dataArray":arrayJes,'id_pengawasan':data,'id_laper':id_lap_perencanaan_fix},
                                     dataType: "text",
                                     cache:false,
                                     success:
