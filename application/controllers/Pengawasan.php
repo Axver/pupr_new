@@ -9,6 +9,12 @@ class Pengawasan extends CI_Controller {
 		$this->load->view("pengawasan/index",$data);
 	}
 
+	public function login_user()
+	{
+		$data['user']=$this->db->get("account")->result();
+		$this->load->view("pengawasan/login_user",$data);
+	}
+
 	public function read($id)
 	{
 
@@ -57,5 +63,39 @@ class Pengawasan extends CI_Controller {
 	public function perencanaan($i)
 	{
 		$this->load->view("pengawasan/perencanaan");
+	}
+
+	public function login($nip)
+	{
+//		Cari nama dan Privilage dari user
+		$selData=$this->db->get_where("account",array("nip"=>$nip))->result();
+//      Cek Privilage dulu
+		if($this->session->userdata("privilage")==1)
+		{
+//           Proses Loginnya disini
+			$data= array(
+				'nip'=>$nip,
+				'nama'=>$selData[0]->nama,
+				'privilage'=>$selData[0]->privilage
+			);
+
+			$this->session->set_userdata($data);
+			if($selData[0]->privilage==1)
+			{
+
+				redirect(base_url()."admin");
+			}
+			else if($selData[0]->privilage==2)
+			{
+				redirect(base_url()."user");
+			}
+
+		}
+		else
+		{
+
+//			Tidak Bisa Login
+			redirect(base_url());
+		}
 	}
 }

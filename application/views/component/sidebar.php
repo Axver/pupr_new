@@ -67,6 +67,7 @@
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Setting</h6>
 				<a class="collapse-item" href="<?php echo base_url('pengawasan') ?>">Pengawasan</a>
+				<a class="collapse-item" href="<?php echo base_url('pengawasan/login_user') ?>">Login As User</a>
 
 
 
@@ -135,6 +136,8 @@
 				</div>
 			</div>
 		</li>
+
+
 		<button class="btn btn-info" onclick="logout()">Logout</button>
 
 		<script>
