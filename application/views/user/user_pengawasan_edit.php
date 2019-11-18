@@ -128,6 +128,13 @@ else
 
 								<button class="btn btn-info" onclick="addRow()">+</button>
 								<b>*Klik Column Untuk Edit dan + untuk Menambah Rows</b>
+                                <br/>
+								Pengawasan:
+								<input type="text" class="form form-control" id="id_pengawasan" value="<?php echo $this->uri->segment('3'); ?>" disabled>
+								Perencanaan:
+								<input type="text" class="form form-control" id="id_laper" value="<?php echo $this->uri->segment('4'); ?>" disabled>
+								Minggu:
+								<input type="text" class="form form-control" id="minggu" value="<?php echo $this->uri->segment('5'); ?>" disabled>
 
 								<table class="tg table table-bordered" id="tabel_pengawasan">
 									<tr>
@@ -167,7 +174,7 @@ else
 								</table>
 
 
-								<button class="btn btn-success">Update</button>
+								<button class="btn btn-success" onclick="saveData()">Update</button>
 
 
 
@@ -301,6 +308,79 @@ else
 		$("#"+row).text(text);
 
 		$("#mJesi").modal("hide");
+    }
+
+
+    function saveData()
+    {
+        let i=0;
+        let arrayJes=[];
+
+        let minggu=$("#minggu").val();
+        let lap_perencanaan=$("#id_laper").val();
+        let id_pengawasan=$("#id_pengawasan").val();
+
+        $.ajax({
+            type: "POST",
+            async:false,
+            url: "http://localhost/pupr_new/user_pengawasan_data/hapus",
+            data: {"dataArray":arrayJes,'id_pengawasan':id_pengawasan,'id_laper':lap_perencanaan,"minggu":minggu},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    console.log("------");
+                    console.log(data);
+                    console.log("------");
+                }
+        });
+
+                    //   id laporan pengawasn didapatkan
+                    //	Input detail kemudian
+                    $(".jesi").each(function() {
+
+                        if(i<6)
+                        {
+
+                            arrayJes[i]=$(this).text();
+
+                            if(i==5)
+                            {
+                                let id_lap_perencanaan_fix=$("#id_lap_perencanaan").val();
+
+
+                                //Ajax untuk menyimpan detail dari laporan pengawasan kemudian
+                                $.ajax({
+                                    type: "POST",
+                                    async:false,
+                                    url: "http://localhost/pupr_new/user_pengawasan_data/tambah_detail_pengawasan",
+                                    data: {"dataArray":arrayJes,'id_pengawasan':id_pengawasan,'id_laper':lap_perencanaan,"minggu":minggu},
+                                    dataType: "text",
+                                    cache:false,
+                                    success:
+                                        function(data){
+                                            console.log("------");
+                                            console.log(data);
+                                            console.log("------");
+                                        }
+                                });
+                                i=0;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+
+
+                        }
+
+
+                    });
+
+
+
+
     }
 </script>
 
