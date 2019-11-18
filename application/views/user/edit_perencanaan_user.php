@@ -131,6 +131,17 @@ else
 	<?php $this->load->view('component/sidebar_user'); ?>
 	<?php $this->load->view('modal/add_waktu'); ?>
 	<?php $this->load->view('modal/add_alat_bahan'); ?>
+
+	<?php
+
+	$paket_info=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("3")))->result();
+
+	$id_paket=$paket_info[0]->id_paket;
+//	Pilih paket info
+
+	$paket_info=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+
+	?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -220,6 +231,8 @@ else
 
 							<div class="card-body" id="cetakIni">
 
+								<input type="hidden" id="id_perencanaan_hidden" value="<?php echo $this->uri->segment('3'); ?>">
+
 
 
 
@@ -237,62 +250,50 @@ else
 										<div class="row">
 											<div class="col-sm-3">Nama Paket</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><select id="nama_paket" class="form form-control">
-													<?php
-													$jum_paket=count($paket);
-													$i=0;
-													while($i<$jum_paket)
-													{
-														?>
-														<option value="<?php echo $paket[$i]->id_paket.'_'.$paket[$i]->tahun; ?>"><?php echo $paket[$i]->nama ?></option>
-														<?php
+											<div class="col-sm-8">
+												<input type="text" class="form form-control" id="nama_paket" value="<?php echo $paket_info[0]->nama; ?>" disabled>
 
-														$i++;
-													}
-													?>
-												</select>
-												<a href="#">New</a>
 											</div>
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Nilai Paket</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="nilai_paket"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="nilai_paket" value="<?php echo $paket_info[0]->nilai_paket; ?>" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Jumlah Tahap</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jumlah_tahap"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="jumlah_tahap" value="<?php echo $paket_info[0]->jumlah_tahap; ?>" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Jenis Pekerjaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan" value="<?php echo $paket_info[0]->jenis_pekerjaan; ?>" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Masa Pelaksanaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="masa_pelaksanaan"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="masa_pelaksanaan" value="<?php echo $paket_info[0]->masa_pelaksanaan; ?>" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Lokasi</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="lokasi"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="lokasi" value="<?php echo $paket_info[0]->lokasi; ?>" disabled></div>
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Tahun Anggaran</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="tahun_anggaran"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="tahun_anggaran" value="<?php echo $paket_info[0]->tahun_anggaran; ?>" disabled> </div>
 
 										</div>
 									</div>
@@ -305,13 +306,17 @@ else
 												<?php
 												$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("3")))->result();
 												?>
-												<div id='img_contain'><img id="blah" align='middle' src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" alt="your image" title=''/></div>
-												<div class="input-group">
-													<div class="custom-file">
-														<input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
-														<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-													</div>
+												<div id='img_contain'>
+													<?php
+													if(count($getImage)>=1)
+													{
+														?>
+														<img id="blah" align='middle' src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" alt="your image" title=''/>
+													<?php
+													}
+													?>
 												</div>
+
 											</form>
 											<div class="credit">Modified using <a target="_blank" href="https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded">Ivan Baev's</a> code.</div>
 										</div>
@@ -704,18 +709,21 @@ else
 								<!--								Bagian Bawah-->
 								<div class="row">
 									<div class="col-sm-6" id="border">
+										<?php $infoPerencanaan=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("3")))->result();
+
+										?>
 										<b>Informasi</b>
 										<br/>
 										<label for="">Lokasi</label>
-										<input type="text" class="form form-control" placeholder="Lokasi">
+										<input type="text" class="form form-control" placeholder="Lokasi" value="<?php echo $infoPerencanaan[0]->lokasi; ?>">
 										<label for="">Jenis Pekerjaan</label>
-										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan">
+										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan" value="<?php echo  $infoPerencanaan[0]->jenis_pekerjaan; ?>">
 										<label for="">Panjang Penanganan</label>
-										<input type="text" class="form form-control" placeholder="Panjang Penanganan">
+										<input type="text" class="form form-control" placeholder="Panjang Penanganan" value="<?php echo  $infoPerencanaan[0]->panjang_penanganan; ?>">
 										<label for="">Keterangan Dimensi</label>
-										<input type="text" class="form form-control" placeholder="Keterangan Dimensi">
+										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" value="<?php echo  $infoPerencanaan[0]->keterangan_dimensi; ?>">
 										<label for="">Keterengan</label>
-										<input type="text" class="form form-control" placeholder="Keterangan">
+										<input type="text" class="form form-control" placeholder="Keterangan" value="<?php echo  $infoPerencanaan[0]->keterangan; ?>">
 
 
 
@@ -1234,7 +1242,70 @@ function generatePDF(id) {
     window.location="http://localhost/pupr_new/cetak_perencanaan/"+id;
 
 }
+
+
+let id_perencanaan_hidden=$("#id_perencanaan_hidden").val();
+// alert(id_perencanaan_hidden);
+//Ambil data dari paket
+
+
 </script>
+
+
+
+<script>
+<!--	Generate Tabel Bahan Alat-->
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/edit_perencanaan_user/bahan_alat",
+    data: {"id_perencanaan":id_perencanaan_hidden},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log("jesi");
+            console.log(data);
+            console.log("jesi");
+
+        //    Generate table rows
+
+			let length= data.length;
+			let i=0;
+			while(i<length)
+			{
+                var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].id_jenis_bahan_alat+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t\t\t\t</tr>";
+                $("#tabel_alat").append(newRowX);
+                let x=1;
+                while(x<=60)
+                {
+                    let data_=data[i].id_jenis_bahan_alat+"___"+x;
+
+
+
+                    data_=data_.toString();
+
+
+                    var newColX="<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\" onclick=\"tambahAngka('"+data_+"')\" id='"+data_+"' class='nonActive2'></td>";
+                    $("#pekerjaan_waktu_"+data[i].id_jenis_bahan_alat).append(newColX);
+                    x++;
+                }
+
+			    i++;
+			}
+        }
+});
+</script>
+
 
 
 

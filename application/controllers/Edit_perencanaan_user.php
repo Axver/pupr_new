@@ -28,5 +28,14 @@ class Edit_perencanaan_user extends CI_Controller {
 		$this->load->view("user/edit_perencanaan_user",$data);
 	}
 
+	public function bahan_alat()
+	{
+      $id_perencanaan=$this->input->post("id_perencanaan");
+//      Select From DB
+		$data=$this->db->get_where("detail_bahan_alat",array("id_lap_perencanaan"=>$id_perencanaan))->result();
+
+		echo json_encode($data);
+	}
+
 
 }
