@@ -175,6 +175,7 @@ else
 
 
 
+
 								<!--								Tabel Pertama-->
 								<br/>
 
@@ -243,6 +244,12 @@ else
 									</div>
 								</div>
 								<br/>
+								Lap Perencanaan:
+								<input type="text" id="id_lap_perencanaan" class="form form-control" value="<?php echo $this->uri->segment('4') ?>" disabled>
+								Tanggal:
+								<input type="text" id="hari_tanggal_" class="form form-control" value="<?php echo $this->uri->segment('3') ?>" disabled>
+								Id Paket:
+								<input type="text" id="paket" class="form form-control" value="<?php echo $lapar['lapar'][0]->id_paket?>" disabled>
 								<button class="btn btn-info" onclick="addRow()">+</button>
 								<b>*Klik Column untuk Update Data</b>
 
@@ -295,7 +302,7 @@ else
 
 								<br/>
 
-								<button class="btn btn-success">Update</button>
+								<button class="btn btn-success" onclick="update()">Update</button>
 								<input type="hidden" id="j">
 
 
@@ -383,11 +390,11 @@ else
                     console.log("waha");
 					let j=i+1;
                     $("#tabel_harian").append('\t\t<tr>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jenis_pekerja" id="'+j+'_1">'+data[i].jenis_pekerja+'</td>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jumlah_pekerja" id="'+j+'_2">'+data[i].jumlah_pekerja+'</td>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jenis_bahan" id="'+j+'_3">'+data[i].id_jenis_bahan_alat+'</td>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax satuan_bahan" id="'+j+'_4">'+data[i].id_satuan+'</td>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jumlah_bahan" id="'+j+'_5">'+data[i].jumlah_bahan+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jenis_pekerja" id="'+j+'_1">'+data[i].jenis_pekerja+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jumlah_pekerja" id="'+j+'_2">'+data[i].jumlah_pekerja+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jenis_bahan" id="'+j+'_3">'+data[i].id_jenis_bahan_alat+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi satuan_bahan" id="'+j+'_4">'+data[i].id_satuan+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jumlah_bahan" id="'+j+'_5">'+data[i].jumlah_bahan+'</td>\n' +
                         '\t\t\t\t\t\t\t\t\t</tr>');
 
                     $("#j").val(j);
@@ -564,7 +571,7 @@ function edit_satuan_bahan()
 {
 
     let id_column=$("#id_column_satuan_bahan").val();
-    let text_=$("#jenis_satuan_value").val();
+    let text_=$("#satuan").val();
 
 
 
@@ -593,19 +600,66 @@ let m=0;
 
 function addRow() {
 
-  
+
 
     $("#tabel_harian").append('\t\t<tr>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jenis_pekerja" id="'+nilai_save+m+'_1"></td>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jumlah_pekerja" id="'+nilai_save+m+'_2"></td>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jenis_bahan" id="'+nilai_save+m+'_3"></td>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax satuan_bahan" id="'+nilai_save+m+'_4"></td>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax jumlah_bahan" id="'+nilai_save+m+'_5"></td>\n' +
+        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jenis_pekerja" id="'+nilai_save+m+'_1"></td>\n' +
+        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jumlah_pekerja" id="'+nilai_save+m+'_2"></td>\n' +
+        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jenis_bahan" id="'+nilai_save+m+'_3"></td>\n' +
+        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi satuan_bahan" id="'+nilai_save+m+'_4"></td>\n' +
+        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jumlah_bahan" id="'+nilai_save+m+'_5"></td>\n' +
         '\t\t\t\t\t\t\t\t\t</tr>');
 
     m++;
 
     listener();
+
+}
+
+
+function update()
+{
+    // alert("update");
+
+        let id_paket_=$("#paket").val();
+        let id_laper=$("#id_lap_perencanaan").val();
+        let hari_tanggal=$("#hari_tanggal_").val();
+
+        alert(hari_tanggal);
+
+                    let xo=0;
+                    let dataArray=[];
+                    //    Ekstrak data dari Tabel dahulu
+                    $(".data_jesi").each(function() {
+                        dataArray[xo]=$(this).text();
+                        xo++;
+
+                    });
+
+                    console.log("HMMMMMM");
+                    console.log(dataArray);
+                    console.log("Hmmmmmmm");
+
+                    //Setelah Laporan Harian Disimpan Maka Masukkan Detailnya
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/view_harian/detail_harian",
+                        data: {"data":dataArray,"id_lap_perencanaan":id_laper,"id_paket":id_paket_,"id_lapharmin":hari_tanggal},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                console.log(data);
+                            }
+                    });
+
+
+        //    Simpan Yang Bawah Juga
+
+
+
+
 
 }
 

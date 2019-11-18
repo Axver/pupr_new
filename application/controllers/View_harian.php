@@ -58,5 +58,132 @@ class View_harian extends CI_Controller {
 		$this->load->view("user/view_harian_edit",$data);
 	}
 
+	public function detail_harian()
+	{
+		$data=$this->input->post("data");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+
+//	Dapatkan Tahun
+
+		$getTahun=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+		$tahun=$getTahun[0]->tahun;
+
+//	Dapatkan Id Detail Laporan Harian
+
+		$id_lapharian_mingguan=$this->input->post("id_lapharmin");
+
+		//		Detele semua data terlebih dahulu
+		$this->db->query("DELETE FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$id_lapharian_mingguan' AND id_lap_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket'");
+        echo "DELETE FROM detail_bahan_alat_harian WHERE id_lap_harian_mingguan='$id_lapharian_mingguan' AND id_lap_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket'";
+		$inti= array(
+			"id_lap_harian_mingguan"=>$id_lapharian_mingguan,
+			"id_lap_perencanaan"=>$id_lap_perencanaan,
+			"id_paket"=>$id_paket,
+			"tahun"=>$tahun
+		);
+
+
+		$count=count($data);
+
+		$perulangan=$count/5;
+
+
+		$i=0;
+		$x=0;
+		$arr3=array(
+
+		);
+		while($i<$perulangan)
+		{
+			$j=0;
+			while ($j<5)
+			{
+//			echo $x;
+				if($j==0)
+				{
+					$final=array(
+						'jenis_pekerja'=>$data[$x],
+					);
+				}
+				else if($j==1)
+				{
+					$final=array(
+						'jumlah_pekerja'=>$data[$x],
+					);
+				}
+
+				else if($j==2)
+				{
+					$final=array(
+						'id_jenis_bahan_alat'=>$data[$x],
+					);
+				}
+				else if($j==3)
+				{
+					$final=array(
+						'id_satuan'=>$data[$x],
+					);
+				}
+				else if($j==4)
+				{
+					$final=array(
+						'jumlah_bahan'=>$data[$x],
+					);
+				}
+				$arr3=$arr3+$final;
+
+				$x++;
+				$j++;
+			}
+
+//		echo "hahahaha";
+//		var_dump($arr3+$inti);
+			$arr3=$arr3+$inti;
+			$this->db->insert("detail_bahan_alat_harian",$arr3);
+//		echo "hahaha";
+
+			$arr3=array(
+
+			);
+
+
+			$i++;
+		}
+
+
+
+
+
+
+		$i=0;
+		$j=0;
+		$x=0;
+
+
+		while($i<$count)
+		{
+			if($i!=0&&$i%5!=0)
+			{
+				$hasilData[$x][$j]=$data[$i];
+				$j++;
+			}
+			else
+			{
+				$x++;
+
+				$j=0;
+			}
+
+			$i++;
+
+		}
+
+		$totalData=count($hasilData);
+
+
+
+	}
+
 
 }
