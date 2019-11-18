@@ -55,7 +55,7 @@ class Laporan_perencanaan extends CI_Controller {
 		$jumlah=$this->input->post("data1");
 
 //		Select id First
-		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(id_lap_perencanaan) FROM lap_perencanaan)")->result();
+		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(CAST(id_lap_perencanaan AS INT)) FROM lap_perencanaan)")->result();
 //        var_dump($lap_perencanaan[0]->id_lap_perencanaan);
         $id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
         $id_paket=$lap_perencanaan[0]->id_paket;

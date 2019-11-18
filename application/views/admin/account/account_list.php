@@ -157,7 +157,7 @@ else
 									<tr>
 										<th>No</th>
 										<th>Nama</th>
-										<th>Password</th>
+
 										<th>Privilage</th>
 										<th>Action</th>
 									</tr><?php
@@ -167,8 +167,15 @@ else
 										<tr>
 											<td width="80px"><?php echo ++$start ?></td>
 											<td><?php echo $account->nama ?></td>
-											<td><?php echo $account->password ?></td>
-											<td><?php echo $account->privilage ?></td>
+
+											<td><?php if($account->privilage==1)
+												{
+													echo "Administrator";
+												}
+												else
+												{
+													echo "User";
+												}?></td>
 											<td style="text-align:center" width="200px">
 												<?php
 												echo anchor(site_url('account/read/'.$account->nip),'Read');

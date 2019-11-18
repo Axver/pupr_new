@@ -137,7 +137,12 @@ else
 									</div>
 									<div class="form-group">
 										<label for="varchar">Privilage <?php echo form_error('privilage') ?></label>
-										<input type="text" class="form-control" name="privilage" id="privilage" placeholder="Privilage" value="<?php echo $privilage; ?>" />
+<!--										<input type="text" class="form-control" name="privilage" id="privilage" placeholder="Privilage" value="--><?php //echo $privilage; ?><!--" />-->
+
+										<select class="form form-control" name="privilage" id="privilage" >
+											<option value="1">Administrator</option>
+											<option value="2">User</option>
+										</select>
 									</div>
 
 									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
