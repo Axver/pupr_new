@@ -402,8 +402,15 @@ $.ajax({
         function(data){
             data=JSON.parse(data);
             console.log(data);
-            $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[0].gambar+'">');
+            let length=data.length;
+            let i=0;
 
+            while(i<length)
+			{
+                $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[i].gambar+'">');
+
+                i++;
+			}
         }
 });
 
