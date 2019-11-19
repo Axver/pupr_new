@@ -114,15 +114,19 @@ class Laporan_perencanaan extends CI_Controller {
 
 		$data=$this->input->post("data");
 		$jumlah=$this->input->post("data1");
+		$max=$this->input->post("id_lap_perencanaan");
+
+		$id_paket=$this->input->post("id_paket");
+		$id_paket=explode('_',$id_paket);
 
 //		Select id First
-		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(CAST(id_lap_perencanaan AS INT)) FROM lap_perencanaan)")->result();
+//		$lap_perencanaan=$this->db->query("SELECT * FROM `lap_perencanaan` WHERE id_lap_perencanaan=(SELECT MAX(CAST(id_lap_perencanaan AS INT)) FROM lap_perencanaan)")->result();
 //        var_dump($lap_perencanaan[0]->id_lap_perencanaan);
-		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
-		$id_paket=$lap_perencanaan[0]->id_paket;
-		$tahun=$lap_perencanaan[0]->tahun;
+//		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+//		$id_paket=$lap_perencanaan[0]->id_paket;
+//		$tahun=$lap_perencanaan[0]->tahun;
 
-		$this->db->query("DELETE FROM detail_jenis_pekerjaan WHERE id_lap_perencanaan='$id_lap_perencanaan'");
+		$this->db->query("DELETE FROM detail_jenis_pekerjaan WHERE id_lap_perencanaan='$max'");
 
 
 		var_dump($data);
@@ -143,9 +147,9 @@ class Laporan_perencanaan extends CI_Controller {
 
 			$data_input= array(
 				"id"=>$id,
-				"id_lap_perencanaan"=>$id_lap_perencanaan,
-				"id_paket"=>$id_paket,
-				"tahun"=>$tahun,
+				"id_lap_perencanaan"=>$max,
+				"id_paket"=>$id_paket[0],
+				"tahun"=>$id_paket[1],
 				"tukang"=>"",
 				"pekerja"=>$pekerja,
 				"tanggal"=>$tanggal,

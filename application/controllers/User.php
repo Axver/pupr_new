@@ -397,16 +397,16 @@ public function pekerjaan()
 //		Cari Tahu Jumlahnya terlebih dahulu
 		$jumlah=count($minggu);
 		$i=0;
-		echo "*&*&*&*&";
-		echo $jumlah;
-		echo "Xkalskalks";
+//		echo "*&*&*&*&";
+//		echo $jumlah;
+//		echo "Xkalskalks";
 
 		while($i<$jumlah)
 		{
 			$tempData=explode("___",$minggu[$i]);
-			echo "#####";
+//			echo "#####";
 			var_dump($tempData);
-			echo "####";
+//			echo "####";
 			$tempData1=explode("_",$data[$i]);
 
 //			var_dump($tempData);
@@ -428,7 +428,7 @@ public function pekerjaan()
 			);
 
 			var_dump($data_final);
-//			$this->db->insert("detail_bahan_alat",$data_final);
+			$this->db->insert("detail_bahan_alat",$data_final);
 			$i++;
 		}
 	}

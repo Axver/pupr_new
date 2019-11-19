@@ -192,6 +192,7 @@ else
 
 
 					<div class="topbar-divider d-none d-sm-block"></div>
+					<input type="hidden" id="uri_nya" value="<?php echo $this->uri->segment('3'); ?>">
 
 					<!-- Nav Item - User Information -->
 
@@ -1085,13 +1086,7 @@ else
         let dataArray1=new Array();
 
         $(".Active").each(function (index, element) {
-            // element == this
-            // if ($(this).attr("src") == "style/EmptyStar.png") {
-            //     return false;
-            // }
-            // else {
-            //     score = score + 1;
-            // };
+
 
 
             dataArray[i]=$(this).attr("id");
@@ -1140,11 +1135,12 @@ else
                         dataType : "text",
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
-                            console.log("&*&*&*&*");
-                            console.log(data);
-                            console.log("&*&*&*&*");
 
                             alert(data);
+                            console.log("add jenis pekerjaan");
+                            console.log(data);
+
+                            // alert(data);
 
                         }
                     });
@@ -1152,6 +1148,7 @@ else
                     console.log("-----");
                     console.log(max_id);
                     console.log("------");
+                    // alert(max_id);
 
                     //    Tambahkan Jenis Pekerjaan
 
@@ -1192,6 +1189,7 @@ else
                         success:
                             function(data){
                                 console.log(data);
+                                alert(data);
                             }
                     });
 
@@ -1234,6 +1232,7 @@ else
                                 // alert(data);  //as a debugging message.
                                 console.log("hmmmm");
                                 console.log(data);
+                                alert(data);
                                 console.log("hmmmm");
                             }
                     });
@@ -1250,6 +1249,7 @@ else
 
     //    Ambil data paket
     let uri_nya=$("#uri_nya").val();
+    // alert(uri_nya);
     //   Getting Package Data
 
     $.ajax({
