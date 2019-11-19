@@ -150,6 +150,7 @@ else
 
 								<input type="hidden" value="<?php echo $lapar['lapar'][0]->id_paket?>" id="id_paket_asli">
 								<input type="hidden" id="id_harian_asli" value="<?php echo $this->uri->segment('3'); ?>">
+								<input type="hidden" id="id_perencanaan_asli" value="<?php echo $this->uri->segment('4'); ?>">
 
 
 
@@ -266,11 +267,11 @@ else
 										<th class="tg-cly1">Keterangan Dimensi</th>
 									</tr>
 									<tr>
-										<td class="tg-cly1"  ></td>
+										<td class="tg-cly1"  id="mJenis" ></td>
 										<td class="tg-cly1" id="mSket"  ></td>
-										<td class="tg-cly1" ></td>
-										<td class="tg-cly1" ></td>
-										<td class="tg-cly1" ></td>
+										<td class="tg-cly1"  id="mLokasi"></td>
+										<td class="tg-cly1" id="mPanjang"></td>
+										<td class="tg-cly1" id="mDimensi"></td>
 									</tr>
 
 
@@ -347,11 +348,12 @@ else
 
     //Kemudian Load Data Untuk Tabelnya
     let id_harian_asli=$("#id_harian_asli").val();
+    let id_paket_asli1=$("#id_paket_asli").val();
 
     $.ajax({
         type: "POST",
         url: "http://localhost/pupr_new/view_harian/data_tabel",
-        data: {"id_harian":id_harian_asli},
+        data: {"id_harian":id_harian_asli,"id_paket":id_paket_asli1},
         dataType: "text",
         cache:false,
         success:
@@ -404,12 +406,13 @@ else
         // html2pdf().from(element).save();
     }
 
+    let id_perencanaan_asli=$("#id_perencanaan_asli").val();
 
     //Ajax Untuk Mendapatkan Gambar
     $.ajax({
         type: "POST",
         url: "http://localhost/pupr_new/view_harian/get_gambar",
-        data: {"id_harian":id_harian_asli},
+        data: {"id_harian":id_harian_asli,"id_perencanaan":id_perencanaan_asli},
         dataType: "text",
         cache:false,
         success:
@@ -420,6 +423,36 @@ else
 
             }
     });
+
+    //Ajax untuk menampilkan tabel bawah
+
+    //Ajax Untuk Mendapatkan Gambar
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/view_harian/get_bawah",
+        data: {"id_harian":id_harian_asli,"id_perencanaan":id_perencanaan_asli},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log("hmmmmm");
+                console.log(data);
+
+                let length=data.length;
+                let i=0;
+                while(i<length)
+                {
+                    $("#mDimensi").text(data[i].dimensi);
+                    $("#mLokasi").text(data[i].lokasi);
+                    $("#mPanjang").text(data[i].panjang_penanganan);
+                    $("#mJenis").text(data[i].jenis_pekerjaan);
+
+                    i++;
+                }
+            }
+    });
+
 
 
 </script>
