@@ -148,7 +148,7 @@ else
 										<tr>
 											<td><?php echo $data[$i]->id_paket; ?></td>
 											<td><?php echo $data[$i]->tahun; ?></td>
-											<td><button class="btn btn-info">Alihkan</button></td>
+											<td><button class="btn btn-info" onclick="alihkan('<?php echo $data[$i]->id_paket; ?>')">Alihkan</button></td>
 										</tr>
 									<?php
 
@@ -158,7 +158,84 @@ else
 
 
 									</tbody>
+
+									<script>
+										function alihkan(id)
+										{
+										    // alert(id);
+										    $("#id_paket_alih").val(id);
+										    $("#modalAlih").modal("show");
+										}
+
+
+										function alihkanPaket() {
+
+										    let id_paket_alih=$("#id_paket_alih").val();
+										    let id_user_alih=$("#id_user_alih").val();
+
+										    // alert(id_paket_alih);
+										    // alert(id_user_alih);
+										    //Kirim dengan Ajax
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "http://localhost/pupr_new/pengawasan/alih_paket",
+                                                data: {"id_paket":id_paket_alih,"id_user":id_user_alih},
+                                                dataType: "text",
+                                                cache:false,
+                                                success:
+                                                    function(data){
+                                                          //as a debugging message.
+                                                        location.reload(true);
+                                                    }
+                                            });
+                                            $("#modalAlih").modal("hide");
+										    // alert("test");
+
+                                        }
+									</script>
 								</table>
+
+<!--								Modal Alohkan Paket-->
+
+								<!-- Modal -->
+								<div class="modal fade" id="modalAlih" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Alihkan Paket</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												Paket:
+												<input type="text" class="form form-control" id="id_paket_alih" disabled>
+												Kepada User:
+												<select id="id_user_alih" class="form form-control">
+													<?php
+													$datanya=$this->db->get("account")->result();
+
+													$count=count($datanya);
+													$i=0;
+
+													while($i<$count)
+													{
+														?>
+														<option value="<?php echo $datanya[$i]->nip; ?>"><?php echo $datanya[$i]->nama; ?></option>
+													<?php
+
+														$i++;
+													}
+													?>
+												</select>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary" onclick="alihkanPaket()">Save changes</button>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
 

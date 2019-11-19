@@ -65,6 +65,16 @@ class Pengawasan extends CI_Controller {
 		$this->load->view("pengawasan/perencanaan");
 	}
 
+	public function alih_paket()
+	{
+       $id_paket=$this->input->post("id_paket");
+       $id_user=$this->input->post("id_user");
+
+		$this->db->set('nip', $id_user);
+		$this->db->where('id_paket', $id_paket);
+		$this->db->update('detail_paket');
+	}
+
 	public function login($nip)
 	{
 //		Cari nama dan Privilage dari user
