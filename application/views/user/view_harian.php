@@ -145,6 +145,7 @@ else
 							<!-- Card Body -->
 							<button onclick="generatePDF()" class="btn btn-info">Generate PDF</button>
 							<div class="card-body" id="cetak_pdf">
+								<center><h2>LAPORAN HARIAN</h2></center>
 
 
 
