@@ -404,7 +404,7 @@ else
 
 
       $("#tabel_harian").append('\t\t<tr>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_jenis1 data_jesi" id="'+row_table+'_1"></td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_harian data_jesi" id="'+row_table+'_2"></td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_jenis data_jesi" id="'+row_table+'_3"></td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax klik_satuan data_jesi" id="'+row_table+'_4"></td>\n' +
@@ -450,6 +450,20 @@ else
             console.log(attribute);
             $("#id_jenis_bahan").val(attribute);
             $("#myModalJenis").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //    Event Listener Untuk Jenis
+        var classname = document.getElementsByClassName("klik_jenis1");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_jenis_bahan1").val(attribute);
+            $("#myModalJenis1").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -605,6 +619,30 @@ else
 
     //    Simpan Yang Bawah Juga
 
+		let mJenisSave=$("#mJenis").text();
+        let mLokasiSave=$("#mLokasi").text();
+        let mPenangananSave=$("#mPenanganan").text();
+        let mDimensiSave=$("#mDimensi").text();
+
+    //    Ajax Jquery POST
+
+        $.ajax({
+            type: "POST",
+			async:false,
+            url: "http://localhost/pupr_new/user/save_bawah",
+            data: {"id_paket":id_paket_,"id_lap_perencanaan":id_laper,"hari_tanggal":hari_tanggal,"mJenis":mJenisSave,"mLokasi":mLokasiSave,"mPenanganan":mPenangananSave,"mDimensi":mDimensiSave},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                }
+        });
+
+
+        alert("SUCCESS!!");
+
+
 
 
 
@@ -699,6 +737,17 @@ else
 	    // alert($("#data_jenis_bahan").val());
         $("#"+id_jenis).text($("#data_jenis_bahan").val());
 	}
+
+    function dataJenisBahan1()
+    {
+
+        id_jenis=$("#id_jenis_bahan1").val();
+
+        // alert(id_jenis);
+        // alert(id_jenis);
+        // alert($("#data_jenis_bahan").val());
+        $("#"+id_jenis).text($("#data_jenis_bahan1").val());
+    }
 </script>
 
 
@@ -921,6 +970,53 @@ else
 
 
 				<button class="btn btn-info" onclick="dataJenisBahan()">Tambah</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<!--Modal Jenis-->
+<!-- Modal -->
+<div id="myModalJenis1" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body">
+
+				<b>Modal Jenis</b>
+				<br/>
+				<!--				Data satuan Disini-->
+				<input type="text" id="id_jenis_bahan1" class="form form-control" disabled>
+
+				<select id="data_jenis_bahan1" class="form form-control">
+					<?php
+					$satuan_db=$this->db->get("jenis_pekerjaan")->result();
+					$count=count($satuan_db);
+					$i=0;
+
+					while($i<$count)
+					{?>
+						<option value="<?php echo $satuan_db[$i]->id; ?>"><?php echo $satuan_db[$i]->nama_jenis; ?></option>
+						<?php
+
+						$i++;
+					}
+					?>
+				</select>
+
+
+				<button class="btn btn-info" onclick="dataJenisBahan1()">Tambah</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

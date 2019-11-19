@@ -333,11 +333,14 @@ $.ajax({
 
 //Kemudian Load Data Untuk Tabelnya
 let id_harian_asli=$("#id_harian_asli").val();
+let id_paket_asli1=$("#id_paket_asli").val();
+console.log("test");
+// alert(id_paket_asli);
 
 $.ajax({
     type: "POST",
     url: "http://localhost/pupr_new/view_harian/data_tabel",
-    data: {"id_harian":id_harian_asli},
+    data: {"id_harian":id_harian_asli,"id_paket":id_paket_asli1},
     dataType: "text",
     cache:false,
     success:
@@ -399,6 +402,9 @@ $.ajax({
 
         }
 });
+
+
+//Ajax untuk menampilkan tabel bawah
 
 
 </script>
