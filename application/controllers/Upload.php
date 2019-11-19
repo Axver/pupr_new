@@ -97,4 +97,15 @@ class Upload extends CI_Controller{
 		$this->db->query("DELETE FROM gambar_harian WHERE id_lap_harian='$harian' AND id_perencanaan='$perencanaan' AND gambar='$nama'");
 	}
 
+	public function hapus1()
+	{
+
+		$perencanaan=$this->input->post("perencanaan");
+		$nama=$this->input->post("nama");
+
+//       Hapus
+
+		$this->db->query("DELETE FROM gambar_perencanaan WHERE  id_lap_perencanaan='$perencanaan' AND gambar='$nama'");
+	}
+
 }

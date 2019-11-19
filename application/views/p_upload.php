@@ -166,7 +166,7 @@ else
 										<tr>
 											<td><?php echo $gambar[$i]->gambar ?></td>
 											<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
-											<td><button class="btn btn-danger">Delete</button></td>
+											<td><button class="btn btn-danger" onclick="hapus('<?php echo $gambar[$i]->id_lap_perencanaan; ?>','<?php echo $gambar[$i]->gambar; ?>')">Delete</button></td>
 										</tr>
 									<?php
 
@@ -184,6 +184,23 @@ else
                                 $(document).ready(function() {
                                     $('#example').DataTable();
                                 } );
+
+                                function hapus(per,gam)
+								{
+
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://localhost/pupr_new/index.php/upload/hapus1",
+                                        data: {"perencanaan":per,"nama":gam},
+                                        dataType: "text",
+                                        cache:false,
+                                        success:
+                                            function(data){
+                                                location.reload(true);
+                                            }
+                                    });
+								}
 							</script>
 
 						</div>
