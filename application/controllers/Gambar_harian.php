@@ -1,0 +1,155 @@
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Gambar_harian extends CI_Controller
+{
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Gambar_harian_model');
+        $this->load->library('form_validation');
+    }
+
+    public function index()
+    {
+        $q = urldecode($this->input->get('q', TRUE));
+        $start = intval($this->input->get('start'));
+        
+        if ($q <> '') {
+            $config['base_url'] = base_url() . 'gambar_harian/index.html?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 'gambar_harian/index.html?q=' . urlencode($q);
+        } else {
+            $config['base_url'] = base_url() . 'gambar_harian/index.html';
+            $config['first_url'] = base_url() . 'gambar_harian/index.html';
+        }
+
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $this->Gambar_harian_model->total_rows($q);
+        $gambar_harian = $this->Gambar_harian_model->get_limit_data($config['per_page'], $start, $q);
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+
+        $data = array(
+            'gambar_harian_data' => $gambar_harian,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+        );
+        $this->load->view('gambar_harian/gambar_harian_list', $data);
+    }
+
+    public function read($id) 
+    {
+        $row = $this->Gambar_harian_model->get_by_id($id);
+        if ($row) {
+            $data = array(
+		'id_lap_harian' => $row->id_lap_harian,
+		'gambar' => $row->gambar,
+		'id_paket' => $row->id_paket,
+		'id_perencanaan' => $row->id_perencanaan,
+	    );
+            $this->load->view('gambar_harian/gambar_harian_read', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('gambar_harian'));
+        }
+    }
+
+    public function create() 
+    {
+        $data = array(
+            'button' => 'Create',
+            'action' => site_url('gambar_harian/create_action'),
+	    'id_lap_harian' => set_value('id_lap_harian'),
+	    'gambar' => set_value('gambar'),
+	    'id_paket' => set_value('id_paket'),
+	    'id_perencanaan' => set_value('id_perencanaan'),
+	);
+        $this->load->view('gambar_harian/gambar_harian_form', $data);
+    }
+    
+    public function create_action() 
+    {
+        $this->_rules();
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->create();
+        } else {
+            $data = array(
+	    );
+
+            $this->Gambar_harian_model->insert($data);
+            $this->session->set_flashdata('message', 'Create Record Success');
+            redirect(site_url('gambar_harian'));
+        }
+    }
+    
+    public function update($id) 
+    {
+        $row = $this->Gambar_harian_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'Update',
+                'action' => site_url('gambar_harian/update_action'),
+		'id_lap_harian' => set_value('id_lap_harian', $row->id_lap_harian),
+		'gambar' => set_value('gambar', $row->gambar),
+		'id_paket' => set_value('id_paket', $row->id_paket),
+		'id_perencanaan' => set_value('id_perencanaan', $row->id_perencanaan),
+	    );
+            $this->load->view('gambar_harian/gambar_harian_form', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('gambar_harian'));
+        }
+    }
+    
+    public function update_action() 
+    {
+        $this->_rules();
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->update($this->input->post('id_lap_harian', TRUE));
+        } else {
+            $data = array(
+	    );
+
+            $this->Gambar_harian_model->update($this->input->post('id_lap_harian', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success');
+            redirect(site_url('gambar_harian'));
+        }
+    }
+    
+    public function delete($id) 
+    {
+        $row = $this->Gambar_harian_model->get_by_id($id);
+
+        if ($row) {
+            $this->Gambar_harian_model->delete($id);
+            $this->session->set_flashdata('message', 'Delete Record Success');
+            redirect(site_url('gambar_harian'));
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('gambar_harian'));
+        }
+    }
+
+    public function _rules() 
+    {
+
+	$this->form_validation->set_rules('id_lap_harian', 'id_lap_harian', 'trim');
+	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    }
+
+}
+
+/* End of file Gambar_harian.php */
+/* Location: ./application/controllers/Gambar_harian.php */
+/* Please DO NOT modify this information : */
+/* Generated by Harviacode Codeigniter CRUD Generator 2019-11-19 05:47:43 */
+/* http://harviacode.com */

@@ -5,6 +5,7 @@ class Upload extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+
 	}
 
 	public function index($id){
@@ -54,6 +55,7 @@ class Upload extends CI_Controller{
 		$config['max_size']             = 10000;
 		$config['max_width']            = 10000;
 		$config['max_height']           = 10000;
+		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload', $config);
 

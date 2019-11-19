@@ -137,6 +137,50 @@ else
 								</form>
 
 
+								<br/>
+								<br/>
+								<b><h2>Daftar Gambar</h2></b>
+								<br/>
+								<br/>
+
+
+								<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+										<th>Laporan Harian</th>
+										<th>Nama Gambar</th>
+										<th>Gambar</th>
+										<th>Delete</th>
+
+									</tr>
+									</thead>
+									<tbody>
+									<?php
+									$dataGambar=$this->db->get_where("gambar_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_perencanaan"=>$this->uri->segment("4")))->result();
+									$count=count($dataGambar);
+
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+									<tr>
+										<td><?php echo $dataGambar[$i]->id_lap_harian; ?></td>
+										<td><?php echo $dataGambar[$i]->gambar; ?></td>
+										<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$dataGambar[$i]->gambar) ?>"></td>
+										<td><button class="btn btn-warning">Delete</button></td>
+									</tr>
+									<?php
+
+										$i++;
+									}
+
+
+									?>
+									</tbody>
+								</table>
+
+
 							</div>
 
 						</div>
