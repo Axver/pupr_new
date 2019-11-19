@@ -42,11 +42,13 @@ class View_harian extends CI_Controller {
 	public function get_gambar()
 	{
 		$id_lap=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
 
 
 //		Ambil nama gambar didatabase
 //
-		$data=$this->db->get_where("gambar_harian",array("id_lap_harian"=>$id_lap))->result();
+		$data=$this->db->get_where("gambar_harian",array("id_lap_harian"=>$id_lap,"id_perencanaan"=>$id_perencanaan))->result();
 
 		echo json_encode($data);
 	}

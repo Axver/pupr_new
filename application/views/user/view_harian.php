@@ -150,6 +150,7 @@ else
 
 								<input type="hidden" value="<?php echo $lapar['lapar'][0]->id_paket?>" id="id_paket_asli">
 								<input type="hidden" id="id_harian_asli" value="<?php echo $this->uri->segment('3'); ?>">
+								<input type="hidden" id="id_perencanaan_asli" value="<?php echo $this->uri->segment('4'); ?>">
 
 
 
@@ -255,11 +256,11 @@ else
 										<th class="tg-cly1">Keterangan Dimensi</th>
 									</tr>
 									<tr>
-										<td class="tg-cly1"  ></td>
+										<td class="tg-cly1" id="mJenis" ></td>
 										<td class="tg-cly1" id="mSket"  ></td>
-										<td class="tg-cly1" ></td>
-										<td class="tg-cly1" ></td>
-										<td class="tg-cly1" ></td>
+										<td class="tg-cly1"  id="mLokasi"></td>
+										<td class="tg-cly1" id="mPanjang" ></td>
+										<td class="tg-cly1" id="mDimensi" ></td>
 									</tr>
 
 
@@ -386,6 +387,27 @@ function generatePDF() {
     // html2pdf().from(element).save();
 }
 
+let id_perencanaan_asli=$("#id_perencanaan_asli").val();
+// alert(id_perencanaan_asli);
+
+//Ajax Untuk Mendapatkan Gambar
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/get_gambar",
+    data: {"id_harian":id_harian_asli,"id_perencanaan":id_perencanaan_asli},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log(data);
+            $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[0].gambar+'">');
+
+        }
+});
+
+
+//Ajax untuk menampilkan tabel bawah
 
 //Ajax Untuk Mendapatkan Gambar
 $.ajax({
@@ -402,9 +424,6 @@ $.ajax({
 
         }
 });
-
-
-//Ajax untuk menampilkan tabel bawah
 
 
 </script>

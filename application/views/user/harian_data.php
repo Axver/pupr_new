@@ -151,7 +151,7 @@ else
 										?>
 										<tr>
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
-											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">View</button></td>
+											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">View</button></td>
 											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Edit</button></td>
 											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Image</button></td>
 										</tr>
@@ -229,9 +229,9 @@ else
 
 
 <script>
-	function view(id)
+	function view(id,per)
 	{
-      window.location="view_harian/index/"+id;
+      window.location="view_harian/index/"+id+"/"+per;
 	}
 
 	function edit(id,per)
