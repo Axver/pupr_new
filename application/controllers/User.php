@@ -561,6 +561,65 @@ public function pekerjaan()
 	}
 
 
+	public function chart()
+	{
+		$id_paket=$this->input->post("id_paket");
+
+
+
+
+		$hitung1=0;
+//								Cari kemudian paket perencanaannya
+			$per = $this->db->get_where("lap_harian_mingguan", array("id_paket" => $id_paket))->result();
+			$count1 = count($per);
+			$ii = 0;
+			while ($ii < $count1) {
+				$hitung1++;
+
+				$ii++;
+			}
+
+
+
+		$hitung2=0;
+//								Cari kemudian paket perencanaannya
+		$per = $this->db->get_where("lap_perencanaan", array("id_paket" => $id_paket))->result();
+		$count1 = count($per);
+		$ii = 0;
+		while ($ii < $count1) {
+			$hitung2++;
+
+			$ii++;
+		}
+
+
+		$hitung3=0;
+//								Cari kemudian paket perencanaannya
+		$per = $this->db->get_where("lap_pengawasan", array("id_paket" => $id_paket))->result();
+		$count1 = count($per);
+		$ii = 0;
+		while ($ii < $count1) {
+			$hitung3++;
+
+			$ii++;
+		}
+
+
+		$data=array(
+          "harian"=>$hitung1,
+			"perencanaan"=>$hitung2,
+			"pengawasan"=>$hitung3
+
+		);
+
+		echo json_encode($data);
+
+
+
+
+	}
+
+
 
 
 

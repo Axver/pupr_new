@@ -138,8 +138,12 @@ else
 									<tbody>
 
 									<?php
+									$this->db->select('*');
+									$this->db->from('detail_paket');
+									$this->db->join('paket', 'detail_paket.id_paket = paket.id_paket');
+									$this->db->where('detail_paket.nip',$this->session->userdata('nip'));
 
-									$data=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata('nip')))->result();
+									$data=$this->db->get()->result();
 
 									$length=count($data);
 									$i=0;
@@ -150,7 +154,7 @@ else
 										?>
 										<tr>
 											<td><?php echo $i+1; ?></td>
-											<td><?php echo $data[$i]->id_paket ?></td>
+											<td><?php echo $data[$i]->nama ?></td>
 											<td><?php echo $data[$i]->tahun ?></td>
 											<td><button class="btn btn-info" onclick="lihatData('<?php echo $data[$i]->id_paket ?>')">Lihat</button></td>
 										</tr>

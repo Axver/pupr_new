@@ -133,9 +133,52 @@ else
 
 								<br>
 								<b>Grafik</b>
+								<input type="hidden" id="id_paket_hidden" value="<?php echo $this->uri->segment('3'); ?>">
 								<div class="panel panel-info">
 									<div class="panel-head"></div>
-									<div class="panel-body" style="height:300px; background-color: #6e707e"></div>
+									<div class="panel-body">
+										<canvas id="bar-chart" width="800" height="450"></canvas>
+										<script>
+//Ajaxnya
+let id_paket_hidden=$("#id_paket_hidden").val();
+// alert(id_paket_hidden);
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/user/chart",
+    data: {"id_paket":id_paket_hidden},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            data=JSON.parse(data);
+            console.log(data);
+            new Chart(document.getElementById("bar-chart"), {
+                type: 'bar',
+                data: {
+                    labels: ["Laporan Harian", "Laporan Perencanaan","Laporan Pengawasan"],
+                    datasets: [
+                        {
+                            label: "Population (millions)",
+                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                            data: [data.harian,data.perencanaan,data.pengawasan]
+                        }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                    }
+                }
+            });
+
+        }
+});
+                                            // Bar chart
+
+										</script>
+									</div>
 								</div>
 
 							</div>
