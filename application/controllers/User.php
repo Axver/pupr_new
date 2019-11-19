@@ -651,5 +651,38 @@ public function pekerjaan()
 
 
 
+	public function save_bawah1()
+	{
+		$id_paket=$this->input->post("id_paket");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+		$hari_tanggal=$this->input->post("hari_tanggal");
+		$mJenis=$this->input->post("mJenis");
+		$mLokasi=$this->input->post("mLokasi");
+		$mPenanganan=$this->input->post("mPenanganan");
+		$mDimensi=$this->input->post("mDimensi");
+
+//		Hapus DUlu
+		$this->db->query("DELETE FROM detail_laporan_harian WHERE id_lap_harian='$hari_tanggal' AND id_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket'");
+
+//		Input Ke Database
+
+		$data=array(
+			"jenis_pekerjaan"=>$mJenis,
+			"lokasi"=>$mLokasi,
+			"panjang_penanganan"=>$mPenanganan,
+			"dimensi"=>$mDimensi,
+			"id_lap_harian"=>$hari_tanggal,
+			"id_perencanaan"=>$id_lap_perencanaan,
+			"id_paket"=>$id_paket,
+		);
+
+//		var_dump($data);
+
+		$this->db->insert("detail_laporan_harian",$data);
+	}
+
+
+
+
 
 }

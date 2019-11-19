@@ -267,11 +267,11 @@ else
 										<th class="tg-cly1">Keterangan Dimensi</th>
 									</tr>
 									<tr>
-										<td class="tg-cly1"  id="mJenis" ></td>
-										<td class="tg-cly1" id="mSket"  ></td>
-										<td class="tg-cly1"  id="mLokasi"></td>
-										<td class="tg-cly1" id="mPanjang"></td>
-										<td class="tg-cly1" id="mDimensi"></td>
+										<td class="tg-cly1 edit"  id="mJenis" ></td>
+										<td class="tg-cly1 " id="mSket"  ></td>
+										<td class="tg-cly1 edit"  id="mLokasi"></td>
+										<td class="tg-cly1 edit" id="mPanjang"></td>
+										<td class="tg-cly1 edit" id="mDimensi"></td>
 									</tr>
 
 
@@ -419,7 +419,14 @@ else
             function(data){
                 data=JSON.parse(data);
                 console.log(data);
-                $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[0].gambar+'">');
+                let data_length=data.length;
+                let i=0;
+                while(i<data_length)
+				{
+                    $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[i].gambar+'">');
+				    i++;
+				}
+
 
             }
     });
@@ -531,6 +538,22 @@ function listener()
         console.log(attribute);
         $("#id_column_jumlah_bahan").val(attribute);
         $("#mJumlahBahan").modal("show");
+
+    };
+
+    for (var i = 0; i < classname.length; i++) {
+        classname[i].addEventListener('click', myFunction, false);
+        console.log("wuha");
+    }
+
+
+    var classname = document.getElementsByClassName("edit");
+
+    var myFunction = function() {
+        var attribute = this.id;
+        console.log(attribute);
+        $("#id_column_edit").val(attribute);
+        $("#mEdit").modal("show");
 
     };
 
@@ -668,6 +691,30 @@ function update()
 
         //    Simpan Yang Bawah Juga
 
+    //    Simpan Yang Bawah Juga
+
+    let mJenisSave=$("#mJenis").text();
+    let mLokasiSave=$("#mLokasi").text();
+    let mPenangananSave=$("#mPanjang").text();
+    let mDimensiSave=$("#mDimensi").text();
+
+    //    Ajax Jquery POST
+
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "http://localhost/pupr_new/user/save_bawah1",
+        data: {"id_paket":id_paket_,"id_lap_perencanaan":id_laper,"hari_tanggal":hari_tanggal,"mJenis":mJenisSave,"mLokasi":mLokasiSave,"mPenanganan":mPenangananSave,"mDimensi":mDimensiSave},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                // alert(data);  //as a debugging message.
+            }
+    });
+
+
+    alert("SUCCESS!!");
 
 
 
@@ -680,7 +727,39 @@ function update()
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="mEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="id_column_edit" class="form form-control" disabled>
+				<input type="text" class="form form-control" id="data_nya">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="save_datanya()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
 
+<script>
+	function save_datanya()
+	{
+	    let id=$("#id_column_edit").val();
+	    let data=$("#data_nya").val();
+
+	    $("#"+id).text(data);
+
+	    $("#mEdit").modal("hide");
+	}
+</script>
 
 
 
