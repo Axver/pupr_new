@@ -135,8 +135,56 @@ else
 
 								</form>
 
+								<br/>
+								<br/>
+
+								<b>Daftar Gambar</b>
+
+
+								<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+										<th>Name</th>
+										<th>Gambar</th>
+										<th>Delete</th>
+
+									</tr>
+									</thead>
+									<tbody>
+									<?php
+//									echo $this->uri->segment("3");
+									$gambar=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("3")))->result();
+
+									$count=count($gambar);
+
+									$i=0;
+
+									while($i<$count)
+
+									{
+										?>
+										<tr>
+											<td><?php echo $gambar[$i]->gambar ?></td>
+											<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+											<td><button class="btn btn-danger">Delete</button></td>
+										</tr>
+									<?php
+
+										$i++;
+									}
+									?>
+									</tbody>
+								</table>
+
 
 							</div>
+
+
+							<script>
+                                $(document).ready(function() {
+                                    $('#example').DataTable();
+                                } );
+							</script>
 
 						</div>
 					</div>
