@@ -1090,7 +1090,7 @@ else
                     // console.log(data);
 
                     let max_id=data;
-                    alert(max_id);
+                    // alert(max_id);
 
                     $.ajax({
                         type : "POST",
@@ -1100,18 +1100,18 @@ else
                         dataType : "text",
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
-                            console.log("&*&*&*&*");
-                            console.log(data);
-                            console.log("&*&*&*&*");
-
-                            alert(data);
+                            // console.log("&*&*&*&*");
+                            // console.log(data);
+                            // console.log("&*&*&*&*");
+							//
+                            // alert(data);
 
                         }
                     });
 
-					console.log("-----");
-					console.log(max_id);
-					console.log("------");
+					// console.log("-----");
+					// console.log(max_id);
+					// console.log("------");
 
                     //    Tambahkan Jenis Pekerjaan
 
@@ -1120,7 +1120,7 @@ else
                     $(".Active2").each(function (index, element) {
 
                         dataArray2[zx]=$(this).text();
-                        console.log("log");
+                        // console.log("log");
                         zx++;
                     });
 
@@ -1132,12 +1132,12 @@ else
                     $(".Active2").each(function (index, element) {
 
                         dataArray3[zz]=$(this).attr("id");
-                        console.log("jes");
+                        // console.log("jes");
                         zz++;
                     });
-
-                    console.log(dataArray2);
-                    console.log(dataArray3);
+					//
+                    // console.log(dataArray2);
+                    // console.log(dataArray3);
 
                     let nama_paket_baru=$("#nama_paket").val();
 
@@ -1151,7 +1151,7 @@ else
                         cache:false,
                         success:
                             function(data){
-                                console.log(data);
+                                // console.log(data);
                             }
                     });
 
@@ -1175,7 +1175,7 @@ else
                             function(data){
                             console.log("jesidisini");
                             console.log(data);
-                                alert(data);  //as a debugging message.
+                                // alert(data);  //as a debugging message.
                             }
                     });
 
@@ -1192,9 +1192,12 @@ else
                         success:
                             function(data){
                                 // alert(data);  //as a debugging message.
-								console.log("hmmmm");
-								console.log(data);
-								console.log("hmmmm");
+								// console.log("hmmmm");
+								// console.log(data);
+								// console.log("hmmmm");
+
+								alert("SUCCESS!!");
+								window.location="http://localhost/pupr_new/user/lihat_paket/"+uri_nya;
                             }
                     });
 
