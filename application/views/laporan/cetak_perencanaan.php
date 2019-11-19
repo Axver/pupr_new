@@ -585,8 +585,20 @@ else
 								 <?php
 								 $getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
 								 //
+
+								 $count=count($getImage);
+								 $i=0;
+
+								 while($i<$count)
+								 {
+								 	?>
+									 <img style="width:200px;" src="<?php echo base_url('gambar/'.$getImage[$i]->gambar) ?>" />
+								 <?php
+
+								 	$i++;
+								 }
 								 ?>
-								 <img style="width:200px;" src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" />
+
 							 </td>
 							 <td></td>
 							 <td></td>

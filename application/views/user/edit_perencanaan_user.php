@@ -313,11 +313,14 @@ else
 												?>
 												<div id='img_contain'>
 													<?php
-													if(count($getImage)>=1)
+													$i=0;
+													while($i<count($getImage))
 													{
 														?>
-														<img id="blah" align='middle' src="<?php echo base_url('gambar/'.$getImage[0]->gambar) ?>" alt="your image" title=''/>
+														<img id="blah" align='middle' src="<?php echo base_url('gambar/'.$getImage[$i]->gambar) ?>" alt="your image" title=''/>
 													<?php
+
+														$i++;
 													}
 													?>
 												</div>
