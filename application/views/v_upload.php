@@ -125,7 +125,8 @@ else
 
 								<?php echo $error;?>
                                 <?php $id=$this->uri->segment("3"); ?>
-								<?php echo form_open_multipart('upload/aksi_upload/'.$id);?>
+								<?php $perencanaan=$this->uri->segment("4"); ?>
+								<?php echo form_open_multipart('upload/aksi_upload/'.$id."/".$perencanaan);?>
 
 								<input type="file" name="berkas" class="btn btn-info"/>
 

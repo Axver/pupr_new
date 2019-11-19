@@ -153,7 +153,7 @@ else
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
 											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">View</button></td>
 											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Edit</button></td>
-											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Image</button></td>
+											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Image</button></td>
 										</tr>
 									<?php
 
@@ -239,9 +239,9 @@ else
         window.location="view_harian/edit/"+id+"/"+per;
 	}
 
-	function upload(id)
+	function upload(id,per)
 	{
-        window.location="upload/index/"+id;
+        window.location="upload/index/"+id+"/"+per;
 	}
 </script>
 
