@@ -973,7 +973,7 @@ else
     function removeValue(id)
     {
         let id_col=$("#id_column").val();
-        alert(id_col);
+        // alert(id_col);
         id_col=id_col.replace('_','__');
 
         $("#"+id_col).text("");
@@ -1067,7 +1067,7 @@ else
         let valuenya=$("#jumlah_alat").val();
         let satuan=$("#alat_satuan_jesi").val();
         let tanggal_alat=$("#tanggal_alat").val();
-        alert("Sukses Ditambahkan!");
+        // alert("Sukses Ditambahkan!");
 
         $("#"+col_).text(valuenya+"_"+satuan+"_"+tanggal_alat);
         var className = $("#"+col_).attr('class');
@@ -1125,7 +1125,7 @@ else
                     // console.log(data);
 
                     let max_id=id_perencanaan_hidden;
-                    alert(max_id);
+                    // alert(max_id);
 
                     $.ajax({
                         type : "POST",
@@ -1136,18 +1136,18 @@ else
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
 
-                            alert(data);
-                            console.log("add jenis pekerjaan");
-                            console.log(data);
+                            // alert(data);
+                            // console.log("add jenis pekerjaan");
+                            // console.log(data);
 
                             // alert(data);
 
                         }
                     });
 
-                    console.log("-----");
-                    console.log(max_id);
-                    console.log("------");
+                    // console.log("-----");
+                    // console.log(max_id);
+                    // console.log("------");
                     // alert(max_id);
 
                     //    Tambahkan Jenis Pekerjaan
@@ -1189,7 +1189,7 @@ else
                         success:
                             function(data){
                                 console.log(data);
-                                alert(data);
+                                // alert(data);
                             }
                     });
 
@@ -1213,7 +1213,7 @@ else
                             function(data){
                                 console.log("jesidisini");
                                 console.log(data);
-                                alert(data);  //as a debugging message.
+                                // alert(data);  //as a debugging message.
                             }
                     });
 
@@ -1230,14 +1230,15 @@ else
                         success:
                             function(data){
                                 // alert(data);  //as a debugging message.
-                                console.log("hmmmm");
-                                console.log(data);
-                                alert(data);
-                                console.log("hmmmm");
+                                // console.log("hmmmm");
+                                // console.log(data);
+                                // alert(data);
+                                // console.log("hmmmm");
                             }
                     });
 
 
+                    alert("SUCCESS!!");
 
 
         }
@@ -1411,7 +1412,7 @@ else
                 console.log(text_builder);
 
                 let selector=$("#"+text_builder).css("background-color","black");
-                let selector1=$("#"+text_builder1).text(data1[z].pekerja);
+                let selector1=$("#"+text_builder1).text(data1[z].pekerja+"_"+data1[z].tanggal);
 
                 $("#"+text_builder).removeClass("nonActive");
                 $("#"+text_builder).addClass("Active");
@@ -1492,7 +1493,7 @@ $.ajax({
                 }
 
                 // alert(data[i].id_jenis_bahan_alat+"___"+data[i].minggu);
-                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).text(data[i].jumlah);
+                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).text(data[i].jumlah+"_"+data[i].id_satuan+"_"+data[i].tanggal);
                 $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).removeClass( "nonActive2" );
                 $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).addClass( "Active2" );
 
