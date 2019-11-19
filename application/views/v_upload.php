@@ -168,7 +168,7 @@ else
 										<td><?php echo $dataGambar[$i]->id_lap_harian; ?></td>
 										<td><?php echo $dataGambar[$i]->gambar; ?></td>
 										<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$dataGambar[$i]->gambar) ?>"></td>
-										<td><button class="btn btn-warning">Delete</button></td>
+										<td><button class="btn btn-warning" onclick="hapus('<?php echo $dataGambar[$i]->id_lap_harian; ?>','<?php echo $dataGambar[$i]->id_perencanaan; ?>','<?php echo $dataGambar[$i]->gambar; ?>')">Delete</button></td>
 									</tr>
 									<?php
 
@@ -179,6 +179,27 @@ else
 									?>
 									</tbody>
 								</table>
+
+								<script>
+									function hapus(harian,perencanaan,nama)
+									{
+									    // alert(harian);
+									    // alert(perencanaan);
+
+									//    Ajax Untuk Delete
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "http://localhost/pupr_new/index.php/upload/hapus",
+                                            data: {"harian":harian,"perencanaan":perencanaan,"nama":nama},
+                                            dataType: "text",
+                                            cache:false,
+                                            success:
+                                                function(data){
+                                                    location.reload(true);
+                                                }
+                                        });
+									}
+								</script>
 
 
 							</div>
