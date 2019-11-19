@@ -158,7 +158,7 @@ $.ajax({
                     labels: ["Laporan Harian", "Laporan Perencanaan","Laporan Pengawasan"],
                     datasets: [
                         {
-                            label: "Population (millions)",
+                            label: "Laporan",
                             backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
                             data: [data.harian,data.perencanaan,data.pengawasan]
                         }
@@ -168,7 +168,7 @@ $.ajax({
                     legend: { display: false },
                     title: {
                         display: true,
-                        text: 'Predicted world population (millions) in 2050'
+                        text: 'Jumlah Laporan Dikerjakan'
                     }
                 }
             });
