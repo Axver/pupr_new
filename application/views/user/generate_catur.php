@@ -216,14 +216,19 @@ else
 
 									    let stringBuilder="";
                                         let i=0;
-									    while(i<151)
+
+                                        stringAwal='  <td class="tg-0lax how"></td>\n' +
+                                            '    <td class="tg-0lax how"></td>\n' +
+                                            '    <td class="tg-0lax how"></td>\n' +
+                                            '    <td class="tg-0lax how"></td>';
+									    while(i<147)
 										{
                                             stringBuilder=stringBuilder+'<td id="'+hex+'_'+i+'" class="nonActive tg-0lax datanya"></td>';
 										    i++;
 										}
                                         hex++;
 
-										finalString='<tr>'+stringBuilder+'</tr>';
+										finalString='<tr>'+stringAwal+stringBuilder+'</tr>';
 
                                         $("#caturwulan").append(finalString);
 
