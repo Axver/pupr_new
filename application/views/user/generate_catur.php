@@ -207,6 +207,8 @@ else
 
 									}
 
+									let hex=0;
+
 
 									function addRow()
 									{
@@ -216,18 +218,81 @@ else
                                         let i=0;
 									    while(i<151)
 										{
-                                            stringBuilder=stringBuilder+'<td class="tg-0lax datanya"></td>';
+                                            stringBuilder=stringBuilder+'<td id="'+hex+'_'+i+'" class="nonActive tg-0lax datanya"></td>';
 										    i++;
 										}
+                                        hex++;
 
 										finalString='<tr>'+stringBuilder+'</tr>';
 
                                         $("#caturwulan").append(finalString);
 
 									    // alert("test");
+
+                                        var classname = document.getElementsByClassName("datanya");
+
+                                        var myFunction = function() {
+                                            // var attribute = this.getAttribute("data-myattribute");
+                                            // alert(attribute);
+                                            var data=this.id;
+                                            var cls=$('#'+data).attr('class');     ;
+                                            console.log(data);
+                                            // $("#jesi_row").val(data);
+                                            // $("#mJesi").modal("show");
+
+										//	Ubah warna dan ganti class name nya
+											console.log(cls);
+
+											if($("#"+data).hasClass("nonActive") )
+											{
+											    console.log("bjjhghjgh");
+
+                                                $("#"+data).removeClass("nonActive");
+                                                $("#"+data).addClass("Active");
+                                                $("#"+data).css("background-color","yellow");
+											}
+											else if($("#"+data).hasClass("Active") )
+                                            {
+                                                console.log("bjjhghjgh");
+
+                                                $("#"+data).removeClass("Active");
+                                                $("#"+data).addClass("nonActive");
+                                                $("#"+data).css("background-color","white");
+                                            }
+                                        };
+
+                                        for (var m = 0; m < classname.length; m++) {
+                                            classname[m].addEventListener('click', myFunction, false);
+                                        }
+
+
 									}
 
 								</script>
+
+
+
+								<!-- Modal -->
+								<div class="modal fade" id="mCatur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<input type="text" class="form form-control" disabled id="jesi_row">
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Save changes</button>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
 
