@@ -125,8 +125,8 @@ else
 
 								<form action="<?php echo $action; ?>" method="post">
 									<div class="form-group">
-										<label for="varchar">Id Jenis Bahan Alat <?php echo form_error('id_jenis_bahan_alat') ?></label>
-										<input class="form-control"  type="text" name="id_jenis_bahan_alat" id="id_jenis_bahan_alat" placeholder="Id" />
+<!--										<label for="varchar">Id Jenis Bahan Alat --><?php //echo form_error('id_jenis_bahan_alat') ?><!--</label>-->
+										<input class="form-control"  type="hidden" name="id_jenis_bahan_alat" id="id_jenis_bahan_alat" placeholder="Id" />
 										<label for="varchar">Jenis Bahan Alat <?php echo form_error('jenis_bahan_alat') ?></label>
 										<input type="text" class="form-control" name="jenis_bahan_alat" id="jenis_bahan_alat" placeholder="Jenis Bahan Alat" value="<?php echo $jenis_bahan_alat; ?>" />
 									</div>

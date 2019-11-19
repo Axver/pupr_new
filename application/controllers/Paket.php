@@ -82,9 +82,13 @@ class Paket extends CI_Controller
         } else {
 			$postData = $this->input->post();
 
+//			Id Paket
+			$max=$this->db->query("SELECT MAX(CAST(id_paket AS INT)) as max FROM paket")->result();
+			$max=$max[0]->max+1;
+
 
 			$data= array(
-				'id_paket'=>$postData['id_paket'],
+				'id_paket'=>$max,
 				'tahun'=>$postData['tahun'],
 				'nama'=>$postData['nama']
 			);

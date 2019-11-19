@@ -158,7 +158,7 @@ else
 										<th>Nama</th>
 										<th>Privilage</th>
 										<th>Tambah Paket</th>
-										<th>Lihat Paket</th>
+
 
 									</tr>
 									</thead>
@@ -174,9 +174,16 @@ else
 										<tr>
 											<td><?php echo $i+1; ?></td>
 											<td><?php echo $user['user'][$i]->nama; ?></td>
-											<td><?php echo $user['user'][$i]->privilage; ?></td>
+											<td><?php if($user['user'][$i]->privilage==1)
+												{
+													echo "Administrator";
+												}
+												else
+												{
+													echo "User";
+												}?></td>
 											<td><button class="btn btn-info" onclick="paketUser('<?php echo $user["user"][$i]->nip ?>')">Add</button></td>
-											<td><button class="btn btn-info" onclick="paketUserLihat('<?php echo $user["user"][$i]->nip ?>')">Lihat</button></td>
+
 										</tr>
 									<?php
 

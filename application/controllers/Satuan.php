@@ -76,7 +76,10 @@ class Satuan extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+			$max=$this->db->query("SELECT MAX(CAST(id_satuan AS INT)) as max FROM satuan")->result();
+			$max=$max[0]->max+1;
             $data = array(
+            	'id_satuan'=>$max,
 		'satuan' => $this->input->post('satuan',TRUE),
 	    );
 

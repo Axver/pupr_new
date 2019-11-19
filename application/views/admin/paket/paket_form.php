@@ -129,7 +129,7 @@
 									<div class="form-group">
 
 										<label for="Id Paket">Id Paket <?php echo form_error('id_paket') ?></label>
-										<input type="text" class="form-control" name="id_paket" id="id_paket" placeholder="Id Paket" />
+										<input type="hidden" class="form-control" name="id_paket" id="id_paket" placeholder="Id Paket" />
 										<label for="Tahun">Tahun <?php echo form_error('tahun') ?></label>
 										<input type="text" class="form-control" name="tahun" id="tahun"  placeholder="Tahun" />
 										<label for="nama">Nama <?php echo form_error('nama') ?></label>

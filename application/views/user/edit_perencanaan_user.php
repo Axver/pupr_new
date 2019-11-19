@@ -132,6 +132,10 @@ else
 	<?php $this->load->view('modal/add_waktu'); ?>
 	<?php $this->load->view('modal/add_alat_bahan'); ?>
 
+	<?php $this->load->view('modal/addPekerjaan'); ?>
+	<?php $this->load->view('modal/addBahan'); ?>
+
+
 	<?php
 
 	$paket_info=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("3")))->result();
@@ -343,7 +347,17 @@ else
 											}
 											?>
 										</select>
-										<a href="#">New</a>
+										<a href="#" onclick="addPekerjaan()">New</a>
+										<script>
+                                            function addPekerjaan() {
+
+
+                                                $("#addPekerjaan").modal("show");
+
+
+
+                                            }
+										</script>
 									</div>
 								</div>
 								<br/>
@@ -592,7 +606,12 @@ else
 											}
 											?>
 										</select>
-										<a href="#">New</a>
+										<a href="#" onclick="newBahan()">New</a>
+										<script>
+                                            function newBahan() {
+                                                $("#addBahan").modal("show");
+                                            }
+										</script>
 									</div>
 
 								</div>

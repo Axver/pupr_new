@@ -124,16 +124,17 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<form action="<?php echo $action; ?>" method="post">
-									<div class="form-group">
-<!--										<label for="varchar">Id --><?php //echo form_error('id') ?><!--</label>-->
-										<input type="hidden" name="id" class="form-control" placeholder="id" id="id" value="<?php echo $id; ?>" />
-										<label for="varchar">Nama Jenis <?php echo form_error('nama_jenis') ?></label>
-										<input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Jenis" value="<?php echo $nama_jenis; ?>" />
-									</div>
+								<table class="table">
+									<tr><td>Nama</td><td><?php echo $nama; ?></td></tr>
+									<tr><td>Jumlah Tahap</td><td><?php echo $jumlah_tahap; ?></td></tr>
+									<tr><td>Jenis Pekerjaan</td><td><?php echo $jenis_pekerjaan; ?></td></tr>
+									<tr><td>Masa Pelaksanaan</td><td><?php echo $masa_pelaksanaan; ?></td></tr>
+									<tr><td>Lokasi</td><td><?php echo $lokasi; ?></td></tr>
+									<tr><td>Tahun Anggaran</td><td><?php echo $tahun_anggaran; ?></td></tr>
+									<tr><td>Nilai Paket</td><td><?php echo $nilai_paket; ?></td></tr>
+									<tr><td></td><td><a href="<?php echo site_url('paket_informasi') ?>" class="btn btn-default">Cancel</a></td></tr>
+								</table>
 
-									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('jenis_pekerjaan') ?>" class="btn btn-default">Cancel</a>
 
 							</div>
 						</div>
@@ -189,6 +190,42 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/admin/hitung/",
+        data: {"id": "1"},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+                console.log(data.harian[0].harian);
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['Paket', 'Laporan Harian', 'Lapoan Pengawasan', 'Laporan Perencanaan'],
+                        datasets: [{
+                            label: 'Jumlah Laporan',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [data.paket[0].paket, data.harian[0].harian, data.pengawasan[0].pengawasan, data.perencanaan[0].perencanaan]
+                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                });
+            }
+    });
+</script>
 
 
 

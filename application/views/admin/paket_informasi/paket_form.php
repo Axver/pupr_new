@@ -126,14 +126,40 @@ else
 
 								<form action="<?php echo $action; ?>" method="post">
 									<div class="form-group">
-<!--										<label for="varchar">Id --><?php //echo form_error('id') ?><!--</label>-->
-										<input type="hidden" name="id" class="form-control" placeholder="id" id="id" value="<?php echo $id; ?>" />
-										<label for="varchar">Nama Jenis <?php echo form_error('nama_jenis') ?></label>
-										<input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Jenis" value="<?php echo $nama_jenis; ?>" />
+										<label for="varchar">Nama <?php echo form_error('nama') ?></label>
+										<input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?php echo $nama; ?>" />
 									</div>
-
+									<div class="form-group">
+										<label for="varchar">Jumlah Tahap <?php echo form_error('jumlah_tahap') ?></label>
+										<input type="text" class="form-control" name="jumlah_tahap" id="jumlah_tahap" placeholder="Jumlah Tahap" value="<?php echo $jumlah_tahap; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Jenis Pekerjaan <?php echo form_error('jenis_pekerjaan') ?></label>
+										<input type="text" class="form-control" name="jenis_pekerjaan" id="jenis_pekerjaan" placeholder="Jenis Pekerjaan" value="<?php echo $jenis_pekerjaan; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Masa Pelaksanaan <?php echo form_error('masa_pelaksanaan') ?></label>
+										<input type="text" class="form-control" name="masa_pelaksanaan" id="masa_pelaksanaan" placeholder="Masa Pelaksanaan" value="<?php echo $masa_pelaksanaan; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Lokasi <?php echo form_error('lokasi') ?></label>
+										<input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?php echo $lokasi; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Tahun Anggaran <?php echo form_error('tahun_anggaran') ?></label>
+										<input type="text" class="form-control" name="tahun_anggaran" id="tahun_anggaran" placeholder="Tahun Anggaran" value="<?php echo $tahun_anggaran; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Nilai Paket <?php echo form_error('nilai_paket') ?></label>
+										<input type="text" class="form-control" name="nilai_paket" id="nilai_paket" placeholder="Nilai Paket" value="<?php echo $nilai_paket; ?>" />
+									</div>
+									<input type="hidden" name="id_paket" value="<?php echo $id_paket; ?>" />
 									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('jenis_pekerjaan') ?>" class="btn btn-default">Cancel</a>
+									<a href="<?php echo site_url('paket_informasi') ?>" class="btn btn-default">Cancel</a>
+								</form>
+
+
+
 
 							</div>
 						</div>
@@ -189,6 +215,42 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/admin/hitung/",
+        data: {"id": "1"},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+                console.log(data.harian[0].harian);
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['Paket', 'Laporan Harian', 'Lapoan Pengawasan', 'Laporan Perencanaan'],
+                        datasets: [{
+                            label: 'Jumlah Laporan',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [data.paket[0].paket, data.harian[0].harian, data.pengawasan[0].pengawasan, data.perencanaan[0].perencanaan]
+                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                });
+            }
+    });
+</script>
 
 
 

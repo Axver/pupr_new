@@ -102,7 +102,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+				<?php $this->load->view('admin_content/card_list_user');?>
 
 				<!-- Content Row -->
 
@@ -147,8 +147,29 @@ else
 									<tbody>
 									<?php
 
+									if(count($data)==0)
+									{
 
-									$count=count($data[0]);
+									}
+									else
+									{
+
+									}
+									?>
+
+
+                                  <?php
+
+								   $count_first=count($data);
+								   if($count_first==0)
+								   {
+								   	$count=0;
+								   }
+								   else
+								   {
+									   $count=count($data[0]);
+								   }
+
 									$i=0;
 									while($i<$count)
 									{

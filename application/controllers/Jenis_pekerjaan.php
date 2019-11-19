@@ -76,8 +76,10 @@ class Jenis_pekerjaan extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+        	$max=$this->db->query("SELECT MAX(CAST(id AS INT)) as max FROM jenis_pekerjaan")->result();
+        	$max=$max[0]->max+1;
             $data = array(
-				'id' => $this->input->post('id',TRUE),
+				'id' => $max,
 		'nama_jenis' => $this->input->post('nama_jenis',TRUE),
 	    );
 

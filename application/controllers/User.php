@@ -298,7 +298,7 @@ public function pekerjaan()
 //  Get Jenis Pekerjaan
 	$jenis_pekerjaan=$this->input->post("jenis_pekerjaan");
 //	Select Max id
-	$max_id=$this->db->query("SELECT MAX(id) as max FROM jenis_pekerjaan")->result();
+	$max_id=$this->db->query("SELECT MAX(CAST(id AS INT)) as max FROM jenis_pekerjaan")->result();
 
 	$max=$max_id[0]->max;
 	$max=$max+1;

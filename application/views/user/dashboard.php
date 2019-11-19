@@ -102,7 +102,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list');?>
+				<?php $this->load->view('admin_content/card_list_user');?>
 
 				<!-- Content Row -->
 

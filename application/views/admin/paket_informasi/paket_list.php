@@ -124,16 +124,86 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<form action="<?php echo $action; ?>" method="post">
-									<div class="form-group">
-<!--										<label for="varchar">Id --><?php //echo form_error('id') ?><!--</label>-->
-										<input type="hidden" name="id" class="form-control" placeholder="id" id="id" value="<?php echo $id; ?>" />
-										<label for="varchar">Nama Jenis <?php echo form_error('nama_jenis') ?></label>
-										<input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Jenis" value="<?php echo $nama_jenis; ?>" />
+								<div class="row" style="margin-bottom: 10px">
+									<div class="col-md-4">
+										<?php echo anchor(site_url('paket_informasi/create'),'Create', 'class="btn btn-primary"'); ?>
 									</div>
+									<div class="col-md-4 text-center">
+										<div style="margin-top: 8px" id="message">
+											<?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+										</div>
+									</div>
+									<div class="col-md-1 text-right">
+									</div>
+									<div class="col-md-3 text-right">
+										<form action="<?php echo site_url('paket_informasi/index'); ?>" class="form-inline" method="get">
+											<div class="input-group">
+												<input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
+												<span class="input-group-btn">
+                            <?php
+							if ($q <> '')
+							{
+								?>
+								<a href="<?php echo site_url('paket_informasi'); ?>" class="btn btn-default">Reset</a>
+								<?php
+							}
+							?>
+                          <button class="btn btn-primary" type="submit">Search</button>
+                        </span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<table class="table table-bordered" style="margin-bottom: 10px">
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Jumlah Tahap</th>
+										<th>Jenis Pekerjaan</th>
+										<th>Masa Pelaksanaan</th>
+										<th>Lokasi</th>
+										<th>Tahun Anggaran</th>
+										<th>Nilai Paket</th>
+										<th>Action</th>
+									</tr><?php
+									foreach ($paket_informasi_data as $paket_informasi)
+									{
+										?>
+										<tr>
+											<td width="80px"><?php echo ++$start ?></td>
+											<td><?php echo $paket_informasi->nama ?></td>
+											<td><?php echo $paket_informasi->jumlah_tahap ?></td>
+											<td><?php echo $paket_informasi->jenis_pekerjaan ?></td>
+											<td><?php echo $paket_informasi->masa_pelaksanaan ?></td>
+											<td><?php echo $paket_informasi->lokasi ?></td>
+											<td><?php echo $paket_informasi->tahun_anggaran ?></td>
+											<td><?php echo $paket_informasi->nilai_paket ?></td>
+											<td style="text-align:center" width="200px">
+												<?php
+												echo anchor(site_url('paket_informasi/read/'.$paket_informasi->id_paket),'Read');
+												echo ' | ';
+												echo anchor(site_url('paket_informasi/update/'.$paket_informasi->id_paket),'Update');
+												echo ' | ';
+												echo anchor(site_url('paket_informasi/delete/'.$paket_informasi->id_paket),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+												?>
+											</td>
+										</tr>
+										<?php
+									}
+									?>
+								</table>
+								<div class="row">
+									<div class="col-md-6">
+										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+									</div>
+									<div class="col-md-6 text-right">
+										<?php echo $pagination ?>
+									</div>
+								</div>
 
-									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('jenis_pekerjaan') ?>" class="btn btn-default">Cancel</a>
+
+
+
 
 							</div>
 						</div>
@@ -189,6 +259,42 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/admin/hitung/",
+        data: {"id": "1"},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+                console.log(data.harian[0].harian);
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['Paket', 'Laporan Harian', 'Lapoan Pengawasan', 'Laporan Perencanaan'],
+                        datasets: [{
+                            label: 'Jumlah Laporan',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [data.paket[0].paket, data.harian[0].harian, data.pengawasan[0].pengawasan, data.perencanaan[0].perencanaan]
+                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                });
+            }
+    });
+</script>
 
 
 
