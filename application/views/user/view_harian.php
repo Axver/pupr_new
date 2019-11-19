@@ -412,16 +412,27 @@ $.ajax({
 //Ajax Untuk Mendapatkan Gambar
 $.ajax({
     type: "POST",
-    url: "http://localhost/pupr_new/view_harian/get_gambar",
-    data: {"id_harian":id_harian_asli},
+    url: "http://localhost/pupr_new/view_harian/get_bawah",
+    data: {"id_harian":id_harian_asli,"id_perencanaan":id_perencanaan_asli},
     dataType: "text",
     cache:false,
     success:
         function(data){
             data=JSON.parse(data);
-            console.log(data);
-            $("#mSket").append('<img style="width:200px;" src="http://localhost/pupr_new/gambar/'+data[0].gambar+'">');
+           console.log("hmmmmm");
+           console.log(data);
 
+           let length=data.length;
+           let i=0;
+           while(i<length)
+		   {
+		       $("#mDimensi").text(data[i].dimensi);
+		       $("#mLokasi").text(data[i].lokasi);
+               $("#mPanjang").text(data[i].panjang_penanganan);
+               $("#mJenis").text(data[i].jenis_pekerjaan);
+
+		       i++;
+		   }
         }
 });
 

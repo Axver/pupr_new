@@ -191,4 +191,16 @@ class View_harian extends CI_Controller {
 	}
 
 
+	public function get_bawah()
+	{
+		$id_harian=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
+//		Select Dari DB
+		$data=$this->db->get_where("detail_laporan_harian",array("id_lap_harian"=>$id_harian,"id_perencanaan"=>$id_perencanaan))->result();
+
+		echo json_encode($data);
+	}
+
+
 }
