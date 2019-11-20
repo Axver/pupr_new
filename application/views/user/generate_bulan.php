@@ -175,7 +175,10 @@ else
 								<button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
 								<!--								Disini Posisi Tabelnya-->
 								<div id="cetak_tabel">
-									<center><b>Cetak Tabel</b></center>
+									<br/>
+									<center><b><h3>LAPORAN BULANAN</h3></b></center>
+									<br/>
+									<br/>
 
 									<!--									Tabelnya-->
 									<table class="tg table table-bordered" id="buat_tabel">
@@ -202,7 +205,7 @@ else
 				<script>
 
                     function getWeeksInMonth(month_number, year) {
-                        console.log("year - "+year+" month - "+month_number+1);
+                        // console.log("year - "+year+" month - "+month_number+1);
 
                         var day = 0;
                         var firstOfMonth = new Date(year, month_number, 1);
@@ -335,6 +338,7 @@ else
            url: "http://localhost/pupr_new/generate_bulan/data",
            data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan},
            dataType: "text",
+		   async:false,
            cache:false,
            success:
                function(data){
@@ -360,11 +364,110 @@ else
 				   }
                }
        });
+
+   //    Isi Tabel sekarang
+
+       $.ajax({
+           type: "POST",
+           url: "http://localhost/pupr_new/generate_bulan/isi_data",
+           data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan},
+           dataType: "text",
+           async:false,
+           cache:false,
+           success:
+               function(data){
+                   // alert(data);  //as a debugging message.
+                   data=JSON.parse(data);
+
+                   console.log("data_isi");
+                   console.log(data);
+                   console.log("data_isi");
+
+                   // console.log(getWeeksInMonth(bulan, tahun));
+                   // console.log(getDateRangeOfWeek(12));
+
+                   let length=data.length;
+                   let i=0;
+                   let minggu_get;
+
+                   while(i<length)
+				   {
+				       let z=1;
+				       while(z<=54)
+					   {
+
+                           week=getDateRangeOfWeek(z);
+                           week=week.split(" to ")
+						   // console.log(week);
+                           // console.log(week[0].toDateString());
+                           tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                           tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                           tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                           // console.log(tanggal_start);
+                           // console.log(tanggal_end);
+                           // console.log(tanggal_pilihan);
+                           if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+						   {
+						       minggu_get=z;
+						       console.log(minggu_get);
+						   }
+
+					       z++;
+					   }
+
+					   //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+					   let y=1;
+				       let $hasil=0;
+                       let batas=parseInt(bulan)+1;
+
+				       while(y<batas)
+					   {
+                           $data=getWeeksInMonth(y, tahun);
+                           $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+					       y++;
+					   }
+
+					   console.log($hasil);
+
+				       //Kurangi data yang dimiliki dengan total minggunya
+					   $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+					   console.log($hasil_akhir);
+					   //Masukkan semuanya ke tabel (warnai tabel dulu)
+					   // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+                       $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color","yellow");
+
+				       i++;
+				   }
+
+               }
+       });
+
+
    }
 
    //Query Untuk Jumlah Pekerja
 	//SELECT *,COUNT(jumlah_pekerja) FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = 2019 AND MONTH(id_lap_harian_mingguan) = 11 AND id_lap_perencanaan='1' GROUP BY jenis_pekerja
 
+    77
+
+    function stringToDate(_date,_format,_delimiter)
+    {
+        var formatLowerCase=_format.toLowerCase();
+        var formatItems=formatLowerCase.split(_delimiter);
+        var dateItems=_date.split(_delimiter);
+        var monthIndex=formatItems.indexOf("mm");
+        var dayIndex=formatItems.indexOf("dd");
+        var yearIndex=formatItems.indexOf("yyyy");
+        var month=parseInt(dateItems[monthIndex]);
+        month-=1;
+        var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        return formatedDate;
+    }
 
    function testJesi()
    {
@@ -424,7 +527,15 @@ else
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
         // Choose the element and save the PDF for our user.
-        html2pdf().from(element).save();
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
     }
 </script>
 
