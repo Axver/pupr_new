@@ -330,6 +330,21 @@ else
            '    <td class="tg-cly1">4</td>\n' +
            '    <td class="tg-cly1">5</td>\n' +
            '  </tr>');
+	//   Generate Tabel 2
+       $("#buat_pekerja").append('<tr>\n' +
+           '    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
+           '    <th class="tg-nrix" colspan="5">Tahap</th>\n' +
+           '  </tr>\n' +
+           '  <tr>\n' +
+           '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
+           '  </tr>\n' +
+           '  <tr>\n' +
+           '    <td class="tg-cly1">1</td>\n' +
+           '    <td class="tg-cly1">2</td>\n' +
+           '    <td class="tg-cly1">3</td>\n' +
+           '    <td class="tg-cly1">4</td>\n' +
+           '    <td class="tg-cly1">5</td>\n' +
+           '  </tr>');
 
 	//   Ajax Untuk Mendapatkan Data
 
@@ -359,6 +374,23 @@ else
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_4"></td>\n' +
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_5"></td>\n' +
                            '  </tr>');
+                       $("#buat_pekerja").append('  <tr>\n' +
+                           '    <td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
+                           '    <td class="tg-cly1" ></td>\n' +
+                           '    <td class="tg-cly1" ></td>\n' +
+                           '    <td class="tg-cly1" ></td>\n' +
+                           '    <td class="tg-cly1" ></td>\n' +
+                           '    <td class="tg-cly1" ></td>\n' +
+                           '  </tr>');
+                       $("#buat_pekerja").append('  <tr>\n' +
+                           '    <td class="tg-cly1"><center>Pekerja</center></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__1"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__2"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__3"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__4"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__5"></td>\n' +
+                           '  </tr>');
+
 
 				       i++;
 				   }
@@ -440,6 +472,7 @@ else
 					   //Masukkan semuanya ke tabel (warnai tabel dulu)
 					   // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color","yellow");
+                       $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].jumlah_pekerja)
 
 				       i++;
 				   }
