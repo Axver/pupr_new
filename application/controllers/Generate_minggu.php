@@ -21,12 +21,16 @@ class Generate_minggu extends CI_Controller {
 	{
 		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
 //		Select Distint data dari database
-		$this->db->select('*');
-		$this->db->distinct('id_jenis_bahan_alat');
-		$this->db->from('detail_bahan_alat_harian');
-		$this->db->join('jenis_pekerjaan', 'detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id');
+//		$this->db->select('*');
+//		$this->db->distinct('id_jenis_bahan_alat');
+//		$this->db->from('detail_bahan_alat_harian');
+//		$this->db->join('jenis_pekerjaan', 'detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id');
 
-		$data=$this->db->get()->result();
+		$data=$this->db->query("SELECT *, SUM(jumlah_bahan) 
+FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id WHERE detail_bahan_alat_harian.id_lap_perencanaan='$id_lap_perencanaan'
+GROUP BY id_jenis_bahan_alat")->result();
+
+//		$data=$this->db->get()->result();
 		echo json_encode($data);
 	}
 

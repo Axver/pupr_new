@@ -409,6 +409,7 @@ else
 		let id_lap_perencanaan=$("#id_lap_perencanaan").val();
 
 		//Dapatkan Jenis Pekerjaan Pada Laporan Perencanaan Yang Dibuat sesuai dengan data pada Tabel Detail Bahan Alat
+		alert(id_lap_perencanaan);
         $.ajax({
             type: "POST",
             url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",

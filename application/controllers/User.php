@@ -382,6 +382,7 @@ public function pekerjaan()
 
 	public function perencanaan_alat1()
 	{
+
 		$data=$this->input->post("data");
 		$minggu=$this->input->post("minggu");
 		$id_lap=$this->input->post("id_lap");
@@ -389,7 +390,7 @@ public function pekerjaan()
 		$tahun=$this->input->post("tahun");
 
 //		DELETE
-//		$this->db->query("DELETE FROM detail_bahan_alat WHERE id_lap_perencanaan='$id_lap'");
+		$this->db->query("DELETE FROM detail_bahan_alat WHERE id_lap_perencanaan='$id_lap'");
 
 		$id_paket=explode("_",$id_paket);
 
