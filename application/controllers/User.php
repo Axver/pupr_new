@@ -683,6 +683,40 @@ public function pekerjaan()
 	}
 
 
+	public function add_konfigurasi()
+	{
+		$nip=$this->input->post("nip");
+		$nama=$this->input->post("nama");
+
+//		Pilih id dahulu
+
+		$max_id=$this->db->query("SELECT MAX(id_konfigurasi*1) as max FROM konfigurasi")->result();
+
+		$count=count($max_id);
+		if($count>0)
+		{
+			$max_id=$max_id[0]->max;
+		}
+		else
+		{
+			$max_id=0;
+		}
+
+		$max_id=$max_id+1;
+
+		$data=array(
+			"id_konfigurasi"=>$max_id,
+			"nama"=>$nama,
+			"nip"=>$nip,
+
+		);
+
+		$this->db->insert("konfigurasi",$data);
+
+		var_dump($data);
+	}
+
+
 
 
 

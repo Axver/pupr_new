@@ -706,7 +706,66 @@ else
 
 									<div class="col-sm-6" id="border">
 										<b>Tandatangan</b>
-										<a href="#">New</a>
+										<button class="btn btn-info" onclick="newTtd()">New</button>
+
+										<!-- Modal -->
+										<div class="modal fade" id="mTTD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Tambah TTD</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														Nama:
+														<input type="text" class="form form-control" id="nama_ttd">
+														Nim:
+														<input type="text" class="form form-control" id="nip_ttd">
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														<button type="button" class="btn btn-primary" onclick="saveTTD()">Save changes</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<script>
+											function newTtd()
+											{
+											    $("#mTTD").modal("show");
+											}
+
+											function saveTTD()
+											{
+                                                $("#mTTD").modal("hide");
+											    // alert("test");
+												let nama=$("#nama_ttd").val();
+												let nip=$("#nip_ttd").val();
+
+												// alert(nama);
+												// alert(nip);
+
+											//	Ajax Post dan Input Konfigurasi
+
+                                                $.ajax({
+                                                    type: "POST",
+													async:false,
+                                                    url: "http://localhost/pupr_new/user/add_konfigurasi",
+                                                    data: {"nip":nip,"nama":nama},
+                                                    dataType: "text",
+                                                    cache:false,
+                                                    success:
+                                                        function(data){
+                                                            // alert(data);  //as a debugging message.
+														//	Reload
+															location.reload();
+
+                                                        }
+                                                });
+											}
+										</script>
 										<br/>
 										Disetujui Oleh:
 										<select class="form form-control" id="disetujui_oleh">

@@ -710,6 +710,8 @@ function update()
         success:
             function(data){
                 // alert(data);  //as a debugging message.
+
+				alert("SUKSES!");
             }
     });
 
