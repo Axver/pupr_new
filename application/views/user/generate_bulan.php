@@ -307,6 +307,8 @@ else
 
    function generateTabel()
    {
+       //Hapus tabel yang ada dulu
+	   hapusTabel();
        var dt = new Date();
        // alert(dt.getFullYear());
        let tahun=dt.getFullYear();
@@ -524,6 +526,9 @@ else
 
 
 
+
+
+
     //	Mencari rentang tanggal minggu tertentu
     Date.prototype.getWeek = function () {
         var target  = new Date(this.valueOf());
@@ -553,6 +558,8 @@ else
 
     function hapusTabel()
     {
+        $("#buat_tabel").empty();
+        $("#buat_pekerja").empty();
 
     }
 
