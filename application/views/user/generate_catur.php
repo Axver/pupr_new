@@ -29,11 +29,7 @@ else
 
 	<?php $this->load->view('component/header') ?>
 	<style>
-		table{
-			overflow-y:scroll;
-			height:200px;
-			display:block;
-		}
+
 	</style>
 
 
@@ -131,7 +127,23 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 								<b>Id Paket</b>
-								<select id="id_paket" class="form form-control"></select>
+								<select id="id_paket" class="form form-control" onchange="perencanaan()">
+									<option>-Pilih Paket-</option>
+									<?php
+									$per=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
+									$count=count($per);
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $per[$i]->id_paket; ?>"><?php echo $per[$i]->id_paket; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+								</select>
 								<b>Laporan Perencanaan</b>
 								<select id="lap_perencanaan" class="form form-control"></select>
 								<b>Pilih Bulan Mulai</b>
@@ -149,26 +161,76 @@ else
 									?>
 								</select>
 
-								<button class="btn btn-info" onclick="generateTable()">Generate</button>
+								<button class="btn btn-info" onclick="buatTabel()">Generate</button>
 
-								<button class="btn btn-info" onclick="addRow()">Add Row</button>
+<!--								<button class="btn btn-info" onclick="addRow()">Add Row</button>-->
 
 
 
 								<br/>
 								<br/>
 <!--								Ini adalah tabelnya-->
-								<table class="tg table table-bordered" id="caturwulan" >
-									<tr>
-										<th class="tg-cly1" rowspan="3">No</th>
-										<th class="tg-cly1" rowspan="3">Bahan</th>
-										<th class="tg-cly1" rowspan="3">Jumlah</th>
-										<th class="tg-cly1" rowspan="3">Satuan</th>
-										<th class="tg-cly1" colspan="21"><center>Tahap</center></th>
-									</tr>
+<!--								<table class="tg table table-bordered" id="caturwulan" >-->
+<!--									<tr>-->
+<!--										<th class="tg-cly1" rowspan="3">No</th>-->
+<!--										<th class="tg-cly1" rowspan="3">Bahan</th>-->
+<!--										<th class="tg-cly1" rowspan="3">Jumlah</th>-->
+<!--										<th class="tg-cly1" rowspan="3">Satuan</th>-->
+<!--										<th class="tg-cly1" colspan="21"><center>Tahap</center></th>-->
+<!--									</tr>-->
+<!---->
+<!---->
+<!--								</table>-->
 
-
+<!--								Tabelnya-->
+								<table class="tg table table-bordered" id="tabel_satu">
+<!--									<tr>-->
+<!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
+<!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
+<!--									</tr>-->
+<!--									<tr>-->
+<!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
+<!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
+<!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
+<!--									</tr>-->
+<!--									<tr>-->
+<!--										<td class="tg-cly1">1</td>-->
+<!--										<td class="tg-cly1">2</td>-->
+<!--										<td class="tg-cly1">3</td>-->
+<!--										<td class="tg-cly1">4</td>-->
+<!--										<td class="tg-cly1">5</td>-->
+<!--										<td class="tg-0lax">6</td>-->
+<!--										<td class="tg-0lax">7</td>-->
+<!--										<td class="tg-0lax">8</td>-->
+<!--										<td class="tg-0lax">9</td>-->
+<!--										<td class="tg-0lax">10</td>-->
+<!--										<td class="tg-0lax">11</td>-->
+<!--										<td class="tg-0lax">12</td>-->
+<!--										<td class="tg-0lax">13</td>-->
+<!--										<td class="tg-0lax">14</td>-->
+<!--										<td class="tg-0lax">15</td>-->
+<!--									</tr>-->
+<!--									<tr>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-cly1"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--										<td class="tg-0lax"></td>-->
+<!--									</tr>-->
 								</table>
+
+
 
 
 
@@ -360,6 +422,137 @@ else
 		</div>
 	</div>
 </div>
+
+
+<script>
+	function perencanaan()
+	{
+	    let id_paket=$("#id_paket").val();
+	    // alert("test");
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/perencanaan",
+            data: {"id_paket":id_paket},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                   data=JSON.parse(data);
+                   console.log(data);
+
+                //   Tambahkan data ke dalam select perencanaan
+					let length=data.length;
+					let i=0;
+
+					while(i<length)
+					{
+                        $("#lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].id_lap_perencanaan+'<option>');
+					    i++;
+					}
+                }
+        });
+	}
+
+
+	function buatTabel()
+	{
+	    hapusTabel();
+	    let bulan_mulai=$("#bulan_mulai").val();
+	    let bulan2=parseInt(bulan_mulai)+parseInt(1);
+        let bulan3=parseInt(bulan_mulai)+parseInt(2);
+	    // alert("test");
+		$("#tabel_satu").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">2</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">3</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">4</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">5</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">6</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">7</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">8</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">9</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">10</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">11</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">12</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+	//	Ajax Untuk Mendapatkan Data
+        //   Ajax Untuk Mendapatkan Data
+        var dt = new Date();
+        // alert(dt.getFullYear());
+        let tahun=dt.getFullYear();
+        let bulan=$("#bulan_mulai").val();
+        let id_perencanaan=$("#lap_perencanaan").val();
+        let batas=parseInt(bulan)+2;
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/data",
+            data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan,"batas":batas},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+                    console.log(data);
+
+                    let length=data.length;
+                    let i=0;
+
+                    while(i<length)
+                    {
+
+                        $("#tabel_satu").append('\n' +
+                            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_2"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_3"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_4"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_5"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_6"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_7"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_8"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_9"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_10"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_11"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_12"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_13"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_14"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+
+
+                        i++;
+                    }
+                }
+        });
+	}
+
+
+	function hapusTabel()
+	{
+
+	    $("#tabel_satu").empty();
+	}
+</script>
 
 
 
