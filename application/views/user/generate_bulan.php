@@ -413,9 +413,52 @@ else
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__5"></td>\n' +
                            '  </tr>');
 
+                    
+
 
 				       i++;
 				   }
+               }
+       });
+
+
+       //   Ajax Untuk Mendapatkan Data Alat
+
+       $.ajax({
+           type: "POST",
+           url: "http://localhost/pupr_new/generate_bulan/data_alat",
+           data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan},
+           dataType: "text",
+           async:false,
+           cache:false,
+           success:
+               function(data){
+                   // alert(data);  //as a debugging message.
+                   data=JSON.parse(data);
+                   console.log("Data Saya");
+                   console.log(data);
+                   console.log("Data Saya");
+
+                   let length=data.length;
+                   let i=0;
+
+                   while(i<length)
+                   {
+
+
+                       $("#buat_alat").append('  <tr>\n' +
+                           '    <td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
+                           '    <td class="tg-cly1">'+data[i].satuan+'</td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'___1"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'___2"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'___3"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'___4"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'___5"></td>\n' +
+                           '  </tr>');
+
+
+                       i++;
+                   }
                }
        });
 
@@ -580,6 +623,7 @@ else
     {
         $("#buat_tabel").empty();
         $("#buat_pekerja").empty();
+        $("#buat_alat").empty();
 
     }
 
