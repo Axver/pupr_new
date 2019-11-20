@@ -544,7 +544,265 @@ else
                     }
                 }
         });
-	}
+
+
+	 //Bulan 1
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data",
+            data: {"tahun":tahun,"bulan":bulan_mulai,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan_mulai)+1;
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                        //Kalau -5 itu 1, -4 itu 2, -3 itu 3, -2 itu 1
+						if($hasil=='-5')
+						{
+                            $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+						}
+
+
+                        i++;
+                    }
+
+                }
+        });
+
+        //Bulan 2
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data",
+            data: {"tahun":tahun,"bulan":bulan2,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan2)+1;
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+
+                        i++;
+                    }
+
+                }
+        });
+
+
+        //Bulan 3
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data",
+            data: {"tahun":tahun,"bulan":bulan3,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan3)+1;
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+
+                        i++;
+                    }
+
+                }
+        });
+
+
+
+
+    }
 
 
 	function hapusTabel()
@@ -552,6 +810,74 @@ else
 
 	    $("#tabel_satu").empty();
 	}
+</script>
+
+
+<script>
+
+    function getWeeksInMonth(month_number, year) {
+        // console.log("year - "+year+" month - "+month_number+1);
+
+        var day = 0;
+        var firstOfMonth = new Date(year, month_number, 1);
+        var lastOfMonth = new Date(year, parseInt(month_number)+1, 0);
+
+        if (firstOfMonth.getDay() == 0) {
+            day = 2;
+            firstOfMonth = firstOfMonth.setDate(day);
+            firstOfMonth = new Date(firstOfMonth);
+        } else if (firstOfMonth.getDay() != 1) {
+            day = 9-(firstOfMonth.getDay());
+            firstOfMonth = firstOfMonth.setDate(day);
+            firstOfMonth = new Date(firstOfMonth);
+        }
+
+        var days = (lastOfMonth.getDate() - firstOfMonth.getDate())+1
+        return Math.ceil( days / 7);
+    }
+
+    //	Mencari rentang tanggal minggu tertentu
+    Date.prototype.getWeek = function () {
+        var target  = new Date(this.valueOf());
+        var dayNr   = (this.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        var firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() != 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
+    }
+
+    function getDateRangeOfWeek(weekNo){
+        var d1 = new Date();
+        numOfdaysPastSinceLastMonday = eval(d1.getDay()- 1);
+        d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+        var weekNoToday = d1.getWeek();
+        var weeksInTheFuture = eval( weekNo - weekNoToday );
+        d1.setDate(d1.getDate() + eval( 7 * weeksInTheFuture ));
+        var rangeIsFrom = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear();
+        d1.setDate(d1.getDate() + 6);
+        var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
+        return rangeIsFrom + " to "+rangeIsTo;
+    };
+
+    function stringToDate(_date,_format,_delimiter)
+    {
+        var formatLowerCase=_format.toLowerCase();
+        var formatItems=formatLowerCase.split(_delimiter);
+        var dateItems=_date.split(_delimiter);
+        var monthIndex=formatItems.indexOf("mm");
+        var dayIndex=formatItems.indexOf("dd");
+        var yearIndex=formatItems.indexOf("yyyy");
+        var month=parseInt(dateItems[monthIndex]);
+        month-=1;
+        var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        return formatedDate;
+    }
+
+
+
 </script>
 
 

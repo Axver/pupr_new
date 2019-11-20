@@ -635,7 +635,7 @@ else
    //Query Untuk Jumlah Pekerja
 	//SELECT *,COUNT(jumlah_pekerja) FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = 2019 AND MONTH(id_lap_harian_mingguan) = 11 AND id_lap_perencanaan='1' GROUP BY jenis_pekerja
 
-    77
+    // 77
 
     function stringToDate(_date,_format,_delimiter)
     {
