@@ -338,7 +338,26 @@ else
            cache:false,
            success:
                function(data){
-                   alert(data);  //as a debugging message.
+                   // alert(data);  //as a debugging message.
+				   data=JSON.parse(data);
+				   console.log(data);
+
+				   let length=data.length;
+				   let i=0;
+
+				   while(i<length)
+				   {
+				       $("#buat_tabel").append('  <tr>\n' +
+                           '    <td class="tg-cly1">'+data[i].jenis_pekerja+'</td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_1"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_2"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_3"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_4"></td>\n' +
+                           '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_5"></td>\n' +
+                           '  </tr>');
+
+				       i++;
+				   }
                }
        });
    }
