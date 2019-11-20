@@ -26,9 +26,24 @@ class Generate_minggu extends CI_Controller {
 //		$this->db->from('detail_bahan_alat_harian');
 //		$this->db->join('jenis_pekerjaan', 'detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id');
 
-		$data=$this->db->query("SELECT *, SUM(jumlah_bahan) 
+		$data=$this->db->query("SELECT *, SUM(jumlah_pekerja) 
 FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id WHERE detail_bahan_alat_harian.id_lap_perencanaan='$id_lap_perencanaan'
-GROUP BY id_jenis_bahan_alat")->result();
+GROUP BY jenis_pekerja")->result();
+
+//		$data=$this->db->get()->result();
+		echo json_encode($data);
+	}
+
+	public function jenis_alat()
+	{
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+//		Select Distint data dari database
+//		$this->db->select('*');
+//		$this->db->distinct('id_jenis_bahan_alat');
+//		$this->db->from('detail_bahan_alat_harian');
+//		$this->db->join('jenis_pekerjaan', 'detail_bahan_alat_harian.jenis_pekerja = jenis_pekerjaan.id');
+
+		$data=$this->db->query("SELECT *, SUM(jumlah_bahan) FROM detail_bahan_alat_harian INNER JOIN jenis_bahan_alat ON detail_bahan_alat_harian.id_jenis_bahan_alat = jenis_bahan_alat.id_jenis_bahan_alat WHERE detail_bahan_alat_harian.id_lap_perencanaan='$id_lap_perencanaan' GROUP BY detail_bahan_alat_harian.id_jenis_bahan_alat")->result();
 
 //		$data=$this->db->get()->result();
 		echo json_encode($data);

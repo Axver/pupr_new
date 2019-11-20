@@ -281,7 +281,7 @@ else
 				<script>
 
                     function getWeeksInMonth(month_number, year) {
-                        console.log("year - "+year+" month - "+month_number+1);
+                        // console.log("year - "+year+" month - "+month_number+1);
 
                         var day = 0;
                         var firstOfMonth = new Date(year, month_number, 1);
@@ -384,9 +384,10 @@ else
 
 	function generateTabel()
 	{
-	    buatAlat();
+
         $("#generateData").attr("disabled", false);
 	    hapusTabel();
+        buatAlat();
 	    // alert("Generate Tabelnya!!");
 	    let minggu=$("#id_minggu").val();
 	    let bulan_pertama=$("#bulan_pertama").val();
@@ -447,7 +448,7 @@ else
             success:
                 function(data){
                     data=JSON.parse(data);
-                    console.log(data);
+                    // console.log(data);
 
                     let length=data.length;
                     let z=0;
@@ -457,7 +458,7 @@ else
 
 					    //String Builder
 						let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
-						console.log(data);
+						// console.log(data);
 						let v=0;
 						while(v<colspan1)
 						{
@@ -512,15 +513,15 @@ else
             }
 
             total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
-            console.log("-------");
-            console.log(total_minggu);
-            console.log("--------");
+            // console.log("-------");
+            // console.log(total_minggu);
+            // console.log("--------");
 
             //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
             let rentang_hari = getDateRangeOfWeek(total_minggu);
             rentang_hari=rentang_hari.split(" to ");
-            console.log(rentang_hari);
+            // console.log(rentang_hari);
             let dataX=rentang_hari[0].split("/");
             let dataStart=dataX[1];
             let dateY=rentang_hari[1].split("/");
@@ -544,11 +545,11 @@ else
             var newend = end.setDate(end.getDate()+1);
             var end = new Date(newend);
             while(start < end){
-                console.log(new Date(start).getTime() / 1000); // unix timestamp format
-                console.log(start); // ISO Date format
+                // console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                // console.log(start); // ISO Date format
 				day=start.toLocaleDateString();
 
-				console.log(day);
+				// console.log(day);
 				//dapatkan day nya dan append gan
                 $pekerjaString=$pekerjaString+'<td class="tg-cly1">'+day+'</td>';
 
@@ -574,7 +575,7 @@ else
                 success:
                     function(data){
                         data=JSON.parse(data);
-                        console.log(data);
+                        // console.log(data);
 
                         let length=data.length;
                         let z=0;
@@ -588,7 +589,7 @@ else
                             let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
                             let strTukang='<td class="tg-cly1"><center>Tukang</center></td>';
                             let strPekerja='<td class="tg-cly1"><center>Pekerja</center></td>';
-                            console.log(data);
+                            // console.log(data);
                             let v=0;
                             while(v<7)
                             {
@@ -650,9 +651,9 @@ else
             }
 
             total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
-            console.log("-------");
-            console.log(total_minggu);
-            console.log("--------");
+            // console.log("-------");
+            // console.log(total_minggu);
+            // console.log("--------");
 
             //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
@@ -661,7 +662,7 @@ else
 
             //    Dapatkan Start dan ENd Dari Tanggal Tersebut
             rentang_hari = rentang_hari.split(" to ");
-            console.log(rentang_hari);
+            // console.log(rentang_hari);
             //    Select Beetwen Date From Database
             let id_lap_perencanaan_baru=$("#id_lap_perencanaan").val();
 
@@ -675,9 +676,9 @@ else
                 success:
                     function (data) {
                         data = JSON.parse(data);
-                        console.log("&&&&&&&&");
-                        console.log(data);
-                        console.log("&&&&&&&&");
+                        // console.log("&&&&&&&&");
+                        // console.log(data);
+                        // console.log("&&&&&&&&");
 
                         let length = data.length;
                         let i = 0;
@@ -703,24 +704,24 @@ else
 
                                     // $("#"+data[i].jenis_pekerja+"_"+minggu).text("Haha");
 
-                                    console.log("----");
+                                    // console.log("----");
 
                                     let jn = document.getElementById(data[i].jenis_pekerja + "_" + minggu);
                                     jn.style.backgroundColor = "lightblue";
 
 
-                                    console.log("-----");
+                                    // console.log("-----");
 
                                 } else {
                                     //    Kalau bulannya ada beberapa maka lakukan beberapa langkah berikut
 
 
-                                    console.log("hehehe");
+                                    // console.log("hehehe");
                                     let bulan_n = bulan_posisi * 5;
-                                    console.log(bulan_n);
+                                    // console.log(bulan_n);
                                     bulan_n = parseInt(bulan_n) + parseInt(minggu);
-                                    console.log(bulan_n);
-                                    console.log("hehehe");
+                                    // console.log(bulan_n);
+                                    // console.log("hehehe");
 
                                     let jn1 = document.getElementById(data[i].jenis_pekerja + "_" + bulan_n);
                                     jn1.style.backgroundColor = "lightblue";
@@ -772,15 +773,15 @@ else
             }
 
             total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
-            console.log("-------");
-            console.log(total_minggu);
-            console.log("--------");
+            // console.log("-------");
+            // console.log(total_minggu);
+            // console.log("--------");
 
             //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
             let rentang_hari = getDateRangeOfWeek(total_minggu);
             rentang_hari = rentang_hari.split(" to ");
-            console.log(rentang_hari);
+            // console.log(rentang_hari);
             let dataX = rentang_hari[0].split("/");
             let dataStart = dataX[1];
             let dateY = rentang_hari[1].split("/");
@@ -805,13 +806,13 @@ else
             var end = new Date(newend);
             let batas_tabel=1;
             while (start < end) {
-                console.log(new Date(start).getTime() / 1000); // unix timestamp format
-                console.log(start); // ISO Date format
+                // console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                // console.log(start); // ISO Date format
                 day = start.toLocaleDateString();
 
-                console.log("wihihihihi");
-                console.log(day);
-                console.log("wihihihihi");
+                // console.log("wihihihihi");
+                // console.log(day);
+                // console.log("wihihihihi");
                 //dapatkan day nya dan append gan
                 // $pekerjaString = $pekerjaString + '<td class="tg-cly1">' + day + '</td>';
 
@@ -829,9 +830,9 @@ else
                     success:
                         function(data){
                             data=JSON.parse(data);
-                            console.log("iniininin");
-                            console.log(data);
-                            console.log("inininiini");
+                            // console.log("iniininin");
+                            // console.log(data);
+                            // console.log("inininiini");
                             let length=data.length;
                             let i=0;
                             while(i<length)
@@ -887,6 +888,7 @@ else
 
 	    $("#buat_tabel").empty();
         $("#buat_pekerja").empty();
+        $("#buat_alat").empty();
 
 	}
 
@@ -950,15 +952,15 @@ else
             }
 
             total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
-            console.log("-------");
-            console.log(total_minggu);
-            console.log("--------");
+            // console.log("-------");
+            // console.log(total_minggu);
+            // console.log("--------");
 
             //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
 
             let rentang_hari = getDateRangeOfWeek(total_minggu);
             rentang_hari = rentang_hari.split(" to ");
-            console.log(rentang_hari);
+            // console.log(rentang_hari);
             let dataX = rentang_hari[0].split("/");
             let dataStart = dataX[1];
             let dateY = rentang_hari[1].split("/");
@@ -982,11 +984,11 @@ else
             var newend = end.setDate(end.getDate() + 1);
             var end = new Date(newend);
             while (start < end) {
-                console.log(new Date(start).getTime() / 1000); // unix timestamp format
-                console.log(start); // ISO Date format
+                // console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                // console.log(start); // ISO Date format
                 day = start.toLocaleDateString();
 
-                console.log(day);
+                // console.log(day);
                 //dapatkan day nya dan append gan
                 $pekerjaString = $pekerjaString + '<td class="tg-cly1">' + day + '</td>';
 
@@ -998,6 +1000,54 @@ else
 
             $("#hari_nya1").append($pekerjaString);
         }
+
+        let id_lap_perencanaan_jesi=$("#id_lap_perencanaan").val();
+
+    //    Ajax Jenis Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/generate_minggu/jenis_alat",
+            asynd:false,
+            data: {"id_lap_perencanaan":id_lap_perencanaan_jesi},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    // console.log("jesijesijesi");
+                    // console.log(data);
+                    // console.log("jesijesijesi");
+
+					console.log(data);
+
+
+
+
+
+                    let length=data.length;
+                    let z=0;
+
+                    while(z<length)
+                    {
+                        let $strBuilder="";
+                        $strBuilder=$strBuilder+'<td class="tg-0lax">'+data[z].jenis_bahan_alat+'</td>'+'\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>';
+
+                        $strBuilder="<tr>"+$strBuilder+"</tr>";
+
+                        $("#buat_alat").append($strBuilder);
+
+
+                        z++;
+                    }
+                }
+        });
 	}
 </script>
 
@@ -1043,6 +1093,8 @@ else
 <!--	<td class="tg-0lax"></td>-->
 <!--	<td class="tg-0lax"></td>-->
 <!--</tr>-->
+
+
 
 
 
