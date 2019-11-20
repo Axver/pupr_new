@@ -168,7 +168,7 @@ else
 								<br/>
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
-								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>
+<!--								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>-->
 								<br/>
 								<br/>
 
@@ -187,6 +187,9 @@ else
 									</table>
 
 									<table class="tg table table-bordered" id="buat_pekerja">
+									</table>
+
+									<table class="tg table table-bordered" id="buat_alat">
 									</table>
 
 								</div>
@@ -320,7 +323,7 @@ else
 	//   Generate Tabel 1
 	   $("#buat_tabel").append('<tr>\n' +
            '    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-           '    <th class="tg-nrix" colspan="5">Tahap</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
            '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
@@ -335,7 +338,7 @@ else
 	//   Generate Tabel 2
        $("#buat_pekerja").append('<tr>\n' +
            '    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-           '    <th class="tg-nrix" colspan="5">Tahap</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
            '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
@@ -348,7 +351,24 @@ else
            '    <td class="tg-cly1">5</td>\n' +
            '  </tr>');
 
-	//   Ajax Untuk Mendapatkan Data
+       $("#buat_alat").append('<tr>\n' +
+           '    <th class="tg-cly1" rowspan="3">Jenis Alat</th>\n' +
+           '    <th class="tg-cly1" rowspan="3">Satuan</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
+           '  </tr>\n' +
+           '  <tr>\n' +
+           '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
+           '  </tr>\n' +
+           '  <tr>\n' +
+           '    <td class="tg-cly1">1</td>\n' +
+           '    <td class="tg-cly1">2</td>\n' +
+           '    <td class="tg-cly1">3</td>\n' +
+           '    <td class="tg-cly1">4</td>\n' +
+           '    <td class="tg-cly1">5</td>\n' +
+           '  </tr>');
+
+
+       //   Ajax Untuk Mendapatkan Data
 
        $.ajax({
            type: "POST",
