@@ -352,7 +352,7 @@ else
 				   while(i<length)
 				   {
 				       $("#buat_tabel").append('  <tr>\n' +
-                           '    <td class="tg-cly1">'+data[i].jenis_pekerja+'</td>\n' +
+                           '    <td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_1"></td>\n' +
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_2"></td>\n' +
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_3"></td>\n' +

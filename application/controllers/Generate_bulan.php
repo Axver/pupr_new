@@ -77,7 +77,7 @@ public function data()
 	$id_perencanaan=$this->input->post("id_perencanaan");
 
 //	Select Disini
-	$data=$this->db->query("SELECT *,COUNT(jumlah_pekerja) as count FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerja");
+	$data=$this->db->query("SELECT *,COUNT(jumlah_pekerja) as count FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja=jenis_pekerjaan.id WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerja");
 	$data=$data->result();
 
 	echo json_encode($data);
