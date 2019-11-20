@@ -218,7 +218,10 @@ else
                                  <button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
 <!--								Disini Posisi Tabelnya-->
 								<div id="cetak_tabel">
-									<center><b>Cetak Tabel</b></center>
+									<br/>
+									<center><b><h3>LAPORAN MINGGUAN PELAKSANAAN KEGIATAN</h3></b></center>
+									<br/>
+									<br/>
 
 <!--									Tabelnya-->
 									<table class="tg table table-bordered" id="buat_tabel">
@@ -245,6 +248,21 @@ else
 									</table>
 
 									<table class="tg table table-bordered" id="buat_pekerja">
+									</table>
+
+									<table class="tg table table-bordered" id="buat_alat">
+
+<!--										<tr>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--											<td class="tg-0lax"></td>-->
+<!--										</tr>-->
 									</table>
 
 								</div>
@@ -366,6 +384,7 @@ else
 
 	function generateTabel()
 	{
+	    buatAlat();
         $("#generateData").attr("disabled", false);
 	    hapusTabel();
 	    // alert("Generate Tabelnya!!");
@@ -875,8 +894,111 @@ else
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
         // Choose the element and save the PDF for our user.
-        html2pdf().from(element).save();
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
     }
+
+
+    function buatAlat()
+	{
+	    $("#buat_alat").append('\t<tr >\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" rowspan="3">Jenis Bahan Alat</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" rowspan="3">Satuan</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" colspan="7"></th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="7">Minggu Ke</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<tr id="hari_nya1">\n' +
+
+            '\t\t\t\t\t\t\t\t\t\t</tr>');
+
+
+        //	String Builder Untuk Tanggalnya
+        // $("#buat_pekerja").append("<tr id='hari_nya'></tr>")
+        $pekerjaString="";
+
+        //	Dapatkan tanggalnya cari minggu keberapa dia
+        // alert(rentang);
+
+        //	Dapatkan Jumlah Minggu masing-masing bulan
+        //	Check apakah minggunya memang tersedia
+        let id_minggu=$("#id_minggu").val();
+        let bulan_diinginkan=$("#bulan_diinginkan").val();
+        let tahun_hidden=$("#tahun_hidden").val();
+
+        let check=getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        // alert(check);
+
+        if(id_minggu<=check) {
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y = 1;
+            let total_minggu = 0;
+
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+            console.log("-------");
+            console.log(total_minggu);
+            console.log("--------");
+
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
+            rentang_hari = rentang_hari.split(" to ");
+            console.log(rentang_hari);
+            let dataX = rentang_hari[0].split("/");
+            let dataStart = dataX[1];
+            let dateY = rentang_hari[1].split("/");
+            let dataEnd = dateY[1];
+
+            // let bm=0;
+            // while(bm<7)
+            // {
+            //
+            //     bm++;
+            //     dataStart++;
+            // }
+
+            //	Append Data String ke Tr Sebelumnya
+
+
+            //Ubah Format Date
+
+            var start = new Date(rentang_hari[0]);
+            var end = new Date(rentang_hari[1]);
+            var newend = end.setDate(end.getDate() + 1);
+            var end = new Date(newend);
+            while (start < end) {
+                console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                console.log(start); // ISO Date format
+                day = start.toLocaleDateString();
+
+                console.log(day);
+                //dapatkan day nya dan append gan
+                $pekerjaString = $pekerjaString + '<td class="tg-cly1">' + day + '</td>';
+
+
+                var newDate = start.setDate(start.getDate() + 1);
+
+
+            }
+
+            $("#hari_nya1").append($pekerjaString);
+        }
+	}
 </script>
 
 
