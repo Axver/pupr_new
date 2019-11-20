@@ -207,7 +207,11 @@ else
 								<br/>
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
-								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>
+								<button onclick="testJesi()" class="btn btn-info" id="generateData">Generate Data</button>
+
+								<script>
+                                    $("#generateData").attr("disabled", true);
+								</script>
 								<br/>
 								<br/>
 
@@ -362,6 +366,8 @@ else
 
 	function generateTabel()
 	{
+        $("#generateData").attr("disabled", false);
+	    hapusTabel();
 	    // alert("Generate Tabelnya!!");
 	    let minggu=$("#id_minggu").val();
 	    let bulan_pertama=$("#bulan_pertama").val();
@@ -371,9 +377,11 @@ else
 	    let rentang=bulan_terakhir-bulan_pertama+1;
 	    let colspan1=rentang*5;
 
+
+
 	    $("#buat_tabel").append('<tr>\n' +
             '\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-            '\t<th class="tg-nrix" colspan="'+colspan1+'">Tahap</th>\n' +
+            '\t<th class="tg-nrix" colspan="'+colspan1+'">'+nama_tahap+'</th>\n' +
             '</tr>');
         let daftar_bulam=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 	    //append new row again
@@ -409,7 +417,7 @@ else
 		let id_lap_perencanaan=$("#id_lap_perencanaan").val();
 
 		//Dapatkan Jenis Pekerjaan Pada Laporan Perencanaan Yang Dibuat sesuai dengan data pada Tabel Detail Bahan Alat
-		alert(id_lap_perencanaan);
+		// alert(id_lap_perencanaan);
         $.ajax({
             type: "POST",
             url: "http://localhost/pupr_new/generate_minggu/jenis_pekerjaan",
@@ -599,6 +607,7 @@ else
 
 	function testJesi() {
         // alert(rentang);
+        $("#generateData").attr("disabled", true);
 
         //	Dapatkan Jumlah Minggu masing-masing bulan
         //	Check apakah minggunya memang tersedia
@@ -856,6 +865,9 @@ else
 
 	function hapusTabel()
 	{
+
+	    $("#buat_tabel").empty();
+        $("#buat_pekerja").empty();
 
 	}
 
