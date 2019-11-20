@@ -413,7 +413,7 @@ else
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'__5"></td>\n' +
                            '  </tr>');
 
-                    
+
 
 
 				       i++;
@@ -537,10 +537,94 @@ else
 					   //Masukkan semuanya ke tabel (warnai tabel dulu)
 					   // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color","yellow");
-                       $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].jumlah_pekerja)
+                       $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].jumlah_pekerja);
 
 				       i++;
 				   }
+
+               }
+       });
+
+
+       //    Isi Tabel Alat sekarang
+
+       $.ajax({
+           type: "POST",
+           url: "http://localhost/pupr_new/generate_bulan/isi_data1",
+           data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan},
+           dataType: "text",
+           async:false,
+           cache:false,
+           success:
+               function(data){
+                   // alert(data);  //as a debugging message.
+                   data=JSON.parse(data);
+
+                   console.log("data_isi");
+                   console.log(data);
+                   console.log("data_isi");
+
+                   // console.log(getWeeksInMonth(bulan, tahun));
+                   // console.log(getDateRangeOfWeek(12));
+
+                   let length=data.length;
+                   let i=0;
+                   let minggu_get;
+
+                   while(i<length)
+                   {
+                       let z=1;
+                       while(z<=54)
+                       {
+
+                           week=getDateRangeOfWeek(z);
+                           week=week.split(" to ")
+                           // console.log(week);
+                           // console.log(week[0].toDateString());
+                           tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                           tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                           tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                           // console.log(tanggal_start);
+                           // console.log(tanggal_end);
+                           // console.log(tanggal_pilihan);
+                           if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                           {
+                               minggu_get=z;
+                               console.log(minggu_get);
+                           }
+
+                           z++;
+                       }
+
+                       //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                       let y=1;
+                       let $hasil=0;
+                       let batas=parseInt(bulan)+1;
+
+                       while(y<batas)
+                       {
+                           $data=getWeeksInMonth(y, tahun);
+                           $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                           y++;
+                       }
+
+                       console.log($hasil);
+
+                       //Kurangi data yang dimiliki dengan total minggunya
+                       $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                       console.log($hasil_akhir);
+                       //Masukkan semuanya ke tabel (warnai tabel dulu)
+                       // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                       $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+
+                       i++;
+                   }
 
                }
        });
