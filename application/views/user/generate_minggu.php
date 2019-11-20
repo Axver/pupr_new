@@ -1030,18 +1030,20 @@ else
                     while(z<length)
                     {
                         let $strBuilder="";
-                        $strBuilder=$strBuilder+'<td class="tg-0lax">'+data[z].jenis_bahan_alat+'</td>'+'\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>';
+                        $strBuilder=$strBuilder+'<td class="tg-0lax">'+data[z].jenis_bahan_alat+'</td>'+'\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[z].satuan+'</td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_1_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_2_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_3_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_4_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_5_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_6_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_7_1"></td>';
 
                         $strBuilder="<tr>"+$strBuilder+"</tr>";
 
                         $("#buat_alat").append($strBuilder);
+
+
 
 
                         z++;
