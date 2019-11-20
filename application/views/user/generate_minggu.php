@@ -980,6 +980,7 @@ else
             //Ubah Format Date
 
             var start = new Date(rentang_hari[0]);
+            console.log(start);
             var end = new Date(rentang_hari[1]);
             var newend = end.setDate(end.getDate() + 1);
             var end = new Date(newend);
@@ -997,6 +998,7 @@ else
 
 
             }
+            console.log(start);
 
             $("#hari_nya1").append($pekerjaString);
         }
@@ -1029,19 +1031,62 @@ else
 
                     while(z<length)
                     {
+                        $pekerjaString1="";
                         let $strBuilder="";
-                        $strBuilder=$strBuilder+'<td class="tg-0lax">'+data[z].jenis_bahan_alat+'</td>'+'\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[z].satuan+'</td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_1_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_2_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_3_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_4_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_5_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_6_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+z+'_7_1"></td>';
+                        $strBuilder=$strBuilder+'<td class="tg-0lax">'+data[z].jenis_bahan_alat+'</td>'+'\t\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">'+data[z].satuan+'</td>\n';
 
-                        $strBuilder="<tr>"+$strBuilder+"</tr>";
+                        let y = 1;
+                        let total_minggu = 0;
+
+                        while (y <= bulan_diinginkan) {
+                            total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                            //hitung jumlah minggu yang ada
+
+                            y++;
+                        }
+
+                        total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+                        // console.log("-------");
+                        // console.log(total_minggu);
+                        // console.log("--------");
+
+                        //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+                        let rentang_hari = getDateRangeOfWeek(total_minggu);
+                        rentang_hari = rentang_hari.split(" to ");
+                        // console.log(rentang_hari);
+                        let dataX = rentang_hari[0].split("/");
+                        let dataStart = dataX[1];
+                        let dateY = rentang_hari[1].split("/");
+                        let dataEnd = dateY[1];
+                        var start = new Date(rentang_hari[0]);
+                        console.log(start);
+                        var end = new Date(rentang_hari[1]);
+                        var newend = end.setDate(end.getDate() + 1);
+                        end = new Date(newend);
+                        while (start < end) {
+                            // console.log(new Date(start).getTime() / 1000); // unix timestamp format
+                            // console.log(start); // ISO Date format
+                            day = start.toLocaleDateString();
+
+                            // console.log(day);
+                            //dapatkan day nya dan append gan
+                            $pekerjaString1 = $pekerjaString1 + '<td class="tg-cly1" id="'+ z+"_"+day +'"></td>';
+
+
+                            var newDate = start.setDate(start.getDate() + 1);
+
+
+                        }
+
+                        $strBuilder="<tr>"+$strBuilder+$pekerjaString1+"</tr>";
+
+                        console.log($strBuilder);
 
                         $("#buat_alat").append($strBuilder);
+
+
+                        //Isikan datanya ke dalam sekarang
 
 
 
