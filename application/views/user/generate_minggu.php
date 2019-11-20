@@ -1071,7 +1071,8 @@ else
 
                             // console.log(day);
                             //dapatkan day nya dan append gan
-                            $pekerjaString1 = $pekerjaString1 + '<td class="tg-cly1" id="'+ z+"_"+day +'"></td>';
+							day=day.split("/");
+                            $pekerjaString1 = $pekerjaString1 + '<td class="tg-cly1" id="'+ z+""+day[0] +'"></td>';
 
 
                             var newDate = start.setDate(start.getDate() + 1);
@@ -1087,7 +1088,23 @@ else
 
 
                         //Isikan datanya ke dalam sekarang
+						var isi=data[z].id_lap_harian_mingguan;
+                        // newStr = isi.replace(/[^a-z0-9]/gi, '-');
+                        var res = isi.split("-");
 
+                        if(res[2].charAt(0)=='0')
+						{
+						    res[2]=res[2].replace('0','');
+						}
+
+                        // $strNew=res[2]+"/"+res[1]+"/"+res[0];
+
+							// alert(newStr);
+						$("#"+z+res[2]).text(data[z].jumlah_bahan);
+
+						console.log("Hmmm");
+						// console.log(z+"_"+$strNew);
+						console.log("Hmmmm");
 
 
 
