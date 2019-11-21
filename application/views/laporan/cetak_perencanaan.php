@@ -628,11 +628,33 @@ else
 								 ?>
 
 							 </td>
-							 <td cellspacing="'0'"></td>
-							 <td cellspacing="'0'"></td>
-							 <td cellspacing="'0'"></td>
-							 <td cellspacing="'0'"></td>
-							 <td cellspacing="'0'"></td>
+							 <?php
+							 //							 Dapatkan datanya
+							 $info_perencanaan=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+							 $count=count($info_perencanaan);
+							 $loaksiM="";
+							 $jenis_pekerjaanM="";
+							 $panjang_penangananM="";
+							 $keterangan_dimensiM="";
+							 $keteranganM="";
+
+							 if($count>0)
+							 {
+								 $loaksiM=$info_perencanaan[0]->lokasi;
+								 $jenis_pekerjaanM=$info_perencanaan[0]->jenis_pekerjaan;
+								 $panjang_penangananM=$info_perencanaan[0]->panjang_penanganan;
+								 $keterangan_dimensiM=$info_perencanaan[0]->keterangan_dimensi;
+								 $keteranganM=$info_perencanaan[0]->keterangan;
+							 }
+							 ?>
+							 <td cellspacing="'0'" id="lokasiM"><?php echo $loaksiM ?></td>
+							 <td cellspacing="'0'" id="jenis_pekerjaanM"><?php echo $jenis_pekerjaanM ?></td>
+							 <td cellspacing="'0'" id="panjang_penangananM"><?php echo $panjang_penangananM ?></td>
+							 <td cellspacing="'0'" id="keterangan_dimensiM"><?php echo  $keterangan_dimensiM ?></td>
+							 <td cellspacing="'0'" id="ketM"><?php echo $keteranganM ?></td>
+
+
+
 						 </tr>
 						 </tbody>
 					 </table>

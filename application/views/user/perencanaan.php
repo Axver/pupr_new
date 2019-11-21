@@ -236,7 +236,7 @@ else
 											<div class="col-sm-3">Nama Paket</div>
 											<div class="col-sm-1">:</div>
 											<div class="col-sm-8">
-												<input type="text" id="nama_paket" class="form form-control">
+												<input type="text" id="nama_paket" class="form form-control" disabled>
 
 											</div>
 
@@ -244,41 +244,41 @@ else
 										<div class="row">
 											<div class="col-sm-3">Nilai Paket</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="nilai_paket"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="nilai_paket" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Jumlah Tahap</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jumlah_tahap"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="jumlah_tahap" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Jenis Pekerjaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Masa Pelaksanaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="masa_pelaksanaan"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="masa_pelaksanaan" disabled></div>
 
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Lokasi</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="lokasi"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="lokasi" disabled></div>
 
 										</div>
 										<div class="row">
 											<div class="col-sm-3">Tahun Anggaran</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="tahun_anggaran"></div>
+											<div class="col-sm-8"><input type="text" class="form form-control" id="tahun_anggaran" disabled></div>
 
 										</div>
 									</div>
