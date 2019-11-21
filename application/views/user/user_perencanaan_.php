@@ -336,11 +336,66 @@ else
 
 	function harian(id_paket)
 	{
-	    alert("test");
+	    // alert("test");
+		hapus();
+
+        $("#generate_table").append("<table id=\"example1\" class=\"display\" style=\"width:100%\">\n" +
+            "\t<thead>\n" +
+            "\t<tr>\n" +
+            "\t\t<th>Harian</th>\n" +
+            "\t\t<th>View</th>\n" +
+            "\t\t<th>Edit</th>\n" +
+            "\t\t<th>Image</th>\n" +
+            "\t\n" +
+            "\t</tr>\n" +
+            "\t</thead>\n" +
+            "\t<tbody id='bodynya'>\n" +
+            "\t</tbody>\n" +
+            "</table>");
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/user_perencanaan_/harian",
+            data: {"id_paket":id_paket},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+                    console.log(data);
+
+                    let length=data.length;
+                    let i=0;
+
+                    while(i<length)
+                    {
+                        // var dateobj = new Date(data[i].id_lap_harian_mingguan);
+                        // $data1=data[i].id_lap_harian_mingguan.toString();
+                        var B = data[i].id_lap_harian_mingguan.toString();
+                        var C=data[i].id_lap_perencanaan;
+                        console.log(B);
+                        console.log(data[i].id_lap_harian_mingguan);
+                        // B=B.replace(/-/g, 'm' );
+
+                        $("#bodynya").append('<tr>\n' +
+                            '\t<td>'+data[i].id_lap_harian_mingguan+'</td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="view('+'\''+B+','+C+'\''+')">View</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="edit('+'\''+B+','+C+'\''+')">Edit</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="upload('+'\''+B+','+C+'\''+')">Add</button></td>\n' +
+                            '</tr>\n');
+
+
+                        i++;
+                    }
+                }
+        });
 	}
 
 	function pelaksanaan(id_paket) {
-        alert("test");
+        // alert("test");
+		hapus();
 
     }
 
@@ -349,6 +404,30 @@ else
 	{
 	    $("#generate_table").empty();
 	}
+
+    function view(id)
+    {
+        id=id.split(",");
+        // alert(id);
+		// console.log(id);
+        window.location="view_harian/index/"+id[0]+"/"+id[1];
+    }
+
+    function edit(id)
+    {
+        id=id.split(",");
+        // alert(id);
+        // console.log(id);
+        window.location="view_harian/edit/"+id[0]+"/"+id[1];
+    }
+
+    function upload(id,per)
+    {
+        id=id.split(",");
+        // alert(id);
+        // console.log(id);
+        window.location="view_harian/upload/"+id[0]+"/"+id[1];
+    }
 </script>
 
 

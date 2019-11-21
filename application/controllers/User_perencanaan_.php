@@ -16,5 +16,12 @@ class User_perencanaan_ extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function harian()
+	{
+		$perencanaan=$this->input->post("id_paket");
+		$data=$this->db->query("SELECT * FROM lap_harian_mingguan WHERE id_paket='$perencanaan'")->result();
+		echo json_encode($data);
+	}
+
 
 }
