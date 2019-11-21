@@ -309,8 +309,8 @@ else
 					{
                         $("#bodynya").append('<tr>\n' +
                             '\t<td>'+data[i].keterangan+'</td>\n' +
-                            '\t<td><button class="btn btn-info">Show</button></td>\n' +
-                            '\t<td><button class="btn btn-info">Show</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="redEdit('+data[i].id_lap_perencanaan+')">Show</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="upload('+data[i].id_lap_perencanaan+')">Add</button></td>\n' +
                             '</tr>\n');
 
 
