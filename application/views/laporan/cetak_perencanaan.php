@@ -664,7 +664,10 @@ else
 				 <div class="row">
 					 <div class="col-sm-3">
 						<b> Disetujui Oleh</b>
-						 <div class="row">
+						 <br/>
+						 <br/>
+						 <br/>
+
 							 <?php
 							 $data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
 
@@ -672,19 +675,57 @@ else
 
 							 if($count>=1)
 							 {
-							 	echo $data[0]->id_disetujui;
+//							 	echo $data[0]->id_disetujui;
+//								 Ambil namanya lagi
+								 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_disetujui))->result();
+
+								 echo "<b>".$ambil[0]->nama."</b>";
 							 }
 							 ?>
-						 </div>
+
 					 </div>
 					 <div class="col-sm-2"></div>
 					 <div class="col-sm-3">
 						 <b>Diperiksa Oleh</b>
+						 <br/>
+						 <br/>
+						 <br/>
+						 <?php
+						 $data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+
+						 $count=count($data);
+
+						 if($count>=1)
+						 {
+//							 	echo $data[0]->id_disetujui;
+//								 Ambil namanya lagi
+							 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
+
+							 echo "<b>".$ambil[0]->nama."</b>";
+						 }
+						 ?>
 						 <div class="row"></div>
 					 </div>
 					 <div class="col-sm-1"></div>
 					 <div class="col-sm-3">
 						 <b>Dibuat Oleh</b>
+						 <br/>
+						 <br/>
+						 <br/>
+						 <?php
+						 $data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+
+						 $count=count($data);
+
+						 if($count>=1)
+						 {
+//							 	echo $data[0]->id_disetujui;
+//								 Ambil namanya lagi
+							 $ambil=$this->db->get_where("account",array("nip"=>$data[0]->id_user))->result();
+
+							 echo "<b>".$ambil[0]->nama."</b>";
+						 }
+						 ?>
 						 <div class="row"></div>
 					 </div>
 				 </div>
