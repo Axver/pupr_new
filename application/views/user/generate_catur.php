@@ -599,7 +599,7 @@ else
 
                         let y=1;
                         let $hasil=0;
-                        let batas=parseInt(bulan_mulai)+1;
+                        let batas=parseInt(bulan_mulai);
 
                         while(y<batas)
                         {
@@ -687,7 +687,7 @@ else
 
                         let y=1;
                         let $hasil=0;
-                        let batas=parseInt(bulan2)+1;
+                        let batas=parseInt(bulan2);
 
                         while(y<batas)
                         {
@@ -770,7 +770,7 @@ else
 
                         let y=1;
                         let $hasil=0;
-                        let batas=parseInt(bulan3)+1;
+                        let batas=parseInt(bulan3);
 
                         while(y<batas)
                         {

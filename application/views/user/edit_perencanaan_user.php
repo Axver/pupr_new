@@ -1505,6 +1505,35 @@ $.ajax({
 </script>
 
 
+<!--Membuat TTD Sesudai dengan yang ada di db-->
+<script>
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/edit_perencanaan_user/ttd",
+        data: {"id_perencanaan":id_perencanaan_hidden},
+        dataType: "text",
+		asyic:false,
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+				{
+
+                    $("select#disetujui_oleh").val(data[i].id_disetujui);
+                    $("select#diperiksa_oleh").val(data[i].id_diperiksa);
+				    i++;
+				}
+            }
+    });
+</script>
+
+
 
 
 

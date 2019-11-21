@@ -37,5 +37,12 @@ class Edit_perencanaan_user extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function ttd()
+	{
+		$id=$this->input->post("id_perencanaan");
+		$id_perencanaan=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$id))->result();
+		echo json_encode($id_perencanaan);
+	}
+
 
 }
