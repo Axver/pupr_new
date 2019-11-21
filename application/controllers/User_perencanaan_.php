@@ -23,5 +23,13 @@ class User_perencanaan_ extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function pengawasan()
+	{
+		$perencanaan=$this->input->post("id_paket");
+		$data=$this->db->query("SELECT * FROM lap_pengawasan WHERE id_paket='$perencanaan'")->result();
+		echo json_encode($data);
+	}
+
+
 
 }

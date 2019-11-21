@@ -397,6 +397,63 @@ else
         // alert("test");
 		hapus();
 
+        $("#generate_table").append("<table id=\"example1\" class=\"display\" style=\"width:100%\">\n" +
+            "\t<thead>\n" +
+            "\t<tr>\n" +
+            "\t\t<th>Pelaksanaan</th>\n" +
+            "\t\t<th>View</th>\n" +
+            "\t\t<th>Edit</th>\n" +
+
+            "\t\n" +
+            "\t</tr>\n" +
+            "\t</thead>\n" +
+            "\t<tbody id='bodynya'>\n" +
+            "\t</tbody>\n" +
+            "</table>");
+
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/user_perencanaan_/pengawasan",
+            data: {"id_paket":id_paket},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+                    console.log(data);
+
+                    let length=data.length;
+                    let i=0;
+
+                    while(i<length)
+                    {
+                        // var dateobj = new Date(data[i].id_lap_harian_mingguan);
+                        // $data1=data[i].id_lap_harian_mingguan.toString();
+                        var B = data[i].id_lap_pengawasan;
+                        var C=data[i].id_lap_perencanaan;
+                        var D=data[i].minggu;
+
+                        var E=B+"_"+C+"_"+D;
+                        console.log(B);
+                        console.log(data[i].id_lap_harian_mingguan);
+                        // B=B.replace(/-/g, 'm' );
+
+                        $("#bodynya").append('<tr>\n' +
+                            '\t<td>'+data[i].id_lap_pengawasan+'</td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="view1('+'\''+E+'\''+')">View</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="edit1('+'\''+E+'\''+')">Edit</button></td>\n' +
+
+                            '</tr>\n');
+
+
+                        i++;
+                    }
+                }
+        });
+
     }
 
 
@@ -427,6 +484,23 @@ else
         // alert(id);
         // console.log(id);
         window.location="http://localhost/pupr_new/upload/index/"+id[0]+"/"+id[1];
+    }
+
+
+    function view1(id)
+    {
+        id=id.split("_");
+        // alert(id);
+        // console.log(id);
+        window.location="http://localhost/pupr_new/user_pengawasan_data/view/"+id[0]+"/"+id[1]+"/"+id[2];
+    }
+
+    function edit1(id)
+    {
+        id=id.split("_");
+        // alert(id);
+        // console.log(id);
+        window.location="http://localhost/pupr_new/user_pengawasan_data/edit/"+id[0]+"/"+id[1]+"/"+id[2];
     }
 </script>
 
