@@ -135,7 +135,7 @@ else
 										<th>Nama Paket</th>
 										<th>Laporan Perencanaan</th>
 										<th>Laporan Harian</th>
-										<th>Laporan Pelaksanaan</th>
+										<th>Laporan Pengawasan</th>
 
 
 									</tr>
@@ -426,7 +426,7 @@ else
         id=id.split(",");
         // alert(id);
         // console.log(id);
-        window.location="view_harian/upload/"+id[0]+"/"+id[1];
+        window.location="http://localhost/pupr_new/upload/index/"+id[0]+"/"+id[1];
     }
 </script>
 
