@@ -32,8 +32,8 @@ class Edit_perencanaan_user extends CI_Controller {
 	{
       $id_perencanaan=$this->input->post("id_perencanaan");
 //      Select From DB
-		$data=$this->db->get_where("detail_bahan_alat",array("id_lap_perencanaan"=>$id_perencanaan))->result();
-
+//		$data=$this->db->get_where("detail_bahan_alat",array("id_lap_perencanaan"=>$id_perencanaan))->result();
+        $data=$this->db->query("SELECT * FROM detail_bahan_alat INNER JOIN jenis_bahan_alat ON detail_bahan_alat.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat WHERE id_lap_perencanaan='$id_perencanaan'")->result();
 		echo json_encode($data);
 	}
 
