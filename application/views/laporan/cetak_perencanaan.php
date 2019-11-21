@@ -156,62 +156,89 @@ else
 		 <center><h2>LAPORAN PELAKSANAAN KEGIATAN</h2></center>
 
 	 </b>
-	 <div class="row" >
-		 <div class="col-sm-6">
-			 <div class="row" style="text-align: center">
+	 <?php
+//	 Informasi Paket
+//	 Dapatkan id paket dahulu
+	 $id_paket_db=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+	 $count=count($id_paket_db);
+	 $i=0;
 
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Nama Paket</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8">
+	 $info_paket=0;
+//	 var_dump($id_paket_db);
+	 while($i<$count)
+	 {
+        $info_paket=$this->db->get_where("paket",array("id_paket"=>$id_paket_db[$i]->id_paket))->result();
+
+	 	$i++;
+	 }
+
+//	 var_dump($info_paket);
+
+
+	 if($info_paket!=0)
+	 {
+	 	?>
+		 <div class="row" >
+			 <div class="col-sm-6">
+				 <div class="row" style="text-align: center">
 
 				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Nama Paket</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8">
+                     <?php echo $info_paket[0]->nama ?>
+					 </div>
 
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Nilai Paket</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8">  <?php echo $info_paket[0]->nilai_paket ?></div>
+
+
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Jumlah Tahap</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8"> <?php echo $info_paket[0]->jumlah_tahap ?></div>
+
+
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Jenis Pekerjaan</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8"> <?php echo $info_paket[0]->jenis_pekerjaan ?></div>
+
+
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Masa Pelaksanaan</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8"> <?php echo $info_paket[0]->masa_pelaksanaan ?></div>
+
+
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Lokasi</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8"> <?php echo $info_paket[0]->lokasi ?></div>
+
+				 </div>
+				 <div class="row">
+					 <div class="col-sm-3">Tahun Anggaran</div>
+					 <div class="col-sm-1">:</div>
+					 <div class="col-sm-8"> <?php echo $info_paket[0]->tahun_anggaran ?></div>
+
+				 </div>
 			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Nilai Paket</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
 
-
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Jumlah Tahap</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
-
-
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Jenis Pekerjaan</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
-
-
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Masa Pelaksanaan</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
-
-
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Lokasi</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
-
-			 </div>
-			 <div class="row">
-				 <div class="col-sm-3">Tahun Anggaran</div>
-				 <div class="col-sm-1">:</div>
-				 <div class="col-sm-8"></div>
-
-			 </div>
 		 </div>
+	 <?php
 
-	 </div>
+	 }
+	 ?>
+
 	 <br/>
 
 	 <br>
