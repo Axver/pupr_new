@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==2)
+	if($this->session->userdata("privilage")==1)
 	{
 
 	}
@@ -123,26 +123,16 @@ else
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
-
-
-								<form action="<?php echo $action; ?>" method="post">
-									<div class="form-group">
-										<label for="varchar">Id Jenis Bahan Alat <?php echo form_error('id_jenis_bahan_alat') ?></label>
-										<input type="text" class="form-control" name="id_jenis_bahan_alat" id="id_jenis_bahan_alat" placeholder="Id Jenis Bahan Alat" value="<?php echo $id_jenis_bahan_alat; ?>" />
-									</div>
-									<div class="form-group">
-										<label for="varchar">Id Satuan <?php echo form_error('id_satuan') ?></label>
-										<input type="text" class="form-control" name="id_satuan" id="id_satuan" placeholder="Id Satuan" value="<?php echo $id_satuan; ?>" />
-									</div>
-									<div class="form-group">
-										<label for="decimal">Jumlah <?php echo form_error('jumlah') ?></label>
-										<input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" value="<?php echo $jumlah; ?>" />
-									</div>
-									<input type="hidden" name="id_lap_perencanaan" value="<?php echo $id_lap_perencanaan; ?>" />
-									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('force_detail_bahan') ?>" class="btn btn-default">Cancel</a>
-								</form>
-
+								<table class="table">
+									<tr><td>Tukang</td><td><?php echo $tukang; ?></td></tr>
+									<tr><td>Pekerja</td><td><?php echo $pekerja; ?></td></tr>
+									<tr><td>Lokasi</td><td><?php echo $lokasi; ?></td></tr>
+									<tr><td>Jenis Pekerjaan</td><td><?php echo $jenis_pekerjaan; ?></td></tr>
+									<tr><td>Panjang Penanganan</td><td><?php echo $panjang_penanganan; ?></td></tr>
+									<tr><td>Keterangan Dimensi</td><td><?php echo $keterangan_dimensi; ?></td></tr>
+									<tr><td>Keterangan</td><td><?php echo $keterangan; ?></td></tr>
+									<tr><td></td><td><a href="<?php echo site_url('perencanaan_edit_jesi') ?>" class="btn btn-default">Cancel</a></td></tr>
+								</table>
 							</div>
 
 
@@ -201,13 +191,7 @@ else
 </div>
 
 
-<script>
-    function lihatData(data)
-    {
 
-        window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
-    }
-</script>
 
 
 

@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==2)
+	if($this->session->userdata("privilage")==1)
 	{
 
 	}
@@ -127,20 +127,36 @@ else
 
 								<form action="<?php echo $action; ?>" method="post">
 									<div class="form-group">
-										<label for="varchar">Id Jenis Bahan Alat <?php echo form_error('id_jenis_bahan_alat') ?></label>
-										<input type="text" class="form-control" name="id_jenis_bahan_alat" id="id_jenis_bahan_alat" placeholder="Id Jenis Bahan Alat" value="<?php echo $id_jenis_bahan_alat; ?>" />
+										<label for="decimal">Tukang <?php echo form_error('tukang') ?></label>
+										<input type="text" class="form-control" name="tukang" id="tukang" placeholder="Tukang" value="<?php echo $tukang; ?>" />
 									</div>
 									<div class="form-group">
-										<label for="varchar">Id Satuan <?php echo form_error('id_satuan') ?></label>
-										<input type="text" class="form-control" name="id_satuan" id="id_satuan" placeholder="Id Satuan" value="<?php echo $id_satuan; ?>" />
+										<label for="decimal">Pekerja <?php echo form_error('pekerja') ?></label>
+										<input type="text" class="form-control" name="pekerja" id="pekerja" placeholder="Pekerja" value="<?php echo $pekerja; ?>" />
 									</div>
 									<div class="form-group">
-										<label for="decimal">Jumlah <?php echo form_error('jumlah') ?></label>
-										<input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" value="<?php echo $jumlah; ?>" />
+										<label for="varchar">Lokasi <?php echo form_error('lokasi') ?></label>
+										<input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?php echo $lokasi; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Jenis Pekerjaan <?php echo form_error('jenis_pekerjaan') ?></label>
+										<input type="text" class="form-control" name="jenis_pekerjaan" id="jenis_pekerjaan" placeholder="Jenis Pekerjaan" value="<?php echo $jenis_pekerjaan; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Panjang Penanganan <?php echo form_error('panjang_penanganan') ?></label>
+										<input type="text" class="form-control" name="panjang_penanganan" id="panjang_penanganan" placeholder="Panjang Penanganan" value="<?php echo $panjang_penanganan; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Keterangan Dimensi <?php echo form_error('keterangan_dimensi') ?></label>
+										<input type="text" class="form-control" name="keterangan_dimensi" id="keterangan_dimensi" placeholder="Keterangan Dimensi" value="<?php echo $keterangan_dimensi; ?>" />
+									</div>
+									<div class="form-group">
+										<label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
+										<input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
 									</div>
 									<input type="hidden" name="id_lap_perencanaan" value="<?php echo $id_lap_perencanaan; ?>" />
 									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('force_detail_bahan') ?>" class="btn btn-default">Cancel</a>
+									<a href="<?php echo site_url('perencanaan_edit_jesi') ?>" class="btn btn-default">Cancel</a>
 								</form>
 
 							</div>

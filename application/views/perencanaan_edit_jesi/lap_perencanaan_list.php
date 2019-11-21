@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==2)
+	if($this->session->userdata("privilage")==1)
 	{
 
 	}
@@ -125,23 +125,82 @@ else
 							<div class="card-body">
 
 
-								<form action="<?php echo $action; ?>" method="post">
-									<div class="form-group">
-										<label for="varchar">Id Jenis Bahan Alat <?php echo form_error('id_jenis_bahan_alat') ?></label>
-										<input type="text" class="form-control" name="id_jenis_bahan_alat" id="id_jenis_bahan_alat" placeholder="Id Jenis Bahan Alat" value="<?php echo $id_jenis_bahan_alat; ?>" />
+								<div class="row" style="margin-bottom: 10px">
+									<div class="col-md-4">
+										<?php echo anchor(site_url('perencanaan_edit_jesi/create'),'Create', 'class="btn btn-primary"'); ?>
 									</div>
-									<div class="form-group">
-										<label for="varchar">Id Satuan <?php echo form_error('id_satuan') ?></label>
-										<input type="text" class="form-control" name="id_satuan" id="id_satuan" placeholder="Id Satuan" value="<?php echo $id_satuan; ?>" />
+									<div class="col-md-4 text-center">
+										<div style="margin-top: 8px" id="message">
+											<?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+										</div>
 									</div>
-									<div class="form-group">
-										<label for="decimal">Jumlah <?php echo form_error('jumlah') ?></label>
-										<input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" value="<?php echo $jumlah; ?>" />
+									<div class="col-md-1 text-right">
 									</div>
-									<input type="hidden" name="id_lap_perencanaan" value="<?php echo $id_lap_perencanaan; ?>" />
-									<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-									<a href="<?php echo site_url('force_detail_bahan') ?>" class="btn btn-default">Cancel</a>
-								</form>
+									<div class="col-md-3 text-right">
+										<form action="<?php echo site_url('perencanaan_edit_jesi/index'); ?>" class="form-inline" method="get">
+											<div class="input-group">
+												<input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
+												<span class="input-group-btn">
+                            <?php
+							if ($q <> '')
+							{
+								?>
+								<a href="<?php echo site_url('perencanaan_edit_jesi'); ?>" class="btn btn-default">Reset</a>
+								<?php
+							}
+							?>
+                          <button class="btn btn-primary" type="submit">Search</button>
+                        </span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<table class="table table-bordered" style="margin-bottom: 10px">
+									<tr>
+										<th>No</th>
+										<th>Tukang</th>
+										<th>Pekerja</th>
+										<th>Lokasi</th>
+										<th>Jenis Pekerjaan</th>
+										<th>Panjang Penanganan</th>
+										<th>Keterangan Dimensi</th>
+										<th>Keterangan</th>
+										<th>Action</th>
+									</tr><?php
+									foreach ($perencanaan_edit_jesi_data as $perencanaan_edit_jesi)
+									{
+										?>
+										<tr>
+											<td width="80px"><?php echo ++$start ?></td>
+											<td><?php echo $perencanaan_edit_jesi->tukang ?></td>
+											<td><?php echo $perencanaan_edit_jesi->pekerja ?></td>
+											<td><?php echo $perencanaan_edit_jesi->lokasi ?></td>
+											<td><?php echo $perencanaan_edit_jesi->jenis_pekerjaan ?></td>
+											<td><?php echo $perencanaan_edit_jesi->panjang_penanganan ?></td>
+											<td><?php echo $perencanaan_edit_jesi->keterangan_dimensi ?></td>
+											<td><?php echo $perencanaan_edit_jesi->keterangan ?></td>
+											<td style="text-align:center" width="200px">
+												<?php
+												echo anchor(site_url('perencanaan_edit_jesi/read/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Read');
+												echo ' | ';
+												echo anchor(site_url('perencanaan_edit_jesi/update/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Update');
+												echo ' | ';
+												echo anchor(site_url('perencanaan_edit_jesi/delete/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+												?>
+											</td>
+										</tr>
+										<?php
+									}
+									?>
+								</table>
+								<div class="row">
+									<div class="col-md-6">
+										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+									</div>
+									<div class="col-md-6 text-right">
+										<?php echo $pagination ?>
+									</div>
+								</div>
 
 							</div>
 
