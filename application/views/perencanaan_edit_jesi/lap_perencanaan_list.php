@@ -127,7 +127,7 @@ else
 
 								<div class="row" style="margin-bottom: 10px">
 									<div class="col-md-4">
-										<?php echo anchor(site_url('perencanaan_edit_jesi/create'),'Create', 'class="btn btn-primary"'); ?>
+<!--										--><?php //echo anchor(site_url('perencanaan_edit_jesi/create'),'Create', 'class="btn btn-primary"'); ?>
 									</div>
 									<div class="col-md-4 text-center">
 										<div style="margin-top: 8px" id="message">
@@ -184,8 +184,7 @@ else
 												echo anchor(site_url('perencanaan_edit_jesi/read/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Read');
 												echo ' | ';
 												echo anchor(site_url('perencanaan_edit_jesi/update/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Update');
-												echo ' | ';
-												echo anchor(site_url('perencanaan_edit_jesi/delete/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+												
 												?>
 											</td>
 										</tr>
