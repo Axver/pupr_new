@@ -271,6 +271,73 @@ else
 
 								<br/>
 
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-3"><center><b>Dibuat Oleh</b></center></div>
+									<div class="col-sm-1"></div>
+								</div>
+
+								<br/>
+
+								<br/>
+
+								<br/>
+
+
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-3"><center><b>
+												<?php
+												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+												$count=count($data);
+												$i=0;
+
+												while($i<$count)
+												{
+													$ambil=$data[$i]->id_diperiksa;
+//													Ambil nama dari database
+													$nama=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$ambil))->result();
+													$count1=count($nama);
+													$ii=0;
+													while($ii<$count1)
+													{
+														echo $nama[$ii]->nama;
+
+														$ii++;
+													}
+
+													$i++;
+												}
+												?>
+											</b></center></div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-3"><center><b>		<?php
+												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+												$count=count($data);
+												$i=0;
+
+												while($i<$count)
+												{
+													$ambil=$data[$i]->id_dibuat;
+//													Ambil nama dari database
+													$nama=$this->db->get_where("account",array("nip"=>$ambil))->result();
+													$count1=count($nama);
+													$ii=0;
+													while($ii<$count1)
+													{
+														echo $nama[$ii]->nama;
+
+														$ii++;
+													}
+
+													$i++;
+												}
+												?></b></center></div>
+									<div class="col-sm-1"></div>
+								</div>
+
 
 
 							</div>
