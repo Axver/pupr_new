@@ -34,11 +34,15 @@ class User_pengawasan_data extends CI_Controller {
 		$minggu=$this->input->post("minggu");
 
 
-
+        $id=0;
 //	Ambil id
 		$id_nya=$this->db->query("SELECT MAX(CAST(id AS INT) ) as max FROM detail_laporan_pengawasan")->result();
+        $count=count($id_nya);
+        if($count>0)
+		{
+			$id=$id_nya[0]->max;
+		}
 
-		$id=$id_nya[0]->max;
 		$id=$id+1;
 
 		$input=array(

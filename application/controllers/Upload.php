@@ -68,8 +68,14 @@ class Upload extends CI_Controller{
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
 //			Ambil id Gambar
+			$max=0;
 			$datax=$this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_perencanaan")->result();
-			$max=$datax[0]->max;
+
+			$count=count($datax);
+			if($count>0)
+			{
+				$max=$datax[0]->max;
+			}
 			$max=$max+1;
 
 			$inputGambar=array(

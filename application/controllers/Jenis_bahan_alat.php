@@ -72,6 +72,7 @@ class Jenis_bahan_alat extends CI_Controller
     public function create_action() 
     {
 //    	Ambil Max
+
 		$max=$this->db->query("SELECT MAX(CAST(id_jenis_bahan_alat AS INT) )as max FROM jenis_bahan_alat")->result();
 		$max=$max[0]->max+1;
         $this->_rules();

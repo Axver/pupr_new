@@ -297,6 +297,7 @@ public function pekerjaan()
 {
 //  Get Jenis Pekerjaan
 	$jenis_pekerjaan=$this->input->post("jenis_pekerjaan");
+	$max=0;
 //	Select Max id
 	$max_id=$this->db->query("SELECT MAX(CAST(id AS INT)) as max FROM jenis_pekerjaan")->result();
 
@@ -357,6 +358,7 @@ public function pekerjaan()
 			$tempData1=explode("_",$data[$i]);
 
 //			var_dump($tempData);
+
 
 			$idDetil=$this->db->query("SELECT MAX(CAST(id_detail_bahan_alat AS INT)) as max FROM detail_bahan_alat")->result();
 			$idDetil=$idDetil[0]->max;
@@ -511,8 +513,19 @@ public function pekerjaan()
 		$disetujui_oleh=$this->input->post("disetujui_oleh");
 
 //		Select ID
-		$max_id=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
-		$max_id=$max_id[0]->max;
+		$max=0;
+		$max_id=0;
+
+		$max_id_=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
+		$count=count($max_id);
+		$i=0;
+		while($i<$count)
+		{
+			$max_id=$max_id_[0]->max;
+
+			$i++;
+		}
+
 		$max=$max_id+1;
 
 		$id_user=$this->session->userdata("nip");
@@ -542,8 +555,17 @@ public function pekerjaan()
 		$this->db->query("DELETE FROM ttd_perencanaan WHERE id_lap_perencanaan='$id_perencanaan'");
 
 //		Select ID
-		$max_id=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
-		$max_id=$max_id[0]->max;
+		$max_id=0;
+		$max_id_=$this->db->query("SELECT MAX(CAST(id_ttd AS INT)) as max FROM ttd_perencanaan")->result();
+		$count=count($max_id_);
+		$i=0;
+		while($i<$count)
+		{
+			$max_id=$max_id_[0]->max;
+
+			$i++;
+		}
+
 		$max=$max_id+1;
 
 		$id_user=$this->session->userdata("nip");
