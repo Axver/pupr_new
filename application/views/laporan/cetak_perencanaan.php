@@ -364,6 +364,7 @@ else
 
 					 </tbody>
 				 </table>
+				 <div class="break"></div>
 				 <b>Perencanaan Penggunaan Jumlah Pekerja </b>
 				 <table id="tabel_jumlah"  class="table table-responsive" cellspacing="0" border="0">
 
@@ -474,6 +475,7 @@ else
 
 					 </tbody>
 				 </table>
+				 <div class="break"></div>
 				 <b>Perencanaan Penggunaan Bahan/Alat </b>
 				 <br/>
 				 <div class="row">
@@ -591,6 +593,8 @@ else
 
 					 </tbody>
 				 </table>
+
+				 <div class="break"></div>
 
 
 
@@ -1140,9 +1144,11 @@ else
                  filename:     'myfile.pdf',
                  image:        { type: 'jpeg', quality: 0.98 },
                  html2canvas:  { scale: 2 },
-                 jsPDF:        { unit: 'in', format: 'A2', orientation: 'landscape' }
+                 jsPDF:        { unit: 'in', format: 'A2', orientation: 'landscape' },
+                 pagebreak: { before: '.break',  }
              };
              // Choose the element and save the PDF for our user.
+
              html2pdf().set(opt).from(element).save();
              // html2pdf().from(element).save();
          }
