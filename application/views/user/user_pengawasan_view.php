@@ -274,6 +274,61 @@ else
 									<div class="col-sm-1"></div>
 								</div>
 
+								<br/>
+								<br/>
+								<br/>
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-3"><center><b>
+												<?php
+												$x=$this->db->get_where("ttd_pengawasan",array("id_pengawasan"=>$this->uri->segment("3"),"id_perencanaan"=>$this->uri->segment("4"),"minggu"=>$this->uri->segment("5")))->result();
+												$count=count($x);
+												$i=0;
+
+												while($i<$count)
+												{
+//													Select Lagi
+													$data=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$x[$i]->id_diperiksa))->result();
+													$count1=count($data);
+													$ii=0;
+
+													while($ii<$count1)
+													{
+														echo $data[$ii]->nama;
+
+														$ii++;
+													}
+													$i++;
+												}
+												?>
+											</b></center></div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-3"><center><b>
+												<?php
+												$x=$this->db->get_where("ttd_pengawasan",array("id_pengawasan"=>$this->uri->segment("3"),"id_perencanaan"=>$this->uri->segment("4"),"minggu"=>$this->uri->segment("5")))->result();
+												$count=count($x);
+												$i=0;
+
+												while($i<$count)
+												{
+//													Select Lagi
+													$data=$this->db->get_where("account",array("nip"=>$x[$i]->id_dibuat))->result();
+													$count1=count($data);
+													$ii=0;
+
+													while($ii<$count1)
+													{
+														echo $data[$ii]->nama;
+
+														$ii++;
+													}
+													$i++;
+												}
+												?>
+											</b></center></div>
+									<div class="col-sm-1"></div>
+								</div>
+
 
 
 
