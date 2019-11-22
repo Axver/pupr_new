@@ -184,7 +184,7 @@ else
 												echo anchor(site_url('perencanaan_edit_jesi/read/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Read');
 												echo ' | ';
 												echo anchor(site_url('perencanaan_edit_jesi/update/'.$perencanaan_edit_jesi->id_lap_perencanaan),'Update');
-												
+
 												?>
 											</td>
 										</tr>

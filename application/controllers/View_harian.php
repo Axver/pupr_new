@@ -203,4 +203,51 @@ class View_harian extends CI_Controller {
 	}
 
 
+	public function ttd()
+	{
+       $id_diperiksa=$this->input->post("id_diperiksa");
+       $id_laper=$this->input->post("id_laper");
+       $id_harian=$this->input->post("id_harian");
+
+//Hapus data lama dulu
+		$this->db->query("DELETE FROM ttd_harian WHERE id_lap_perencanaan='$id_laper' AND id_lap_harian='$id_harian'");
+//Input data baru
+//		Max
+		$max=0;
+
+		$max_data=$this->db->query("SELECT MAX(CAST(id_ttd_harian AS INT))as max FROM ttd_harian ")->result();
+		$count=count($max_data);
+		$i=0;
+
+		while($i<$count)
+		{
+			$max=$max_data[$i]->max;
+
+			$i++;
+		}
+
+		$max=$max+1;
+//Setelah Max DIdapatkan segera input data
+		$data=array(
+		"id_lap_harian"=>$id_harian,
+		"id_lap_perencanaan"=>$id_laper,
+		"id_ttd_harian"=>$max,
+			"id_dibuat"=>$this->session->userdata("nip"),
+			"id_diperiksa"=>$id_diperiksa
+		);
+
+		$this->db->insert("ttd_harian",$data);
+
+	}
+
+	public function get_ttd()
+	{
+		$id_laper=$this->input->post("id_laper");
+		$hari_tanggal=$this->input->post("hari_tanggal");
+
+		$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$hari_tanggal,"id_lap_perencanaan"=>$id_laper))->result();
+		echo json_encode($data);
+	}
+
+
 }

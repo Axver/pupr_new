@@ -143,7 +143,7 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<button onclick="generatePDF()" class="btn btn-info">Generate PDF</button>
+<!--							<button onclick="generatePDF()" class="btn btn-info">Generate PDF</button>-->
 							<div class="card-body" id="cetak_pdf">
 
 
@@ -280,9 +280,31 @@ else
 								<br/>
 
 								<br/>
+								<b>Diperiksa Oleh</b> <br/>
+								<select class="form form-control" id="diperiksa_oleh">
+									<?php
+									$diperiksa=$this->db->get("konfigurasi")->result();
+									$count=count($diperiksa);
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $diperiksa[$i]->id_konfigurasi; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+								</select>
+
+
+								<br/>
 
 								<button class="btn btn-success" onclick="update()">Update</button>
 								<input type="hidden" id="j">
+
 
 
 
@@ -659,7 +681,7 @@ function update()
         let id_laper=$("#id_lap_perencanaan").val();
         let hari_tanggal=$("#hari_tanggal_").val();
 
-        alert(hari_tanggal);
+        // alert(hari_tanggal);
 
                     let xo=0;
                     let dataArray=[];
@@ -711,7 +733,23 @@ function update()
             function(data){
                 // alert(data);  //as a debugging message.
 
-				alert("SUKSES!");
+				// alert("SUKSES!");
+            }
+    });
+
+    let id_diperiksa=$("#diperiksa_oleh").val();
+
+    //Update Juga TTD Nya
+    $.ajax({
+        type: "POST",
+		async:false,
+        url: "http://localhost/pupr_new/view_harian/ttd",
+        data: {"id_diperiksa":id_diperiksa,"id_laper":id_laper,"id_harian":hari_tanggal},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                // alert(data);  //as a debugging message.
             }
     });
 
@@ -761,6 +799,38 @@ function update()
 
 	    $("#mEdit").modal("hide");
 	}
+</script>
+
+
+<script>
+<!--	Isi data pada kolom diperiksa oleh-->
+let id_laper=$("#id_lap_perencanaan").val();
+let hari_tanggal=$("#hari_tanggal_").val();
+
+$.ajax({
+    type: "POST",
+	async:false,
+    url: "http://localhost/pupr_new/view_harian/get_ttd",
+    data: {"id_laper":id_laper,"hari_tanggal":hari_tanggal},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            // alert(data);  //as a debugging message.
+			data=JSON.parse(data);
+			let i=0;
+			let length=data.length;
+
+			while(i<length)
+			{
+                $("select#diperiksa_oleh").val(data[i].id_diperiksa);
+
+			    i++;
+			}
+            // $("select#disetujui_oleh").val(data[i].id_disetujui);
+        }
+});
+
 </script>
 
 
