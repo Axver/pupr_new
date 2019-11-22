@@ -245,6 +245,7 @@ else
 								<br/>
 
 								<br/>
+								<div class="break"></div>
 
 								<b>Gambar Sket/Kerja</b>
 

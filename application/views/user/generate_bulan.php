@@ -205,9 +205,11 @@ else
 
 
 									</table>
+									<div class="break"></div>
 
 									<table class="tg table table-bordered" id="buat_pekerja">
 									</table>
+									<div class="break"></div>
 
 									<table class="tg table table-bordered" id="buat_alat">
 									</table>
@@ -773,7 +775,8 @@ else
             filename:     'myfile.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+            pagebreak: { before: '.break'}
         };
         // Choose the element and save the PDF for our user.
         html2pdf().set(opt).from(element).save();
