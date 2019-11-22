@@ -1253,7 +1253,7 @@ else
 								// console.log("hmmmm");
 
 								// alert("SUCCESS!!");
-                                swal("Laporan Perencanaan Ditambahkan!!");
+								swal("Berhasil Ditambahkan!");
 								window.location="http://localhost/pupr_new/user/lihat_paket/"+uri_nya;
                             }
                     });

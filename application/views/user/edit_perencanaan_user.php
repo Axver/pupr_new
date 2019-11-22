@@ -279,7 +279,7 @@ else
 										<div class="row">
 											<div class="col-sm-3">Jenis Pekerjaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan" value="<?php echo $paket_info[0]->jenis_pekerjaan; ?>" disabled></div>
+											<div class="col-sm-8" id="jenis_perencanaan_jesi"> </div>
 
 
 										</div>
@@ -1347,6 +1347,7 @@ else
                 console.log(pekerjaan_text);
                 if($("#" +data1[x].id+pekerjaan_id).length == 0) {
                     //it doesn't exist
+					$("#jenis_perencanaan_jesi").append("<br/>"+pekerjaan_text);
 
                     var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
