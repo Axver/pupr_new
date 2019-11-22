@@ -123,7 +123,110 @@ else
 							</div>
 							<!-- Card Body -->
 							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>
+
 							<div class="card-body" id="cetak_tabel">
+								<center><b><h2>LAPORAN PENGAWASAN MINGGU <?php echo $this->uri->segment("5"); ?></h2></b></center>
+
+								<br/>
+								<div class="row">
+									<div class="col-sm-2">Nama Paket</div>
+									<div class="col-sm-1">:</div>
+									<div class="col-sm-2">
+										<?php
+//										Ambil Id Paket Dahulu
+										$per=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+										$count=count($per);
+										$i=0;
+
+										while($i<$count)
+										{
+											$paket=$this->db->get_where("paket",array("id_paket"=>$per[$i]->id_paket))->result();
+											$count1=count($paket);
+											$ii=0;
+
+											while($ii<$count1)
+											{
+												echo $paket[$ii]->nama;
+
+												$ii++;
+											}
+
+											$i++;
+										}
+										?>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">Lokasi Pekerjaan</div>
+									<div class="col-sm-1">:</div>
+									<div class="col-sm-2">			<?php
+										//										Ambil Id Paket Dahulu
+										$per=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+										$count=count($per);
+										$i=0;
+
+										while($i<$count)
+										{
+											$paket=$this->db->get_where("paket",array("id_paket"=>$per[$i]->id_paket))->result();
+											$count1=count($paket);
+											$ii=0;
+
+											while($ii<$count1)
+											{
+												echo $paket[$ii]->lokasi;
+
+												$ii++;
+											}
+
+											$i++;
+										}
+										?></div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">Periode Pengawasan</div>
+									<div class="col-sm-1">:</div>
+									<div class="col-sm-2"></div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">Tanggal</div>
+									<div class="col-sm-1">:</div>
+									<div class="col-sm-2"><?php echo $this->uri->segment("3"); ?></div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2">Tahun Anggaran</div>
+									<div class="col-sm-1">:</div>
+									<div class="col-sm-2">
+										<?php
+										//										Ambil Id Paket Dahulu
+										$per=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+										$count=count($per);
+										$i=0;
+
+										while($i<$count)
+										{
+											$paket=$this->db->get_where("paket",array("id_paket"=>$per[$i]->id_paket))->result();
+											$count1=count($paket);
+											$ii=0;
+
+											while($ii<$count1)
+											{
+												echo $paket[$ii]->tahun_anggaran;
+
+												$ii++;
+											}
+
+											$i++;
+										}
+										?>
+									</div>
+								</div>
+
+								<br/>
+								<b>Rekapitulasi Hasil Pengawasan</b>
 
 								<table class="tg table table-bordered" id="tabel_pengawasan">
 									<tr>
