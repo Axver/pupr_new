@@ -87,4 +87,12 @@ GROUP BY jenis_pekerja")->result();
 	}
 
 
+	public function info()
+	{
+		$id_laper=$this->input->post("id_laper");
+		$data=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$id_laper))->result();
+		echo json_encode($data);
+	}
+
+
 }

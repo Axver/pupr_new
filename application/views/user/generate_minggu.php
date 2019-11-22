@@ -705,6 +705,29 @@ else
 
         //Berikan Informasi Bagian Header Laporan Mingguan
 
+		//Ambil informasi dari laporan perencanaan
+		let laper_info=$("#id_lap_perencanaan").val();
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/generate_minggu/info",
+            data: {"id_laper":laper_info},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    let length=data.length;
+                    let i=0;
+
+                    while(i<length)
+					{
+					    $("#lokasi_jesi").text(data[i].lokasi);
+					    i++;
+					}
+                }
+        });
+
+
 
         swal("Tabel Digenerate!!");
 
