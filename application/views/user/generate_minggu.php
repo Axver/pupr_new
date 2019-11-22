@@ -257,7 +257,7 @@ else
 									<div class="row">
 										<div class="col-sm-3">Jenis Pekerjaan</div>
 										<div class="col-sm-1">:</div>
-										<div class="col-sm-3"></div>
+										<div class="col-sm-3" id="jp_jesi"></div>
 									</div>
 
 									<div class="row">
@@ -549,7 +549,7 @@ else
 
 					    //String Builder
 						let strNew='<td class="tg-cly1">'+data[z].nama_jenis+'</td>';
-						$("#lokasi_jesi").append('<br/>'+data[z].nama_jenis);
+						$("#jp_jesi").append('<br/>'+data[z].nama_jenis);
 
 						// console.log(data);
 						let v=0;
