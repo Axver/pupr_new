@@ -192,7 +192,17 @@ else
 									</div>
 
 									<div class="col-sm-4" id="lokasi">
+										<?php
+										$get_waw=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment('4')))->result();
+										$count=count($get_waw);
+										$i=0;
 
+										while($i<$count)
+										{
+											echo $get_waw[$i]->lokasi;
+											$i++;
+										}
+										?>
 									</div>
 								</div>
 
@@ -397,7 +407,7 @@ $.ajax({
             console.log(data);
 
             $("#nama_paket").text(data[0].nama);
-            $("#lokasi").text(data[0].lokasi);
+            // $("#lokasi").text(data[0].lokasi);
         }
 });
 

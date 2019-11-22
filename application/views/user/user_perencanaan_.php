@@ -383,7 +383,7 @@ else
                             '\t<td>'+data[i].id_lap_harian_mingguan+'</td>\n' +
                             '\t<td><button class="btn btn-info" onclick="view('+'\''+B+','+C+'\''+')">View</button></td>\n' +
                             '\t<td><button class="btn btn-info" onclick="edit('+'\''+B+','+C+'\''+')">Edit</button></td>\n' +
-                            '\t<td><button class="btn btn-info" onclick="upload('+'\''+B+','+C+'\''+')">Add</button></td>\n' +
+                            '\t<td><button class="btn btn-info" onclick="upload1('+'\''+B+','+C+'\''+')">Add</button></td>\n' +
                             '</tr>\n');
 
 
@@ -478,7 +478,7 @@ else
         window.location="view_harian/edit/"+id[0]+"/"+id[1];
     }
 
-    function upload(id,per)
+    function upload1(id,per)
     {
         id=id.split(",");
         // alert(id);
