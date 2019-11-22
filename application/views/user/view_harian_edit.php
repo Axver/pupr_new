@@ -764,7 +764,7 @@ function update()
     });
 
 
-    alert("SUCCESS!!");
+    swal("Data Sukses DI Update!");
 
 
 

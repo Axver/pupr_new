@@ -44,3 +44,4 @@
 
 <script src="<?php echo base_url('assets/dist/html2pdf.bundle.js') ?>"></script>
 <script src="<?php echo base_url('assets/dist/html2pdf.js') ?>"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

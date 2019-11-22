@@ -237,6 +237,7 @@ else
 											<div class="col-sm-1">:</div>
 											<div class="col-sm-8">
 												<input type="text" id="nama_paket" class="form form-control" disabled>
+												<input type="text" id="nama_paket" class="form form-control" disabled>
 
 											</div>
 
@@ -1128,12 +1129,8 @@ else
 
         //Check jika kosong atau tidak
         console.log("a");
-        if(nama_paket=="" || nilai_paket==""|| jumlah_tahap==""||jenis_pekerjaan==""||masa_pelaksanaan==""||lokasi==""||tahun_anggaran=="")
-        {
-            alert("Data Tidak Boleh Kosong!!");
-        }
-        else
-        {
+
+
             console.log("b");
             //    Jika data berisi maka lanjut di proses
             //Tambahkan Laporan Perencanaan Ke Database
@@ -1255,7 +1252,8 @@ else
 								// console.log(data);
 								// console.log("hmmmm");
 
-								alert("SUCCESS!!");
+								// alert("SUCCESS!!");
+                                swal("Laporan Perencanaan Ditambahkan!!");
 								window.location="http://localhost/pupr_new/user/lihat_paket/"+uri_nya;
                             }
                     });
@@ -1264,7 +1262,7 @@ else
             });
 
 
-        }
+
 
 
 

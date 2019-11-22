@@ -616,7 +616,7 @@ else
                 }
         });
 
-
+      swal("Laporan Sukses Ditambahkan!");
 	}
 
 </script>

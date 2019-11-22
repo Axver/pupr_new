@@ -640,7 +640,7 @@ else
         });
 
 
-        alert("SUCCESS!!");
+        swal("Data Sukses Ditambahkan!");
 
 
 

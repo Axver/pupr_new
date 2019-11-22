@@ -666,6 +666,7 @@ else
             });
         }
 
+        swal("Tabel Digenerate!!");
 
 	}
 
@@ -908,6 +909,8 @@ else
             }
 
         }
+
+        swal("Data Digenerate!!");
     }
 
 

@@ -417,7 +417,7 @@ else
         });
 
 
-        alert("SUCCESS!!");
+        swal("Laporan Suses Di Edit!");
 
 
 

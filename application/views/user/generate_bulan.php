@@ -684,7 +684,7 @@ else
                }
        });
 
-
+       swal("Generate Tabel Selesai!!");
    }
 
    //Query Untuk Jumlah Pekerja
@@ -780,6 +780,8 @@ else
         };
         // Choose the element and save the PDF for our user.
         html2pdf().set(opt).from(element).save();
+
+        swal("PDF Digenerate!!");
     }
 </script>
 
