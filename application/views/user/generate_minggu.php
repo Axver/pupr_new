@@ -300,7 +300,18 @@ else
 										<div class="col-sm-1"></div>
 										<div class="col-sm-3"><center><b id="diperiksa"></b></center></div>
 										<div class="col-sm-4"></div>
-										<div class="col-sm-3"><center><b id="dibuat"></b></center></div>
+										<div class="col-sm-3"><center><b id="dibuat"><?php
+													$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
+													$count=count($data);
+													$i=0;
+
+													while($i<$count)
+													{
+														echo $data[$i]->nama;
+
+														$i++;
+													}
+													?></b></center></div>
 										<div class="col-sm-1"></div>
 									</div>
 
