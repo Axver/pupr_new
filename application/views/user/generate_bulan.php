@@ -171,6 +171,26 @@ else
 <!--								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>-->
 								<br/>
 								<br/>
+								<b>Diperiksa Oleh</b>
+								<select class="form form-control" id="diperiksa_oleh">
+									<?php
+									$diperiksa=$this->db->get("konfigurasi")->result();
+									$count=count($diperiksa);
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $diperiksa[$i]->nama; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<?php
+
+										$i++;
+									}
+									?>
+								</select>
+								<br/>
+								<br/>
 
 								<button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
 								<!--								Disini Posisi Tabelnya-->
@@ -191,6 +211,37 @@ else
 
 									<table class="tg table table-bordered" id="buat_alat">
 									</table>
+
+
+									<div class="row">
+										<div class="col-sm-1"></div>
+										<div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+										<div class="col-sm-4"></div>
+										<div class="col-sm-3"><center><b>Dibuat Oleh</b></center></div>
+										<div class="col-sm-1"></div>
+									</div>
+
+									<br/>
+									<br/>
+									<br/>
+									<div class="row">
+										<div class="col-sm-1"></div>
+										<div class="col-sm-3"><center><b id="diperiksa"></b></center></div>
+										<div class="col-sm-4"></div>
+										<div class="col-sm-3"><center><b id="dibuat"><?php
+													$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
+													$count=count($data);
+													$i=0;
+
+													while($i<$count)
+													{
+														echo $data[$i]->nama;
+
+														$i++;
+													}
+													?></b></center></div>
+										<div class="col-sm-1"></div>
+									</div>
 
 								</div>
 
@@ -310,6 +361,8 @@ else
 
    function generateTabel()
    {
+       let diperiksa=$("#diperiksa_oleh").val();
+       $("#diperiksa").text(diperiksa);
        //Hapus tabel yang ada dulu
 	   hapusTabel();
        var dt = new Date();
