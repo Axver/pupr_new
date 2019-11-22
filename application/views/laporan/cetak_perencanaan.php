@@ -208,7 +208,7 @@ else
 				 <div class="row">
 					 <div class="col-sm-3">Jenis Pekerjaan</div>
 					 <div class="col-sm-1">:</div>
-					 <div class="col-sm-8"> <?php echo $info_paket[0]->jenis_pekerjaan ?></div>
+					 <div class="col-sm-8" id="jenis_pekerjaan_jesi"> </div>
 
 
 				 </div>
@@ -1059,6 +1059,7 @@ else
                      console.log(pekerjaan_text);
                      if($("#" +data1[x].id+pekerjaan_id).length == 0) {
                          //it doesn't exist
+						 $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
 
                          var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' >"+pekerjaan_text+"</td>\n" +
