@@ -331,7 +331,15 @@ else
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
         // Choose the element and save the PDF for our user.
-        html2pdf().from(element).save();
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
     }
 </script>
 
