@@ -129,14 +129,19 @@ else
 								<select onchange="addPerencanaan()" class="form form-control" id="id_paket">
 									<option value="">---Pilih Paket---</option>
 									<?php
-									$paket=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
+									$this->db->select('*');
+									$this->db->from('detail_paket');
+									$this->db->join('paket', 'detail_paket.id_paket = paket.id_paket');
+									$this->db->where("nip",$this->session->userdata("nip"));
+									//									$paket=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
+									$paket=$this->db->get()->result();
 									$count=count($paket);
 
 									$i=0;
 									while($i<$count)
 									{
 										?>
-										<option value="<?php echo $paket[$i]->id_paket; ?>"><?php echo $paket[$i]->id_paket; ?></option>
+										<option value="<?php echo $paket[$i]->id_paket; ?>"><?php echo $paket[$i]->nama; ?></option>
 										<?php
 
 										$i++;
@@ -198,6 +203,34 @@ else
 									<br/>
 									<center><b><h3>LAPORAN BULANAN</h3></b></center>
 									<br/>
+									<br/>
+
+									<br/>
+
+									<div class="row">
+										<div class="col-sm-3">Nama Paket</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-3" id="nama_paket_1"></div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-3">Jenis Pekerjaan</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-3" id="jp_jesi"></div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-3">Lokasi</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-3" id="lokasi_jesi"></div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-3">Pagu</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-3"></div>
+									</div>
+
 									<br/>
 
 									<!--									Tabelnya-->
@@ -363,6 +396,9 @@ else
 
    function generateTabel()
    {
+
+       let nama_paket=$("#id_paket option:selected").text();
+       $("#nama_paket_1").text(nama_paket);
        let diperiksa=$("#diperiksa_oleh").val();
        $("#diperiksa").text(diperiksa);
        //Hapus tabel yang ada dulu
@@ -443,6 +479,7 @@ else
 
 				   while(i<length)
 				   {
+                       $("#jp_jesi").append('<br/>'+data[i].nama_jenis);
 				       $("#buat_tabel").append('  <tr>\n' +
                            '    <td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
                            '    <td class="tg-cly1" id="'+data[i].jenis_pekerja+'_1"></td>\n' +
