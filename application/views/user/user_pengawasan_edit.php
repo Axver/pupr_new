@@ -113,7 +113,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">View User Pengawasan</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Edit User Pengawasan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -122,7 +122,7 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>
+<!--							<button class="btn btn-info" onclick="generatePDF()">Generate PDF</button>-->
 
 							<div class="card-body" id="cetak_tabel">
 
@@ -172,6 +172,26 @@ else
 
 
 								</table>
+
+								<br/>
+								<b>Diperiksa Oleh</b>
+								<select class="form form-control" id="diperiksa_oleh">
+									<?php
+									$diperiksa=$this->db->get("konfigurasi")->result();
+									$count=count($diperiksa);
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $diperiksa[$i]->id_konfigurasi; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<?php
+
+										$i++;
+									}
+									?>
+								</select>
 
 
 								<button class="btn btn-success" onclick="saveData()">Update</button>
@@ -379,9 +399,62 @@ else
                     });
 
 
+    //                Update TTD Gan
+        let id_diperiksa=$("#diperiksa_oleh").val();
+
+        //Update Juga TTD Nya
+        $.ajax({
+            type: "POST",
+            async:false,
+            url: "http://localhost/pupr_new/user_pengawasan_data/ttd",
+            data: {'id_pengawasan':id_pengawasan,'id_laper':lap_perencanaan,"minggu":minggu,"id_diperiksa":id_diperiksa},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                }
+        });
+
+
+        alert("SUCCESS!!");
+
+
 
 
     }
+</script>
+
+
+<script>
+    let minggu=$("#minggu").val();
+    let lap_perencanaan=$("#id_laper").val();
+    let id_pengawasan=$("#id_pengawasan").val();
+
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "http://localhost/pupr_new/user_pengawasan_data/get_ttd",
+        data: {'id_pengawasan':id_pengawasan,'id_laper':lap_perencanaan,"minggu":minggu},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+                let i=0;
+                let length=data.length;
+
+                while(i<length)
+                {
+                    $("select#diperiksa_oleh").val(data[i].id_diperiksa);
+
+                    i++;
+                }
+                // $("select#disetujui_oleh").val(data[i].id_disetujui);
+            }
+    });
+
 </script>
 
 

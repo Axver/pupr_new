@@ -77,6 +77,46 @@ class User_pengawasan_data extends CI_Controller {
 	}
 
 
+	public function ttd()
+	{
+		$id_pengawasn=$this->input->post("id_pengawasan");
+		$id_laper=$this->input->post("id_laper");
+		$minggu=$this->input->post("minggu");
+		$id_diperiksa=$this->input->post("id_diperiksa");
+
+//		Hapus dulu datanya
+		$this->db->query("DELETE FROM ttd_pengawasan WHERE minggu='$minggu' AND id_pengawasan='$id_pengawasn' AND id_perencanaan='$id_laper'");
+
+		$max=0;
+
+//Input kemudian
+		$data=array(
+		"minggu"=>$minggu,
+		"id_pengawasan"=>$id_pengawasn,
+			"id_perencanaan"=>$id_laper,
+			"id_dibuat"=>$this->session->userdata("nip"),
+			"id_diperiksa"=>$id_diperiksa,
+		);
+
+//		Input
+		$this->db->insert("ttd_pengawasan",$data);
+	}
+
+
+	public function get_ttd()
+	{
+		$id_pengawasn=$this->input->post("id_pengawasan");
+		$id_laper=$this->input->post("id_laper");
+		$minggu=$this->input->post("minggu");
+
+		$data=$this->db->get_where("ttd_pengawasan",array("minggu"=>$minggu,"id_pengawasan"=>$id_pengawasn,"id_perencanaan"=>$id_laper))->result();
+		echo json_encode($data);
+	}
+
+
+
+
+
 
 
 }
