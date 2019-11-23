@@ -26,7 +26,7 @@ class Catur_wulan extends CI_Controller {
 		$batas=$this->input->post("batas");
 
 //	Select Disini
-		$data=$this->db->query("SELECT *,COUNT(jumlah_pekerja) as count FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja=jenis_pekerjaan.id INNER JOIN satuan ON detail_bahan_alat_harian.id_satuan=satuan.id_satuan WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) >= $bulan AND MONTH(id_lap_harian_mingguan) <= $batas AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerja");
+		$data=$this->db->query("SELECT *,SUM(CAST(jumlah_pekerja AS INT)) as count FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja=jenis_pekerjaan.id INNER JOIN satuan ON detail_bahan_alat_harian.id_satuan=satuan.id_satuan WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) >= $bulan AND MONTH(id_lap_harian_mingguan) <= $batas AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerja");
 		$data=$data->result();
 
 		echo json_encode($data);

@@ -629,7 +629,7 @@ else
 					   //Masukkan semuanya ke tabel (warnai tabel dulu)
 					   // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color","yellow");
-                       $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].jumlah_pekerja);
+                       $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
 
 				       i++;
 				   }
@@ -713,7 +713,7 @@ else
                        //Masukkan semuanya ke tabel (warnai tabel dulu)
                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                       $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                       $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].count);
 
                        i++;
                    }
