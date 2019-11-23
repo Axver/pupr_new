@@ -154,7 +154,8 @@ else
 										</form>
 									</div>
 								</div>
-								<table class="table table-bordered" style="margin-bottom: 10px">
+								<table class="table table-bordered" id="example" style="margin-bottom: 10px">
+									<thead>
 									<tr>
 										<th>No</th>
 										<th>Nama</th>
@@ -165,7 +166,9 @@ else
 										<th>Tahun Anggaran</th>
 										<th>Nilai Paket</th>
 										<th>Action</th>
-									</tr><?php
+									</tr>
+									</thead>
+									<tbody><?php
 									foreach ($paket_informasi_data as $paket_informasi)
 									{
 										?>
@@ -191,16 +194,13 @@ else
 										<?php
 									}
 									?>
+									</tbody>
 								</table>
-								<div class="row">
-									<div class="col-md-6">
-										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-									</div>
-									<div class="col-md-6 text-right">
-										<?php echo $pagination ?>
-									</div>
-								</div>
-
+								<script>
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
+                                    } );
+								</script>
 
 
 

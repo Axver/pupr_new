@@ -25,7 +25,7 @@ class Account extends CI_Controller
             $config['first_url'] = base_url() . 'account/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Account_model->total_rows($q);
         $account = $this->Account_model->get_limit_data($config['per_page'], $start, $q);

@@ -124,10 +124,12 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<b style="color:darkgreen">Laporan Harian</b>
+
 
 								<div class="row" style="margin-bottom: 10px">
 									<div class="col-md-4">
-										<?php echo anchor(site_url('jenis_pekerjaan/create'),'Create', 'class="btn btn-primary"'); ?>
+										<?php echo anchor(site_url('ttd_info/create'),'Create', 'class="btn btn-primary"'); ?>
 									</div>
 									<div class="col-md-4 text-center">
 										<div style="margin-top: 8px" id="message">
@@ -137,7 +139,7 @@ else
 									<div class="col-md-1 text-right">
 									</div>
 									<div class="col-md-3 text-right">
-										<form action="<?php echo site_url('jenis_pekerjaan/index'); ?>" class="form-inline" method="get">
+										<form action="<?php echo site_url('ttd_info/index'); ?>" class="form-inline" method="get">
 											<div class="input-group">
 												<input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
 												<span class="input-group-btn">
@@ -145,7 +147,7 @@ else
 							if ($q <> '')
 							{
 								?>
-								<a href="<?php echo site_url('jenis_pekerjaan'); ?>" class="btn btn-default">Reset</a>
+								<a href="<?php echo site_url('ttd_info'); ?>" class="btn btn-default">Reset</a>
 								<?php
 							}
 							?>
@@ -159,24 +161,29 @@ else
 								<thead>
 								<tr>
 									<th>No</th>
-									<th>Nama Jenis</th>
+									<th>Nama</th>
+									<th>Nip</th>
+									<th>Jabatan</th>
 									<th>Action</th>
 								</tr>
 								</thead>
-									<tbody><?php
-									foreach ($jenis_pekerjaan_data as $jenis_pekerjaan)
+									<tbody>
+									<?php
+									foreach ($ttd_info_data as $ttd_info)
 									{
 										?>
 										<tr>
 											<td width="80px"><?php echo ++$start ?></td>
-											<td><?php echo $jenis_pekerjaan->nama_jenis ?></td>
+											<td><?php echo $ttd_info->nama ?></td>
+											<td><?php echo $ttd_info->nip ?></td>
+											<td><?php echo $ttd_info->jabatan ?></td>
 											<td style="text-align:center" width="200px">
 												<?php
-												echo anchor(site_url('jenis_pekerjaan/read/'.$jenis_pekerjaan->id),'Read');
+												echo anchor(site_url('ttd_info/read/'.$ttd_info->id_konfigurasi),'Read');
 												echo ' | ';
-												echo anchor(site_url('jenis_pekerjaan/update/'.$jenis_pekerjaan->id),'Update');
+												echo anchor(site_url('ttd_info/update/'.$ttd_info->id_konfigurasi),'Update');
 												echo ' | ';
-												echo anchor(site_url('jenis_pekerjaan/delete/'.$jenis_pekerjaan->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+												echo anchor(site_url('ttd_info/delete/'.$ttd_info->id_konfigurasi),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
 												?>
 											</td>
 										</tr>
@@ -186,11 +193,15 @@ else
 									</tbody>
 								</table>
 
+
+
+
 								<script>
                                     $(document).ready(function() {
                                         $('#example').DataTable();
                                     } );
 								</script>
+
 
 							</div>
 						</div>
@@ -246,6 +257,9 @@ else
 		</div>
 	</div>
 </div>
+
+
+
 
 
 

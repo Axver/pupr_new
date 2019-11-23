@@ -124,73 +124,19 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-
-								<div class="row" style="margin-bottom: 10px">
-									<div class="col-md-4">
-										<?php echo anchor(site_url('jenis_pekerjaan/create'),'Create', 'class="btn btn-primary"'); ?>
-									</div>
-									<div class="col-md-4 text-center">
-										<div style="margin-top: 8px" id="message">
-											<?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-										</div>
-									</div>
-									<div class="col-md-1 text-right">
-									</div>
-									<div class="col-md-3 text-right">
-										<form action="<?php echo site_url('jenis_pekerjaan/index'); ?>" class="form-inline" method="get">
-											<div class="input-group">
-												<input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-												<span class="input-group-btn">
-                            <?php
-							if ($q <> '')
-							{
-								?>
-								<a href="<?php echo site_url('jenis_pekerjaan'); ?>" class="btn btn-default">Reset</a>
-								<?php
-							}
-							?>
-                          <button class="btn btn-primary" type="submit">Search</button>
-                        </span>
-											</div>
-										</form>
-									</div>
-								</div>
-								<table class="table table-bordered" id="example" style="margin-bottom: 10px">
-								<thead>
-								<tr>
-									<th>No</th>
-									<th>Nama Jenis</th>
-									<th>Action</th>
-								</tr>
-								</thead>
-									<tbody><?php
-									foreach ($jenis_pekerjaan_data as $jenis_pekerjaan)
-									{
-										?>
-										<tr>
-											<td width="80px"><?php echo ++$start ?></td>
-											<td><?php echo $jenis_pekerjaan->nama_jenis ?></td>
-											<td style="text-align:center" width="200px">
-												<?php
-												echo anchor(site_url('jenis_pekerjaan/read/'.$jenis_pekerjaan->id),'Read');
-												echo ' | ';
-												echo anchor(site_url('jenis_pekerjaan/update/'.$jenis_pekerjaan->id),'Update');
-												echo ' | ';
-												echo anchor(site_url('jenis_pekerjaan/delete/'.$jenis_pekerjaan->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-												?>
-											</td>
-										</tr>
-										<?php
-									}
-									?>
-									</tbody>
+								<b style="color:darkgreen">Konfigurasi</b>
+								<table class="table">
+									<tr><td>Nama</td><td><?php echo $nama; ?></td></tr>
+									<tr><td>Nip</td><td><?php echo $nip; ?></td></tr>
+									<tr><td>Jabatan</td><td><?php echo $jabatan; ?></td></tr>
+									<tr><td></td><td><a href="<?php echo site_url('ttd_info') ?>" class="btn btn-default">Cancel</a></td></tr>
 								</table>
 
-								<script>
-                                    $(document).ready(function() {
-                                        $('#example').DataTable();
-                                    } );
-								</script>
+
+
+
+
+
 
 							</div>
 						</div>
@@ -246,6 +192,8 @@ else
 		</div>
 	</div>
 </div>
+
+
 
 
 

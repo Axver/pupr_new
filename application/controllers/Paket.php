@@ -25,7 +25,7 @@ class Paket extends CI_Controller
             $config['first_url'] = base_url() . 'paket/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Paket_model->total_rows($q);
         $paket = $this->Paket_model->get_limit_data($config['per_page'], $start, $q);
