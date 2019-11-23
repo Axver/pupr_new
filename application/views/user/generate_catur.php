@@ -704,6 +704,7 @@ else
 
                     while(i<length)
                     {
+                        $("#jp_jesi").append(data[i].nama_jenis+"<br/>");
 
                         $("#tabel_satu").append('\n' +
                             '\t\t\t\t\t\t\t\t\t<tr>\n' +
