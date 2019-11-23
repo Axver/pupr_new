@@ -187,6 +187,10 @@ else
 									?>
 								</select>
 
+								<br/>
+								<b>Pagu:</b>
+								<input type="text" class="form form-control" id="pagu">
+
 <!--								<button class="btn btn-info" onclick="addRow()">Add Row</button>-->
 								<br/>
 								<br/>
@@ -232,7 +236,7 @@ else
 									 <div class="row">
 										 <div class="col-sm-3">Pagu</div>
 										 <div class="col-sm-1">:</div>
-										 <div class="col-sm-3"></div>
+										 <div class="col-sm-3" id="pagu_text"></div>
 									 </div>
 									 <br/>
 
@@ -284,6 +288,8 @@ else
 										 <!--									</tr>-->
 									 </table>
 
+									 <div class="break"></div>
+
 									 <table class="tg table table-bordered" id="tabel_dua">
 										 <!--									<tr>-->
 										 <!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
@@ -330,6 +336,7 @@ else
 										 <!--										<td class="tg-0lax"></td>-->
 										 <!--									</tr>-->
 									 </table>
+									 <div class="break"></div>
 
 
 
@@ -612,6 +619,8 @@ else
 
 	function buatTabel()
 	{
+	    let pagu=$("#pagu").val();
+	    $("#pagu_text").text(pagu);
         let diperiksa=$("#diperiksa_oleh").val();
         $("#diperiksa").text(diperiksa);
         let nama_paket=$("#id_paket option:selected").text();
