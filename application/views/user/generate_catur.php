@@ -917,6 +917,7 @@ else
 	{
 
 	    $("#tabel_satu").empty();
+        $("#tabel_dua").empty();
 	}
 </script>
 
