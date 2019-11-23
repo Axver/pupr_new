@@ -39,10 +39,11 @@ else
 		}
 
 		.table {
-			width: 100%;
+			width: 140%;
 			-webkit-overflow-scrolling: touch;
 			overflow-x: auto;
 			display: block;
+			
 		}
 
 
@@ -71,6 +72,9 @@ else
 			width:auto;
 		}
 		.alert{
+			text-align:center;
+		}
+		.row_ttd{
 			text-align:center;
 		}
 
@@ -111,7 +115,7 @@ else
 
 		/************CREDITS**************/
 		.credit{
-			font: 14px "Century Gothic", Futura, sans-serif;
+			font: 14px "Calibry";
 			font-size:12px;
 			color:#3d3d3d;
 			text-align:left;
@@ -121,7 +125,7 @@ else
 			text-align:center;
 		}
 		.credit a{
-			color:gray;
+			color:black;
 		}
 		.credit a:hover{
 			color:black;
@@ -129,6 +133,27 @@ else
 		.credit a:visited{
 			color:MediumPurple;
 		}
+		
+
+		td td {
+    width: -2px;
+    height: 100px;
+    outline: 1px solid;
+    float: left;
+	
+}
+
+tr tr {
+    width: -2px;
+    height: 100px;
+    outline: 1px solid;
+    float: left;	
+}
+th,td,tr {
+	text-align:center;
+}
+	
+
 
 
 
@@ -185,7 +210,7 @@ else
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Nama Paket</div>
-					 <div class="col-sm-1">:</div>
+					 <div>:</div>
 					 <div class="col-sm-8">
                      <?php echo $info_paket[0]->nama ?>
 					 </div>
@@ -193,41 +218,41 @@ else
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Nilai Paket</div>
-					 <div class="col-sm-1">:</div>
+					 <div >:</div>
 					 <div class="col-sm-8">  <?php echo $info_paket[0]->nilai_paket ?></div>
 
 
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Jumlah Tahap</div>
-					 <div class="col-sm-1">:</div>
+					 <div>:</div>
 					 <div class="col-sm-8"> <?php echo $info_paket[0]->jumlah_tahap ?></div>
 
 
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Jenis Pekerjaan</div>
-					 <div class="col-sm-1">:</div>
+					 <div >:</div>
 					 <div class="col-sm-8" id="jenis_pekerjaan_jesi"> </div>
 
 
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Masa Pelaksanaan</div>
-					 <div class="col-sm-1">:</div>
+					 <div>:</div>
 					 <div class="col-sm-8"> <?php echo $info_paket[0]->masa_pelaksanaan ?></div>
 
 
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Lokasi</div>
-					 <div class="col-sm-1">:</div>
+					 <div>:</div>
 					 <div class="col-sm-8"> <?php echo $info_paket[0]->lokasi ?></div>
 
 				 </div>
 				 <div class="row">
 					 <div class="col-sm-3">Tahun Anggaran</div>
-					 <div class="col-sm-1">:</div>
+					 <div>:</div>
 					 <div class="col-sm-8"> <?php echo $info_paket[0]->tahun_anggaran ?></div>
 
 				 </div>
@@ -258,7 +283,7 @@ else
 				 <table id="tabel_jadwal" width="400" class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'" colspan="6" rowspan="4" height="80" >Jenis Pekerjaan</font></td>
+						 <td cellspacing="'0'" colspan="2" rowspan="4" height="80" >Jenis Pekerjaan</font></td>
 						 <td cellspacing="'0'"  colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
@@ -270,7 +295,7 @@ else
 					 </tr>
 					 <tr>
 						 <td cellspacing="'0'"  colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Februari<br>Maret</font></td>
+						 <td cellspacing="'0'"  colspan="5" ><font >Februari</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >April</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >Mei</font></td>
@@ -284,7 +309,7 @@ else
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
+						 <td cellspacing="'0'"  sdval="1" ><font >1</font></td>
 						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
 						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
 						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
@@ -344,20 +369,7 @@ else
 						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
 						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
 						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
 					 </tr>
-
-
-
 					 <tbody>
 
 
@@ -369,7 +381,7 @@ else
 				 <table id="tabel_jumlah"  class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'"  colspan="6" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Pekerjaan</font></td>
+						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Pekerjaan</font></td>
 						 <td cellspacing="'0'"  colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
@@ -381,7 +393,7 @@ else
 					 </tr>
 					 <tr>
 						 <td cellspacing="'0'"  colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Februari<br>Maret</font></td>
+						 <td cellspacing="'0'"  colspan="5" ><font >Februari</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >April</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >Mei</font></td>
@@ -453,18 +465,8 @@ else
 						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
 						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
 						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000"  sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"  sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
+						 <td cellspacing="'0'" sdval="4" ><font >4</font></td>
+						 <td cellspacing="'0'" sdval="5" ><font >5</font></td>
 					 </tr>
 
 
@@ -487,7 +489,7 @@ else
 				 <table  id="tabel_alat" class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'"  colspan="6" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Bahan/Alat</font></td>
+						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Bahan/Alat</font></td>
 						 <td cellspacing="'0'" colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
@@ -499,7 +501,7 @@ else
 					 </tr>
 					 <tr>
 						 <td cellspacing="'0'" colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Februari<br>Maret</font></td>
+						 <td cellspacing="'0'" colspan="5" ><font >Februari</font></td>
 						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
 						 <td cellspacing="'0'" colspan="5" ><font >April</font></td>
 						 <td cellspacing="'0'" colspan="5" ><font >Mei</font></td>
@@ -509,7 +511,7 @@ else
 						 <td cellspacing="'0'" colspan="5" ><font >September</font></td>
 						 <td cellspacing="'0'" colspan="5" ><font >Oktober</font></td>
 						 <td cellspacing="'0'" colspan="5" ><font >November</font></td>
-						 <td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000" colspan="5" ><font >Desember</font></td>
+						 <td cellspacing="'0'" colspan="5" ><font >Desember</font></td>
 
 					 </tr>
 					 <tr>
@@ -573,16 +575,6 @@ else
 						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
 						 <td cellspacing="'0'"  sdval="4" ><font >4</font></td>
 						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
-						 <td cellspacing="'0'" align="left" valign="bottom"><font ><br></font></td>
 					 </tr>
 
 
@@ -651,14 +643,11 @@ else
 								 $keteranganM=$info_perencanaan[0]->keterangan;
 							 }
 							 ?>
-							 <td cellspacing="'0'" id="lokasiM"><?php echo $loaksiM ?></td>
-							 <td cellspacing="'0'" id="jenis_pekerjaanM"><?php echo $jenis_pekerjaanM ?></td>
-							 <td cellspacing="'0'" id="panjang_penangananM"><?php echo $panjang_penangananM ?></td>
-							 <td cellspacing="'0'" id="keterangan_dimensiM"><?php echo  $keterangan_dimensiM ?></td>
-							 <td cellspacing="'0'" id="ketM"><?php echo $keteranganM ?></td>
-
-
-
+							 <td cellspacing="'0'" width="20%" id="lokasiM"><?php echo $loaksiM ?></td>
+							 <td cellspacing="'0'" width="20%" id="jenis_pekerjaanM"><?php echo $jenis_pekerjaanM ?></td>
+							 <td cellspacing="'0'" width="20%" id="panjang_penangananM"><?php echo $panjang_penangananM ?></td>
+							 <td cellspacing="'0'" width="20%" id="keterangan_dimensiM"><?php echo  $keterangan_dimensiM ?></td>
+							 <td cellspacing="'0'" width="20%" id="ketM"><?php echo $keteranganM ?></td>
 						 </tr>
 						 </tbody>
 					 </table>
@@ -666,8 +655,10 @@ else
 
 <!--				 Tanda Tangan-->
 				 <div class="row">
-					 <div class="col-sm-3">
+					 <div class="col-sm-3 row_ttd" >
 						<b> Disetujui Oleh</b>
+						<br>
+						<b>PPK Operasi dan Pemeliharaan SDA III</b>
 						 <br/>
 						 <br/>
 						 <br/>
@@ -683,14 +674,17 @@ else
 //								 Ambil namanya lagi
 								 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_disetujui))->result();
 
-								 echo "<b>".$ambil[0]->nama."</b>";
+								 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
+								 echo "<b>NIP. ".$ambil[0]->nip."</b>";
 							 }
 							 ?>
 
 					 </div>
 					 <div class="col-sm-2"></div>
-					 <div class="col-sm-3">
+					 <div class="col-sm-3 row_ttd">
 						 <b>Diperiksa Oleh</b>
+						 <br>
+						 <b>Pelaksana Teknik</b>
 						 <br/>
 						 <br/>
 						 <br/>
@@ -705,14 +699,63 @@ else
 //								 Ambil namanya lagi
 							 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
 
-							 echo "<b>".$ambil[0]->nama."</b>";
+							 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
+							 echo "<b>".$ambil[0]->nip."</b>";
 						 }
 						 ?>
 						 <div class="row"></div>
 					 </div>
 					 <div class="col-sm-1"></div>
-					 <div class="col-sm-3">
-						 <b>Dibuat Oleh</b>
+					 <div class="col-sm-3 row_ttd">
+					 <?php  
+					 date_default_timezone_set('Asia/Jakarta');
+					 $date_d=date('d');
+					 $date_m=date('m');
+					 $date_y=date('Y');
+					 switch($date_m)
+						{
+							case 1:
+								$date_mtext="Januari";
+							break;
+							case 2:
+								$date_mtext="Februari";
+							break;
+							case 3:
+								$date_mtext="Maret";
+							break;	
+							case 4:
+								$date_mtext="April";
+							break;
+							case 5:
+								$date_mtext="Mai";
+							break;
+							case 6:
+								$date_mtext="Juni";
+							break;
+							case 7:
+								$date_mtext="Juli";
+							break;
+							case 8:
+								$date_mtext="Agustus";
+							break;
+							case 9:
+								$date_mtext="September";
+							break;
+							case 10:
+								$date_mtext="Oktober";
+							break;
+							case 11:
+								$date_mtext="November";
+							break;
+							case 12:
+								$date_mtext="Desember";
+							break;
+															
+						}
+					 ?>
+						 <b>Jambi, <?php echo"$date_d $date_mtext $date_y"; ?> </b>
+						 <br>
+						 <b>Dibuat Oleh</b>						 
 						 <br/>
 						 <br/>
 						 <br/>
@@ -727,7 +770,8 @@ else
 //								 Ambil namanya lagi
 							 $ambil=$this->db->get_where("account",array("nip"=>$data[0]->id_user))->result();
 
-							 echo "<b>".$ambil[0]->nama."</b>";
+							 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
+							 echo "<b>".$ambil[0]->nip."</b>";
 						 }
 						 ?>
 						 <div class="row"></div>
@@ -1061,12 +1105,8 @@ else
                          //it doesn't exist
 						 $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
 
-                         var newRow="\t<tr id='"+data1[x].id+pekerjaan_id+"'>\n" +
+                         var newRow="\t<tr  id='"+data1[x].id+pekerjaan_id+"'>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' >"+pekerjaan_text+"</td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
                              "\n" +
                              "\n" +
@@ -1076,10 +1116,6 @@ else
 
                          var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' >"+pekerjaan_text+"</td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
                              "\n" +
                              "\n" +
@@ -1178,12 +1214,8 @@ else
                      while(i<length)
                      {
                          var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
+                             "\t\t\t\t\t\t\t\t\t\t<td style=\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +              
+                             "\t\t\t\t\t\t\t\t\t\t<td> </td>\n" +
                              "\n" +
                              "\n" +
                              "\t\t\t\t\t\t\t\t\t</tr>";
