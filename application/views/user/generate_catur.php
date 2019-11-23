@@ -520,21 +520,21 @@ else
                         $("#tabel_satu").append('\n' +
                             '\t\t\t\t\t\t\t\t\t<tr>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_2"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_3"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_4"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+i+'_5"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_6"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_7"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_8"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_9"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_10"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_11"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_12"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_13"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_14"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+i+'_15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'_1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'_2"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'_3"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'_4"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'_5"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_6"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_7"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_8"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_9"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_10"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_11"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_12"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_13"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_14"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_15"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -601,6 +601,8 @@ else
                         let $hasil=0;
                         let batas=parseInt(bulan_mulai);
 
+
+
                         while(y<batas)
                         {
                             $data=getWeeksInMonth(y, tahun);
@@ -612,20 +614,26 @@ else
                             y++;
                         }
 
+                        console.log("++++++");
+                        console.log(minggu_get);
+                        console.log(bulan_mulai);
                         console.log($hasil);
+                        console.log("++++++");
 
                         //Kurangi data yang dimiliki dengan total minggunya
-                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
                         console.log($hasil_akhir);
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_bahan);
                         //Kalau -5 itu 1, -4 itu 2, -3 itu 3, -2 itu 1
-						if($hasil=='-5')
-						{
-                            $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
-						}
+						// if($hasil=='-5')
+						// {
+                        //     $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+						// }
+
+						//Ini Sudah Betul
 
 
                         i++;
@@ -700,15 +708,14 @@ else
                             y++;
                         }
 
-                        console.log($hasil);
-
                         //Kurangi data yang dimiliki dengan total minggunya
-                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+5;
                         console.log($hasil_akhir);
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_bahan);
 
                         i++;
                     }
@@ -786,12 +793,13 @@ else
                         console.log($hasil);
 
                         //Kurangi data yang dimiliki dengan total minggunya
-                        $hasil_akhir=parseInt($hasil)-parseInt(minggu_get);
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+10;
                         console.log($hasil_akhir);
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_bahan);
 
                         i++;
                     }
