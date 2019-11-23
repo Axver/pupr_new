@@ -230,6 +230,53 @@ else
 <!--									</tr>-->
 								</table>
 
+								<table class="tg table table-bordered" id="tabel_dua">
+									<!--									<tr>-->
+									<!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
+									<!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
+									<!--									</tr>-->
+									<!--									<tr>-->
+									<!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
+									<!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
+									<!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
+									<!--									</tr>-->
+									<!--									<tr>-->
+									<!--										<td class="tg-cly1">1</td>-->
+									<!--										<td class="tg-cly1">2</td>-->
+									<!--										<td class="tg-cly1">3</td>-->
+									<!--										<td class="tg-cly1">4</td>-->
+									<!--										<td class="tg-cly1">5</td>-->
+									<!--										<td class="tg-0lax">6</td>-->
+									<!--										<td class="tg-0lax">7</td>-->
+									<!--										<td class="tg-0lax">8</td>-->
+									<!--										<td class="tg-0lax">9</td>-->
+									<!--										<td class="tg-0lax">10</td>-->
+									<!--										<td class="tg-0lax">11</td>-->
+									<!--										<td class="tg-0lax">12</td>-->
+									<!--										<td class="tg-0lax">13</td>-->
+									<!--										<td class="tg-0lax">14</td>-->
+									<!--										<td class="tg-0lax">15</td>-->
+									<!--									</tr>-->
+									<!--									<tr>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-cly1"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--										<td class="tg-0lax"></td>-->
+									<!--									</tr>-->
+								</table>
+
 
 
 
@@ -488,8 +535,36 @@ else
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
 
+        $("#tabel_dua").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">2</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">3</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">4</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">5</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">6</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">7</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">8</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">9</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">10</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">11</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">12</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>');
 
-	//	Ajax Untuk Mendapatkan Data
+
+
+        //	Ajax Untuk Mendapatkan Data
         //   Ajax Untuk Mendapatkan Data
         var dt = new Date();
         // alert(dt.getFullYear());
@@ -535,6 +610,27 @@ else
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_13"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_14"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+                        $("#tabel_dua").append('\n' +
+                            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__2"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__3"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__4"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__5"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__6"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__7"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__8"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__9"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__10"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__11"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__12"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__13"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__14"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__15"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -626,7 +722,8 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+                        $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
                         //Kalau -5 itu 1, -4 itu 2, -3 itu 3, -2 itu 1
 						// if($hasil=='-5')
 						// {
@@ -715,7 +812,8 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+                        $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
@@ -798,8 +896,10 @@ else
                         console.log($hasil_akhir);
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
+
+                        $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
