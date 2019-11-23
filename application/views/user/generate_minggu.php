@@ -275,31 +275,31 @@ else
 												<div class="col-sm-3"></div>
 											</div>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-4" style="border:2px solid black">
 											<div class="row">
 												<div class="col-sm-7">Progress Pekerjaan</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-4"></div>
+												<div class="col-sm-4" id="progress-pekerjaan"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-7">Progress Fisik Periode Lalu</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-4"></div>
+												<div class="col-sm-4" id="progress-fisik-lalu"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-7">Progress Fisik Minggu</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-4"></div>
+												<div class="col-sm-4" id="progress-fisik-minggu"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-7">Progress Fisik Selanjutnya</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-4"></div>
+												<div class="col-sm-4" id="progress-fisik-next"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-7">Progress Fisik Total</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-4"></div>
+												<div class="col-sm-4" id="progress-fisik-total"></div>
 											</div>
 										</div>
 
@@ -1007,7 +1007,24 @@ else
         }
 
         swal("Data Digenerate!!");
+
+
+    //    Generate data progress
+		generate_progress();
     }
+
+
+    function generate_progress()
+	{
+
+		let id_laper_=$("#id_lap_perencanaan").val();
+		let id_minggu_=$("#id_minggu").val();
+		let bulan_diinginkan_=$("#bulan_diinginkan").val();
+        //    Ajax Untuk mengambil data
+
+	//	Lakukan perhitungan per masing-masing progress
+
+	}
 
 
 
