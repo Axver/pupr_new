@@ -337,6 +337,8 @@ else
 										 <!--									</tr>-->
 									 </table>
 									 <div class="break"></div>
+									 <table class="tg table table-bordered" id="tabel_tiga">
+									 </table>
 
 
 
@@ -685,6 +687,35 @@ else
             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
+        $("#tabel_tiga").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Bahan/Alat</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Satuan</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>\n' +
+            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">2</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">3</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">4</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">5</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">6</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">7</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">8</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">9</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">10</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">11</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">12</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t</tr>');
+
+
 
         //	Ajax Untuk Mendapatkan Data
         //   Ajax Untuk Mendapatkan Data
@@ -739,6 +770,58 @@ else
                         $("#tabel_dua").append('\n' +
                             '\t\t\t\t\t\t\t\t\t<tr>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].nama_jenis+'</td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__2"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__3"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__4"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__5"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__6"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__7"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__8"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__9"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__10"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__11"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__12"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__13"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__14"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+
+
+                        i++;
+                    }
+                }
+        });
+
+     //   Tabel Jenis Bahan Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/data1",
+            data: {"tahun":tahun,"bulan":bulan,"id_perencanaan":id_perencanaan,"batas":batas},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+                    console.log(data);
+
+                    let length=data.length;
+                    let i=0;
+
+                    while(i<length)
+                    {
+
+
+
+
+                        $("#tabel_tiga").append('\n' +
+                            '\t\t\t\t\t\t\t\t\t<tr>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].jenis_bahan_alat+'</td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].satuan+'</td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__1"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__2"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__3"></td>\n' +
@@ -1062,6 +1145,7 @@ else
 
 	    $("#tabel_satu").empty();
         $("#tabel_dua").empty();
+        $("#tabel_tiga").empty();
 	}
 </script>
 
