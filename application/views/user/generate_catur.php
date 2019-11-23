@@ -822,21 +822,21 @@ else
                             '\t\t\t\t\t\t\t\t\t<tr>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].jenis_bahan_alat+'</td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">'+data[i].satuan+'</td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__1"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__2"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__3"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__4"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id+'__5"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__6"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__7"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__8"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__9"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__10"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__11"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__12"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__13"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__14"></td>\n' +
-                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+'___1"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+'___2"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+'___3"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+'___4"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+'___5"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___6"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___7"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___8"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___9"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___10"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___11"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___12"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___13"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___14"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___15"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -945,6 +945,105 @@ else
                 }
         });
 
+        //Alat Bulan 1
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data1",
+            data: {"tahun":tahun,"bulan":bulan_mulai,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    console.log(getWeeksInMonth(bulan, tahun));
+                    console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan_mulai);
+
+
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log("++++++");
+                        console.log(minggu_get);
+                        console.log(bulan_mulai);
+                        console.log($hasil);
+                        console.log("++++++");
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+$hasil_akhir).text(data[i].count);
+
+                        //Kalau -5 itu 1, -4 itu 2, -3 itu 3, -2 itu 1
+                        // if($hasil=='-5')
+                        // {
+                        //     $("#"+data[i].jenis_pekerja+"___"+$hasil_akhir).text(data[i].jumlah_bahan);
+                        // }
+
+                        //Ini Sudah Betul
+
+
+                        i++;
+                    }
+
+                }
+        });
+
         //Bulan 2
         $.ajax({
             type: "POST",
@@ -1020,6 +1119,89 @@ else
 
                         $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
                         $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+
+                        i++;
+                    }
+
+                }
+        });
+
+        //Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data1",
+            data: {"tahun":tahun,"bulan":bulan2,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan2);
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+5;
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+                        // $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
@@ -1106,6 +1288,92 @@ else
 
 
                         $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+
+                        i++;
+                    }
+
+                }
+        });
+
+        //Bahan Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data1",
+            data: {"tahun":tahun,"bulan":bulan3,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan3);
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+10;
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+						//
+						//
+                        // $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
