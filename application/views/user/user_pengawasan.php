@@ -251,7 +251,24 @@ else
 			</div>
 			<div class="modal-body">
 				<input type="text" id="jenis_pekerjaan_row" class="form form-control" disabled>
-				<input type="text" id="jenis_pekerjaan_text" class="form form-control">
+
+				<select class="form form-control" id="jenis_pekerjaan_text">
+					<?php
+					$jp=$this->db->get("jenis_pekerjaan")->result();
+					$count=count($jp);
+
+					$i=0;
+					while($i<$count)
+					{
+						?>
+						<option value="<?php echo $jp[$i]->nama_jenis; ?>"><?php echo $jp[$i]->nama_jenis; ?></option>
+					<?php
+
+						$i++;
+					}
+
+					?>
+				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -297,7 +314,23 @@ else
 			</div>
 			<div class="modal-body">
 				<input type="text" id="jenis_satuan_row" class="form form-control" disabled>
-				<input type="text" id="jenis_satuan_text" class="form form-control">
+
+				<select class="form form-control" id="jenis_satuan_text" >
+					<?php
+					$data=$this->db->get("jenis_bahan_alat")->result();
+					$count=count($data);
+					$i=0;
+
+					while($i<$count)
+					{
+						?>
+						<option value="<?php echo $data[$i]->jenis_bahan_alat; ?>"><?php echo $data[$i]->jenis_bahan_alat; ?></option>
+					<?php
+
+						$i++;
+					}
+					?>
+				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -320,7 +353,22 @@ else
 			</div>
 			<div class="modal-body">
 				<input type="text" id="satuan_row" class="form form-control" disabled>
-				<input type="text" id="satuan_text" class="form form-control">
+
+				<select class="form form-control" id="satuan_text">
+					<?php
+					$data=$this->db->get("satuan")->result();
+					$count=count($data);
+					$i=0;
+					while($i<$count)
+					{
+						?>
+						<option value="<?php echo $data[$i]->satuan; ?>"><?php echo $data[$i]->satuan; ?></option>
+					<?php
+
+						$i++;
+					}
+					?>
+				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
