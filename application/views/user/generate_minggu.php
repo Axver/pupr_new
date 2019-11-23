@@ -248,28 +248,61 @@ else
 									<br/>
 									<br/>
 
-									<div class="row">
-										<div class="col-sm-3">Nama Paket</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="nama_paket_1"></div>
-									</div>
+					                <div class="row">
 
-									<div class="row">
-										<div class="col-sm-3">Jenis Pekerjaan</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="jp_jesi"></div>
-									</div>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-sm-3">Nama Paket</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-3" id="nama_paket_1"></div>
+											</div>
 
-									<div class="row">
-										<div class="col-sm-3">Lokasi</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="lokasi_jesi"></div>
-									</div>
+											<div class="row">
+												<div class="col-sm-3">Jenis Pekerjaan</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-3" id="jp_jesi"></div>
+											</div>
 
-									<div class="row">
-										<div class="col-sm-3">Pagu</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3"></div>
+											<div class="row">
+												<div class="col-sm-3">Lokasi</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-3" id="lokasi_jesi"></div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3">Pagu</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-3"></div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="row">
+												<div class="col-sm-7">Progress Pekerjaan</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-7">Progress Fisik Periode Lalu</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-7">Progress Fisik Minggu</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-7">Progress Fisik Selanjutnya</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-7">Progress Fisik Total</div>
+												<div class="col-sm-1">:</div>
+												<div class="col-sm-4"></div>
+											</div>
+										</div>
+
 									</div>
 
 									<br/>
