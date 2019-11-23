@@ -626,7 +626,7 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_pekerja);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
                         //Kalau -5 itu 1, -4 itu 2, -3 itu 3, -2 itu 1
 						// if($hasil=='-5')
 						// {
@@ -715,7 +715,7 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_pekerja);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
@@ -799,7 +799,7 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
 
-                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].jumlah_pekerja);
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text(data[i].count);
 
                         i++;
                     }
