@@ -167,6 +167,25 @@ else
 								</select>
 
 								<button class="btn btn-info" onclick="buatTabel()">Generate</button>
+								<br/>
+								<b>Diperiksa Oleh</b>
+								<select class="form form-control" id="diperiksa_oleh">
+									<?php
+									$diperiksa=$this->db->get("konfigurasi")->result();
+									$count=count($diperiksa);
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $diperiksa[$i]->nama; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<?php
+
+										$i++;
+									}
+									?>
+								</select>
 
 <!--								<button class="btn btn-info" onclick="addRow()">Add Row</button>-->
 								<br/>
@@ -311,6 +330,43 @@ else
 										 <!--										<td class="tg-0lax"></td>-->
 										 <!--									</tr>-->
 									 </table>
+
+
+
+									 <br/>
+									 <br/>
+									 <br/>
+
+									 <div class="row">
+										 <div class="col-sm-1"></div>
+										 <div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+										 <div class="col-sm-4"></div>
+										 <div class="col-sm-3"><center><b>Dibuat Oleh</b></center></div>
+										 <div class="col-sm-1"></div>
+									 </div>
+
+									 <br/>
+									 <br/>
+									 <br/>
+									 <div class="row">
+										 <div class="col-sm-1"></div>
+										 <div class="col-sm-3"><center><b id="diperiksa"></b></center></div>
+										 <div class="col-sm-4"></div>
+										 <div class="col-sm-3"><center><b id="dibuat"><?php
+													 $data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
+													 $count=count($data);
+													 $i=0;
+
+													 while($i<$count)
+													 {
+														 echo $data[$i]->nama;
+
+														 $i++;
+													 }
+													 ?></b></center></div>
+										 <div class="col-sm-1"></div>
+									 </div>
+
 
 
 
@@ -556,6 +612,8 @@ else
 
 	function buatTabel()
 	{
+        let diperiksa=$("#diperiksa_oleh").val();
+        $("#diperiksa").text(diperiksa);
         let nama_paket=$("#id_paket option:selected").text();
         $("#nama_paket_1").text(nama_paket);
 	    hapusTabel();
