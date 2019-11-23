@@ -128,17 +128,22 @@ else
 							<div class="card-body">
 								<b>Id Paket</b>
 								<select id="id_paket" class="form form-control" onchange="perencanaan()">
-									<option>-Pilih Paket-</option>
+									<option value="">---Pilih Paket---</option>
 									<?php
-									$per=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
-									$count=count($per);
-									$i=0;
+									$this->db->select('*');
+									$this->db->from('detail_paket');
+									$this->db->join('paket', 'detail_paket.id_paket = paket.id_paket');
+									$this->db->where("nip",$this->session->userdata("nip"));
+									//									$paket=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
+									$paket=$this->db->get()->result();
+									$count=count($paket);
 
+									$i=0;
 									while($i<$count)
 									{
 										?>
-										<option value="<?php echo $per[$i]->id_paket; ?>"><?php echo $per[$i]->id_paket; ?></option>
-									<?php
+										<option value="<?php echo $paket[$i]->id_paket; ?>"><?php echo $paket[$i]->nama; ?></option>
+										<?php
 
 										$i++;
 									}
@@ -164,122 +169,153 @@ else
 								<button class="btn btn-info" onclick="buatTabel()">Generate</button>
 
 <!--								<button class="btn btn-info" onclick="addRow()">Add Row</button>-->
-
-
-
 								<br/>
 								<br/>
-<!--								Ini adalah tabelnya-->
-<!--								<table class="tg table table-bordered" id="caturwulan" >-->
-<!--									<tr>-->
-<!--										<th class="tg-cly1" rowspan="3">No</th>-->
-<!--										<th class="tg-cly1" rowspan="3">Bahan</th>-->
-<!--										<th class="tg-cly1" rowspan="3">Jumlah</th>-->
-<!--										<th class="tg-cly1" rowspan="3">Satuan</th>-->
-<!--										<th class="tg-cly1" colspan="21"><center>Tahap</center></th>-->
-<!--									</tr>-->
-<!---->
-<!---->
-<!--								</table>-->
+								<br/>
+                              <button style="width: 100%;" class="btn btn-success">Generate PDF</button>
+				                 <div id="cetak_tabel">
+									 <center><b><h2>LAPORAN CATURWULAN</h2></b></center>
 
-<!--								Tabelnya-->
-								<table class="tg table table-bordered" id="tabel_satu">
-<!--									<tr>-->
-<!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
-<!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
-<!--									</tr>-->
-<!--									<tr>-->
-<!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
-<!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
-<!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
-<!--									</tr>-->
-<!--									<tr>-->
-<!--										<td class="tg-cly1">1</td>-->
-<!--										<td class="tg-cly1">2</td>-->
-<!--										<td class="tg-cly1">3</td>-->
-<!--										<td class="tg-cly1">4</td>-->
-<!--										<td class="tg-cly1">5</td>-->
-<!--										<td class="tg-0lax">6</td>-->
-<!--										<td class="tg-0lax">7</td>-->
-<!--										<td class="tg-0lax">8</td>-->
-<!--										<td class="tg-0lax">9</td>-->
-<!--										<td class="tg-0lax">10</td>-->
-<!--										<td class="tg-0lax">11</td>-->
-<!--										<td class="tg-0lax">12</td>-->
-<!--										<td class="tg-0lax">13</td>-->
-<!--										<td class="tg-0lax">14</td>-->
-<!--										<td class="tg-0lax">15</td>-->
-<!--									</tr>-->
-<!--									<tr>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-cly1"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--										<td class="tg-0lax"></td>-->
-<!--									</tr>-->
-								</table>
+									 <br/>
+									 <br/>
+									 <!--								Ini adalah tabelnya-->
+									 <!--								<table class="tg table table-bordered" id="caturwulan" >-->
+									 <!--									<tr>-->
+									 <!--										<th class="tg-cly1" rowspan="3">No</th>-->
+									 <!--										<th class="tg-cly1" rowspan="3">Bahan</th>-->
+									 <!--										<th class="tg-cly1" rowspan="3">Jumlah</th>-->
+									 <!--										<th class="tg-cly1" rowspan="3">Satuan</th>-->
+									 <!--										<th class="tg-cly1" colspan="21"><center>Tahap</center></th>-->
+									 <!--									</tr>-->
+									 <!---->
+									 <!---->
+									 <!--								</table>-->
+									 <br/>
 
-								<table class="tg table table-bordered" id="tabel_dua">
-									<!--									<tr>-->
-									<!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
-									<!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
-									<!--									</tr>-->
-									<!--									<tr>-->
-									<!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
-									<!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
-									<!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
-									<!--									</tr>-->
-									<!--									<tr>-->
-									<!--										<td class="tg-cly1">1</td>-->
-									<!--										<td class="tg-cly1">2</td>-->
-									<!--										<td class="tg-cly1">3</td>-->
-									<!--										<td class="tg-cly1">4</td>-->
-									<!--										<td class="tg-cly1">5</td>-->
-									<!--										<td class="tg-0lax">6</td>-->
-									<!--										<td class="tg-0lax">7</td>-->
-									<!--										<td class="tg-0lax">8</td>-->
-									<!--										<td class="tg-0lax">9</td>-->
-									<!--										<td class="tg-0lax">10</td>-->
-									<!--										<td class="tg-0lax">11</td>-->
-									<!--										<td class="tg-0lax">12</td>-->
-									<!--										<td class="tg-0lax">13</td>-->
-									<!--										<td class="tg-0lax">14</td>-->
-									<!--										<td class="tg-0lax">15</td>-->
-									<!--									</tr>-->
-									<!--									<tr>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-cly1"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--										<td class="tg-0lax"></td>-->
-									<!--									</tr>-->
-								</table>
+									 <div class="row">
+										 <div class="col-sm-3">Nama Paket</div>
+										 <div class="col-sm-1">:</div>
+										 <div class="col-sm-3" id="nama_paket_1"></div>
+									 </div>
+
+									 <div class="row">
+										 <div class="col-sm-3">Jenis Pekerjaan</div>
+										 <div class="col-sm-1">:</div>
+										 <div class="col-sm-3" id="jp_jesi"></div>
+									 </div>
+
+									 <div class="row">
+										 <div class="col-sm-3">Lokasi</div>
+										 <div class="col-sm-1">:</div>
+										 <div class="col-sm-3" id="lokasi_jesi"></div>
+									 </div>
+
+									 <div class="row">
+										 <div class="col-sm-3">Pagu</div>
+										 <div class="col-sm-1">:</div>
+										 <div class="col-sm-3"></div>
+									 </div>
+									 <br/>
+
+									 <!--								Tabelnya-->
+									 <table class="tg table table-bordered" id="tabel_satu">
+										 <!--									<tr>-->
+										 <!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
+										 <!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
+										 <!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
+										 <!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-cly1">1</td>-->
+										 <!--										<td class="tg-cly1">2</td>-->
+										 <!--										<td class="tg-cly1">3</td>-->
+										 <!--										<td class="tg-cly1">4</td>-->
+										 <!--										<td class="tg-cly1">5</td>-->
+										 <!--										<td class="tg-0lax">6</td>-->
+										 <!--										<td class="tg-0lax">7</td>-->
+										 <!--										<td class="tg-0lax">8</td>-->
+										 <!--										<td class="tg-0lax">9</td>-->
+										 <!--										<td class="tg-0lax">10</td>-->
+										 <!--										<td class="tg-0lax">11</td>-->
+										 <!--										<td class="tg-0lax">12</td>-->
+										 <!--										<td class="tg-0lax">13</td>-->
+										 <!--										<td class="tg-0lax">14</td>-->
+										 <!--										<td class="tg-0lax">15</td>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--									</tr>-->
+									 </table>
+
+									 <table class="tg table table-bordered" id="tabel_dua">
+										 <!--									<tr>-->
+										 <!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
+										 <!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-nrix" colspan="5">Bulan 1</td>-->
+										 <!--										<td class="tg-baqh" colspan="5">Bulan 2</td>-->
+										 <!--										<td class="tg-baqh" colspan="5">Bulan 3</td>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-cly1">1</td>-->
+										 <!--										<td class="tg-cly1">2</td>-->
+										 <!--										<td class="tg-cly1">3</td>-->
+										 <!--										<td class="tg-cly1">4</td>-->
+										 <!--										<td class="tg-cly1">5</td>-->
+										 <!--										<td class="tg-0lax">6</td>-->
+										 <!--										<td class="tg-0lax">7</td>-->
+										 <!--										<td class="tg-0lax">8</td>-->
+										 <!--										<td class="tg-0lax">9</td>-->
+										 <!--										<td class="tg-0lax">10</td>-->
+										 <!--										<td class="tg-0lax">11</td>-->
+										 <!--										<td class="tg-0lax">12</td>-->
+										 <!--										<td class="tg-0lax">13</td>-->
+										 <!--										<td class="tg-0lax">14</td>-->
+										 <!--										<td class="tg-0lax">15</td>-->
+										 <!--									</tr>-->
+										 <!--									<tr>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-cly1"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--										<td class="tg-0lax"></td>-->
+										 <!--									</tr>-->
+									 </table>
 
 
 
 
+								 </div>
 
 								<script>
 
@@ -503,6 +539,8 @@ else
 
 	function buatTabel()
 	{
+        let nama_paket=$("#id_paket option:selected").text();
+        $("#nama_paket_1").text(nama_paket);
 	    hapusTabel();
 	    let bulan_mulai=$("#bulan_mulai").val();
 	    let bulan2=parseInt(bulan_mulai)+parseInt(1);
