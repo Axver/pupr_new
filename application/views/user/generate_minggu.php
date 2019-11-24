@@ -1006,6 +1006,7 @@ else
 
         }
         generate_progress();
+        generate_progress_sebelumnya();
 
         swal("Data Digenerate!!");
 
@@ -1059,7 +1060,7 @@ else
                 success:
                     function (data) {
                         data = JSON.parse(data);
-              
+
                         let jumlah_pekerja_total;
                         let length=data.length;
                         let i=0;
@@ -1173,6 +1174,349 @@ else
         }
 
 	}
+
+
+    function generate_progress_sebelumnya()
+    {
+
+        let id_minggu = $("#id_minggu").val();
+        let bulan_diinginkan = $("#bulan_diinginkan").val();
+        let tahun_hidden = $("#tahun_hidden").val();
+
+        if(id_minggu==1)
+		{
+		    id_minggu=5;
+		    bulan_diinginkan=parseInt(bulan_diinginkan)-1;
+		}
+        else
+		{
+
+		}
+
+        let check = getWeeksInMonth(bulan_diinginkan, tahun_hidden);
+        // alert(check);
+
+        if (id_minggu <= check) {
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y = 1;
+            let total_minggu = 0;
+
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
+
+
+            //    Dapatkan Start dan ENd Dari Tanggal Tersebut
+            rentang_hari = rentang_hari.split(" to ");
+
+            let id_lap_perencanaan_baru = $("#id_lap_perencanaan").val();
+            //Sum Jumlah Pekerja
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/generate_minggu/between_pekerja",
+                data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
+                async: false,
+                dataType: "text",
+                cache: false,
+                success:
+                    function (data) {
+                        data = JSON.parse(data);
+
+                        let jumlah_pekerja_total=0;
+                        let length=data.length;
+                        let i=0;
+                        while(i<length)
+                        {
+                            jumlah_pekerja_total=data[i].sum;
+                            i++;
+                        }
+
+                        console.log("jumlah_pekerja_total:"+jumlah_pekerja_total);
+
+
+                        //Sum Jumlah Tukang
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost/pupr_new/generate_minggu/between_tukang",
+                            data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
+                            async: false,
+                            dataType: "text",
+                            cache: false,
+                            success:
+                                function (data) {
+                                    data = JSON.parse(data);
+
+                                    let jumlah_tukang_total=0;
+                                    let length=data.length;
+                                    let i=0;
+                                    while(i<length)
+                                    {
+                                        jumlah_tukang_total=data[i].sum;
+                                        i++;
+                                    }
+
+                                    console.log("jumlah_tukang_total:"+jumlah_tukang_total);
+
+
+                                    //    Ambil Bahan Alat
+                                    let id_lap_perencanaan_jesi=$("#id_lap_perencanaan").val();
+
+                                    //    Ajax Jenis Alat
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://localhost/pupr_new/generate_minggu/jenis_alat1",
+                                        asynd:false,
+                                        data: {"id_lap_perencanaan":id_lap_perencanaan_jesi},
+                                        dataType: "text",
+                                        cache:false,
+                                        success:
+                                            function(data){
+                                                data=JSON.parse(data);
+                                                // console.log("jesijesijesi");
+                                                // console.log(data);
+                                                // console.log("jesijesijesi");
+                                                let length=data.length;
+                                                let z=0;
+                                                let jumlah_alat_total=0;
+
+                                                while(z<length)
+                                                {
+                                                    jumlah_alat_total=parseInt(jumlah_alat_total)+(parseInt(data[z].sum)*parseInt(data[z].harga));
+
+                                                    z++;
+                                                }
+                                                console.log("jumlah_alat_total:"+jumlah_alat_total);
+
+                                                let total_all=parseInt(jumlah_pekerja_total)+parseInt(jumlah_tukang_total)+parseInt(jumlah_alat_total);
+
+                                                //    Ambil nilai paket
+                                                let id_paket_hmm=$("#id_paket").val();
+                                                $.ajax({
+                                                    type: "POST",
+                                                    async:false,
+                                                    url: "http://localhost/pupr_new/generate_minggu/nilai_paket",
+                                                    data: {"id_paket":id_paket_hmm},
+                                                    dataType: "text",
+                                                    cache:false,
+                                                    success:
+                                                        function(data){
+                                                            data=JSON.parse(data);
+                                                            let length=data.length;
+                                                            let i=0;
+                                                            let nilai_paket=0;
+                                                            while(i<length)
+                                                            {
+                                                                nilai_paket=data[i].nilai_paket;
+
+                                                                i++;
+                                                            }
+                                                            console.log("Nilai Paket Total:"+nilai_paket);
+
+                                                            nilai_paket=parseInt(nilai_paket);
+
+                                                            let hasil_akhir=total_all/nilai_paket;
+                                                            // console.log(total_all);
+
+                                                            hasil_akhir=parseFloat(hasil_akhir);
+                                                            console.log(hasil_akhir);
+                                                            hasil_akhir=hasil_akhir.toFixed(2);
+
+                                                            //    Append kan datanya gan
+                                                            $("#progress-fisik-lalu").text(hasil_akhir+"%");
+                                                        }
+                                                });
+
+
+                                            }
+                                    });
+
+
+
+                                }
+                        });
+
+
+
+                    }
+            });
+        }
+        else
+		{
+            id_minggu=4;
+            //    Jika minggunya ada sekarang check tanggak berapa di minggu tersebut
+            let y = 1;
+            let total_minggu = 0;
+
+            while (y <= bulan_diinginkan) {
+                total_minggu = total_minggu + getWeeksInMonth(y, tahun_hidden)
+                //hitung jumlah minggu yang ada
+
+                y++;
+            }
+
+            total_minggu = parseInt(total_minggu) - parseInt(check) + parseInt(id_minggu);
+
+            //    Selanjutnya cari tahu tanggal berapa di minggu tersebut
+
+            let rentang_hari = getDateRangeOfWeek(total_minggu);
+
+
+            //    Dapatkan Start dan ENd Dari Tanggal Tersebut
+            rentang_hari = rentang_hari.split(" to ");
+
+            let id_lap_perencanaan_baru = $("#id_lap_perencanaan").val();
+            //Sum Jumlah Pekerja
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/generate_minggu/between_pekerja",
+                data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
+                async: false,
+                dataType: "text",
+                cache: false,
+                success:
+                    function (data) {
+                        data = JSON.parse(data);
+
+                        let jumlah_pekerja_total=0;
+                        let length=data.length;
+                        let i=0;
+                        while(i<length)
+                        {
+                            jumlah_pekerja_total=data[i].sum;
+                            i++;
+                        }
+                        // if(jumlah_pekerja_total==null)
+						// {
+						//     jumlah_pekerja_total=0;
+						// }
+                        console.log("jumlah_pekerja_total:"+jumlah_pekerja_total);
+
+
+                        //Sum Jumlah Tukang
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost/pupr_new/generate_minggu/between_tukang",
+                            data: {"start": rentang_hari[0], "end": rentang_hari[1],"id_lap_perencanaan":id_lap_perencanaan_baru},
+                            async: false,
+                            dataType: "text",
+                            cache: false,
+                            success:
+                                function (data) {
+                                    data = JSON.parse(data);
+
+                                    let jumlah_tukang_total=0;
+                                    let length=data.length;
+                                    let i=0;
+                                    while(i<length)
+                                    {
+                                        jumlah_tukang_total=data[i].sum;
+                                        i++;
+                                    }
+
+                                    console.log("jumlah_tukang_total:"+jumlah_tukang_total);
+
+                                    // if(jumlah_tukang_total==null)
+									// {
+									//     jumlah_tukang_total=0;
+									// }
+
+
+                                    //    Ambil Bahan Alat
+                                    let id_lap_perencanaan_jesi=$("#id_lap_perencanaan").val();
+
+                                    //    Ajax Jenis Alat
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://localhost/pupr_new/generate_minggu/jenis_alat1",
+                                        asynd:false,
+                                        data: {"id_lap_perencanaan":id_lap_perencanaan_jesi},
+                                        dataType: "text",
+                                        cache:false,
+                                        success:
+                                            function(data){
+                                                data=JSON.parse(data);
+                                                // console.log("jesijesijesi");
+                                                // console.log(data);
+                                                // console.log("jesijesijesi");
+                                                let length=data.length;
+                                                let z=0;
+                                                let jumlah_alat_total=0;
+
+                                                while(z<length)
+                                                {
+                                                    jumlah_alat_total=parseInt(jumlah_alat_total)+(parseInt(data[z].sum)*parseInt(data[z].harga));
+
+                                                    z++;
+                                                }
+                                                console.log("jumlah_alat_total:"+jumlah_alat_total);
+
+                                                let total_all=parseInt(jumlah_pekerja_total)+parseInt(jumlah_tukang_total)+parseInt(jumlah_alat_total);
+
+                                                //    Ambil nilai paket
+                                                let id_paket_hmm=$("#id_paket").val();
+                                                $.ajax({
+                                                    type: "POST",
+                                                    async:false,
+                                                    url: "http://localhost/pupr_new/generate_minggu/nilai_paket",
+                                                    data: {"id_paket":id_paket_hmm},
+                                                    dataType: "text",
+                                                    cache:false,
+                                                    success:
+                                                        function(data){
+                                                            data=JSON.parse(data);
+                                                            let length=data.length;
+                                                            let i=0;
+                                                            let nilai_paket=0;
+                                                            while(i<length)
+                                                            {
+                                                                nilai_paket=data[i].nilai_paket;
+
+                                                                i++;
+                                                            }
+
+                                                            console.log("Nilai:"+nilai_paket);
+
+                                                            nilai_paket=parseInt(nilai_paket);
+
+                                                            let hasil_akhir=total_all/nilai_paket;
+
+                                                            console.log(hasil_akhir);
+                                                            // console.log(total_all);
+
+                                                            hasil_akhir=parseFloat(hasil_akhir);
+                                                            hasil_akhir=hasil_akhir.toFixed(2);
+
+                                                            //    Append kan datanya gan
+                                                            $("#progress-fisik-lalu").text(hasil_akhir+"%");
+                                                        }
+                                                });
+
+
+                                            }
+                                    });
+
+
+
+                                }
+                        });
+
+
+
+                    }
+            });
+
+        }
+
+    }
 
 
 
