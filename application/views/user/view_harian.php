@@ -290,9 +290,20 @@ else
 
 								<div class="row">
 									<div class="col-sm-1"></div>
-									<div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+									<div class="col-sm-3"><center><b>Diperiksa Oleh</b>
+										</center></div>
 									<div class="col-sm-4"></div>
-									<div class="col-sm-3"><center><b>Dibuat Oleh</b></center></div>
+									<div class="col-sm-3">
+
+										<div class="row">
+											<center>
+											<b>Jambi, <?php
+
+												echo tgl_indo(date('Y-m-d'));  ?></b>
+											<br/><b>Dibuat Oleh</b></div>
+										</center>
+										</div>
+
 									<div class="col-sm-1"></div>
 								</div>
 
@@ -301,6 +312,31 @@ else
 								<br/>
 
 								<br/>
+								<?php
+								function tgl_indo($tanggal){
+									$bulan = array (
+										1 =>   'Januari',
+										'Februari',
+										'Maret',
+										'April',
+										'Mei',
+										'Juni',
+										'Juli',
+										'Agustus',
+										'September',
+										'Oktober',
+										'November',
+										'Desember'
+									);
+									$pecahkan = explode('-', $tanggal);
+
+									// variabel pecahkan 0 = tanggal
+									// variabel pecahkan 1 = bulan
+									// variabel pecahkan 2 = tahun
+
+									return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+								}
+								?>
 
 
 								<div class="row">
@@ -331,23 +367,15 @@ else
 											</b></center></div>
 									<div class="col-sm-4"></div>
 									<div class="col-sm-3"><center><b>		<?php
-												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+												$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
 												$count=count($data);
 												$i=0;
 
 												while($i<$count)
 												{
-													$ambil=$data[$i]->id_dibuat;
-//													Ambil nama dari database
-													$nama=$this->db->get_where("account",array("nip"=>$ambil))->result();
-													$count1=count($nama);
-													$ii=0;
-													while($ii<$count1)
-													{
-														echo $nama[$ii]->nama;
-
-														$ii++;
-													}
+													echo "<u>".$data[$i]->nama."</u>";
+													echo "<br/>";
+													echo $data[$i]->nip;
 
 													$i++;
 												}
