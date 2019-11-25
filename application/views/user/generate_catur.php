@@ -188,7 +188,7 @@ else
 									while($i<$count)
 									{
 										?>
-										<option value="<?php echo $diperiksa[$i]->nama; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<option value="<?php echo $diperiksa[$i]->id_konfigurasi; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
 										<?php
 
 										$i++;
@@ -422,8 +422,10 @@ else
 
 									function generateTable()
 									{
+									    // alert("haha");
                                         let diperiksa_=$("#diperiksa_oleh").val();
                                         // alert(diperiksa_);
+										alert(diperiksa_);
                                         //konf_kerja data
                                         $.ajax({
                                             type: "POST",
@@ -688,9 +690,44 @@ else
 
 	function buatTabel()
 	{
+	    //Disini
+		// alert("test");
+        let diperiksa_=$("#diperiksa_oleh").val();
+
+        alert(diperiksa_);
+        // alert(diperiksa_);
+        // alert(diperiksa_);
+        //konf_kerja data
+        $.ajax({
+            type: "POST",
+            async:false,
+            url: "http://localhost/pupr_new/generate_minggu/bidang",
+            data: {"id_konfigurasi":diperiksa_},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    let length=data.length;
+                    let i=0;
+
+                    console.log("Hmmmmmm");
+                    console.log(data);
+                    console.log("Hmmmmmm");
+                    // alert(data);
+
+                    while(i<length)
+                    {
+                        $("#konf_kerja").text(data[i].jabatan);
+                        $("#nip_dip").text(data[i].nip);
+
+                        i++;
+                    }
+                }
+        });
 	    let pagu=$("#pagu").val();
 	    $("#pagu_text").text(pagu);
-        let diperiksa=$("#diperiksa_oleh").val();
+        let diperiksa=$("#diperiksa_oleh option:selected").text();
         $("#diperiksa").text(diperiksa);
         let nama_paket=$("#id_paket option:selected").text();
         $("#nama_paket_1").text(nama_paket);
