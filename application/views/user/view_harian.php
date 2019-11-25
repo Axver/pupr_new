@@ -36,14 +36,20 @@ else
 
 		tr{
 			border:2px solid black;
+			color:black;
 		}
 
 		th{
 			border:2px solid black;
+			color:black;
 		}
 
 		table{
 			border:2px solid black;
+		}
+
+		body{
+			color:black;
 		}
 	</style>
 

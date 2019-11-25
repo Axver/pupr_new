@@ -30,6 +30,19 @@ else
 	<?php $this->load->view('component/header') ?>
 
 
+	<style>
+		th,tr,td,table{
+			border: 2px solid black;
+			color:black;
+		}
+
+		body{
+			color:black;
+		}
+	</style>
+
+
+
 </head>
 
 <body id="page-top">
@@ -312,7 +325,7 @@ else
 									<br/>
 
 <!--									Tabelnya-->
-									<table class="tg table table-bordered" id="buat_tabel" style="border: 1px solid black;">
+									<table class="tg table" id="buat_tabel" style="border: 1px solid black;">
 
 <!--
 <!--										<tr>-->
@@ -336,11 +349,11 @@ else
 									</table>
 									<div class="break"></div>
 
-									<table class="tg table table-bordered" id="buat_pekerja">
+									<table class="tg table " id="buat_pekerja">
 									</table>
 									<div class="break"></div>
 
-									<table class="tg table table-bordered" id="buat_alat">
+									<table class="tg table" id="buat_alat">
 
 <!--										<tr>-->
 <!--											<td class="tg-0lax"></td>-->

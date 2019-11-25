@@ -30,6 +30,18 @@ else
 	<?php $this->load->view('component/header') ?>
 
 
+	<style>
+		th,tr,td,table{
+			border: 2px solid black;
+			color:black;
+		}
+
+		body{
+			color:black;
+		}
+	</style>
+
+
 </head>
 
 <body id="page-top">
@@ -228,7 +240,7 @@ else
 								<br/>
 								<b>Rekapitulasi Hasil Pengawasan</b>
 
-								<table class="tg table table-bordered" id="tabel_pengawasan">
+								<table class="tg table " id="tabel_pengawasan">
 									<tr>
 										<th class="tg-cly1" rowspan="2">Jenis Pekerjaan</th>
 										<th class="tg-cly1" rowspan="2">Jumlah Pekerja</th>

@@ -28,9 +28,18 @@ else
 <head>
 
 	<?php $this->load->view('component/header') ?>
-	<style>
 
+	<style>
+		th,tr,td,table{
+			border: 2px solid black;
+			color:black;
+		}
+
+		body{
+			color:black;
+		}
 	</style>
+
 
 
 </head>
@@ -241,7 +250,7 @@ else
 									 <br/>
 
 									 <!--								Tabelnya-->
-									 <table class="tg table table-bordered" id="tabel_satu">
+									 <table class="tg table" id="tabel_satu">
 										 <!--									<tr>-->
 										 <!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
 										 <!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
@@ -290,7 +299,7 @@ else
 
 									 <div class="break"></div>
 
-									 <table class="tg table table-bordered" id="tabel_dua">
+									 <table class="tg table " id="tabel_dua">
 										 <!--									<tr>-->
 										 <!--										<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>-->
 										 <!--										<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>-->
@@ -337,7 +346,7 @@ else
 										 <!--									</tr>-->
 									 </table>
 									 <div class="break"></div>
-									 <table class="tg table table-bordered" id="tabel_tiga">
+									 <table class="table" id="tabel_tiga">
 									 </table>
 
 

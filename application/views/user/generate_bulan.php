@@ -29,6 +29,18 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+	<style>
+		th,tr,td,table{
+			border: 2px solid black;
+			color:black;
+		}
+
+		body{
+			color:black;
+		}
+	</style>
+
+
 
 </head>
 
@@ -234,17 +246,17 @@ else
 									<br/>
 
 									<!--									Tabelnya-->
-									<table class="tg table table-bordered" id="buat_tabel">
+									<table class="tg table " id="buat_tabel">
 
 
 									</table>
 									<div class="break"></div>
 
-									<table class="tg table table-bordered" id="buat_pekerja">
+									<table class="tg table" id="buat_pekerja">
 									</table>
 									<div class="break"></div>
 
-									<table class="tg table table-bordered" id="buat_alat">
+									<table class="tg table" id="buat_alat">
 									</table>
 
 
