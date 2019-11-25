@@ -422,6 +422,36 @@ else
 
 									function generateTable()
 									{
+                                        let diperiksa_=$("#diperiksa_oleh").val();
+                                        // alert(diperiksa_);
+                                        //konf_kerja data
+                                        $.ajax({
+                                            type: "POST",
+                                            async:false,
+                                            url: "http://localhost/pupr_new/generate_minggu/bidang",
+                                            data: {"id_konfigurasi":diperiksa_},
+                                            dataType: "text",
+                                            cache:false,
+                                            success:
+                                                function(data){
+                                                    data=JSON.parse(data);
+                                                    let length=data.length;
+                                                    let i=0;
+
+                                                    console.log("Hmmmmmm");
+                                                    console.log(data);
+                                                    console.log("Hmmmmmm");
+                                                    // alert(data);
+
+                                                    while(i<length)
+                                                    {
+                                                        $("#konf_kerja").text(data[i].jabatan);
+                                                        $("#nip_dip").text(data[i].nip);
+
+                                                        i++;
+                                                    }
+                                                }
+                                        });
 									    // alert("test");
 									    $("#caturwulan").append('<tr id="bulan">\n' +
                                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" colspan="21"><center>Bulan</center></td>\n' +
