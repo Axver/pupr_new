@@ -158,6 +158,7 @@
 					<a class="collapse-item" href="<?php echo base_url('lap_perencanaan_force') ?>">Laporan Perencanaan</a>
 					<a class="collapse-item" href="<?php echo base_url('lap_pengawasan_force') ?>">Laporan Pengawasan</a>
 					<a class="collapse-item" href="<?php echo base_url('lap_harian_force') ?>">Laporan Harian</a>
+					<a class="collapse-item" href="<?php echo base_url('tukang_force') ?>">Tukang Harian Add</a>
 
 
 

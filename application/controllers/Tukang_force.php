@@ -25,7 +25,7 @@ class Tukang_force extends CI_Controller
             $config['first_url'] = base_url() . 'tukang_force/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Tukang_force_model->total_rows($q);
         $tukang_force = $this->Tukang_force_model->get_limit_data($config['per_page'], $start, $q);

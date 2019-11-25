@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==2)
+	if($this->session->userdata("privilage")==1)
 	{
 
 	}
@@ -38,7 +38,7 @@ else
 <div id="wrapper">
 
 	<!-- Sidebar -->
-	<?php $this->load->view('component/sidebar_user'); ?>
+	<?php $this->load->view('component/sidebar'); ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -153,7 +153,7 @@ else
 											<td><?php echo $tukang_force->jumlah_pekerja ?></td>
 
 
-											
+
 											<td><?php echo $tukang_force->jumlah_tukang ?></td>
 											<td style="text-align:center" width="200px">
 												<?php
