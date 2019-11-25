@@ -592,6 +592,7 @@ else
     }
 	function perencanaan()
 	{
+        $("#lap_perencanaan").empty();
 	    let id_paket=$("#id_paket").val();
 	    // alert("test");
         $.ajax({

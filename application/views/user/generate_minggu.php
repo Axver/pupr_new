@@ -508,8 +508,10 @@ else
 
 
 <script>
+
+
 	function addPerencanaan()
-	{
+	{   $("#id_lap_perencanaan").empty();
 	    $data=$("#id_paket").val();
 	    // alert($data);
 	    //Isi Select Laporan Perencanaan
