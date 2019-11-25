@@ -46,6 +46,10 @@ else
 			
 		}
 
+		td{
+			border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000;
+		}
+
 
 
 
@@ -62,6 +66,7 @@ else
 		body{
 			/*background-color:#add8e6;  */
 			margin:50px;
+			color: black;
 		}
 		.contain{
 			margin-left:auto;
@@ -283,92 +288,92 @@ th,td,tr {
 				 <table id="tabel_jadwal" width="400" class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'" colspan="2" rowspan="4" height="80" >Jenis Pekerjaan</font></td>
-						 <td cellspacing="'0'"  colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
+						 <td cellspacing="'0'" colspan="2" rowspan="4" height="80" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</font></td>
+						 <td cellspacing="'0'"  colspan="60" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'" colspan="20" ><font >Tahap I</font></td>
-						 <td cellspacing="'0'" colspan="20" ><font >Tahap II</font></td>
-						 <td cellspacing="'0'"  colspan="20" ><font >Tahap III</font></td>
+						 <td cellspacing="'0'" colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap I</font></td>
+						 <td cellspacing="'0'" colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap II</font></td>
+						 <td cellspacing="'0'"  colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap III</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"  colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Februari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >April</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Mei</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Juni</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Juli</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Agustus</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >September</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Oktober</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >November</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Desember</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Januari</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Februari</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Maret</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >April</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Mei</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juni</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juli</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Agustus</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >September</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Oktober</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >November</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Desember</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"  sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"  sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
+						 <td cellspacing="'0'"  sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"  sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
 					 </tr>
 					 <tbody>
 
@@ -381,92 +386,92 @@ th,td,tr {
 				 <table id="tabel_jumlah"  class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Pekerjaan</font></td>
-						 <td cellspacing="'0'"  colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
+						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Jenis Pekerjaan</font></td>
+						 <td cellspacing="'0'"  colspan="60" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"  colspan="20" ><font >Tahap I</font></td>
-						 <td cellspacing="'0'"  colspan="20" ><font >Tahap II</font></td>
-						 <td cellspacing="'0'"  colspan="20" ><font >Tahap III</font></td>
+						 <td cellspacing="'0'"  colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap I</font></td>
+						 <td cellspacing="'0'"  colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap II</font></td>
+						 <td cellspacing="'0'"  colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap III</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"  colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Februari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >April</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Mei</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Juni</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Juli</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Agustus</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >September</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Oktober</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >November</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Desember</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Januari</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Februari</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Maret</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >April</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Mei</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juni</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juli</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Agustus</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >September</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Oktober</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >November</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Desember</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'" sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'" sdval="5" ><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'" sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'" sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
 					 </tr>
 
 
@@ -477,7 +482,7 @@ th,td,tr {
 
 					 </tbody>
 				 </table>
-				 <div class="break"></div>
+
 				 <b>Perencanaan Penggunaan Bahan/Alat </b>
 				 <br/>
 				 <div class="row">
@@ -489,50 +494,50 @@ th,td,tr {
 				 <table  id="tabel_alat" class="table table-responsive" cellspacing="0" border="0">
 
 					 <tr>
-						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle"><font >Jenis Bahan/Alat</font></td>
-						 <td cellspacing="'0'" colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
+						 <td cellspacing="'0'"  colspan="2" rowspan="4" height="80" align="center" valign="middle" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Jenis Bahan/Alat</font></td>
+						 <td cellspacing="'0'" colspan="60" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'" colspan="20" ><font >Tahap I</font></td>
-						 <td cellspacing="'0'"   colspan="20" ><font >Tahap II</font></td>
-						 <td cellspacing="'0'"   colspan="20" ><font >Tahap III</font></td>
+						 <td cellspacing="'0'" colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap I</font></td>
+						 <td cellspacing="'0'"   colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap II</font></td>
+						 <td cellspacing="'0'"   colspan="20" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap III</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'" colspan="5" ><font >Januari</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Februari</font></td>
-						 <td cellspacing="'0'"  colspan="5" ><font >Maret</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >April</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Mei</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Juni</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Juli</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Agustus</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >September</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Oktober</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >November</font></td>
-						 <td cellspacing="'0'" colspan="5" ><font >Desember</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Januari</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Februari</font></td>
+						 <td cellspacing="'0'"  colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Maret</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >April</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Mei</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juni</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Juli</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Agustus</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >September</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Oktober</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >November</font></td>
+						 <td cellspacing="'0'" colspan="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Desember</font></td>
 
 					 </tr>
 					 <tr>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"  sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="1"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"  sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
 						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
 						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
 						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
@@ -595,17 +600,17 @@ th,td,tr {
 
 				 <div class="row">
 					 <table class="table table-bordered">
-						 <thead>
-						 <th>Sketsa Kerja</th>
-						 <th>Lokasi</th>
-						 <th>Jenis Pekerjaan</th>
-						 <th>Panjang Penanganan</th>
-						 <th>Keterangan Dimensi</th>
-						 <th>Ket</th>
+						 <thead style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Sketsa Kerja</th>
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Lokasi</th>
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</th>
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Panjang Penanganan</th>
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Keterangan Dimensi</th>
+						 <th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Ket</th>
 						 </thead>
 						 <tbody>
 						 <tr style="height:300px;">
-							 <td cellspacing="'0'">
+							 <td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 								 <?php
 								 $getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
 								 //
@@ -643,11 +648,11 @@ th,td,tr {
 								 $keteranganM=$info_perencanaan[0]->keterangan;
 							 }
 							 ?>
-							 <td cellspacing="'0'" width="20%" id="lokasiM"><?php echo $loaksiM ?></td>
-							 <td cellspacing="'0'" width="20%" id="jenis_pekerjaanM"><?php echo $jenis_pekerjaanM ?></td>
-							 <td cellspacing="'0'" width="20%" id="panjang_penangananM"><?php echo $panjang_penangananM ?></td>
-							 <td cellspacing="'0'" width="20%" id="keterangan_dimensiM"><?php echo  $keterangan_dimensiM ?></td>
-							 <td cellspacing="'0'" width="20%" id="ketM"><?php echo $keteranganM ?></td>
+							 <td cellspacing="'0'" width="20%" id="lokasiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $loaksiM ?></td>
+							 <td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $jenis_pekerjaanM ?></td>
+							 <td cellspacing="'0'" width="20%" id="panjang_penangananM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $panjang_penangananM ?></td>
+							 <td cellspacing="'0'" width="20%" id="keterangan_dimensiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo  $keterangan_dimensiM ?></td>
+							 <td cellspacing="'0'" width="20%" id="ketM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $keteranganM ?></td>
 						 </tr>
 						 </tbody>
 					 </table>
