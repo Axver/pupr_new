@@ -155,6 +155,8 @@
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">Setting</h6>
 					<a class="collapse-item" href="<?php echo base_url('ttd_info') ?>">Informasi TTD</a>
+					<a class="collapse-item" href="<?php echo base_url('lap_perencanaan_force') ?>">Laporan Perencanaan</a>
+					<a class="collapse-item" href="<?php echo base_url('lap_pengawasan_force') ?>">Laporan Pengawasan</a>
 
 
 
