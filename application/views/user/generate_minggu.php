@@ -407,7 +407,9 @@ else
 
 													while($i<$count)
 													{
-														echo $data[$i]->nama;
+														echo "<u>".$data[$i]->nama."</u>";
+														echo "<br/>";
+														echo $data[$i]->nip;
 
 														$i++;
 													}
