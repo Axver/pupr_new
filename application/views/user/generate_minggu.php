@@ -213,6 +213,7 @@ else
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
 								<button onclick="testJesi()" class="btn btn-info" id="generateData">Generate Data</button>
+								<button onclick="progress_now()" class="btn btn-info" id="generateData">Fill Progress</button>
 
 								<script>
                                     $("#generateData").attr("disabled", true);
@@ -237,6 +238,9 @@ else
 									}
 									?>
 								</select>
+								<br/>
+								<b>Progres Selanjutnya:</b>
+								<input type="text" class="form form-control" id="progres_selanjutnya">
 								<br/>
 
 
@@ -762,6 +766,8 @@ else
 
 
 
+
+
         swal("Tabel Digenerate!!");
 
 	}
@@ -1007,6 +1013,13 @@ else
         }
         generate_progress();
         generate_progress_sebelumnya();
+        progress_now();
+        //Progres fisik
+        let selanjutnya=$("#progres_selanjutnya").val();
+        $("#progress-fisik-next").text(selanjutnya);
+
+        //Progress Total
+
 
         swal("Data Digenerate!!");
 
@@ -1154,7 +1167,16 @@ else
                                                             hasil_akhir=hasil_akhir.toFixed(2)
 
                                                         //    Append kan datanya gan
-															$("#progress-pekerjaan").text(hasil_akhir+"%");
+															if(Number.isNaN(hasil_akhir))
+															{
+                                                                $("#progress-pekerjaan").text("0"+"%");
+															}
+                                                            else
+															{
+                                                                $("#progress-pekerjaan").text(hasil_akhir+"%");
+															}
+
+
                                                         }
                                                 });
 
@@ -1331,7 +1353,14 @@ else
                                                             hasil_akhir=hasil_akhir.toFixed(2);
 
                                                             //    Append kan datanya gan
-                                                            $("#progress-fisik-lalu").text(hasil_akhir+"%");
+                                                            if(Number.isNaN(hasil_akhir))
+                                                            {
+                                                                $("#progress-fisik-lalu").text("0"+"%");
+                                                            }
+                                                            else
+                                                            {
+                                                                $("#progress-fisik-lalu").text(hasil_akhir+"%");
+                                                            }
                                                         }
                                                 });
 
@@ -1496,7 +1525,15 @@ else
                                                             hasil_akhir=hasil_akhir.toFixed(2);
 
                                                             //    Append kan datanya gan
-                                                            $("#progress-fisik-lalu").text(hasil_akhir+"%");
+															if(Number.isNaN(hasil_akhir))
+															{
+                                                                $("#progress-fisik-lalu").text("0"+"%");
+															}
+															else
+															{
+                                                                $("#progress-fisik-lalu").text(hasil_akhir+"%");
+															}
+
                                                         }
                                                 });
 
@@ -1517,6 +1554,37 @@ else
         }
 
     }
+
+
+    function progress_now()
+	{
+        let now=$("#progress-pekerjaan").text();
+        let then=$("#progress-fisik-lalu").text();
+
+        now=now.substring(0, now.length - 1);
+        then=then.substring(0, then.length - 1);
+
+
+        if(now=="NaN")
+		{
+		    now=0;
+		}
+
+        if(then=="NaN")
+		{
+		    then=0;
+		}
+
+        //Jumlahkan
+		let fixed=parseFloat(now)+parseFloat(then);
+        $("#progress-fisik-total").text(fixed);
+
+
+
+        console.log("hmmmm");
+        console.log(now);
+        console.log("hmmmm");
+	}
 
 
 
