@@ -246,6 +246,9 @@ else
 								<br/>
 
 
+								<b>Tabel Informasi</b>
+
+
 								<table class="table" id="tabel_harian">
 									<tr>
 										<th class="tg-cly1" colspan="2">Pekerja</th>
@@ -257,6 +260,18 @@ else
 										<td class="tg-0lax">Jenis</td>
 										<td class="tg-0lax">Satuan</td>
 										<td class="tg-0lax">Jumlah</td>
+									</tr>
+
+
+								</table>
+
+								<b>Tabel Tukang</b>
+
+								<table class="table" id="tabel_tukang">
+
+									<tr>
+										<th>Pekerja</th>
+										<th>Jumlah Tukang</th>
 									</tr>
 
 
@@ -407,6 +422,12 @@ else
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jenis_bahan" id="'+j+'_3">'+data[i].id_jenis_bahan_alat+'</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi satuan_bahan" id="'+j+'_4">'+data[i].id_satuan+'</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi jumlah_bahan" id="'+j+'_5">'+data[i].jumlah_bahan+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t</tr>');
+
+                    $("#tabel_tukang").append('\t\t<tr>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi_ jenis_pekerja" id="'+j+'__1">'+data[i].jenis_pekerja+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax data_jesi_ jumlah_pekerja" id="'+j+'__2">'+data[i].jumlah_tukang+'</td>\n' +
+
                         '\t\t\t\t\t\t\t\t\t</tr>');
 
                     $("#j").val(j);
@@ -719,6 +740,32 @@ function update()
                                 console.log(data);
                             }
                     });
+
+    let dataArray1=[];
+    let no=0;
+    $(".data_jesi_").each(function() {
+        dataArray1[no]=$(this).text();
+        no++;
+
+    });
+
+    console.log("UjiCOba");
+    console.log(dataArray1);
+    console.log("UjiCOba");
+
+    //Setelah Laporan Harian Disimpan Maka Masukkan Detailnya
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "http://localhost/pupr_new/view_harian/detail_harian1",
+        data: {"data":dataArray1,"id_lap_perencanaan":id_laper,"id_paket":id_paket_,"id_lapharmin":hari_tanggal},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                console.log(data);
+            }
+    });
 
 
         //    Simpan Yang Bawah Juga

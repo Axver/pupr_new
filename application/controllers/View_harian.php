@@ -250,4 +250,32 @@ class View_harian extends CI_Controller {
 	}
 
 
+//	Tukang
+	public function detail_harian1()
+	{
+		$data=$this->input->post("data");
+		$id_lap_perencanaan=$this->input->post("id_lap_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$id_lapharmin=$this->input->post("id_lapharmin");
+
+//
+		$count=count($data);
+
+		echo $count;
+
+		$i=0;
+		while($i<$count)
+		{
+			$y=$i+1;
+//			Update Data
+			$this->db->query("UPDATE detail_bahan_alat_harian SET jumlah_tukang=$data[$y] WHERE jenis_pekerja='$data[$i]' AND id_lap_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket' AND id_lap_harian_mingguan='$id_lapharmin' ");
+
+			$i++;
+		}
+
+
+
+	}
+
+
 }
