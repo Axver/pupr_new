@@ -148,5 +148,13 @@ GROUP BY jenis_pekerja")->result();
 		echo json_encode($id_paket);
 	}
 
+	public function bidang()
+	{
+		$id_konfigurasi=$this->input->post("id_konfigurasi");
+		$get=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$id_konfigurasi))->result();
+
+		echo json_encode($get);
+	}
+
 
 }

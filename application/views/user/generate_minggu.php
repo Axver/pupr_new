@@ -231,7 +231,7 @@ else
 									while($i<$count)
 									{
 										?>
-										<option value="<?php echo $diperiksa[$i]->nama; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<option value="<?php echo $diperiksa[$i]->id_konfigurasi; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
 										<?php
 
 										$i++;
@@ -383,7 +383,7 @@ else
 
 									<div class="row">
 										<div class="col-sm-1"></div>
-										<div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+										<div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/><b id="konf_kerja"></b></center></div>
 										<div class="col-sm-4"></div>
 										<div class="col-sm-3"><center>
 												<b>Jambi, <?php
@@ -398,7 +398,7 @@ else
 									<br/>
 									<div class="row">
 										<div class="col-sm-1"></div>
-										<div class="col-sm-3"><center><b id="diperiksa"></b></center></div>
+										<div class="col-sm-3"><center><u><b id="diperiksa"> </b></u><br/><b id="nip_dip"></b></center></div>
 										<div class="col-sm-4"></div>
 										<div class="col-sm-3"><center><b id="dibuat"><?php
 													$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
@@ -540,8 +540,35 @@ else
 	    // alert(nama_paket);
 	    $("#nama_paket_1").text(nama_paket);
 
-	    let diperiksa=$("#diperiksa_oleh").val();
+	    let diperiksa=$("#diperiksa_oleh option:selected").text();
 	    $("#diperiksa").text(diperiksa);
+
+	    let diperiksa_=$("#diperiksa_oleh").val();
+	    // alert(diperiksa_);
+	    //konf_kerja data
+        $.ajax({
+            type: "POST",
+			async:false,
+            url: "http://localhost/pupr_new/generate_minggu/bidang",
+            data: {"id_konfigurasi":diperiksa_},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    let length=data.length;
+                    let i=0;
+                    // alert(data);
+
+                    while(i<length)
+					{
+					    $("#konf_kerja").text(data[i].jabatan);
+                        $("#nip_dip").text(data[i].nip);
+
+					    i++;
+					}
+                }
+        });
 
 
 
