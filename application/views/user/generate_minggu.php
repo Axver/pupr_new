@@ -312,7 +312,7 @@ else
 									<br/>
 
 <!--									Tabelnya-->
-									<table class="tg table table-bordered" id="buat_tabel">
+									<table class="tg table table-bordered" id="buat_tabel" style="border: 1px solid black;">
 
 <!--
 <!--										<tr>-->
@@ -472,6 +472,8 @@ else
 			</div>
 		</footer>
 		<!-- End of Footer -->
+
+
 
 	</div>
 	<!-- End of Content Wrapper -->
