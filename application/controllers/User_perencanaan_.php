@@ -19,14 +19,14 @@ class User_perencanaan_ extends CI_Controller {
 	public function harian()
 	{
 		$perencanaan=$this->input->post("id_paket");
-		$data=$this->db->query("SELECT * FROM lap_harian_mingguan WHERE id_paket='$perencanaan'")->result();
+		$data=$this->db->query("SELECT * FROM lap_harian_mingguan WHERE id_paket='$perencanaan' ORDER BY id_paket" )->result();
 		echo json_encode($data);
 	}
 
 	public function pengawasan()
 	{
 		$perencanaan=$this->input->post("id_paket");
-		$data=$this->db->query("SELECT * FROM lap_pengawasan WHERE id_paket='$perencanaan'")->result();
+		$data=$this->db->query("SELECT * FROM lap_pengawasan WHERE id_paket='$perencanaan' ORDER BY id_paket")->result();
 		echo json_encode($data);
 	}
 

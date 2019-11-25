@@ -1237,6 +1237,10 @@ else
 												    z++;
 												}
 
+												console.log("jumlahalattotal");
+                                                console.log(jumlah_alat_total);
+                                                console.log("jumlahalattotal");
+
                                                 let total_all=parseInt(jumlah_pekerja_total)+parseInt(jumlah_tukang_total)+parseInt(jumlah_alat_total);
 
                                             //    Ambil nilai paket

@@ -290,7 +290,8 @@ else
 
 								<div class="row">
 									<div class="col-sm-1"></div>
-									<div class="col-sm-3"><center><b>Diperiksa Oleh</b>
+									<div class="col-sm-3"><center><b>Diperiksa Oleh</b> <br/>
+											<b>Pelaksana Teknik</b>
 										</center></div>
 									<div class="col-sm-4"></div>
 									<div class="col-sm-3">
@@ -342,6 +343,7 @@ else
 								<div class="row">
 									<div class="col-sm-1"></div>
 									<div class="col-sm-3"><center><b>
+
 												<?php
 												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
 												$count=count($data);
@@ -356,7 +358,11 @@ else
 													$ii=0;
 													while($ii<$count1)
 													{
+														echo "<u>";
 														echo $nama[$ii]->nama;
+														echo "</u>";
+														echo "<br/>";
+														echo $nama[$ii]->nip;
 
 														$ii++;
 													}
@@ -373,9 +379,10 @@ else
 
 												while($i<$count)
 												{
-													echo "<u>".$data[$i]->nama."</u>";
-													echo "<br/>";
+													echo "<center>"."<u>".$data[$i]->nama."</u>"."</center>";
+													echo "<br/>"."<center>";
 													echo $data[$i]->nip;
+													echo "</center>";
 
 													$i++;
 												}

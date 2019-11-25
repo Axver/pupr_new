@@ -46,9 +46,7 @@ else
 			
 		}
 
-		td{
-			border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000;
-		}
+
 
 
 
@@ -285,11 +283,11 @@ th,td,tr {
 
 				 <!--	Irregular Table-->
 				 <b>Jadwal Rencana Pelaksanaan Kegiatan</b>
-				 <table id="tabel_jadwal" width="400" class="table table-responsive" cellspacing="0" border="0">
+				 <table id="tabel_jadwal" width="400" class="table " style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" cellspacing="0" border="0">
 
 					 <tr>
 						 <td cellspacing="'0'" colspan="2" rowspan="4" height="80" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</font></td>
-						 <td cellspacing="'0'"  colspan="60" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
+						 <td cellspacing="'0'"  colspan="60" ><font >Tahap/Bulan/Minggu</font></td>
 
 					 </tr>
 					 <tr>
@@ -538,48 +536,48 @@ th,td,tr {
 						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
 						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
 						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"   sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
-						 <td cellspacing="'0'"   sdval="1" ><font >1</font></td>
-						 <td cellspacing="'0'"   sdval="2" ><font >2</font></td>
-						 <td cellspacing="'0'"   sdval="3" ><font >3</font></td>
-						 <td cellspacing="'0'"  sdval="4" ><font >4</font></td>
-						 <td cellspacing="'0'"   sdval="5" ><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" ><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"   sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
+						 <td cellspacing="'0'"   sdval="1" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >1</font></td>
+						 <td cellspacing="'0'"   sdval="2" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >2</font></td>
+						 <td cellspacing="'0'"   sdval="3" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >3</font></td>
+						 <td cellspacing="'0'"  sdval="4" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >4</font></td>
+						 <td cellspacing="'0'"   sdval="5" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >5</font></td>
 					 </tr>
 
 
@@ -797,12 +795,12 @@ th,td,tr {
 
 
              var newRow="\t<tr id='pekerjaan_id"+pekerjaan_id+"'>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"center\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0' height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0' align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0' align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0' align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0'  align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" cellspacing='0'  align=\"center\" valign=\"bottom\"></td>\n" +
                  "\n" +
                  "\n" +
                  "\t\t\t\t\t\t\t\t\t</tr>";
@@ -810,12 +808,12 @@ th,td,tr {
              $("#tabel_jadwal").append(newRow);
 
              var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"center\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+pekerjaan_text+"</td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"align=\"center\" valign=\"bottom\"></td>\n" +
                  "\n" +
                  "\n" +
                  "\t\t\t\t\t\t\t\t\t</tr>";
@@ -942,12 +940,12 @@ th,td,tr {
              // alert(alat_bahan_text);
 
              var newRowX="\t<tr id='pekerjaan_waktu_"+alat_bahan+"'>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" height=\"20\" align=\"left\" valign=\"bottom\">"+alat_bahan_text+"</td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"left\" valign=\"bottom\"></td>\n" +
-                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"\" align=\"center\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+alat_bahan_text+"</td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"align=\"left\" valign=\"bottom\"></td>\n" +
+                 "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" align=\"center\" valign=\"bottom\"></td>\n" +
                  "\n" +
                  "\n" +
                  "\t\t\t\t\t\t\t\t\t</tr>";
@@ -1111,8 +1109,8 @@ th,td,tr {
 						 $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
 
                          var newRow="\t<tr  id='"+data1[x].id+pekerjaan_id+"'>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' >"+pekerjaan_text+"</td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
+                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\">"+pekerjaan_text+"</td>\n" +
+                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"></td>\n" +
                              "\n" +
                              "\n" +
                              "\t\t\t\t\t\t\t\t\t</tr>";
@@ -1120,8 +1118,8 @@ th,td,tr {
                          $("#tabel_jadwal").append(newRow);
 
                          var newRow="\t<tr id='pekerjaan_waktu"+pekerjaan_id+"'>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' >"+pekerjaan_text+"</td>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' ></td>\n" +
+                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\">"+pekerjaan_text+"</td>\n" +
+                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"></td>\n" +
                              "\n" +
                              "\n" +
                              "\t\t\t\t\t\t\t\t\t</tr>";
@@ -1144,8 +1142,8 @@ th,td,tr {
                          data_=data_.toString();
                          // data1=data1.toString();
                          // console.log(data);
-                         let newCol="<td cellspacing='0'  onclick=\"warnai('"+data_+"')\" id='"+data_+"' class='nonActive'></td>";
-                         var newCol1="<td cellspacing='0' onclick=\"warnai1('"+data2+"')\" id='"+data2+"' class='nonActive1'></td>";
+                         let newCol="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"  onclick=\"warnai('"+data_+"')\" id='"+data_+"' class='nonActive'></td>";
+                         var newCol1="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" onclick=\"warnai1('"+data2+"')\" id='"+data2+"' class='nonActive1'></td>";
                          $("#"+data1[x].id+pekerjaan_id).append(newCol);
                          $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
                          // $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
@@ -1218,8 +1216,8 @@ th,td,tr {
                      let i=0;
                      while(i<length)
                      {
-                         var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
-                             "\t\t\t\t\t\t\t\t\t\t<td style=\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +              
+                         var newRowX="\t<tr style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
+                             "\t\t\t\t\t\t\t\t\t\tstyle=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\""+data[i].jenis_bahan_alat+"</td>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td> </td>\n" +
                              "\n" +
                              "\n" +
