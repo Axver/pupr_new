@@ -384,7 +384,7 @@ else
 										 <div class="col-sm-1"></div>
 										 <div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
 										 <div class="col-sm-4"></div>
-										 <div class="col-sm-3"><center><b>Dibuat Oleh</b></center></div>
+										 <div class="col-sm-3"><center><b>Jambi,<?php echo tgl_indo(date('Y-m-d')); ?></b><br/><b>Dibuat Oleh</b></center></div>
 										 <div class="col-sm-1"></div>
 									 </div>
 
