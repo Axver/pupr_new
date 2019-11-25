@@ -134,6 +134,8 @@ GROUP BY jenis_pekerja")->result();
 	}
 
 
+
+
 	public function info()
 	{
 		$id_laper=$this->input->post("id_laper");

@@ -1068,6 +1068,33 @@ else
                         }
                 });
 
+                //Tukang Tanggal
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/pupr_new/generate_minggu/pekerjaan_tanggal",
+                    data: {"tanggal":day,'id_lap_perencanaan':id_lap_perencanaan_baru},
+                    async:false,
+                    dataType: "text",
+                    cache:false,
+                    success:
+                        function(data){
+                            data=JSON.parse(data);
+                            // console.log("iniininin");
+                            // console.log(data);
+                            // console.log("inininiini");
+                            let length=data.length;
+                            let i=0;
+                            while(i<length)
+                            {
+                                data[i].jumlah_pekerja;
+                                $("#"+data[i].jenis_pekerja+"_"+batas_tabel+"_tukang").append(data[i].jumlah_tukang);
+
+                                i++;
+                            }
+
+                        }
+                });
+
                 var newDate = start.setDate(start.getDate() + 1);
 
                 batas_tabel++;
