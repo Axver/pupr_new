@@ -161,8 +161,7 @@ else
 												echo anchor(site_url('lap_perencanaan_force/read/'.$lap_perencanaan_force->id_lap_perencanaan),'Read');
 												echo ' | ';
 												echo anchor(site_url('lap_perencanaan_force/update/'.$lap_perencanaan_force->id_lap_perencanaan),'Update');
-												echo ' | ';
-												echo anchor(site_url('lap_perencanaan_force/delete/'.$lap_perencanaan_force->id_lap_perencanaan),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+
 												?>
 											</td>
 										</tr>

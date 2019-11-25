@@ -124,32 +124,36 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<b style="color:darkgreen">Force Edit</b>
+								<b style="color:darkgreen">Laporan Harian</b>
 
 								<table class="table table-bordered" id="example" style="margin-bottom: 10px">
 									<thead>
 									<tr>
 										<th>No</th>
-										<th>Tanggal</th>
-										<th>Lap Perencanaan</th>
+										<th>Hari Tanggal</th>
+										<th>Id Perencanaan</th>
+										<th>Id Paket</th>
+
 
 									</tr>
 									</thead>
 									<tbody><?php
-									foreach ($lap_pengawasan_force_data as $lap_pengawasan_force)
+									foreach ($lap_harian_force_data as $lap_harian_force)
 									{
 										?>
 										<tr>
 											<td width="80px"><?php echo ++$start ?></td>
-											<td width="80px"><?php echo $lap_pengawasan_force->id_lap_pengawasan ?></td>
-											<td width="80px"><?php echo $lap_pengawasan_force->id_lap_perencanaan ?></td>
+											<td><?php echo $lap_harian_force->hari_tanggal ?></td>
+											<td><?php echo $lap_harian_force->id_lap_perencanaan ?></td>
+											<td><?php echo $lap_harian_force->id_paket ?></td>
 
 										</tr>
-									</tbody>
 										<?php
 									}
 									?>
+									</tbody>
 								</table>
+
 
 
 								<script>
@@ -213,6 +217,7 @@ else
 		</div>
 	</div>
 </div>
+
 
 
 

@@ -149,7 +149,7 @@
 		<li class="nav-item">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">
 				<i class="fas fa-fw fa-cog"></i>
-				<span>Force Edit</span>
+				<span>Force Edit/All Data</span>
 			</a>
 			<div id="collapseTwo12" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
@@ -157,6 +157,7 @@
 					<a class="collapse-item" href="<?php echo base_url('ttd_info') ?>">Informasi TTD</a>
 					<a class="collapse-item" href="<?php echo base_url('lap_perencanaan_force') ?>">Laporan Perencanaan</a>
 					<a class="collapse-item" href="<?php echo base_url('lap_pengawasan_force') ?>">Laporan Pengawasan</a>
+					<a class="collapse-item" href="<?php echo base_url('lap_harian_force') ?>">Laporan Harian</a>
 
 
 
