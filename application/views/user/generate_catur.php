@@ -354,6 +354,31 @@ else
 									 <br/>
 									 <br/>
 									 <br/>
+									 <?php
+									 function tgl_indo($tanggal){
+										 $bulan = array (
+											 1 =>   'Januari',
+											 'Februari',
+											 'Maret',
+											 'April',
+											 'Mei',
+											 'Juni',
+											 'Juli',
+											 'Agustus',
+											 'September',
+											 'Oktober',
+											 'November',
+											 'Desember'
+										 );
+										 $pecahkan = explode('-', $tanggal);
+
+										 // variabel pecahkan 0 = tanggal
+										 // variabel pecahkan 1 = bulan
+										 // variabel pecahkan 2 = tahun
+
+										 return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+									 }
+									 ?>
 
 									 <div class="row">
 										 <div class="col-sm-1"></div>
@@ -368,7 +393,7 @@ else
 									 <br/>
 									 <div class="row">
 										 <div class="col-sm-1"></div>
-										 <div class="col-sm-3"><center><b id="diperiksa"></b></center></div>
+										 <div class="col-sm-3"><center><u><b id="diperiksa"> </b></u><br/><b id="nip_dip"></b></center></div>
 										 <div class="col-sm-4"></div>
 										 <div class="col-sm-3"><center><b id="dibuat"><?php
 													 $data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
@@ -377,7 +402,9 @@ else
 
 													 while($i<$count)
 													 {
-														 echo $data[$i]->nama;
+														 echo "<u>".$data[$i]->nama."</u>";
+														 echo "<br/>";
+														 echo $data[$i]->nip;
 
 														 $i++;
 													 }
