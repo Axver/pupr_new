@@ -236,8 +236,8 @@ else
 											<div class="col-sm-3">Nama Paket</div>
 											<div class="col-sm-1">:</div>
 											<div class="col-sm-8">
-												<input type="text" id="nama_paket" class="form form-control" disabled>
-												<input type="text" id="nama_paket" class="form form-control" disabled>
+												<input type="hidden" id="nama_paket" class="form form-control" disabled>
+												<input type="text" id="nama_paket1" class="form form-control" disabled value="test">
 
 											</div>
 
@@ -259,7 +259,7 @@ else
 										<div class="row">
 											<div class="col-sm-3">Jenis Pekerjaan</div>
 											<div class="col-sm-1">:</div>
-											<div class="col-sm-8"><input type="text" class="form form-control" id="jenis_pelaksanaan" disabled></div>
+											<div class="col-sm-8"><input type="hidden" class="form form-control" id="jenis_pelaksanaan" disabled></div>
 
 
 										</div>
@@ -693,7 +693,7 @@ else
 										<label for="">Lokasi</label>
 										<input type="text" class="form form-control" placeholder="Lokasi" id="u_lokasi">
 										<label for="">Jenis Pekerjaan</label>
-										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan" id="u_jenis_pekerjaan">
+										<input type="hidden" class="form form-control" placeholder="Jenis Pekerjaan" id="u_jenis_pekerjaan">
 										<label for="">Panjang Penanganan</label>
 										<input type="text" class="form form-control" placeholder="Panjang Penanganan" id="u_panjang_penanganan">
 										<label for="">Keterangan Dimensi</label>
@@ -722,7 +722,7 @@ else
 													<div class="modal-body">
 														Nama:
 														<input type="text" class="form form-control" id="nama_ttd">
-														Nim:
+														Nip:
 														<input type="text" class="form form-control" id="nip_ttd">
 													</div>
 													<div class="modal-footer">
@@ -1287,6 +1287,7 @@ else
                 console.log(data);
 
                 $("#nama_paket").val(data[0].id_paket+"_"+data[0].tahun);
+                $("#nama_paket1").val(data[0].nama);
                 $("#jumlah_tahap").val(data[0].jumlah_tahap);
                 $("#jenis_pelaksanaan").val(data[0].jenis_pekerjaan);
                 $("#nilai_paket").val(data[0].nilai_paket);
