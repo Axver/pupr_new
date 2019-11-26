@@ -30,7 +30,7 @@ else
 	<?php $this->load->view('component/header') ?>
 
 	<style>
-		th,tr,td,table{
+		th,td,table{
 			border: 2px solid black;
 			color:black;
 		}

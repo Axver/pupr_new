@@ -730,15 +730,17 @@ else
 	    let bulan_mulai=$("#bulan_mulai").val();
 	    let bulan2=parseInt(bulan_mulai)+parseInt(1);
         let bulan3=parseInt(bulan_mulai)+parseInt(2);
+        let bulan4=parseInt(bulan_mulai)+parseInt(3);
 	    // alert("test");
 		$("#tabel_satu").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="20">Tahap/Bulan/Minggu</th>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan4)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
@@ -756,16 +758,22 @@ else
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">16</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">17</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">18</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">19</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">20</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
 
         $("#tabel_dua").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="20">Tahap/Bulan/Minggu</th>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan4)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
@@ -783,18 +791,24 @@ else
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">16</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">17</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">18</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">19</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">20</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
         $("#tabel_tiga").append('\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Jenis Bahan/Alat</th>\n' +
             '\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" rowspan="3">Satuan</th>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="15">Tahap/Bulan/Minggu</th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" colspan="20">Tahap/Bulan/Minggu</th>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="5">'+'Bulan '+parseInt(bulan_mulai)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan2)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan3)+'</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-baqh" colspan="5">'+'Bulan '+parseInt(bulan4)+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1">1</td>\n' +
@@ -812,6 +826,11 @@ else
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">13</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">14</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">15</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">16</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">17</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">18</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">19</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax">20</td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -863,6 +882,11 @@ else
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_13"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_14"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_16"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_17"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_18"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_19"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'_20"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -884,6 +908,11 @@ else
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__13"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__14"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__16"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__17"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__18"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__19"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id+'__20"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -936,6 +965,11 @@ else
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___13"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___14"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___15"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___16"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___17"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___18"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___19"></td>\n' +
+                            '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" id="'+data[i].id_jenis_bahan_alat+'___20"></td>\n' +
                             '\t\t\t\t\t\t\t\t\t</tr>');
 
 
@@ -1309,6 +1343,179 @@ else
         });
 
 
+        //Bulan 4
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data",
+            data: {"tahun":tahun,"bulan":bulan4,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan3);
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+15;
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+                        $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+
+
+                        $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+
+                        i++;
+                    }
+
+                }
+        });
+
+        //Bahan Alat
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/catur_wulan/isi_data1",
+            data: {"tahun":tahun,"bulan":bulan4,"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            async:false,
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+                    data=JSON.parse(data);
+
+                    console.log("data_isi");
+                    console.log(data);
+                    console.log("data_isi");
+
+                    // console.log(getWeeksInMonth(bulan, tahun));
+                    // console.log(getDateRangeOfWeek(12));
+
+                    let length=data.length;
+                    let i=0;
+                    let minggu_get;
+
+                    while(i<length)
+                    {
+                        let z=1;
+                        while(z<=54)
+                        {
+
+                            week=getDateRangeOfWeek(z);
+                            week=week.split(" to ")
+                            // console.log(week);
+                            // console.log(week[0].toDateString());
+                            tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                            tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                            tanggal_pilihan=new Date(data[i].id_lap_harian_mingguan);
+                            // console.log(tanggal_start);
+                            // console.log(tanggal_end);
+                            // console.log(tanggal_pilihan);
+                            if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+                            {
+                                minggu_get=z;
+                                console.log(minggu_get);
+                            }
+
+                            z++;
+                        }
+
+                        //Setelah minggu didapatkan, cari tahu minggu tersebut berada pada minggu keberapa dalam bulan tertentu
+
+                        let y=1;
+                        let $hasil=0;
+                        let batas=parseInt(bulan3);
+
+                        while(y<batas)
+                        {
+                            $data=getWeeksInMonth(y, tahun);
+                            $hasil=parseInt($hasil)+parseInt($data);
+
+
+
+
+                            y++;
+                        }
+
+                        console.log($hasil);
+
+                        //Kurangi data yang dimiliki dengan total minggunya
+                        $hasil_akhir=parseInt(minggu_get)-parseInt($hasil);
+                        $hasil_akhir=parseInt($hasil_akhir)+15;
+                        console.log($hasil_akhir);
+                        //Masukkan semuanya ke tabel (warnai tabel dulu)
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
+                        // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
+						//
+						//
+                        // $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+$hasil_akhir).text(data[i].count);
+
+                        i++;
+                    }
+
+                }
+        });
+
+
+
         //Bulan 3
         $.ajax({
             type: "POST",
@@ -1469,8 +1676,8 @@ else
                         //Masukkan semuanya ke tabel (warnai tabel dulu)
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).text("Coba Dulu");
                         // $("#"+data[i].jenis_pekerja+"_"+$hasil_akhir).css("background-color", "red");
-						//
-						//
+                        //
+                        //
                         // $("#"+data[i].jenis_pekerja+"__"+$hasil_akhir).text(data[i].count);
                         $("#"+data[i].id_jenis_bahan_alat+"___"+$hasil_akhir).text(data[i].count);
 

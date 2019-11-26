@@ -31,10 +31,11 @@ else
 
 
 	<style>
-		th,tr,td,table{
+		td,th,table{
 			border: 2px solid black;
 			color:black;
 		}
+
 
 		body{
 			color:black;
@@ -321,7 +322,7 @@ else
 									<br/>
 
 <!--									Tabelnya-->
-									<table class="tg table" id="buat_tabel" style="border: 1px solid black;">
+									<table class="tg table" id="buat_tabel" >
 
 <!--
 <!--										<tr>-->
@@ -345,9 +346,13 @@ else
 									</table>
 									<div class="break"></div>
 
+									<b>Rekapituasi Pekerja Minggu : </b><b class="uhuy"></b>
+
 									<table class="tg table " id="buat_pekerja">
 									</table>
 									<div class="break"></div>
+
+									<b>Rekapituasi Penggunaan Bahan.Alat Minggu : </b><b class="uhuy"></b>
 
 									<table class="tg table" id="buat_alat">
 
@@ -590,6 +595,7 @@ else
         buatAlat();
 	    // alert("Generate Tabelnya!!");
 	    let minggu=$("#id_minggu").val();
+	    $(".uhuy").text(minggu);
 	    let bulan_pertama=$("#bulan_pertama").val();
 	    let bulan_terakhir=$("#bulan_terakhir").val();
 	    let nama_tahap=$("#nama_tahap").val();
