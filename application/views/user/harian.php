@@ -820,8 +820,23 @@ else
 
 			</div>
 			<div class="modal-body">
+				<select id="data_jenis" class="form form-control">
+					<?php
+					$satuan_db=$this->db->get("jenis_pekerjaan")->result();
+					$count=count($satuan_db);
+					$i=0;
 
-				<input type="text" id="data_jenis" class="form form-control">
+					while($i<$count)
+					{?>
+						<option value="<?php echo $satuan_db[$i]->nama_jenis; ?>"><?php echo $satuan_db[$i]->nama_jenis; ?></option>
+						<?php
+
+						$i++;
+					}
+					?>
+				</select>
+
+<!--				<input type="text" id="" class="form form-control">-->
 
 				<button class="btn btn-info" onclick="dataJenis()">Tambah</button>
 			</div>
