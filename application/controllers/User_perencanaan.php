@@ -17,12 +17,12 @@ class User_perencanaan extends CI_Controller {
 		$i=0;
 		while($i<$count)
 		{
-			$this->db->select('*');
-			$this->db->from('lap_perencanaan');
-			$this->db->join('paket', 'lap_perencanaan.id_paket = paket.id_paket');
-			$this->db->where('lap_perencanaan.id_paket',$get_perencanaan[$i]->id_paket);
-//			$info=$this->db->get_where("lap_perencanaan",array("id_paket"=>$get_perencanaan[$i]->id_paket))->result();
-			$info=$this->db->get()->result();
+//			$this->db->select('*');
+//			$this->db->from('lap_perencanaan');
+//			$this->db->join('paket', 'lap_perencanaan.id_paket = paket.id_paket');
+//			$this->db->where('lap_perencanaan.id_paket',$get_perencanaan[$i]->id_paket);
+			$info=$this->db->get_where("lap_perencanaan",array("id_paket"=>$get_perencanaan[$i]->id_paket))->result();
+//			$info=$this->db->get()->result();
 			array_push($finalData['data'],$info);
 			$i++;
 		}
@@ -30,6 +30,35 @@ class User_perencanaan extends CI_Controller {
 
 
 		$this->load->view('user/perencanaan_detil',$finalData);
+	}
+
+	public function test()
+	{
+
+		$data=$this->session->userdata("nip");
+//		var_dump($data);
+		$get_perencanaan=$this->db->get_where("detail_paket",array("nip"=>$data))->result();
+
+
+		$count=count($get_perencanaan);
+
+		$finalData['data']= array();
+
+		$i=0;
+		while($i<$count)
+		{
+//			$this->db->select('*');
+//			$this->db->from('lap_perencanaan');
+//			$this->db->join('paket', 'lap_perencanaan.id_paket = paket.id_paket');
+//			$this->db->where('lap_perencanaan.id_paket',$get_perencanaan[$i]->id_paket);
+			$info=$this->db->get_where("lap_perencanaan",array("id_paket"=>$get_perencanaan[$i]->id_paket))->result();
+//			$info=$this->db->get()->result();
+			array_push($finalData['data'],$info);
+			$i++;
+		}
+
+		echo json_encode($info);
+
 	}
 
 

@@ -168,6 +168,9 @@ else
 								   else
 								   {
 									   $count=count($data[0]);
+									   var_dump($data[1][1]);
+
+									   var_dump($count);
 								   }
 
 									$i=0;
@@ -176,7 +179,7 @@ else
 										?>
 										<tr>
 											<td><?php echo $i+1; ?></td>
-											<td><?php echo $data[0][$i]->nama ?></td>
+											<td><?php echo $data[0][$i]->id_paket ?></td>
 											<td><?php echo $data[0][$i]->tahun ?></td>
 											<td><?php echo $data[0][$i]->tukang ?></td>
 											<td><?php echo $data[0][$i]->pekerja ?></td>

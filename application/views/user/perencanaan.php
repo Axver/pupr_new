@@ -1143,6 +1143,8 @@ else
                 data : {"id_paket" : nama_paket, "tahun" : tahun_anggaran},
                 success : function(data) {
 
+                    console.log(data);
+
                     // console.log(data);
 
                     let max_id=data;

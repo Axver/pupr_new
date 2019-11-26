@@ -46,7 +46,7 @@
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Paket User</h6>
 				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
-				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
+<!--				<a class="collapse-item" href="--><?php //echo base_url('user_perencanaan') ?><!--">Laporan Perencanaan</a>-->
 				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
 				<a class="collapse-item" href="<?php echo base_url('user_pengawasan_data') ?>">Laporan Pengawasan</a>
 
