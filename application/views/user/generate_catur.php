@@ -675,7 +675,7 @@ else
 
 					while(i<length)
 					{
-                        $("#lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].id_lap_perencanaan+'<option>');
+                        $("#lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].keterangan+'<option>');
 					    i++;
 					}
                 }

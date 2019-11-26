@@ -538,7 +538,7 @@ else
                     while(i<length)
 					{
 					    //Append Option ke Select
-						$("#id_lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].id_lap_perencanaan+'</option>');
+						$("#id_lap_perencanaan").append('<option value="'+data[i].id_lap_perencanaan+'">'+data[i].keterangan+'</option>');
                         $("#tahun_hidden").val(data[i].tahun);
 					    i++;
 					}
