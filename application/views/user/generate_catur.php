@@ -30,7 +30,7 @@ else
 	<?php $this->load->view('component/header') ?>
 
 	<style>
-		th,tr,td,table{
+		th,td,table{
 			border: 2px solid black;
 			color:black;
 		}
@@ -221,26 +221,26 @@ else
 
 									 <div class="row">
 										 <div class="col-sm-3">Nama Paket</div>
-										 <div class="col-sm-1">:</div>
-										 <div class="col-sm-3" id="nama_paket_1"></div>
+
+										 <div class="col-sm-3" id="nama_paket_1">:</div>
 									 </div>
 
 									 <div class="row">
 										 <div class="col-sm-3">Jenis Pekerjaan</div>
-										 <div class="col-sm-1">:</div>
-										 <div class="col-sm-3" id="jp_jesi"></div>
+
+										 <div class="col-sm-3" id="jp_jesi">:</div>
 									 </div>
 
 									 <div class="row">
 										 <div class="col-sm-3">Lokasi</div>
-										 <div class="col-sm-1">:</div>
-										 <div class="col-sm-3" id="lokasi_jesi"></div>
+
+										 <div class="col-sm-3" id="lokasi_jesi">:</div>
 									 </div>
 
 									 <div class="row">
 										 <div class="col-sm-3">Pagu</div>
-										 <div class="col-sm-1">:</div>
-										 <div class="col-sm-3" id="pagu_text"></div>
+
+										 <div class="col-sm-3" id="pagu_text">:</div>
 									 </div>
 									 <br/>
 
@@ -399,7 +399,7 @@ else
 													 {
 														 echo "<u>".$data[$i]->nama."</u>";
 														 echo "<br/>";
-														 echo $data[$i]->nip;
+														 echo "NIP:".$data[$i]->nip;
 
 														 $i++;
 													 }
@@ -714,18 +714,18 @@ else
                     while(i<length)
                     {
                         $("#testsaja").text(data[i].jabatan);
-                        $("#nip_dip").text(data[i].nip);
+                        $("#nip_dip").text("NIP:"+data[i].nip);
 
                         i++;
                     }
                 }
         });
 	    let pagu=$("#pagu").val();
-	    $("#pagu_text").text(pagu);
+	    $("#pagu_text").text(":"+pagu);
         let diperiksa=$("#diperiksa_oleh option:selected").text();
         $("#diperiksa").text(diperiksa);
         let nama_paket=$("#id_paket option:selected").text();
-        $("#nama_paket_1").text(nama_paket);
+        $("#nama_paket_1").text(":"+nama_paket);
 	    hapusTabel();
 	    let bulan_mulai=$("#bulan_mulai").val();
 	    let bulan2=parseInt(bulan_mulai)+parseInt(1);
@@ -1703,7 +1703,7 @@ else
 
                     while(i<length)
                     {
-                        $("#lokasi_jesi").text(data[i].lokasi);
+                        $("#lokasi_jesi").text(":".data[i].lokasi);
                         i++;
                     }
                 }
