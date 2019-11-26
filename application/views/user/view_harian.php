@@ -290,6 +290,43 @@ else
 
 								<div class="row">
 									<div class="col-sm-1"></div>
+									<div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/>
+											<?php
+											$x=$this->db->get_where("ttd_pengawasan",array("id_pengawasan"=>$this->uri->segment("3"),"id_perencanaan"=>$this->uri->segment("4"),"minggu"=>$this->uri->segment("5")))->result();
+											$count=count($x);
+											$i=0;
+
+											while($i<$count)
+											{
+//													Select Lagi
+												$data=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$x[$i]->id_diperiksa))->result();
+												$count1=count($data);
+												$ii=0;
+
+												while($ii<$count1)
+												{
+													echo "<b>";
+
+													echo $data[$ii]->jabatan;
+
+													echo "</b>";
+
+
+													$ii++;
+												}
+												$i++;
+											}
+											?></center></div>
+									<div class="col-sm-4"></div>
+									<div class="col-sm-3"><center><b>Jambi,<?php echo tgl_indo(date('Y-m-d')); ?></b><br/><b>Dibuat Oleh</b></center></div>
+									<div class="col-sm-1"></div>
+								</div>
+
+								<br/>
+								<br/>
+								<br/>
+								<div class="row">
+									<div class="col-sm-1"></div>
 									<div class="col-sm-3"><center><b>Diperiksa Oleh</b> <br/>
 											<b>
 												<?php
@@ -318,58 +355,34 @@ else
 												?>
 											</b>
 										</center></div>
+									<?php
+									function tgl_indo($tanggal){
+										$bulan = array (
+											1 =>   'Januari',
+											'Februari',
+											'Maret',
+											'April',
+											'Mei',
+											'Juni',
+											'Juli',
+											'Agustus',
+											'September',
+											'Oktober',
+											'November',
+											'Desember'
+										);
+										$pecahkan = explode('-', $tanggal);
+
+										// variabel pecahkan 0 = tanggal
+										// variabel pecahkan 1 = bulan
+										// variabel pecahkan 2 = tahun
+
+										return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+									}
+									?>
+
 									<div class="col-sm-4"></div>
-									<div class="col-sm-3">
-
-										<div class="row">
-											<center>
-											<b>Jambi, <?php
-
-												echo tgl_indo(date('Y-m-d'));  ?></b>
-											<br/><b>Dibuat Oleh</b></div>
-										</center>
-										</div>
-
-									<div class="col-sm-1"></div>
-								</div>
-
-								<br/>
-
-								<br/>
-
-								<br/>
-								<?php
-								function tgl_indo($tanggal){
-									$bulan = array (
-										1 =>   'Januari',
-										'Februari',
-										'Maret',
-										'April',
-										'Mei',
-										'Juni',
-										'Juli',
-										'Agustus',
-										'September',
-										'Oktober',
-										'November',
-										'Desember'
-									);
-									$pecahkan = explode('-', $tanggal);
-
-									// variabel pecahkan 0 = tanggal
-									// variabel pecahkan 1 = bulan
-									// variabel pecahkan 2 = tahun
-
-									return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-								}
-								?>
-
-
-								<div class="row">
-									<div class="col-sm-1"></div>
-									<div class="col-sm-3"><center><b>
-
-												<?php
+									<div class="col-sm-3"><center><b><?php
 												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
 												$count=count($data);
 												$i=0;
@@ -394,26 +407,15 @@ else
 
 													$i++;
 												}
-												?>
-											</b></center></div>
-									<div class="col-sm-4"></div>
-									<div class="col-sm-3" style="text-align: center;"><center><b>		<?php
-												$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
-												$count=count($data);
-												$i=0;
-
-												while($i<$count)
-												{
-													echo "<center>"."<u>".$data[$i]->nama."</u>"."</center>";
-													echo "<center>";
-													echo $data[$i]->nip;
-													echo "</center>";
-
-													$i++;
-												}
 												?></b></center></div>
 									<div class="col-sm-1"></div>
 								</div>
+
+
+
+
+
+
 
 
 
