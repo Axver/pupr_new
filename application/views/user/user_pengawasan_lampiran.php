@@ -105,7 +105,6 @@ else
 
 
 				<!-- Content Row -->
-
 				<div class="row">
 
 					<!-- Area Chart -->
@@ -113,7 +112,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Cetak Lampiran</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -122,75 +121,106 @@ else
 								</div>
 							</div>
 							<!-- Card Body -->
-							<div class="card-body">
+
+							<br/>
+							<br/>
+							<button class="btn btn-info" onclick="generatePDF()">Cetak PDF</button>
+							<script>
+                                function generatePDF() {
+                                    // Choose the element that our invoice is rendered in.
+                                    const element = document.getElementById("cetak_lampiran");
+                                    // Choose the element and save the PDF for our user.
+                                    var opt = {
+                                        margin:       1,
+                                        filename:     'myfile.pdf',
+                                        image:        { type: 'jpeg', quality: 0.98 },
+                                        html2canvas:  { scale: 2 },
+                                        jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+                                        pagebreak: { before: '.break'}
+                                    };
+                                    // Choose the element and save the PDF for our user.
+                                    html2pdf().set(opt).from(element).save();
+
+                                    swal("PDF Digenerate!!");
+                                }
+							</script>
+							<div class="card-body" id="cetak_lampiran">
+
+								<br/>
+								<br/>
+
+								<b>Daftar Gambar</b>
 
 
-								<table id="example" class="display" style="width:100%">
+								<table class="display table" style="width:100%">
 									<thead>
 									<tr>
-										<th>No</th>
-										<th>Id Perencanaan</th>
-										<th>Minggu</th>
-										<th>Perencanaan</th>
-										<th>View</th>
-										<th>Edit</th>
-										<th>Image</th>
-										<th>Lampiran</th>
+
+										<th></th>
 
 
 									</tr>
 									</thead>
 									<tbody>
-
 									<?php
-									$this->db->select('*');
-									$this->db->from('lap_pengawasan');
-									$this->db->join('detail_paket', 'lap_pengawasan.id_paket = detail_paket.id_paket');
-									$this->db->join('lap_perencanaan', 'lap_pengawasan.id_lap_perencanaan = lap_perencanaan.id_lap_perencanaan');
-									$this->db->where('detail_paket.nip', $this->session->userdata("nip"));
+									//									echo $this->uri->segment("3");
+									$gambar=$this->db->get_where("gambar_pengawasan",array("id_perencanaan"=>$this->uri->segment("4"),"id_pengawasan"=>$this->uri->segment("3"),"minggu"=>$this->uri->segment("5")))->result();
 
+									$count=count($gambar);
 
-									$query = $this->db->get()->result();
-									$length=count($query);
 									$i=0;
-									while($i<$length)
+
+									while($i<$count)
+
 									{
 										?>
 										<tr>
-                                         <td ><?php echo $i+1; ?></td>
-											<td><?php echo $query[$i]->id_lap_pengawasan; ?></td>
-											<td><?php echo $query[$i]->minggu; ?></td>
-											<td><?php echo $query[$i]->keterangan; ?></td>
-											<td><button class="btn btn-info" onclick="viewLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">View</button></td>
-											<td><button class="btn btn-warning" onclick="editLap('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">Edit</button></td>
-											<td><button class="btn btn-danger" onclick="image('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">Upload</button></td>
-											<td><button class="btn btn-success" onclick="lamp('<?php echo $query[$i]->id_lap_pengawasan.",".$query[$i]->id_lap_perencanaan.",".$query[$i]->minggu; ?>')">Lampiran</button></td>
+
+											<td><center><img style="width:800px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></center></td>
+
 										</tr>
-									<?php
+										<?php
 
 										$i++;
 									}
-
 									?>
-
-
-
-
 									</tbody>
 								</table>
 
+
 							</div>
+
 
 							<script>
                                 $(document).ready(function() {
                                     $('#example').DataTable();
                                 } );
+
+                                function hapus(per,gam,peng,ming)
+                                {
+
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://localhost/pupr_new/index.php/upload/hapus2",
+                                        data: {"perencanaan":per,"nama":gam,"pengawasan":peng,"minggu":ming},
+                                        dataType: "text",
+                                        cache:false,
+                                        success:
+                                            function(data){
+                                                location.reload(true);
+                                            }
+                                    });
+                                }
 							</script>
+
 						</div>
 					</div>
 
 
 				</div>
+
+
 
 
 
@@ -242,37 +272,12 @@ else
 
 
 <script>
-
-	function viewLap(id)
-	{
-	    let data=id.split(",");
-	    // alert(id);
-	    window.location='http://localhost/pupr_new/user_pengawasan_data/view/'+data[0]+"/"+data[1]+"/"+data[2];
-	}
-
-    function editLap(id)
+    function lihatData(data)
     {
-        let data=id.split(",");
-        // alert(id);
-        window.location='http://localhost/pupr_new/user_pengawasan_data/edit/'+data[0]+"/"+data[1]+"/"+data[2];
-    }
 
-    function lamp(id)
-    {
-        let data=id.split(",");
-        // alert(id);
-        window.location='http://localhost/pupr_new/user_pengawasan_data/lampiran/'+data[0]+"/"+data[1]+"/"+data[2];
-    }
-
-    function image(id)
-    {
-        let data=id.split(",");
-        // alert(id);
-        window.location='upload/pengawasan/'+data[0]+"/"+data[1]+"/"+data[2];
+        window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
     }
 </script>
-
-
 
 
 
