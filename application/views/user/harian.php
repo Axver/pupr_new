@@ -148,20 +148,33 @@ else
 
 								<b>*Pilih Paket dan Lapoan Perencanaan Terlebih Dahulu</b> <br/>
 								<label>Paket:</label>
+								<input type="text" class="form form-control" value="<?php
+//																echo $this->uri->segment('3');
+																$data=$this->db->get_where("paket",array("id_paket"=>$this->uri->segment('3')))->result();
+																$count=count($data);
+																$i=0;
 
-							    <input type="text" class="form form-control" id="paket" value="<?php
-//								echo $this->uri->segment('3');
-								$data=$this->db->get_where("paket",array("id_paket"=>$this->uri->segment('3')))->result();
-								$count=count($data);
-								$i=0;
+																while($i<$count)
+																{
+																	echo $data[$i]->nama;
 
-								while($i<$count)
-								{
-									echo $data[$i]->nama;
-
-									$i++;
-								}
+																	$i++;
+																}
 								?>" disabled>
+
+							    <input type="hidden" class="form form-control" id="paket" value="<?php echo $this->uri->segment('3');
+//								echo $this->uri->segment('3');
+//								$data=$this->db->get_where("paket",array("id_paket"=>$this->uri->segment('3')))->result();
+//								$count=count($data);
+//								$i=0;
+//
+//								while($i<$count)
+//								{
+//									echo $data[$i]->nama;
+//
+//									$i++;
+//								}
+								?>" >
 								Laporan Perencanaan:
 
 								<select onchange="changeDate()" class="form form-control" id="lap_perencanaan">
@@ -597,6 +610,9 @@ else
             cache:false,
             success:
                 function(data){
+                console.log("lihatbalikanawal");
+                console.log(data);
+                console.log("lihatbalikanawal");
                     hasil=data;
                     let xo=0;
                     let dataArray=[];
@@ -622,6 +638,7 @@ else
                         cache:false,
                         success:
                             function(data){
+
                                 console.log(data);
                             }
                     });
