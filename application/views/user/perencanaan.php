@@ -699,7 +699,7 @@ else
 										<label for="">Keterangan Dimensi</label>
 										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" id="u_keterangan_dimensi">
 										<label for=""><b>Nama Laporan Perencanaan</b></label>
-										<input type="text" class="form form-control" placeholder="Keterangan" id="u_keterangan">
+										<input type="text" class="form form-control" placeholder="Nama Laporan Perencanaan" id="u_keterangan">
 
 
 
