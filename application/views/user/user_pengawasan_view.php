@@ -138,6 +138,7 @@ else
 
 							<div class="card-body" id="cetak_tabel">
 								<center><b><h2>LAPORAN PENGAWASAN MINGGU <?php echo $this->uri->segment("5"); ?></h2></b></center>
+								<input type="hidden" id="hidden_treasure" value="<?php echo $this->uri->segment("5"); ?>">
 
 								<br/>
 								<div class="row">
@@ -199,7 +200,7 @@ else
 								<div class="row">
 									<div class="col-sm-2">Periode Pengawasan</div>
 									<div class="col-sm-1">:</div>
-									<div class="col-sm-2"></div>
+									<div class="col-sm-4" id="js"></div>
 								</div>
 
 								<div class="row">
@@ -276,7 +277,7 @@ else
 								</table>
 
 								<br/>
-								
+
 
 								<?php
 								function tgl_indo($tanggal){
@@ -468,6 +469,11 @@ else
 
 
 <script>
+	let weekNo=$("#hidden_treasure").val();
+	// alert(weekNo);
+    // let datanya=getDateRangeOfWeek(weekNo);
+    alert(weekNoe);
+
     function generatePDF() {
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
@@ -482,6 +488,40 @@ else
         // Choose the element and save the PDF for our user.
         html2pdf().set(opt).from(element).save();
     }
+
+
+</script>
+
+
+<script>
+    Date.prototype.getWeek = function () {
+        var target  = new Date(this.valueOf());
+        var dayNr   = (this.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        var firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() != 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
+    }
+
+    function getDateRangeOfWeek(weekNo){
+        var d1 = new Date();
+        numOfdaysPastSinceLastMonday = eval(d1.getDay()- 1);
+        d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+        var weekNoToday = d1.getWeek();
+        var weeksInTheFuture = eval( weekNo - weekNoToday );
+        d1.setDate(d1.getDate() + eval( 7 * weeksInTheFuture ));
+        var rangeIsFrom = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear();
+        d1.setDate(d1.getDate() + 6);
+        var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
+        return rangeIsFrom + " to "+rangeIsTo;
+    };
+
+    let js=getDateRangeOfWeek(weekNo);
+    js=js.replace(" to "," - ")
+    $("#js").text(js);
 </script>
 
 
