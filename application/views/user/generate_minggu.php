@@ -268,7 +268,7 @@ else
 
 					                <div class="row">
 
-										<div class="col-sm-8">
+										<div class="col-sm-7">
 											<div class="row">
 												<div class="col-sm-3">Nama Paket</div>
 												<div class="col-sm-1">:</div>
@@ -293,7 +293,7 @@ else
 												<div class="col-sm-3"></div>
 											</div>
 										</div>
-										<div class="col-sm-4" style="border:2px solid black">
+										<div class="col-sm-4" style="border:1px solid black;">
 											<div class="row">
 												<div class="col-sm-7">Progress Pekerjaan</div>
 												<div class="col-sm-1">:</div>
@@ -423,7 +423,7 @@ else
 													{
 														echo "<u>".$data[$i]->nama."</u>";
 														echo "<br/>";
-														echo $data[$i]->nip;
+														echo "NIP:".$data[$i]->nip;
 
 														$i++;
 													}
@@ -581,7 +581,7 @@ else
                     while(i<length)
 					{
 					    $("#konf_kerja").text(data[i].jabatan);
-                        $("#nip_dip").text(data[i].nip);
+                        $("#nip_dip").text("NIP:"+data[i].nip);
 
 					    i++;
 					}
