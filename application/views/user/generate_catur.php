@@ -160,19 +160,14 @@ else
 								</select>
 								<b>Laporan Perencanaan</b>
 								<select id="lap_perencanaan" class="form form-control"></select>
-								<b>Pilih Bulan Mulai</b>
+								<b>Pilih Caturwulan</b>
 								<select id="bulan_mulai" class="form form-control">
-									<?php
-									  $i=1;
 
-									  while($i<=12)
-									  {
-									  	?>
-                                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-									<?php
-										  $i++;
-									  }
-									?>
+                                      <option value="1">Caturwulan 1</option>
+									<option value="4">Caturwulan 2</option>
+									<option value="7">Caturwulan 3</option>
+									<option value="10">Caturwulan 4</option>
+
 								</select>
 
 								<button class="btn btn-info" onclick="buatTabel()">Generate</button>
@@ -425,7 +420,7 @@ else
 									    // alert("haha");
                                         let diperiksa_=$("#diperiksa_oleh").val();
                                         // alert(diperiksa_);
-										alert(diperiksa_);
+										// alert(diperiksa_);
                                         //konf_kerja data
                                         $.ajax({
                                             type: "POST",
@@ -694,7 +689,7 @@ else
 		// alert("test");
         let diperiksa_=$("#diperiksa_oleh").val();
 
-        alert(diperiksa_);
+        // alert(diperiksa_);
         // alert(diperiksa_);
         // alert(diperiksa_);
         //konf_kerja data

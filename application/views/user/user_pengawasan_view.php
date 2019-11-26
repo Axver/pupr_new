@@ -385,7 +385,11 @@ else
 
 													while($ii<$count1)
 													{
+														echo "<u>";
 														echo $data[$ii]->nama;
+														echo "</u>";
+														echo "<br/>";
+														echo $data[$ii]->nip;
 
 														$ii++;
 													}

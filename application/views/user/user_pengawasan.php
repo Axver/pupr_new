@@ -124,7 +124,20 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
                                  <b>Id Paket</b>
-								<input type="text" class="form form-control" id="id_paket" value="<?php echo $this->uri->segment('3'); ?>" disabled>
+								<input type="text" class="form form-control" id="id_paket" value="<?php
+//								echo $this->uri->segment('3');
+								$data=$this->db->get_where("paket",array("id_paket"=> $this->uri->segment('3')))->result();
+								$count=count($data);
+								$i=0;
+
+								while($i<$count)
+								{
+
+									echo $data[$i]->nama;
+
+									$i++;
+								}
+								?>" disabled>
 								<b>Pilih Minggu</b>
 								<select id="minggu" class="form form-control">
 									<?php
@@ -150,7 +163,7 @@ else
 									while($i<$count)
 									{
 										?>
-										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->id_lap_perencanaan; ?></option>
+										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->keterangan; ?></option>
 									<?php
 
 										$i++;

@@ -372,7 +372,7 @@ else
 												?>
 											</b></center></div>
 									<div class="col-sm-4"></div>
-									<div class="col-sm-3"><center><b>		<?php
+									<div class="col-sm-3" style="text-align: center;"><center><b>		<?php
 												$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
 												$count=count($data);
 												$i=0;
@@ -380,7 +380,7 @@ else
 												while($i<$count)
 												{
 													echo "<center>"."<u>".$data[$i]->nama."</u>"."</center>";
-													echo "<br/>"."<center>";
+													echo "<center>";
 													echo $data[$i]->nip;
 													echo "</center>";
 
@@ -500,7 +500,8 @@ function generatePDF() {
         filename:     'myfile.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' }
+        jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+        pagebreak: { before: '.break' }
     };
     // Choose the element and save the PDF for our user.
     html2pdf().set(opt).from(element).save();

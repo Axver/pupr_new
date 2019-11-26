@@ -149,7 +149,19 @@ else
 								<b>*Pilih Paket dan Lapoan Perencanaan Terlebih Dahulu</b> <br/>
 								<label>Paket:</label>
 
-							    <input type="text" class="form form-control" id="paket" value="<?php echo $this->uri->segment('3'); ?>" disabled>
+							    <input type="text" class="form form-control" id="paket" value="<?php
+//								echo $this->uri->segment('3');
+								$data=$this->db->get_where("paket",array("id_paket"=>$this->uri->segment('3')))->result();
+								$count=count($data);
+								$i=0;
+
+								while($i<$count)
+								{
+									echo $data[$i]->nama;
+
+									$i++;
+								}
+								?>" disabled>
 								Laporan Perencanaan:
 
 								<select onchange="changeDate()" class="form form-control" id="lap_perencanaan">
@@ -163,7 +175,7 @@ else
 									while($i<$panjang)
 									{
 										?>
-										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->id_lap_perencanaan; ?></option>
+										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->keterangan; ?></option>
 									<?php
 
 

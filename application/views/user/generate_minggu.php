@@ -303,11 +303,7 @@ else
 												<div class="col-sm-1">:</div>
 												<div class="col-sm-4" id="progress-fisik-lalu"></div>
 											</div>
-											<div class="row">
-												<div class="col-sm-7">Progress Fisik Minggu</div>
-												<div class="col-sm-1">:</div>
-												<div class="col-sm-4" id="progress-fisik-minggu"></div>
-											</div>
+
 											<div class="row">
 												<div class="col-sm-7">Progress Fisik Selanjutnya</div>
 												<div class="col-sm-1">:</div>

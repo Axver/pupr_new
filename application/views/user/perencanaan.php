@@ -698,7 +698,7 @@ else
 										<input type="text" class="form form-control" placeholder="Panjang Penanganan" id="u_panjang_penanganan">
 										<label for="">Keterangan Dimensi</label>
 										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" id="u_keterangan_dimensi">
-										<label for="">Keterengan</label>
+										<label for=""><b>Nama Laporan Perencanaan</b></label>
 										<input type="text" class="form form-control" placeholder="Keterangan" id="u_keterangan">
 
 
@@ -1287,6 +1287,7 @@ else
                 $("#nama_paket").val(data[0].id_paket+"_"+data[0].tahun);
                 $("#jumlah_tahap").val(data[0].jumlah_tahap);
                 $("#jenis_pelaksanaan").val(data[0].jenis_pekerjaan);
+                $("#nilai_paket").val(data[0].nilai_paket);
                 $("#masa_pelaksanaan").val(data[0].masa_pelaksanaan);
                 $("#lokasi").val(data[0].lokasi);
                 $("#tahun_anggaran").val(data[0].tahun_anggaran);
