@@ -17,8 +17,12 @@ class User_perencanaan extends CI_Controller {
 		$i=0;
 		while($i<$count)
 		{
-			$info=$this->db->get_where("lap_perencanaan",array("id_paket"=>$get_perencanaan[$i]->id_paket))->result();
-
+			$this->db->select('*');
+			$this->db->from('lap_perencanaan');
+			$this->db->join('paket', 'lap_perencanaan.id_paket = paket.id_paket');
+			$this->db->where('lap_perencanaan.id_paket',$get_perencanaan[$i]->id_paket);
+//			$info=$this->db->get_where("lap_perencanaan",array("id_paket"=>$get_perencanaan[$i]->id_paket))->result();
+			$info=$this->db->get()->result();
 			array_push($finalData['data'],$info);
 			$i++;
 		}
