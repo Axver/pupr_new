@@ -133,7 +133,7 @@ else
 								<input type="text" class="form form-control" id="id_pengawasan" value="<?php echo $this->uri->segment('3'); ?>" disabled>
 								Perencanaan:
 								<input type="text" class="form form-control" id="id_laper11" value="<?php
-								echo $this->uri->segment('4');
+//								echo $this->uri->segment('4');
 								$ambil=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment('4')))->result();
 								$count=count($ambil);
 								$i=0;
