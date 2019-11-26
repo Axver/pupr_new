@@ -290,33 +290,31 @@ else
 
 								<div class="row">
 									<div class="col-sm-1"></div>
-									<div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/>
+									<div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/><b>
 											<?php
-											$x=$this->db->get_where("ttd_pengawasan",array("id_pengawasan"=>$this->uri->segment("3"),"id_perencanaan"=>$this->uri->segment("4"),"minggu"=>$this->uri->segment("5")))->result();
-											$count=count($x);
+											$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+											$count=count($data);
 											$i=0;
 
 											while($i<$count)
 											{
-//													Select Lagi
-												$data=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$x[$i]->id_diperiksa))->result();
-												$count1=count($data);
+												$ambil=$data[$i]->id_diperiksa;
+//													Ambil nama dari database
+												$nama=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$ambil))->result();
+												$count1=count($nama);
 												$ii=0;
-
 												while($ii<$count1)
 												{
-													echo "<b>";
 
-													echo $data[$ii]->jabatan;
-
-													echo "</b>";
+													echo $nama[$ii]->jabatan;
 
 
 													$ii++;
 												}
+
 												$i++;
 											}
-											?></center></div>
+											?></b></center></div>
 									<div class="col-sm-4"></div>
 									<div class="col-sm-3"><center><b>Jambi,<?php echo tgl_indo(date('Y-m-d')); ?></b><br/><b>Dibuat Oleh</b></center></div>
 									<div class="col-sm-1"></div>
@@ -327,7 +325,7 @@ else
 								<br/>
 								<div class="row">
 									<div class="col-sm-1"></div>
-									<div class="col-sm-3"><center><b>Diperiksa Oleh</b> <br/>
+									<div class="col-sm-3"><center>
 											<b>
 												<?php
 												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
@@ -344,7 +342,11 @@ else
 													while($ii<$count1)
 													{
 
-														echo $nama[$ii]->jabatan;
+														echo "<u>";
+														echo $nama[$ii]->nama;
+														echo "</u>";
+														echo "<br/>";
+														echo $nama[$ii]->nip;
 
 
 														$ii++;
@@ -383,27 +385,18 @@ else
 
 									<div class="col-sm-4"></div>
 									<div class="col-sm-3"><center><b><?php
-												$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$this->uri->segment("3"),"id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+												$data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
 												$count=count($data);
 												$i=0;
 
 												while($i<$count)
 												{
-													$ambil=$data[$i]->id_diperiksa;
-//													Ambil nama dari database
-													$nama=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$ambil))->result();
-													$count1=count($nama);
-													$ii=0;
-													while($ii<$count1)
-													{
-														echo "<u>";
-														echo $nama[$ii]->nama;
-														echo "</u>";
-														echo "<br/>";
-														echo $nama[$ii]->nip;
 
-														$ii++;
-													}
+													echo "<u>".$data[$i]->nama."</u>";
+													echo "<br/>";
+													echo $data[$i]->nip;
+
+
 
 													$i++;
 												}
