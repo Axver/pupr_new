@@ -164,9 +164,9 @@ else
 								<select id="bulan_mulai" class="form form-control">
 
                                       <option value="1">Caturwulan 1</option>
-									<option value="4">Caturwulan 2</option>
-									<option value="7">Caturwulan 3</option>
-									<option value="10">Caturwulan 4</option>
+									<option value="5">Caturwulan 2</option>
+									<option value="9">Caturwulan 3</option>
+
 
 								</select>
 
