@@ -124,7 +124,21 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
                                  <b>Id Paket</b>
-								<input type="text" class="form form-control" id="id_paket" value="<?php
+								<input type="hidden" class="form form-control" id="id_paket" value="<?php
+																echo $this->uri->segment('3');
+//								$data=$this->db->get_where("paket",array("id_paket"=> $this->uri->segment('3')))->result();
+//								$count=count($data);
+//								$i=0;
+//
+//								while($i<$count)
+//								{
+//
+//									echo $data[$i]->nama;
+//
+//									$i++;
+//								}
+								?>" >
+								<input type="text" class="form form-control" id="id_paketx" value="<?php
 //								echo $this->uri->segment('3');
 								$data=$this->db->get_where("paket",array("id_paket"=> $this->uri->segment('3')))->result();
 								$count=count($data);
@@ -633,6 +647,9 @@ else
                 function(data){
                 //   id laporan pengawasn didapatkan
 				//	Input detail kemudian
+					console.log("Hmmmmmm");
+                    console.log(data);
+                    console.log("Hmmmmmm");
                     $(".row_jes").each(function() {
 
                         if(i<6)

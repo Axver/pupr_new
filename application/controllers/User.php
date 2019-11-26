@@ -254,6 +254,7 @@ public function save_pengawasan()
 
 	$input=$this->db->insert("lap_pengawasan",$data);
 
+//	var_dump($data);
 	echo $id_lap_pengawasan;
 
 }
