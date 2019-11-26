@@ -132,7 +132,7 @@ else
 								Pengawasan:
 								<input type="text" class="form form-control" id="id_pengawasan" value="<?php echo $this->uri->segment('3'); ?>" disabled>
 								Perencanaan:
-								<input type="text" class="form form-control" id="id_laper" value="<?php
+								<input type="text" class="form form-control" id="id_laper11" value="<?php
 								echo $this->uri->segment('4');
 								$ambil=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment('4')))->result();
 								$count=count($ambil);
@@ -144,6 +144,10 @@ else
 									$i++;
 								}
 								?>" disabled>
+								<input type="hidden" class="form form-control" id="id_laper" value="<?php
+								echo $this->uri->segment('4');
+
+								?>" >
 								Minggu:
 								<input type="text" class="form form-control" id="minggu" value="<?php echo $this->uri->segment('5'); ?>" disabled>
 
