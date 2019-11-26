@@ -661,7 +661,22 @@ th,td,tr {
 					 <div class="col-sm-3 row_ttd" >
 						<b> Disetujui Oleh</b>
 						<br>
-						<b>PPK Operasi dan Pemeliharaan SDA III</b>
+						<b>	 <?php
+							$data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+
+							$count=count($data);
+
+							if($count>=1)
+							{
+//							 	echo $data[0]->id_disetujui;
+//								 Ambil namanya lagi
+								$ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_disetujui))->result();
+
+
+
+								echo $ambil[0]->jabatan."</b>";
+							}
+							?></b>
 						 <br/>
 						 <br/>
 						 <br/>
@@ -677,6 +692,7 @@ th,td,tr {
 //								 Ambil namanya lagi
 								 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_disetujui))->result();
 
+
 								 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
 								 echo "<b>NIP. ".$ambil[0]->nip."</b>";
 							 }
@@ -687,7 +703,21 @@ th,td,tr {
 					 <div class="col-sm-3 row_ttd">
 						 <b>Diperiksa Oleh</b>
 						 <br>
-						 <b>Pelaksana Teknik</b>
+						 <b>	 <?php
+							 $data=$this->db->get_where("ttd_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+
+							 $count=count($data);
+
+							 if($count>=1)
+							 {
+//							 	echo $data[0]->id_disetujui;
+//								 Ambil namanya lagi
+								 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
+
+
+								 echo $ambil[0]->jabatan;
+							 }
+							 ?></b>
 						 <br/>
 						 <br/>
 						 <br/>
@@ -703,7 +733,7 @@ th,td,tr {
 							 $ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
 
 							 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							 echo "<b>".$ambil[0]->nip."</b>";
+							 echo "<b>"."NIP:".$ambil[0]->nip."</b>";
 						 }
 						 ?>
 						 <div class="row"></div>
@@ -774,7 +804,7 @@ th,td,tr {
 							 $ambil=$this->db->get_where("account",array("nip"=>$data[0]->id_user))->result();
 
 							 echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							 echo "<b>".$ambil[0]->nip."</b>";
+							 echo "<b>"."NIP:".$ambil[0]->nip."</b>";
 						 }
 						 ?>
 						 <div class="row"></div>

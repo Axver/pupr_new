@@ -346,7 +346,7 @@ else
 														echo $nama[$ii]->nama;
 														echo "</u>";
 														echo "<br/>";
-														echo $nama[$ii]->nip;
+														echo "NIP:".$nama[$ii]->nip;
 
 
 														$ii++;
@@ -394,7 +394,7 @@ else
 
 													echo "<u>".$data[$i]->nama."</u>";
 													echo "<br/>";
-													echo $data[$i]->nip;
+													echo "NIP:".$data[$i]->nip;
 
 
 
