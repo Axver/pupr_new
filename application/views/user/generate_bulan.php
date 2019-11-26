@@ -314,7 +314,7 @@ else
 													{
 														echo "<u>".$data[$i]->nama."</u>";
 														echo "<br/>";
-														echo $data[$i]->nip;
+														echo "NIP:".$data[$i]->nip;
 
 														$i++;
 													}
@@ -442,7 +442,8 @@ else
 
        let nama_paket=$("#id_paket option:selected").text();
        $("#nama_paket_1").text(nama_paket);
-       let diperiksa=$("#diperiksa_oleh").val();
+       let diperiksa=$("#diperiksa_oleh option:selected").text();
+       // alert(diperiksa);
        $("#diperiksa").text(diperiksa);
 
        let diperiksa_=$("#diperiksa_oleh").val();
@@ -465,7 +466,7 @@ else
                    while(i<length)
                    {
                        $("#konf_kerja").text(data[i].jabatan);
-                       $("#nip_dip").text(data[i].nip);
+                       $("#nip_dip").text("NIP:"+data[i].nip);
 
                        i++;
                    }

@@ -352,7 +352,7 @@ else
 									</table>
 									<div class="break"></div>
 
-									<b>Rekapituasi Penggunaan Bahan.Alat Minggu : </b><b class="uhuy"></b>
+									<b>Rekapituasi Penggunaan Bahan/Alat Minggu : </b><b class="uhuy"></b>
 
 									<table class="tg table" id="buat_alat">
 
@@ -554,6 +554,8 @@ else
 
 	function generateTabel()
 	{
+	    //Bulan minggu
+
 	    let nama_paket=$("#id_paket option:selected").text();
 	    // alert(nama_paket);
 	    $("#nama_paket_1").text(nama_paket);
@@ -682,14 +684,68 @@ else
                 }
         });
 
+        $bulin=$("#bulan_diinginkan").val();
+        $mingin=$("#id_minggu").val();
+        // alert($mingin);
+        // $("#bulan_minggu").text($bulin+"("+$mingin+")");
+
+		if($bulin=="1")
+		{
+		    $bulin="Januari";
+		}
+		else if($bulin=="2")
+        {
+            $bulin="Februari";
+        }
+        if($bulin=="3")
+        {
+            $bulin="Maret";
+        }
+        if($bulin=="4")
+        {
+            $bulin="April";
+        }
+        if($bulin=="5")
+        {
+            $bulin="Mei";
+        }
+        if($bulin=="6")
+        {
+            $bulin="Juni";
+        }
+        if($bulin=="7")
+        {
+            $bulin="Juli";
+        }
+        if($bulin=="8")
+        {
+            $bulin="Agustus";
+        }
+        if($bulin=="9")
+        {
+            $bulin="September";
+        }
+        if($bulin=="10")
+        {
+            $bulin="Oktober";
+        }
+        if($bulin=="11")
+        {
+            $bulin="November";
+        }
+        if($bulin=="12")
+        {
+            $bulin="Desember";
+        }
+
 
     //    Generate Tabel Detail Pekerja
 		$("#buat_pekerja").append('<tr>\n' +
             '\t<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-            '\t<th class="tg-cly1" colspan="7"></th>\n' +
+            '\t<th class="tg-cly1" colspan="7">'+nama_tahap+'</th>\n' +
             '</tr>\n' +
             '<tr>\n' +
-            '\t<td class="tg-cly1" colspan="7">Bulan(Minggu X)</td>\n' +
+            '\t<td class="tg-cly1" colspan="7" id="bulam_minggu">'+$bulin+' Minggu ke-('+$mingin+')'+'</td>\n' +
             '</tr>');
 
 	//	String Builder Untuk Tanggalnya
@@ -841,6 +897,9 @@ else
 					}
                 }
         });
+
+
+
 
 
 
@@ -1752,13 +1811,67 @@ else
 
     function buatAlat()
 	{
+        let nama_tahap=$("#nama_tahap").val();
+        $bulin=$("#bulan_diinginkan").val();
+        $mingin=$("#id_minggu").val();
+        // alert($mingin);
+        // $("#bulan_minggu").text($bulin+"("+$mingin+")");
+
+        if($bulin=="1")
+        {
+            $bulin="Januari";
+        }
+        else if($bulin=="2")
+        {
+            $bulin="Februari";
+        }
+        if($bulin=="3")
+        {
+            $bulin="Maret";
+        }
+        if($bulin=="4")
+        {
+            $bulin="April";
+        }
+        if($bulin=="5")
+        {
+            $bulin="Mei";
+        }
+        if($bulin=="6")
+        {
+            $bulin="Juni";
+        }
+        if($bulin=="7")
+        {
+            $bulin="Juli";
+        }
+        if($bulin=="8")
+        {
+            $bulin="Agustus";
+        }
+        if($bulin=="9")
+        {
+            $bulin="September";
+        }
+        if($bulin=="10")
+        {
+            $bulin="Oktober";
+        }
+        if($bulin=="11")
+        {
+            $bulin="November";
+        }
+        if($bulin=="12")
+        {
+            $bulin="Desember";
+        }
 	    $("#buat_alat").append('\t<tr >\n' +
             '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" rowspan="3">Jenis Bahan Alat</th>\n' +
             '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-nrix" rowspan="3">Satuan</th>\n' +
-            '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" colspan="7"></th>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<th class="tg-cly1" colspan="7">'+nama_tahap+'</th>\n' +
             '\t\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<tr>\n' +
-            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="7">Minggu Ke</td>\n' +
+            '\t\t\t\t\t\t\t\t\t\t\t<td class="tg-nrix" colspan="7">'+$bulin+' Minggu ke-('+$mingin+')'+'</td>\n' +
             '\t\t\t\t\t\t\t\t\t\t</tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<tr id="hari_nya1">\n' +
 
