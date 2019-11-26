@@ -129,6 +129,8 @@ else
 									<thead>
 									<tr>
 										<th>Tanggal</th>
+										<th>Paket</th>
+										<th>Perencanaan</th>
 										<th>View</th>
 										<th>Edit</th>
 										<th>Upload</th>
@@ -151,6 +153,8 @@ else
 										?>
 										<tr>
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
+											<td><?php echo $harian['harian'][$i]->paket_nama; ?></td>
+											<td><?php echo $harian['harian'][$i]->keterangan; ?></td>
 											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">View</button></td>
 											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Edit</button></td>
 											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Image</button></td>
