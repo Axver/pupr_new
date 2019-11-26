@@ -377,7 +377,7 @@ else
 
 									 <div class="row">
 										 <div class="col-sm-1"></div>
-										 <div class="col-sm-3"><center><b>Diperiksa Oleh</b></center></div>
+										 <div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/><b><div id="testsaja"></div></b></center></div>
 										 <div class="col-sm-4"></div>
 										 <div class="col-sm-3"><center><b>Jambi,<?php echo tgl_indo(date('Y-m-d')); ?></b><br/><b>Dibuat Oleh</b></center></div>
 										 <div class="col-sm-1"></div>
@@ -713,7 +713,7 @@ else
 
                     while(i<length)
                     {
-                        $("#konf_kerja").text(data[i].jabatan);
+                        $("#testsaja").text(data[i].jabatan);
                         $("#nip_dip").text(data[i].nip);
 
                         i++;
