@@ -234,7 +234,21 @@ else
 								</div>
 								<br/>
 								Lap Perencanaan:
-								<input type="text" id="id_lap_perencanaan" class="form form-control" value="<?php echo $this->uri->segment('4') ?>" disabled>
+								<input type="text" id="id_lap_perencanaanbn" class="form form-control" value="<?php
+
+								$ambil=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment('4')))->result();
+
+								$count=count($ambil);
+								$i=0;
+
+								while($i<$count)
+								{
+									echo $ambil[$i]->keterangan;
+
+									$i++;
+								}
+								?>" disabled>
+								<input type="hidden" id="id_lap_perencanaan" class="form form-control" value="<?php echo $this->uri->segment('4') ?>">
 								Tanggal:
 								<input type="text" id="hari_tanggal_" class="form form-control" value="<?php echo $this->uri->segment('3') ?>" disabled>
 								Id Paket:

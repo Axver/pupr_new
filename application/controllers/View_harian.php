@@ -269,6 +269,7 @@ class View_harian extends CI_Controller {
 			$y=$i+1;
 //			Update Data
 			$this->db->query("UPDATE detail_bahan_alat_harian SET jumlah_tukang=$data[$y] WHERE jenis_pekerja='$data[$i]' AND id_lap_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket' AND id_lap_harian_mingguan='$id_lapharmin' ");
+			$this->db->query("UPDATE detail_bahan_alat_harian SET jumlah_tukang=$data[$y] WHERE jenis_pekerja='$data[$i]' AND id_lap_perencanaan='$id_lap_perencanaan' AND id_paket='$id_paket' AND id_lap_harian_mingguan='$id_lapharmin' ");
 
 			$i++;
 		}
