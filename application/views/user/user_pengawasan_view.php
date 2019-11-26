@@ -276,7 +276,7 @@ else
 								</table>
 
 								<br/>
-								<br/>
+								
 
 								<?php
 								function tgl_indo($tanggal){
@@ -303,6 +303,10 @@ else
 									return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 								}
 								?>
+
+								<b>Keterangan</b>
+								<br/>
+								<textarea rows="3" cols="50"></textarea>
 
 								<div class="row">
 									<div class="col-sm-1"></div>
