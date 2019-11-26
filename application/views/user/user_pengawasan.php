@@ -695,6 +695,10 @@ else
         });
 
       swal("Laporan Sukses Ditambahkan!");
+
+    //  Redirect
+		let id_paket_red=$("#id_paket").val();
+		window.location="http://localhost/pupr_new/user/lihat_paket/"+id_paket_red;
 	}
 
 </script>

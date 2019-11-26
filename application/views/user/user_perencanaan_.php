@@ -445,6 +445,8 @@ else
                             '\t<td>'+data[i].id_lap_pengawasan+'</td>\n' +
                             '\t<td><button class="btn btn-info" onclick="view1('+'\''+E+'\''+')">View</button></td>\n' +
                             '\t<td><button class="btn btn-info" onclick="edit1('+'\''+E+'\''+')">Edit</button></td>\n' +
+                            '\t<td><button class="btn btn-warning" onclick="image('+'\''+E+'\''+')">Upload</button></td>\n' +
+                            '\t<td><button class="btn btn-danger" onclick="lamp('+'\''+E+'\''+')">Lampiran</button></td>\n' +
 
                             '</tr>\n');
 
@@ -501,6 +503,21 @@ else
         // alert(id);
         // console.log(id);
         window.location="http://localhost/pupr_new/user_pengawasan_data/edit/"+id[0]+"/"+id[1]+"/"+id[2];
+    }
+    function image(id)
+    {
+        id=id.split("_");
+        // alert(id);
+        // console.log(id);
+        window.location="upload/pengawasan/"+id[0]+"/"+id[1]+"/"+id[2];
+    }
+
+    function lamp(id)
+    {
+        id=id.split("_");
+        // alert(id);
+        // console.log(id);
+        window.location="http://localhost/pupr_new/user_pengawasan_data/lampiran/"+id[0]+"/"+id[1]+"/"+id[2];
     }
 </script>
 

@@ -152,16 +152,7 @@ else
 								<b>Daftar Gambar</b>
 
 
-								<table class="display table" style="width:100%">
-									<thead>
-									<tr>
 
-										<th></th>
-
-
-									</tr>
-									</thead>
-									<tbody>
 									<?php
 									//									echo $this->uri->segment("3");
 									$gambar=$this->db->get_where("gambar_pengawasan",array("id_perencanaan"=>$this->uri->segment("4"),"id_pengawasan"=>$this->uri->segment("3"),"minggu"=>$this->uri->segment("5")))->result();
@@ -174,18 +165,24 @@ else
 
 									{
 										?>
-										<tr>
 
-											<td><center><img style="width:800px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></center></td>
 
-										</tr>
+											<center><img style="width:800px; height:400px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"><br/></center>
+										<br/>
+										<br/>
+										<?php $i++; ?>
+										<center><img style="width:800px; height:400px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"><br/></center>
+
+
+
+
+
 										<?php
 
 										$i++;
 									}
 									?>
-									</tbody>
-								</table>
+
 
 
 							</div>
