@@ -221,26 +221,26 @@ else
 
 									<div class="row">
 										<div class="col-sm-3">Nama Paket</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="nama_paket_1"></div>
+
+										<div class="col-sm-3" id="nama_paket_1">:</div>
 									</div>
 
 									<div class="row">
 										<div class="col-sm-3">Jenis Pekerjaan</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="jp_jesi"></div>
+
+										<div class="col-sm-3" id="jp_jesi">:</div>
 									</div>
 
 									<div class="row">
 										<div class="col-sm-3">Lokasi</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3" id="lokasi_jesi"></div>
+
+										<div class="col-sm-3" id="lokasi_jesi">:</div>
 									</div>
 
 									<div class="row">
 										<div class="col-sm-3">Pagu</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-3"></div>
+
+										<div class="col-sm-3">:</div>
 									</div>
 
 									<br/>
@@ -439,9 +439,11 @@ else
 
    function generateTabel()
    {
+       $("#lokasi_jesi").empty();
+       $("#nama_paket_1").empty();
 
        let nama_paket=$("#id_paket option:selected").text();
-       $("#nama_paket_1").text(nama_paket);
+       $("#nama_paket_1").append(":"+nama_paket);
        let diperiksa=$("#diperiksa_oleh option:selected").text();
        // alert(diperiksa);
        $("#diperiksa").text(diperiksa);
@@ -481,14 +483,63 @@ else
        let id_perencanaan=$("#id_lap_perencanaan").val();
        let bulan=$("#bulan_diinginkan").val();
        let tahap=$("#nama_tahap").val();
+       let tahap1=bulan;
+       if(tahap1=="1")
+       {
+           tahap1="Januari";
+       }
+       else if(tahap1=="2")
+       {
+           tahap1="Februari";
+       }
+       if(tahap1=="3")
+       {
+           tahap1="Maret";
+       }
+       if(tahap1=="4")
+       {
+           tahap1="April";
+       }
+       if(tahap1=="5")
+       {
+           tahap1="Mei";
+       }
+       if(tahap1=="6")
+       {
+           tahap1="Juni";
+       }
+       if(tahap1=="7")
+       {
+           tahap1="Juli";
+       }
+       if(tahap1=="8")
+       {
+           tahap1="Agustus";
+       }
+       if(tahap1=="9")
+       {
+           tahap1="September";
+       }
+       if(tahap1=="10")
+       {
+           tahap1="Oktober";
+       }
+       if(tahap1=="11")
+       {
+           tahap1="November";
+       }
+       if(tahap1=="12")
+       {
+           tahap1="Desember";
+       }
        // alert("Generate Table");
 	//   Generate Tabel 1
 	   $("#buat_tabel").append('<tr>\n' +
            '    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap1+'</th>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
-           '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
+           '    <td class="tg-nrix" colspan="5">Minggu</td>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
            '    <td class="tg-cly1">1</td>\n' +
@@ -500,10 +551,10 @@ else
 	//   Generate Tabel 2
        $("#buat_pekerja").append('<tr>\n' +
            '    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>\n' +
-           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap1+'</th>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
-           '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
+           '    <td class="tg-nrix" colspan="5">Minggu</td>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
            '    <td class="tg-cly1">1</td>\n' +
@@ -516,10 +567,10 @@ else
        $("#buat_alat").append('<tr>\n' +
            '    <th class="tg-cly1" rowspan="3">Jenis Alat</th>\n' +
            '    <th class="tg-cly1" rowspan="3">Satuan</th>\n' +
-           '    <th class="tg-nrix" colspan="5">'+tahap+'</th>\n' +
+           '    <th class="tg-nrix" colspan="5">'+tahap1+'</th>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
-           '    <td class="tg-nrix" colspan="5">Bulan</td>\n' +
+           '    <td class="tg-nrix" colspan="5">Minggu</td>\n' +
            '  </tr>\n' +
            '  <tr>\n' +
            '    <td class="tg-cly1">1</td>\n' +
@@ -808,7 +859,7 @@ else
 
                    while(i<length)
                    {
-                       $("#lokasi_jesi").text(data[i].lokasi);
+                       $("#lokasi_jesi").append(":"+data[i].lokasi);
                        i++;
                    }
                }
