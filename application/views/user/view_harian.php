@@ -172,11 +172,9 @@ else
 									<div class="col-sm-2">
 										Nama Paket
 									</div>
-									<div class="col-sm-1">
-										:
-									</div>
 
-									<div class="col-sm-4" id="nama_paket">
+
+									<div class="col-sm-2" id="nama_paket">:
 
 
 
@@ -193,11 +191,9 @@ else
 									<div class="col-sm-2">
 										Lokasi
 									</div>
-									<div class="col-sm-1">
-										:
-									</div>
 
-									<div class="col-sm-4" id="lokasi">
+
+									<div class="col-sm-4" id="lokasi">:
 										<?php
 										$get_waw=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment('4')))->result();
 										$count=count($get_waw);
@@ -217,11 +213,9 @@ else
 									<div class="col-sm-2">
 										Hari/Tanggal
 									</div>
-									<div class="col-sm-1">
-										:
-									</div>
 
-									<div class="col-sm-4" id="hari_tanggal">
+
+									<div class="col-sm-4" id="hari_tanggal">:
                                      <?php echo $this->uri->segment("3"); ?>
 									</div>
 								</div>
@@ -467,7 +461,7 @@ $.ajax({
             data=JSON.parse(data);
             console.log(data);
 
-            $("#nama_paket").text(data[0].nama);
+            $("#nama_paket").append(data[0].nama);
             // $("#lokasi").text(data[0].lokasi);
         }
 });
