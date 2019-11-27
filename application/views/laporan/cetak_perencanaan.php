@@ -1145,7 +1145,7 @@ else
                     if($("#" +data1[x].id+pekerjaan_id).length == 0) {
                         //it doesn't exist
                         $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
-                        $("#jenis_pekerjaanM").text(pekerjaan_text);
+                        $("#jenis_pekerjaanM").append("-"+pekerjaan_text+"<br/>");
 
                         var newRow="\t<tr  id='"+data1[x].id+pekerjaan_id+"'>\n" +
                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\">"+pekerjaan_text+"</td>\n" +
