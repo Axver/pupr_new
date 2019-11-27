@@ -23,9 +23,9 @@ class Upload extends CI_Controller{
 	public function aksi_upload($id,$perencanaan){
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10000;
-		$config['max_height']           = 10000;
+		$config['max_size']             = 1000000;
+		$config['max_width']            = 1000000;
+		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload', $config);
@@ -56,9 +56,9 @@ class Upload extends CI_Controller{
 	public function aksi_upload_perencanaan($id){
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10000;
-		$config['max_height']           = 10000;
+		$config['max_size']             = 1000000;
+		$config['max_width']            = 1000000;
+		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload', $config);
@@ -98,9 +98,9 @@ class Upload extends CI_Controller{
 	public function aksi_upload_pengawasan($id,$per,$minggu){
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10000;
-		$config['max_height']           = 10000;
+		$config['max_size']             = 1000000;
+		$config['max_width']            = 1000000;
+		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload', $config);

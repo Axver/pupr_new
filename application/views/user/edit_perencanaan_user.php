@@ -1111,12 +1111,7 @@ else
 
         //Check jika kosong atau tidak
         console.log("a");
-        if(nama_paket=="" || nilai_paket==""|| jumlah_tahap==""||jenis_pekerjaan==""||masa_pelaksanaan==""||lokasi==""||tahun_anggaran=="")
-        {
-            alert("Data Tidak Boleh Kosong!!");
-        }
-        else
-        {
+  
             console.log("b");
             //    Jika data berisi maka lanjut di proses
             //Tambahkan Laporan Perencanaan Ke Database
@@ -1241,7 +1236,7 @@ else
                     alert("SUCCESS!!");
 
 
-        }
+
 
 
 
