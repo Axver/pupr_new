@@ -167,6 +167,29 @@ else
 											$i++;
 										}
 										?>
+
+										<input type="hidden" id="nilai_paket_jesi" value="	<?php
+										//										Ambil Id Paket Dahulu
+										$per=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+										$count=count($per);
+										$i=0;
+
+										while($i<$count)
+										{
+											$paket=$this->db->get_where("paket",array("id_paket"=>$per[$i]->id_paket))->result();
+											$count1=count($paket);
+											$ii=0;
+
+											while($ii<$count1)
+											{
+												echo $paket[$ii]->nilai_paket;
+
+												$ii++;
+											}
+
+											$i++;
+										}
+										?>">
 									</div>
 								</div>
 
@@ -275,6 +298,14 @@ else
 
 
 								</table>
+
+								<div class="row">
+									<div class="col-sm-4"></div>
+									<div class="col-sm-3"></div>
+									<div class="col-sm-1"></div>
+									<div class="col-sm-2"><b>Progress:</b></div>
+									<div class="col-sm-2" id="progress_hm"></div>
+								</div>
 
 								<br/>
 
@@ -466,6 +497,120 @@ else
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="tanggal_jesi" value="<?php echo $this->uri->segment('3'); ?>">
+<input type="hidden" id="perencanaan_jesi" value="<?php echo $this->uri->segment('4'); ?>">
+
+<script>
+
+	let tanggal_jesi=$("#tanggal_jesi").val();
+	// alert(tanggal_jesi);
+
+	tanggal_jesi=tanggal_jesi.split("-");
+	// alert(tanggal_jesi[1]);
+
+	let bulan_jesi=tanggal_jesi[1];
+	let perencanaan_jesi=$("#perencanaan_jesi").val();
+	let tahun_jesi=tanggal_jesi[0];
+
+//	Ambil datanya Jumlah Pekerja
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/pupr_new/user_pengawasan_data/progres",
+        data: {"bulan":bulan_jesi,"perencanaan":perencanaan_jesi,"tahun":tahun_jesi},
+        dataType: "text",
+        cache:false,
+        success:
+            function(data){
+                data=JSON.parse(data);
+                console.log(data);
+
+                let length=data.length;
+                let i=0;
+                let jum1=0;
+
+                while(i<length)
+				{
+				    jum1=data[i].count;
+				    i++;
+				}
+				jum1=jum1*80000;
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/pupr_new/user_pengawasan_data/progres1",
+                    data: {"bulan":bulan_jesi,"perencanaan":perencanaan_jesi,"tahun":tahun_jesi},
+                    dataType: "text",
+                    cache:false,
+                    success:
+                        function(data){
+                            data=JSON.parse(data);
+                            let length=data.length;
+                            let i=0;
+                            let jum2=0;
+
+                            while(i<length)
+                            {
+                                jum2=data[i].count;
+                                i++;
+                            }
+                            jum2=jum2*90000;
+                            console.log(data);
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost/pupr_new/user_pengawasan_data/progres2",
+                                data: {"bulan":bulan_jesi,"perencanaan":perencanaan_jesi,"tahun":tahun_jesi},
+                                dataType: "text",
+                                cache:false,
+                                success:
+                                    function(data){
+                                        data=JSON.parse(data);
+
+                                        //Hitung Jumlahnya
+										let length=data.length;
+										let i=0;
+										let jumlah=0;
+
+										while(i<length)
+										{
+										    jumlah=parseInt(jumlah)+(parseInt(data[i].count)*parseInt(data[i].harga));
+
+
+										    i++;
+										}
+
+                                        console.log(jum1);
+                                        console.log(jum2);
+										console.log(jumlah);
+                                        // console.log(data);
+
+                                        let nilai_paket=$("#nilai_paket_jesi").val();
+                                        console.log(nilai_paket);
+
+                                        $totalX=parseInt(jum1)+parseInt(jum2)+parseInt(jumlah);
+                                        $totalX=parseInt($totalX)/parseInt(nilai_paket);
+
+
+                                        $totalX=$totalX*100;
+                                        console.log($totalX);
+
+                                        $("#progress_hm").text($totalX+"%");
+
+                                    //    Baru masukkan ke dalam baris
+
+                                    //    Ambil Nilai Paket
+
+                                    }
+                            });
+                        }
+                });
+            }
+    });
+
+
+
+
+</script>
 
 
 <script>

@@ -27,6 +27,57 @@ class User_pengawasan_data extends CI_Controller {
 		$this->load->view('user/user_pengawasan_lampiran',$data);
 	}
 
+	public function progres()
+	{
+//		Select Gan
+       $bulan=$this->input->post("bulan");
+       $perencanaan=$this->input->post("perencanaan");
+       $tahun=$this->input->post("tahun");
+//       Baru Select Semuanya
+
+		$data=$this->db->query("SELECT SUM(jumlah_pekerja) as count FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun AND
+	MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$perencanaan'")->result();
+
+		echo json_encode($data);
+
+
+
+	}
+
+	public function progres1()
+	{
+//		Select Gan
+		$bulan=$this->input->post("bulan");
+		$perencanaan=$this->input->post("perencanaan");
+		$tahun=$this->input->post("tahun");
+//       Baru Select Semuanya
+
+		$data=$this->db->query("SELECT SUM(jumlah_tukang) as count FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun AND
+	MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$perencanaan'")->result();
+
+		echo json_encode($data);
+
+
+
+	}
+
+	public function progres2()
+	{
+//		Select Gan
+		$bulan=$this->input->post("bulan");
+		$perencanaan=$this->input->post("perencanaan");
+		$tahun=$this->input->post("tahun");
+//       Baru Select Semuanya
+
+		$data=$this->db->query("SELECT *,SUM(jumlah_bahan) as count FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerja=jenis_pekerjaan.id INNER JOIN satuan ON detail_bahan_alat_harian.id_satuan=satuan.id_satuan INNER JOIN jenis_bahan_alat ON detail_bahan_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$perencanaan' GROUP BY detail_bahan_alat_harian.id_jenis_bahan_alat");
+		$data=$data->result();
+
+		echo json_encode($data);
+
+
+
+	}
+
 
 
 
