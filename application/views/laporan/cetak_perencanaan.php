@@ -483,34 +483,7 @@ else
 
 				<b>Perencanaan Penggunaan Bahan/Alat </b>
 				<br/>
-				<div class="row">
-					<div class="col-sm-2">
-						<button onclick="addBahanAlat()" class="btn btn-info" style="width:100%">Add</button>
-					</div>
-					<div class="col-sm-4">
-						<select id="alat_bahan" class="form form-control">
-							<?php
 
-							$count=count($alat);
-							$i=0;
-							while($i<$count)
-							{
-								?>
-								<option value="<?php echo $alat[$i]->id_jenis_bahan_alat ?>"><?php echo $alat[$i]->jenis_bahan_alat; ?></option>
-								<?php
-								$i++;
-							}
-							?>
-						</select>
-						<a href="#" onclick="newBahan()">New</a>
-						<script>
-                            function newBahan() {
-                                $("#addBahan").modal("show");
-                            }
-						</script>
-					</div>
-
-				</div>
 				<br/>
 				<table id="tabel_alat" class="table table-striped" cellspacing="0" border="0">
 
@@ -673,7 +646,7 @@ else
 							if($count>0)
 							{
 								$loaksiM=$info_perencanaan[0]->lokasi;
-								$jenis_pekerjaanM=$info_perencanaan[0]->jenis_pekerjaan;
+//								$jenis_pekerjaanM=$info_perencanaan[0]->jenis_pekerjaan;
 								$panjang_penangananM=$info_perencanaan[0]->panjang_penanganan;
 								$keterangan_dimensiM=$info_perencanaan[0]->keterangan_dimensi;
 								$keteranganM=$info_perencanaan[0]->keterangan;
