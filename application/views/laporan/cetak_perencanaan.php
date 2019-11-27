@@ -1163,6 +1163,25 @@ else
                             "\n" +
                             "\t\t\t\t\t\t\t\t\t</tr>";
                         $("#tabel_jumlah").append(newRow);
+
+
+                        let y=1;
+
+                        while(y<=60)
+                        {
+                            var data_=pekerjaan_id+"_"+y;
+                            console.log(data_);
+                            var data2=pekerjaan_id+"__"+y;
+                            data_=data_.toString();
+                            // data1=data1.toString();
+                            // console.log(data);
+                            let newCol="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"  onclick=\"warnai('"+data_+"')\" id='"+data_+"' class='nonActive'></td>";
+                            var newCol1="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" onclick=\"warnai1('"+data2+"')\" id='"+data2+"' class='nonActive1'></td>";
+                            $("#"+data1[x].id+pekerjaan_id).append(newCol);
+                            $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
+                            // $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
+                            y++;
+                        }
                     }
 
 
@@ -1171,23 +1190,6 @@ else
 
 
 
-                    let y=1;
-
-                    while(y<=60)
-                    {
-                        var data_=pekerjaan_id+"_"+y;
-                        console.log(data_);
-                        var data2=pekerjaan_id+"__"+y;
-                        data_=data_.toString();
-                        // data1=data1.toString();
-                        // console.log(data);
-                        let newCol="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\"  onclick=\"warnai('"+data_+"')\" id='"+data_+"' class='nonActive'></td>";
-                        var newCol1="<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\" onclick=\"warnai1('"+data2+"')\" id='"+data2+"' class='nonActive1'></td>";
-                        $("#"+data1[x].id+pekerjaan_id).append(newCol);
-                        $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
-                        // $("#pekerjaan_waktu"+pekerjaan_id).append(newCol1);
-                        y++;
-                    }
 
 
                     x++;
