@@ -208,6 +208,8 @@ else
 									?>
 								</select>
 								<br/>
+								<b>Progress Selanjutnya</b>
+								<input type="text" class="form form-control" id="selanjutnya">
 								<br/>
 
 								<button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
@@ -259,7 +261,7 @@ else
 											<div class="row">
 												<div class="col-sm-6">Progres Fisik Selanjutnya</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-5"></div>
+												<div class="col-sm-5" id="progres_selanjutnya"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-6">Progres Fisik Total</div>
@@ -1222,6 +1224,11 @@ else
        let total=parseInt(total_sekarang)+parseInt(total_lalu);
 
        $("#progres_total").text(total+"%");
+
+
+   //    Progress Selanjutnya bulanan
+	   selanjutnya=$("#selanjutnya").val();
+	   $("#progres_selanjutnya").text(selanjutnya+"%");
    }
 
    //Query Untuk Jumlah Pekerja
