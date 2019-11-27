@@ -253,7 +253,7 @@ else
 											<div class="row">
 												<div class="col-sm-6">Progres Fisik Periode Lalu</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-5"></div>
+												<div class="col-sm-5" id="progres_fisik_lalu"></div>
 											</div>
 											<div class="row">
 												<div class="col-sm-6">Progres Fisik Selanjutnya</div>
@@ -1046,6 +1046,160 @@ else
                    });
                }
        });
+
+
+
+       //Untuk mengisi Progress Sebelumnya
+	   let bulanq=parseInt(bulanp)-1;
+       $.ajax({
+           type: "POST",
+           url: "http://localhost/pupr_new/generate_bulan/progres1",
+           data: {"id_paket":id_paket,"perencanaan":laperp,"bulan":bulanq},
+           dataType: "text",
+           cache:false,
+           success:
+               function(data){
+                   // alert(data);  //as a debugging message.
+                   // alert(data);
+                   data=JSON.parse(data);
+                   let jum_per=0;
+                   let length=data.length;
+                   let i=0;
+
+                   while(i<length)
+                   {
+                       jum_per=data[i].count;
+
+                       i++;
+                   }
+
+                   jum_per=parseInt(jum_per)*80000;
+
+
+                   $.ajax({
+                       type: "POST",
+                       url: "http://localhost/pupr_new/generate_bulan/progres2",
+                       data: {"id_paket":id_paket,"perencanaan":laperp,"bulan":bulanq},
+                       dataType: "text",
+                       cache:false,
+                       success:
+                           function(data){
+                               // alert(data);  //as a debugging message.
+                               // alert(data);
+                               data=JSON.parse(data);
+
+
+                               let jum_tuk=0;
+                               let length=data.length;
+                               let i=0;
+
+                               while(i<length)
+                               {
+                                   jum_tuk=data[i].count;
+
+                                   i++;
+                               }
+
+                               jum_tuk=parseInt(jum_tuk)*90000;
+
+
+
+
+                               //    Selanjutnya alat dan bahan
+
+                               $.ajax({
+                                   type: "POST",
+                                   url: "http://localhost/pupr_new/generate_bulan/progres3",
+                                   data: {"id_paket":id_paket,"perencanaan":laperp,"bulan":bulanq},
+                                   dataType: "text",
+                                   cache:false,
+                                   success:
+                                       function(data){
+                                           // alert(data);  //as a debugging message.
+                                           // alert(data);
+                                           data=JSON.parse(data);
+
+
+                                           let jum_al=0;
+                                           let length=data.length;
+                                           let i=0;
+
+                                           // let jumjum=0;
+
+                                           while(i<length)
+                                           {
+                                               jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+
+
+                                               i++;
+                                           }
+
+
+
+
+
+                                           //    Selanjutnya alat dan bahan
+
+                                           //   Nilai Paketnya
+
+                                           $.ajax({
+                                               type: "POST",
+                                               url: "http://localhost/pupr_new/generate_bulan/progres4",
+                                               data: {"id_paket":id_paket,"perencanaan":laperp,"bulan":bulanq},
+                                               dataType: "text",
+                                               cache:false,
+                                               success:
+                                                   function(data){
+                                                       // alert(data);  //as a debugging message.
+                                                       // alert(data);
+                                                       data=JSON.parse(data);
+
+
+                                                       let nilai_paket=0;
+                                                       let length=data.length;
+                                                       let i=0;
+
+                                                       // let jumjum=0;
+
+                                                       while(i<length)
+                                                       {
+                                                           nilai_paket=data[i].nilai_paket;
+
+
+                                                           i++;
+                                                       }
+
+                                                       nilai_paket=parseInt(nilai_paket);
+
+                                                       // jum_tuk=parseInt(jum_tuk)*90000;
+
+                                                       console.log("------");
+                                                       console.log(jum_per);
+                                                       console.log(jum_tuk);
+                                                       console.log(jum_al);
+                                                       console.log(nilai_paket);
+                                                       console.log("------");
+
+                                                       let hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                       hasil_akhir=hasil_akhir*100;
+
+                                                       $("#progres_fisik_lalu").text(hasil_akhir+"%");
+
+
+
+
+
+                                                   }
+                                           });
+
+                                       }
+                               });
+
+                           }
+                   });
+               }
+       });
+
 
        swal("Generate Tabel Selesai!!");
    }
