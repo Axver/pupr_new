@@ -1260,7 +1260,7 @@ else
                                 function (data) {
                                     data = JSON.parse(data);
 
-                                    let jumlah_tukang_total;
+                                    let jumlah_tukang_total=0;
                                     let length=data.length;
                                     let i=0;
                                     while(i<length)
@@ -1318,7 +1318,7 @@ else
                                                             data=JSON.parse(data);
                                                             let length=data.length;
                                                             let i=0;
-                                                            let nilai_paket;
+                                                            let nilai_paket=0;
                                                             while(i<length)
 															{
 															    nilai_paket=data[i].nilai_paket;

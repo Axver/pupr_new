@@ -527,7 +527,7 @@ else
 
                 let length=data.length;
                 let i=0;
-                let jum1=0;
+                let jum1;
 
                 while(i<length)
 				{
@@ -547,7 +547,7 @@ else
                             data=JSON.parse(data);
                             let length=data.length;
                             let i=0;
-                            let jum2=0;
+                            let jum2;
 
                             while(i<length)
                             {
@@ -586,6 +586,8 @@ else
 
                                         let nilai_paket=$("#nilai_paket_jesi").val();
                                         console.log(nilai_paket);
+
+
 
                                         $totalX=parseInt(jum1)+parseInt(jum2)+parseInt(jumlah);
                                         $totalX=parseInt($totalX)/parseInt(nilai_paket);
