@@ -1180,7 +1180,7 @@ else
         progress_now();
         //Progres fisik
         let selanjutnya=$("#progres_selanjutnya").val();
-        $("#progress-fisik-next").text(selanjutnya);
+        $("#progress-fisik-next").text(selanjutnya+"%");
 
         //Progress Total
 
@@ -1332,7 +1332,8 @@ else
 															// console.log(total_all);
 
                                                             hasil_akhir=parseFloat(hasil_akhir);
-                                                            hasil_akhir=hasil_akhir.toFixed(2)
+                                                            hasil_akhir=hasil_akhir.toFixed(2);
+                                                            hasil_akhir=hasil_akhir*100;
 
                                                         //    Append kan datanya gan
 															if(Number.isNaN(hasil_akhir))
@@ -1519,6 +1520,7 @@ else
                                                             hasil_akhir=parseFloat(hasil_akhir);
                                                             console.log(hasil_akhir);
                                                             hasil_akhir=hasil_akhir.toFixed(2);
+                                                            hasil_akhir=parseFloat(hasil_akhir)*100;
 
                                                             //    Append kan datanya gan
                                                             if(Number.isNaN(hasil_akhir))
@@ -1691,6 +1693,7 @@ else
 
                                                             hasil_akhir=parseFloat(hasil_akhir);
                                                             hasil_akhir=hasil_akhir.toFixed(2);
+                                                            hasil_akhir=parseFloat(hasil_akhir)*100;
 
                                                             //    Append kan datanya gan
 															if(Number.isNaN(hasil_akhir))
@@ -1745,7 +1748,7 @@ else
 
         //Jumlahkan
 		let fixed=parseFloat(now)+parseFloat(then);
-        $("#progress-fisik-total").text(fixed);
+        $("#progress-fisik-total").text(fixed+"%");
 
 
 
