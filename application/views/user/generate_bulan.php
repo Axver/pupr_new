@@ -211,6 +211,8 @@ else
 								<b>Progress Selanjutnya</b>
 								<input type="text" class="form form-control" id="selanjutnya">
 								<br/>
+								<b>Pagu</b>
+								<input type="text" class="form form-control" id="pagu">
 
 								<button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
 								<!--								Disini Posisi Tabelnya-->
@@ -245,7 +247,7 @@ else
 											<div class="row">
 												<div class="col-sm-3">Pagu</div>
 
-												<div class="col-sm-3">:</div>
+												<div class="col-sm-3" id="pagu_isi">:</div>
 											</div></div>
 										<div class="col-sm-5" style="border:2px solid black;">
 											<div class="row">
@@ -467,6 +469,8 @@ else
 
    function generateTabel()
    {
+       let pagu_isi=$("#pagu").val();
+       $("#pagu_isi").append(pagu_isi);
        $("#lokasi_jesi").empty();
        $("#nama_paket_1").empty();
 
