@@ -185,6 +185,7 @@ else
 								<br/>
 
 								<button onclick="generateTabel()" class="btn btn-info">Generate</button>
+								<button onclick="prediksi()" class="btn btn-info">Progress</button>
 <!--								<button onclick="testJesi()" class="btn btn-info">Generate Data</button>-->
 								<br/>
 								<br/>
@@ -263,7 +264,7 @@ else
 											<div class="row">
 												<div class="col-sm-6">Progres Fisik Total</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-5"></div>
+												<div class="col-sm-5" id="progres_total"></div>
 											</div>
 										</div>
 									</div>
@@ -1201,7 +1202,26 @@ else
        });
 
 
+
+
+
+
        swal("Generate Tabel Selesai!!");
+   }
+
+
+   function prediksi()
+   {
+       //Progress Total
+       let total_sekarang=$("#progres_pekerjaan").text();
+       let total_lalu=$("#progres_fisik_lalu").text();
+
+       total_sekarang=total_sekarang.substring(0, total_sekarang.length - 1);
+       total_lalu=total_lalu.substring(0, total_lalu.length - 1);
+
+       let total=parseInt(total_sekarang)+parseInt(total_lalu);
+
+       $("#progres_total").text(total+"%");
    }
 
    //Query Untuk Jumlah Pekerja
