@@ -481,6 +481,8 @@ else
 					</tbody>
 				</table>
 
+				<div class="break"></div>
+
 				<b>Perencanaan Penggunaan Bahan/Alat </b>
 				<br/>
 
