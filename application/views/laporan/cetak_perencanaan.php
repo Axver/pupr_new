@@ -647,7 +647,7 @@ th,td,tr {
 							 }
 							 ?>
 							 <td cellspacing="'0'" width="20%" id="lokasiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $loaksiM ?></td>
-							 <td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $jenis_pekerjaanM ?></td>
+							 <td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
 							 <td cellspacing="'0'" width="20%" id="panjang_penangananM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $panjang_penangananM ?></td>
 							 <td cellspacing="'0'" width="20%" id="keterangan_dimensiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo  $keterangan_dimensiM ?></td>
 							 <td cellspacing="'0'" width="20%" id="ketM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $keteranganM ?></td>
@@ -1137,6 +1137,7 @@ th,td,tr {
                      if($("#" +data1[x].id+pekerjaan_id).length == 0) {
                          //it doesn't exist
 						 $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
+                         $("#jenis_pekerjaanM").text(pekerjaan_text);
 
                          var newRow="\t<tr  id='"+data1[x].id+pekerjaan_id+"'>\n" +
                              "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\">"+pekerjaan_text+"</td>\n" +

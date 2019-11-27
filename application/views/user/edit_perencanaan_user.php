@@ -1111,7 +1111,7 @@ else
 
         //Check jika kosong atau tidak
         console.log("a");
-  
+
             console.log("b");
             //    Jika data berisi maka lanjut di proses
             //Tambahkan Laporan Perencanaan Ke Database
@@ -1463,7 +1463,7 @@ $.ajax({
 			while(i<length)
 			{
                 var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
-                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].id_jenis_bahan_alat+"</td>\n" +
+                    "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +
                     "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
                     "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
                     "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
