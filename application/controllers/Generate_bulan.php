@@ -128,4 +128,113 @@ public function data()
 //echo "SELECT *,COUNT(jumlah_pekerja) FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun AND MONTH(id_lap_harian_mingguan) = $bulan AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerja";
 	}
 
+	public function progres1()
+	{
+		$id_paket=$this->input->post("id_paket");
+		$perencanaan=$this->input->post("perencanaan");
+		$bulan=$this->input->post("bulan");
+
+//		Dapatkan tahun terlebih dahulu
+		$tahun=$this->db->get_where("paket")->result();
+
+		$count=count($tahun);
+		$i=0;
+
+		while($i<$count)
+		{
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+//		Tahun 1 dapat
+
+//		Selectd ari database
+
+		$data=$this->db->query("SELECT SUM(jumlah_pekerja )as count FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun1 AND MONTH(id_lap_harian_mingguan) = '$bulan' AND id_lap_perencanaan='$perencanaan'")->result();
+		echo json_encode($data);
+	}
+
+	public function progres2()
+	{
+		$id_paket=$this->input->post("id_paket");
+		$perencanaan=$this->input->post("perencanaan");
+		$bulan=$this->input->post("bulan");
+
+//		Dapatkan tahun terlebih dahulu
+		$tahun=$this->db->get_where("paket")->result();
+
+		$count=count($tahun);
+		$i=0;
+
+		while($i<$count)
+		{
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+//		Tahun 1 dapat
+
+//		Selectd ari database
+
+		$data=$this->db->query("SELECT SUM(jumlah_tukang )as count FROM detail_bahan_alat_harian WHERE YEAR(id_lap_harian_mingguan) = $tahun1 AND MONTH(id_lap_harian_mingguan) = '$bulan' AND id_lap_perencanaan='$perencanaan'")->result();
+		echo json_encode($data);
+	}
+
+	public function progres3()
+	{
+		$id_paket=$this->input->post("id_paket");
+		$perencanaan=$this->input->post("perencanaan");
+		$bulan=$this->input->post("bulan");
+
+//		Dapatkan tahun terlebih dahulu
+		$tahun=$this->db->get_where("paket")->result();
+
+		$count=count($tahun);
+		$i=0;
+
+		while($i<$count)
+		{
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+//		Tahun 1 dapat
+
+//		Selectd ari database
+
+		$data=$this->db->query("SELECT *,SUM(jumlah_bahan )as count FROM detail_bahan_alat_harian INNER JOIN jenis_bahan_alat ON detail_bahan_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat WHERE YEAR(id_lap_harian_mingguan) = $tahun1 AND MONTH(id_lap_harian_mingguan) = '$bulan' AND id_lap_perencanaan='$perencanaan' GROUP BY detail_bahan_alat_harian.id_jenis_bahan_alat")->result();
+		echo json_encode($data);
+	}
+
+	public function progres4()
+	{
+		$id_paket=$this->input->post("id_paket");
+		$perencanaan=$this->input->post("perencanaan");
+		$bulan=$this->input->post("bulan");
+
+//		Dapatkan tahun terlebih dahulu
+		$tahun=$this->db->get_where("paket")->result();
+
+		$count=count($tahun);
+		$i=0;
+
+		while($i<$count)
+		{
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+//		Tahun 1 dapat
+
+//		Selectd ari database
+
+		$data=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+//		$data=$this->db->query("SELECT *,SUM(jumlah_bahan )as count FROM detail_bahan_alat_harian INNER JOIN jenis_bahan_alat ON detail_bahan_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat WHERE YEAR(id_lap_harian_mingguan) = $tahun1 AND MONTH(id_lap_harian_mingguan) = '$bulan' AND id_lap_perencanaan='$perencanaan' GROUP BY detail_bahan_alat_harian.id_jenis_bahan_alat")->result();
+		echo json_encode($data);
+	}
+
 }
