@@ -256,6 +256,9 @@ else
 								<b>Progres Selanjutnya:</b>
 								<input type="text" class="form form-control" id="progres_selanjutnya">
 								<br/>
+								<b>Pagu</b>
+								<input type="text" class="form form-control" id="pagu">
+								<br/>
 
 
                                  <button class="btn btn-success" onclick="generatePDF()" style="width:100%;">Generate PDF</button>
@@ -290,7 +293,7 @@ else
 											<div class="row">
 												<div class="col-sm-3">Pagu</div>
 												<div class="col-sm-1">:</div>
-												<div class="col-sm-3"></div>
+												<div class="col-sm-3" id="pagu_isi"></div>
 											</div>
 										</div>
 										<div class="col-sm-4" style="border:1px solid black;">
@@ -554,6 +557,8 @@ else
 
 	function generateTabel()
 	{
+        let pagu_isi=$("#pagu").val();
+        $("#pagu_isi").append(pagu_isi);
 	    //Bulan minggu
 
 	    let nama_paket=$("#id_paket option:selected").text();
