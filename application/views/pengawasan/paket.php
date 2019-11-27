@@ -164,7 +164,40 @@ else
 										{
 										    // alert(id);
 										    $("#id_paket_alih").val(id);
+
+										    //Ganti Ke Nama
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "http://localhost/pupr_new/pengawasan/nama",
+												async:false,
+                                                data: {"id_paket":id},
+                                                dataType: "text",
+                                                cache:false,
+                                                success:
+                                                    function(data){
+                                                        // alert(data);  //as a debugging message.
+                                                        data=JSON.parse(data);
+                                                        console.log(data);
+                                                        let length=data.length;
+                                                        let i=0;
+
+                                                        let ganti_nama;
+
+                                                        while(i<length)
+                                                        {
+                                                            ganti_nama=data[i].nama;
+                                                            // alert(ganti_nama);
+                                                            $("#id_paket_alih1").val(ganti_nama);
+
+
+                                                            i++;
+                                                        }
+                                                    }
+                                            });
+
+
 										    $("#modalAlih").modal("show");
+										//
 										}
 
 
@@ -209,7 +242,8 @@ else
 											</div>
 											<div class="modal-body">
 												Paket:
-												<input type="text" class="form form-control" id="id_paket_alih" disabled>
+												<input type="text" class="form form-control" id="id_paket_alih1" disabled>
+												<input type="hidden" class="form form-control" id="id_paket_alih" disabled>
 												Kepada User:
 												<select id="id_user_alih" class="form form-control">
 													<?php
@@ -302,6 +336,13 @@ else
 		</div>
 	</div>
 </div>
+
+<script>
+
+
+
+
+</script>
 
 
 

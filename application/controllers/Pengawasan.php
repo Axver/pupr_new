@@ -108,4 +108,13 @@ class Pengawasan extends CI_Controller {
 			redirect(base_url());
 		}
 	}
+
+	public function nama()
+	{
+//		Select Namanya
+		$id_paket=$this->input->post("id_paket");
+		$data=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+
+		echo json_encode($data);
+	}
 }
