@@ -91,7 +91,7 @@ class Upload extends CI_Controller{
 			$this->db->insert("gambar_perencanaan",$inputGambar);
 
 
-			redirect('user_perencanaan');
+			redirect('user_perencanaan_');
 		}
 	}
 
