@@ -75,11 +75,7 @@ class Ttd_info extends CI_Controller
     
     public function create_action() 
     {
-        $this->_rules();
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
         	$id=$this->db->query("SELECT MAX(CAST(id_konfigurasi AS INT))as max FROM konfigurasi")->result();
         	$max=0;
         	$count=count($id);
@@ -100,7 +96,7 @@ class Ttd_info extends CI_Controller
             $this->Ttd_info_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('ttd_info'));
-        }
+
     }
     
     public function update($id) 

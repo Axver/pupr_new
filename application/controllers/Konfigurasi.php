@@ -75,9 +75,7 @@ class Konfigurasi extends CI_Controller
     {
         $this->_rules();
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
+
 //        	MAX
 			$max=$this->db->query("SELECT MAX(CAST(id_konfigurasi AS INT)) as max FROM konfigurasi")->result();
 			$max=$max[0]->max+1;
@@ -90,7 +88,7 @@ class Konfigurasi extends CI_Controller
             $this->Konfigurasi_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('konfigurasi'));
-        }
+
     }
     
     public function update($id) 
