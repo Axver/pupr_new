@@ -247,7 +247,7 @@ else
 
 												<div class="col-sm-3">:</div>
 											</div></div>
-										<div class="col-sm-6">
+										<div class="col-sm-5" style="border:2px solid black;">
 											<div class="row">
 												<div class="col-sm-6">Progres Pekerjaan</div>
 												<div class="col-sm-1">:</div>
