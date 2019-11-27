@@ -1145,7 +1145,7 @@ else
                     if($("#" +data1[x].id+pekerjaan_id).length == 0) {
                         //it doesn't exist
                         $("#jenis_pekerjaan_jesi").append('<br/>'+pekerjaan_text);
-                        $("#jenis_pekerjaanM").append("-"+pekerjaan_text+"<br/>");
+                        $("#jenis_pekerjaanM").text(pekerjaan_text);
 
                         var newRow="\t<tr  id='"+data1[x].id+pekerjaan_id+"'>\n" +
                             "\t\t\t\t\t\t\t\t\t\t<td cellspacing='0' style=\"border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000\">"+pekerjaan_text+"</td>\n" +
@@ -1255,7 +1255,8 @@ else
                     let i=0;
                     while(i<length)
                     {
-                        if($("#pekerjaan_waktu" +data[i].id_jenis_bahan_alat).length == 0) {
+                        if($("#pekerjaan_waktu_" +data[i].id_jenis_bahan_alat).length == 0) {
+
                             var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
                                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +
                                 "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
@@ -1268,7 +1269,6 @@ else
                                 "\t\t\t\t\t\t\t\t\t</tr>";
                             $("#tabel_alat").append(newRowX);
                             let x=1;
-
                             while(x<=60)
                             {
                                 let data_=data[i].id_jenis_bahan_alat+"___"+x;
@@ -1283,16 +1283,13 @@ else
                                 x++;
                             }
 
-
                             // alert(data[i].id_jenis_bahan_alat+"___"+data[i].minggu);
                             $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).text(data[i].jumlah);
                             $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).removeClass( "nonActive2" );
                             $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].minggu).addClass( "Active2" );
 
+
                         }
-
-
-
 
 
                         i++;
