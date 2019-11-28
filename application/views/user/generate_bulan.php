@@ -922,7 +922,12 @@ else
 
 				   while(i<length)
 				   {
-				       jum_per=data[i].count;
+				       if(data[i].count!=null)
+					   {
+                           jum_per=data[i].count;
+					   }
+
+
 
 				       i++;
 				   }
@@ -949,7 +954,12 @@ else
 
                                while(i<length)
                                {
-                                   jum_tuk=data[i].count;
+                                   if(data[i].count!=null)
+                                   {
+                                       jum_tuk=data[i].count;
+                                   }
+
+
 
                                    i++;
                                }
@@ -982,7 +992,11 @@ else
 
                                            while(i<length)
                                            {
-                                               jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+                                               if(data[i].count!=null)
+                                               {
+                                                   jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+
+                                               }
 
 
                                                i++;
@@ -1034,7 +1048,11 @@ else
                                                        console.log(nilai_paket);
                                                        console.log("------");
 
-                                                       let hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                       let hasil_akhir=(jum_al+jum_tuk+jum_per);
+                                                       if(hasil_akhir!=0)
+													   {
+													       hasil_akhir=hasil_akhir/nilai_paket;
+													   }
                                                        hasil_akhir=hasil_akhir*100;
 
                                                        $("#progres_pekerjaan").text(hasil_akhir+"%");
@@ -1075,7 +1093,11 @@ else
 
                    while(i<length)
                    {
-                       jum_per=data[i].count;
+                       if(data[i].count!=null)
+                       {
+                           jum_per=data[i].count;
+                       }
+
 
                        i++;
                    }
@@ -1102,7 +1124,11 @@ else
 
                                while(i<length)
                                {
-                                   jum_tuk=data[i].count;
+                                   if(data[i].count!=null)
+                                   {
+                                       jum_tuk=data[i].count;
+                                   }
+
 
                                    i++;
                                }
@@ -1135,7 +1161,11 @@ else
 
                                            while(i<length)
                                            {
-                                               jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+                                               if(data[i].count!=null)
+                                               {
+                                                   jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+
+                                               }
 
 
                                                i++;
@@ -1187,7 +1217,11 @@ else
                                                        console.log(nilai_paket);
                                                        console.log("------");
 
-                                                       let hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                       let hasil_akhir=(jum_al+jum_tuk+jum_per);
+                                                       if(hasil_akhir!=0)
+													   {
+													       hasil_akhir=hasil_akhir/nilai_paket;
+													   }
                                                        hasil_akhir=hasil_akhir*100;
 
                                                        $("#progres_fisik_lalu").text(hasil_akhir+"%");

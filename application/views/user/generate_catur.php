@@ -1797,7 +1797,10 @@ else
 
                     while(i<length)
                     {
-                        jum_per=data[i].count;
+                        if(data[i].count!=null) {
+                            jum_per=data[i].count;
+                        }
+
 
                         i++;
                     }
@@ -1858,7 +1861,11 @@ else
 
                                             while(i<length)
                                             {
-                                                jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+                                                if(data[i].count!=null) {
+                                                    jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+                                                }
+
+
 
 
                                                 i++;
@@ -1894,13 +1901,37 @@ else
 
                                                         while(i<length)
                                                         {
-                                                            nilai_paket=data[i].nilai_paket;
+
+                                                                nilai_paket=data[i].nilai_paket;
+
+
 
 
                                                             i++;
                                                         }
+                                                        let hasil_akhir=0;
 
-                                                        nilai_paket=parseInt(nilai_paket);
+
+
+
+
+                                                        // alert(nilai_paket);
+                                                            nilai_paket=parseInt(nilai_paket);
+                                                            hasil_akhir=(jum_al+jum_tuk+jum_per);
+
+                                                            if(hasil_akhir!=0)
+															{
+                                                                hasil_akhir=hasil_akhir/nilai_paket;
+															}
+                                                            else
+															{
+
+															}
+
+
+
+
+
 
                                                         // jum_tuk=parseInt(jum_tuk)*90000;
 
@@ -1910,8 +1941,8 @@ else
                                                         console.log(jum_al);
                                                         console.log(nilai_paket);
                                                         console.log("------");
-                                                        let hasil_akhir=0;
-                                                        hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+
+
                                                         hasil_akhir=hasil_akhir*100;
 
                                                         $("#progres_pekerjaan").text(hasil_akhir+"%");
@@ -2066,9 +2097,9 @@ else
 
                                                         while(i<length)
                                                         {
-                                                            if(data[i].count!=null) {
+
                                                                 nilai_paket=data[i].nilai_paket;
-                                                            }
+
 
 
 
@@ -2092,13 +2123,13 @@ else
 
                                                         hasil_akhir=parseInt(jum_al)+parseInt(jum_tuk)+parseInt(jum_per);
                                                         // alert(hasil_akhir);
-                                                        if(hasil_akhir==0)
+                                                        if(hasil_akhir!=0)
 														{
-
+                                                            hasil_akhir=parseInt(hasil_akhir)/parseInt(nilai_paket);
 														}
                                                         else
 														{
-                                                            hasil_akhir=parseInt(hasil_akhir)/parseInt(nilai_paket);
+
 														}
 
                                                         // alert(hasil_akhir);
