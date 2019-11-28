@@ -92,6 +92,7 @@
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
 				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
 				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
+				<a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a>
 
 
 			</div>
@@ -159,6 +160,7 @@
 					<a class="collapse-item" href="<?php echo base_url('lap_pengawasan_force') ?>">Laporan Pengawasan</a>
 					<a class="collapse-item" href="<?php echo base_url('lap_harian_force') ?>">Laporan Harian</a>
 					<a class="collapse-item" href="<?php echo base_url('tukang_force') ?>">Tukang Harian Add</a>
+
 
 
 
