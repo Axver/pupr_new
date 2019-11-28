@@ -1827,7 +1827,10 @@ else
 
                                 while(i<length)
                                 {
-                                    jum_tuk=data[i].count;
+                                    if(data[i].count!=null) {
+                                        jum_tuk=data[i].count;
+                                    }
+
 
                                     i++;
                                 }
