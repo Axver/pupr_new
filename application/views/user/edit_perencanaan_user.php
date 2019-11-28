@@ -924,14 +924,16 @@ else
     function warnai(id)
     {
         let col_id=$("#"+id);
-        let id2;
+        let id2='';
         id2=id.replace("_","__");
+
+        // alert(id2);
         let col_id2=$("#"+id2);
         let class_=col_id.attr('class');
         if(class_=="nonActive")
         {
             col_id.css("background-color","yellow");
-            $("#"+id2).text(' ');
+            // $("#"+id2).text(' ');
             col_id.removeClass("nonActive");
             col_id.addClass("Active");
             col_id2.removeClass("nonActive1");
@@ -944,12 +946,13 @@ else
         else
         {
             $("#"+id2).text(' ');
+            // alert(id2);
             col_id.css("background-color","white");
             col_id.removeClass("Active");
             col_id.addClass("nonActive");
             col_id2.removeClass("Active1");
             col_id2.addClass("nonActive1");
-            removeValue(col_id);
+            // removeValue(col_id);
         }
 
     }
