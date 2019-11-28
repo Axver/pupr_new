@@ -1951,7 +1951,11 @@ else
 
                     while(i<length)
                     {
-                        jum_per=data[i].count;
+                        if(data[i].count!=null)
+                        {
+                            jum_per=data[i].count;
+                        }
+
 
                         i++;
                     }
@@ -1971,14 +1975,24 @@ else
                                 // alert(data);
                                 data=JSON.parse(data);
 
+                                console.log("---------");
+                                console.log(data);
+                                console.log("---------");
+
 
                                 let jum_tuk=0;
                                 let length=data.length;
                                 let i=0;
 
+
+
                                 while(i<length)
                                 {
-                                    jum_tuk=data[i].count;
+                                    if(data[i].count!=null)
+									{
+                                        jum_tuk=data[i].count;
+									}
+
 
                                     i++;
                                 }
@@ -2012,7 +2026,11 @@ else
 
                                             while(i<length)
                                             {
-                                                jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+                                                if(data[i].count!=null) {
+                                                    jum_al=parseInt(jum_al)+(parseInt(data[i].count)*parseInt(data[i].harga));
+
+                                                }
+
 
 
                                                 i++;
@@ -2040,7 +2058,7 @@ else
                                                         data=JSON.parse(data);
 
 
-                                                        let nilai_paket=0;
+                                                        let nilai_paket=1;
                                                         let length=data.length;
                                                         let i=0;
 
@@ -2048,13 +2066,19 @@ else
 
                                                         while(i<length)
                                                         {
-                                                            nilai_paket=data[i].nilai_paket;
+                                                            if(data[i].count!=null) {
+                                                                nilai_paket=data[i].nilai_paket;
+                                                            }
+
+
 
 
                                                             i++;
                                                         }
 
                                                         nilai_paket=parseInt(nilai_paket);
+
+                                                        // alert(nilai_paket);
 
                                                         // jum_tuk=parseInt(jum_tuk)*90000;
 
@@ -2064,9 +2088,20 @@ else
                                                         console.log(jum_al);
                                                         console.log(nilai_paket);
                                                         console.log("------");
-                                                        let hasil_akhir=0;
+                                                        // let hasil_akhir=0;
 
-                                                        hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                        hasil_akhir=parseInt(jum_al)+parseInt(jum_tuk)+parseInt(jum_per);
+                                                        // alert(hasil_akhir);
+                                                        if(hasil_akhir==0)
+														{
+
+														}
+                                                        else
+														{
+                                                            hasil_akhir=parseInt(hasil_akhir)/parseInt(nilai_paket);
+														}
+
+                                                        // alert(hasil_akhir);
                                                         hasil_akhir=hasil_akhir*100;
 
                                                         $("#progres_sebelumnya").text(hasil_akhir+"%");
