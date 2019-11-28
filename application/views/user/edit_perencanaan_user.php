@@ -865,6 +865,8 @@ else
 	</div>
 </div>
 
+
+
 <script>
     let save_pekerjaan= new Array();
 
@@ -922,12 +924,18 @@ else
     function warnai(id)
     {
         let col_id=$("#"+id);
+        let id2;
+        id2=id.replace("_","__");
+        let col_id2=$("#"+id2);
         let class_=col_id.attr('class');
         if(class_=="nonActive")
         {
             col_id.css("background-color","yellow");
+            $("#"+id2).text(' ');
             col_id.removeClass("nonActive");
             col_id.addClass("Active");
+            col_id2.removeClass("nonActive1");
+            col_id2.addClass("Active1");
             $("#id_column").val(id);
             $('#modalWaktu').modal('show');
 
@@ -935,9 +943,12 @@ else
         }
         else
         {
+            $("#"+id2).text(' ');
             col_id.css("background-color","white");
             col_id.removeClass("Active");
             col_id.addClass("nonActive");
+            col_id2.removeClass("Active1");
+            col_id2.addClass("nonActive1");
             removeValue(col_id);
         }
 
@@ -955,17 +966,17 @@ else
         console.log(col_id);
         console.log($("#"+col_id).attr('class'));
         let data_class=$("#"+col_id).attr('class');
-
-        if(data_class=="nonActive1")
-        {
-            $("#"+col_id).removeClass("nonActive1");
-            $("#"+col_id).addClass("Active1");
-        }
-        else
-        {
-            $("#"+col_id).removeClass("Active1");
-            $("#"+col_id).addClass("nonActive1");
-        }
+		//
+        // if(data_class=="nonActive1")
+        // {
+        //     $("#"+col_id).removeClass("nonActive1");
+        //     $("#"+col_id).addClass("Active1");
+        // }
+        // else
+        // {
+        //     $("#"+col_id).removeClass("Active1");
+        //     $("#"+col_id).addClass("nonActive1");
+        // }
 
 
     }
@@ -1084,6 +1095,7 @@ else
         let i=0;
         let dataArray=new Array();
         let dataArray1=new Array();
+        //let id_paket=<?php //echo $this->uri->segment('3') ?>
 
         $(".Active").each(function (index, element) {
 
@@ -1250,13 +1262,15 @@ else
 
     $.ajax({
         type: "POST",
-        url: "http://localhost/pupr_new/user/detail_paket/",
+        url: "http://localhost/pupr_new/user/detail_paket1/",
         data: {"id_paket":uri_nya},
         dataType: "text",
         cache:false,
         success:
             function(data){
+            // alert(data);
                 data=JSON.parse(data);
+
                 console.log(data);
 
                 $("#nama_paket").val(data[0].id_paket+"_"+data[0].tahun);

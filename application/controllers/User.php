@@ -34,7 +34,30 @@ class User extends CI_Controller {
 		$id_paket=$this->input->post("id_paket");
 
 		$query=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+
+//		Kemudian pilih id paketnya dari id perencanaan tersebut
 		echo json_encode($query);
+	}
+
+	public function detail_paket1()
+	{
+		$id_paket=$this->input->post("id_paket");
+
+		$query=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$id_paket))->result();
+
+		$count=count($query);
+		$i=0;
+
+		while($i<$count)
+		{
+			$id_paket_baru=$this->db->get_where("paket",array("id_paket"=>$query[$i]->id_paket))->result();
+
+			$i++;
+		}
+
+//		Kemudian pilih id paketnya dari id perencanaan tersebut
+
+		echo json_encode($id_paket_baru);
 	}
 
 
