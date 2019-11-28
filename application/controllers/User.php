@@ -66,6 +66,11 @@ class User extends CI_Controller {
         $this->load->view("user/harian");
 	}
 
+	public function user_harian_baru($i)
+	{
+		$this->load->view("user/harian_baru");
+	}
+
 
 	public function paket_info_harian()
 	{
