@@ -1910,8 +1910,8 @@ else
                                                         console.log(jum_al);
                                                         console.log(nilai_paket);
                                                         console.log("------");
-
-                                                        let hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                        let hasil_akhir=0;
+                                                        hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
                                                         hasil_akhir=hasil_akhir*100;
 
                                                         $("#progres_pekerjaan").text(hasil_akhir+"%");
@@ -2064,8 +2064,9 @@ else
                                                         console.log(jum_al);
                                                         console.log(nilai_paket);
                                                         console.log("------");
+                                                        let hasil_akhir=0;
 
-                                                        let hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
+                                                        hasil_akhir=(jum_al+jum_tuk+jum_per)/nilai_paket;
                                                         hasil_akhir=hasil_akhir*100;
 
                                                         $("#progres_sebelumnya").text(hasil_akhir+"%");
