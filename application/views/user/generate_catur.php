@@ -220,27 +220,56 @@ else
 									 <br/>
 
 									 <div class="row">
-										 <div class="col-sm-3">Nama Paket</div>
+										 <div class="col-sm-6"> <div class="row">
+												 <div class="col-sm-3">Nama Paket</div>
 
-										 <div class="col-sm-3" id="nama_paket_1">:</div>
-									 </div>
+												 <div class="col-sm-3" id="nama_paket_1">:</div>
+											 </div>
 
-									 <div class="row">
-										 <div class="col-sm-3">Jenis Pekerjaan</div>
+											 <div class="row">
+												 <div class="col-sm-3">Jenis Pekerjaan</div>
 
-										 <div class="col-sm-3" id="jp_jesi">:</div>
-									 </div>
+												 <div class="col-sm-3" id="jp_jesi">:</div>
+											 </div>
 
-									 <div class="row">
-										 <div class="col-sm-3">Lokasi</div>
+											 <div class="row">
+												 <div class="col-sm-3">Lokasi</div>
 
-										 <div class="col-sm-3" id="lokasi_jesi">:</div>
-									 </div>
+												 <div class="col-sm-3" id="lokasi_jesi">:</div>
+											 </div>
 
-									 <div class="row">
-										 <div class="col-sm-3">Pagu</div>
+											 <div class="row">
+												 <div class="col-sm-3">Pagu</div>
 
-										 <div class="col-sm-3" id="pagu_text">:</div>
+												 <div class="col-sm-3" id="pagu_text">:</div>
+											 </div></div>
+										 <div class="col-sm-5" style="border: 2px solid black;">
+											 <div class="row">
+												 <div class="col-sm-7">Progres Pekerjaan</div>
+												 <div class="col-sm-1">:</div>
+												 <div class="col-sm-4"></div>
+											 </div>
+											 <div class="row">
+												 <div class="col-sm-7">Progres Fisik Periode Lalu</div>
+												 <div class="col-sm-1">:</div>
+												 <div class="col-sm-4"></div>
+											 </div>
+											 <div class="row">
+												 <div class="col-sm-7">Progres Fisik</div>
+												 <div class="col-sm-1">:</div>
+												 <div class="col-sm-4"></div>
+											 </div>
+											 <div class="row">
+												 <div class="col-sm-7">Progres Fisik Selanjutnya</div>
+												 <div class="col-sm-1">:</div>
+												 <div class="col-sm-4"></div>
+											 </div>
+											 <div class="row">
+												 <div class="col-sm-7">Progres Fisik Total</div>
+												 <div class="col-sm-1">:</div>
+												 <div class="col-sm-4"></div>
+											 </div>
+										 </div>
 									 </div>
 									 <br/>
 
@@ -855,14 +884,16 @@ else
                 function(data){
                     // alert(data);  //as a debugging message.
                     data=JSON.parse(data);
+                    console.log("hmmmm");
                     console.log(data);
+                    console.log("hmmmm");
 
                     let length=data.length;
                     let i=0;
 
                     while(i<length)
                     {
-                        $("#jp_jesi").append(data[i].nama_jenis+"<br/>");
+
 
                         $("#tabel_satu").append('\n' +
                             '\t\t\t\t\t\t\t\t\t<tr>\n' +
@@ -942,6 +973,7 @@ else
 
                     while(i<length)
                     {
+                        $("#jp_jesi").append(data[i].nama_jenis+"<br/>");
 
 
 
@@ -1703,7 +1735,7 @@ else
 
                     while(i<length)
                     {
-                        $("#lokasi_jesi").text(":".data[i].lokasi);
+                        $("#lokasi_jesi").text(":"+data[i].lokasi);
                         i++;
                     }
                 }
