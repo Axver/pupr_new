@@ -608,15 +608,35 @@ else
 				<div >
 					<table id="tabel_sketsa"class="table" cellspacing="0" border="0">
 						<thead style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Sketsa Kerja</th>
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Lokasi</th>
 						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</th>
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000 width: 50%">Panjang Penanganan</th>
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Keterangan Dimensi</th>
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Ket</th>
+						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Sketsa Kerja</th>
+						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Keterangan</th>
+
+						<?php
+						//							 Dapatkan datanya
+						$info_perencanaan=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
+						$count=count($info_perencanaan);
+						$loaksiM="";
+						$jenis_pekerjaanM="";
+						$panjang_penangananM="";
+						$keterangan_dimensiM="";
+						$keteranganM="";
+
+						if($count>0)
+						{
+							$loaksiM=$info_perencanaan[0]->lokasi;
+//								$jenis_pekerjaanM=$info_perencanaan[0]->jenis_pekerjaan;
+							$panjang_penangananM=$info_perencanaan[0]->panjang_penanganan;
+							$keterangan_dimensiM=$info_perencanaan[0]->keterangan_dimensi;
+							$keteranganM=$info_perencanaan[0]->keterangan;
+						}
+						?>
+
 						</thead>
 						<tbody>
 						<tr style="height:300px;">
+							<td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
+
 							<td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 								<?php
 								$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
@@ -636,30 +656,13 @@ else
 								?>
 
 							</td>
-							<?php
-							//							 Dapatkan datanya
-							$info_perencanaan=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("2")))->result();
-							$count=count($info_perencanaan);
-							$loaksiM="";
-							$jenis_pekerjaanM="";
-							$panjang_penangananM="";
-							$keterangan_dimensiM="";
-							$keteranganM="";
 
-							if($count>0)
-							{
-								$loaksiM=$info_perencanaan[0]->lokasi;
-//								$jenis_pekerjaanM=$info_perencanaan[0]->jenis_pekerjaan;
-								$panjang_penangananM=$info_perencanaan[0]->panjang_penanganan;
-								$keterangan_dimensiM=$info_perencanaan[0]->keterangan_dimensi;
-								$keteranganM=$info_perencanaan[0]->keterangan;
-							}
-							?>
-							<td cellspacing="'0'" width="20%" id="lokasiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $loaksiM ?></td>
-							<td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
-							<td cellspacing="'0'" width="20%" id="panjang_penangananM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $panjang_penangananM ?></td>
-							<td cellspacing="'0'" width="20%" id="keterangan_dimensiM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo  $keterangan_dimensiM ?></td>
-							<td cellspacing="'0'" width="20%" id="ketM" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $keteranganM ?></td>
+							<td cellspacing="'0'" width="100%" id="" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
+								<?php echo "Lokasi:".$loaksiM."<br/>"; ?>
+								<?php echo "Panjang Penanganan:".$panjang_penangananM."<br/>"; ?>
+								<?php echo "Keterangan Dimensi:".$keterangan_dimensiM."<br/>"; ?>
+							</td>
+
 						</tr>
 						</tbody>
 					</table>
@@ -703,7 +706,7 @@ else
 
 
 							echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							echo "<b>NIP. ".$ambil[0]->nip."</b>";
+							echo "<b>NRP. ".$ambil[0]->nip."</b>";
 						}
 						?>
 
@@ -742,7 +745,7 @@ else
 							$ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
 
 							echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							echo "<b>"."NIP:".$ambil[0]->nip."</b>";
+							echo "<b>"."NRP:".$ambil[0]->nip."</b>";
 						}
 						?>
 						<div class="row"></div>
@@ -813,7 +816,7 @@ else
 							$ambil=$this->db->get_where("account",array("nip"=>$data[0]->id_user))->result();
 
 							echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							echo "<b>"."NIP:".$ambil[0]->nip."</b>";
+							echo "<b>"."NRP:".$ambil[0]->nip."</b>";
 						}
 						?>
 						<div class="row"></div>
