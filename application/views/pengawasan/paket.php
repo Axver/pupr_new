@@ -130,6 +130,7 @@ else
 									<thead>
 									<tr>
 										<th>Id Paket</th>
+										<th>Nama Paket</th>
 										<th>Tahun</th>
 										<th>Alihkan Tugas</th>
 
@@ -138,7 +139,12 @@ else
 									<tbody>
 
 									<?php
-									$data=$this->db->get_where("detail_paket",array("nip"=>$this->uri->segment("3")))->result();
+									$this->db->select('*');
+									$this->db->from('detail_paket');
+									$this->db->join('paket', 'detail_paket.id_paket = paket.id_paket');
+									$this->db->where("nip",$this->uri->segment("3"));
+									$data=$this->db->get()->result();
+//									$data=$this->db->get_where("detail_paket",array("nip"=>$this->uri->segment("3")))->result();
 									$count=count($data);
 									$i=0;
 
@@ -147,6 +153,7 @@ else
 										?>
 										<tr>
 											<td><?php echo $data[$i]->id_paket; ?></td>
+											<td><?php echo $data[$i]->nama; ?></td>
 											<td><?php echo $data[$i]->tahun; ?></td>
 											<td><button class="btn btn-info" onclick="alihkan('<?php echo $data[$i]->id_paket; ?>')">Alihkan</button></td>
 										</tr>
