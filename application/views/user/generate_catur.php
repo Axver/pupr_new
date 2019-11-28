@@ -171,6 +171,7 @@ else
 								</select>
 
 								<button class="btn btn-info" onclick="buatTabel()">Generate</button>
+								<button onclick="prediksi()" class="btn btn-info">Progres</button>
 								<br/>
 								<b>Diperiksa Oleh</b>
 								<select class="form form-control" id="diperiksa_oleh">
@@ -194,12 +195,15 @@ else
 								<br/>
 								<b>Pagu:</b>
 								<input type="text" class="form form-control" id="pagu">
+								<b>Progress Selanjutnya</b>
+								<input type="text" class="form form-control" id="selanjutnya">
 
 <!--								<button class="btn btn-info" onclick="addRow()">Add Row</button>-->
 								<br/>
 								<br/>
 								<br/>
                               <button style="width: 100%;" class="btn btn-success" onclick="generatePDF()">Generate PDF</button>
+
 				                 <div id="cetak_tabel">
 									 <center><b><h2>LAPORAN CATURWULAN</h2></b></center>
 
@@ -258,12 +262,12 @@ else
 											 <div class="row">
 												 <div class="col-sm-7">Progres Fisik Selanjutnya</div>
 												 <div class="col-sm-1">:</div>
-												 <div class="col-sm-4"></div>
+												 <div class="col-sm-4" id="progres_selanjutnya"></div>
 											 </div>
 											 <div class="row">
 												 <div class="col-sm-7">Progres Fisik Total</div>
 												 <div class="col-sm-1">:</div>
-												 <div class="col-sm-4"></div>
+												 <div class="col-sm-4" id="progres_total"></div>
 											 </div>
 										 </div>
 									 </div>
@@ -661,6 +665,35 @@ else
 
 
 <script>
+    function prediksi()
+    {
+        //Progress Total
+        let total_sekarang=$("#progres_pekerjaan").text();
+        let total_lalu=$("#progres_sebelumnya").text();
+
+        total_sekarang=total_sekarang.substring(0, total_sekarang.length - 1);
+        total_lalu=total_lalu.substring(0, total_lalu.length - 1);
+
+        if(total_sekarang=="NaN")
+		{
+		    total_sekarang=0;
+		}
+
+        if(total_lalu=="NaN")
+        {
+            total_lalu=0;
+        }
+
+
+        let total=parseInt(total_sekarang)+parseInt(total_lalu);
+
+        $("#progres_total").text(total+"%");
+
+
+        //    Progress Selanjutnya bulanan
+        selanjutnya=$("#selanjutnya").val();
+        $("#progres_selanjutnya").text(selanjutnya+"%");
+    }
     function generatePDF() {
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak_tabel");
