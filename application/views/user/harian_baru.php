@@ -136,6 +136,31 @@ else
 							<div class="card-body">
 
 								<center><b><h4>LAPORAN MINGGUAN PELAKSANAAN KEGIATAN</h4></b></center>
+								<b>Id Paket</b>
+								<input class="form form-control" type="text" id="id_paket" value="<?php echo $this->uri->segment('3') ?>" disabled>
+								<id>Laporan Perencanaan</id>
+								<select class="form form-control" id="id_perencanaan">
+									<?php
+									$data=$this->db->get_where("lap_perencanaan",array("id_paket"=>$this->uri->segment('3')))->result();
+									$count=count($data);
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->keterangan; ?></option>
+									<?php
+
+
+										$i++;
+									}
+									?>
+								</select>
+
+                                <b>Tanggal Awal</b>
+								<input type="date" class="form form-control" id="hari_tanggal">
+
+								<br/>
 <!--								Tabel 1-->
 
 								<div class="row">
@@ -272,7 +297,7 @@ else
 
 								<br/>
 
-								<button class="btn btn-facebook">Simpan</button>
+								<button class="btn btn-facebook" onclick="save()">Simpan</button>
 
 
 
@@ -663,6 +688,67 @@ else
 
 		$("#"+id_warnai).text(jumlah_alat);
 		$("#wAlat").modal("hide");
+
+    }
+    
+    
+    function save() {
+		// alert("Save");
+        let i=0;
+        let dataArray=new Array();
+        let dataArray1=new Array();
+
+        $(".Active").each(function (index, element) {
+            dataArray[i]=$(this).attr("id");
+            i++;
+        });
+
+        console.log(dataArray);
+
+        let length=dataArray.length;
+        let j=0;
+        let id_paket=$("#id_paket").val();
+        let id=$("#hari_tanggal").val();
+        let id_perencanaan=$("#id_perencanaan").val();
+
+
+        console.log(id_paket);
+        console.log(id);
+        console.log(id_perencanaan);
+
+        let jumlah_pekerja;
+        let transform;
+
+
+        //Input laporan harian mingguan dulu
+        $.ajax({
+            type: "POST",
+			async:false,
+            url: "http://localhost/pupr_new/user/baru_harian",
+            data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+
+					console.log(data);
+                }
+        });
+
+        while(j<length)
+		{
+		    transform=dataArray[j].replace("_","__");
+		    jumlah_pekerja=$("#"+transform).text();
+
+
+
+
+
+
+		    j++;
+		}
+    //    Dapat data array kemudian ambil data masing-masing angka dari id tersebut
 
     }
 </script>
