@@ -205,7 +205,27 @@ else
 									</tr>
 
 								</table>
-								<button class="btn btn-facebook" onclick="rowTiga()">+</button> <b>#Tambah Baris</b> <br/>
+								<div class="row">
+									<div class="col-sm-1"><button class="btn btn-facebook" onclick="rowTiga()">+</button> </div>
+									<div class="col-sm-4">
+										<select class="form form-control" id="alat_bahan">
+											<?php
+											$data=$this->db->get("jenis_bahan_alat")->result();
+											$count=count($data);
+											$i=0;
+
+											while($i<$count)
+											{
+												?>
+											<option value="<?php echo $data[$i]->id_jenis_bahan_alat ?>"><?php echo $data[$i]->jenis_bahan_alat ?></option>
+											<?php
+
+												$i++;
+											}
+											?>
+										</select>
+									</div>
+								</div>
 
 								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke-</b>
 								<table class="table table-responsive-lg" id="tabel_tiga">
@@ -311,7 +331,7 @@ else
 	    let pekerjaan=$("#pekerjaan option:selected").text();
 	    let pekerjaan_id=$("#pekerjaan").val();
 
-	    if($("#"+pekerjaan_id).length>0)
+	    if($("#"+pekerjaan_id+"_pekerjaan").length>0)
 		{
           alert("Pakaerjaan Sudah Ditambahkan Sebelumnya!!");
 		}
@@ -382,17 +402,42 @@ else
 
     function rowTiga()
     {
-        $("#tabel_tiga").append('\t\t<tr>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-            '\t\t\t\t\t\t\t\t\t</tr>');
+        let alat_bahan=$("#alat_bahan").val();
+        let alat_bahan_text=$("#alat_bahan option:selected").text();
+
+        if($("#"+alat_bahan+"___alat").length>0)
+		{
+		    alert("Tidak Bisa Menambahkan!");
+		}
+        else
+		{
+            $("#tabel_tiga").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+alat_bahan+"___alat"+'">'+alat_bahan_text+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 satuan" id="'+alat_bahan+"___satuan"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___1"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___2"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___3"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___4"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___5"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___6"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+alat_bahan+"___7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+		}
+
+        //    Event Listener Untuk Jenis
+        var classname = document.getElementsByClassName("satuan");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_satuan").val(attribute);
+            $("#mSatuan").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
 
 
     }
@@ -454,12 +499,57 @@ else
 			<div class="modal-body">
 				<input type="text" class="form form-control" id="id_hari" disabled>
 				<b>Jumlah</b>
-				<input type="text" class="form form-control" id="hari_value">
+				<input type="text" class="form form-control" id="hari_value" value="0">
 
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary" onclick="saveHari()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="mSatuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form form-control" id="id_satuan" disabled>
+				<b>Satuan</b>
+				<select class="form form-control" id="id_satuan_data">
+					<?php
+					$data=$this->db->get("satuan")->result();
+					$count=count($data);
+
+					$i=0;
+
+
+					while($i<$count)
+					{
+						?>
+
+					<option value="<?php echo $data[$i]->id_satuan; ?>"><?php echo $data[$i]->satuan; ?></option>
+					<?php
+
+
+						$i++;
+					}
+					?>
+				</select>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveAlat()">Save changes</button>
 			</div>
 		</div>
 	</div>
@@ -493,6 +583,21 @@ else
         $("#"+id).css("background-color", "#3b5998");
         $("#"+id2).text(data);
         $("#dataHari").modal("hide");
+    }
+
+
+    function saveAlat() {
+
+	    $id=$("#id_satuan").val();
+	    $data=$("#id_satuan_data option:selected").text();
+	    $data_id=$("#id_satuan_data").val();
+
+	    $("#"+$id).text($data_id+"_"+$data);
+
+	    // alert("test");
+
+		$("#mSatuan").modal("hide");
+
     }
 </script>
 
