@@ -438,6 +438,20 @@ else
             classname[i].addEventListener('click', myFunction, false);
         }
 
+        //    Event Listener Untuk Jenis
+        var classname = document.getElementsByClassName("warnai1");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_warnai").val(attribute);
+            $("#wAlat").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
 
 
     }
@@ -555,6 +569,32 @@ else
 	</div>
 </div>
 
+<!-- Modal Baru -->
+<div class="modal fade" id="wAlat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form form-control" id="id_warnai" disabled>
+				<b>Jumlah</b>
+				<input type="text" class="form form-control" id="jumlah_alat" value="0">
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveJumlah()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	function saveUpah()
 	{
@@ -597,6 +637,17 @@ else
 	    // alert("test");
 
 		$("#mSatuan").modal("hide");
+
+    }
+    
+    
+    function saveJumlah() {
+		// alert("test");
+		let id_warnai=$("#id_warnai").val();
+		let jumlah_alat=$("#jumlah_alat").val();
+
+		$("#"+id_warnai).text(jumlah_alat);
+		$("#wAlat").modal("hide");
 
     }
 </script>
