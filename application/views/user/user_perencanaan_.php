@@ -469,7 +469,7 @@ else
         id=id.split(",");
         // alert(id);
 		// console.log(id);
-        window.location="view_harian/index/"+id[0]+"/"+id[1];
+        window.location="view_harian/index_baru/"+id[0]+"/"+id[1];
     }
 
     function edit(id)

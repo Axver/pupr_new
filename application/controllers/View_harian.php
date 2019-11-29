@@ -13,6 +13,16 @@ class View_harian extends CI_Controller {
 		$this->load->view("user/view_harian",$data);
 	}
 
+	public function index_baru($id)
+	{
+		$data=$this->db->get_where("lap_harian_mingguan",array("id_lap_harian_mingguan"=>$id))->result();
+		$data['lapar']=array(
+			"lapar"=>$data,
+		);
+
+		$this->load->view("user/view_harian_baru",$data);
+	}
+
 	public function get_paket()
 	{
       $id_paket=$this->input->post("id_paket");
