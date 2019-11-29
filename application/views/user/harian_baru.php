@@ -138,7 +138,31 @@ else
 								<center><b><h4>LAPORAN MINGGUAN PELAKSANAAN KEGIATAN</h4></b></center>
 <!--								Tabel 1-->
 
-								<button class="btn btn-facebook" onclick="rowSatu()">+</button> <b>#Tambah Baris</b>
+								<div class="row">
+									<div class="col-sm-1"><button class="btn btn-facebook" onclick="rowSatu()">+</button> </div>
+									<div class="col-sm-4">
+										<select class="form form-control" id="pekerjaan">
+											<?php
+											$data=$this->db->get("jenis_pekerjaan")->result();
+											$count=count($data);
+											$i=0;
+
+											while($i<$count)
+											{
+												?>
+												<option value="<?php echo $data[$i]->id ?>"><?php echo $data[$i]->nama_jenis ?></option>
+												<?php
+
+												$i++;
+											}
+
+											?>
+										</select></div>
+								</div>
+
+								<br/>
+
+
 
 								<table class="table table-responsive-lg" id="tabel_satu">
 									<tr>
@@ -160,6 +184,60 @@ else
 									</tr>
 
 								</table>
+								<b>Rekapitulasi Pekerja Minggu ke-</b>
+								<table class="table table-responsive-lg" id="tabel_dua">
+									<tr>
+										<th class="tg-nrix" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-nrix" rowspan="3">Jenis Upah</th>
+										<th class="tg-nrix" colspan="7">Bulan</th>
+									</tr>
+									<tr>
+										<td class="tg-nrix" colspan="7">Minggu</td>
+									</tr>
+									<tr>
+										<td class="tg-nrix">1</td>
+										<td class="tg-nrix">2</td>
+										<td class="tg-nrix">3</td>
+										<td class="tg-nrix">4</td>
+										<td class="tg-nrix">5</td>
+										<td class="tg-nrix">6</td>
+										<td class="tg-nrix">7</td>
+									</tr>
+
+								</table>
+								<button class="btn btn-facebook" onclick="rowTiga()">+</button> <b>#Tambah Baris</b> <br/>
+
+								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke-</b>
+								<table class="table table-responsive-lg" id="tabel_tiga">
+									<tr>
+										<th class="tg-nrix" rowspan="3">Jenis Bahan/Alat</th>
+										<th class="tg-nrix" rowspan="3">Satuan</th>
+										<th class="tg-nrix" colspan="7">Bulan</th>
+									</tr>
+									<tr>
+										<td class="tg-nrix" colspan="7">Minggu</td>
+									</tr>
+									<tr>
+										<td class="tg-nrix">1</td>
+										<td class="tg-nrix">2</td>
+										<td class="tg-nrix">3</td>
+										<td class="tg-nrix">4</td>
+										<td class="tg-nrix">5</td>
+										<td class="tg-nrix">6</td>
+										<td class="tg-nrix">7</td>
+									</tr>
+
+								</table>
+
+								<b>Diperiksa Oleh</b>
+								<select id="diperiksa_oleh" class="form form-control">
+
+								</select>
+
+
+								<br/>
+
+								<button class="btn btn-facebook">Simpan</button>
 
 
 
@@ -230,7 +308,60 @@ else
 <script>
 	function rowSatu()
 	{
-	    $("#tabel_satu").append('\t\t<tr>\n' +
+	    let pekerjaan=$("#pekerjaan option:selected").text();
+	    let pekerjaan_id=$("#pekerjaan").val();
+
+	    if($("#"+pekerjaan_id).length>0)
+		{
+          alert("Pakaerjaan Sudah Ditambahkan Sebelumnya!!");
+		}
+	    else
+		{
+            $("#tabel_satu").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+pekerjaan_id+"_upah"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_1"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_2"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_3"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_4"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_5"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"_6"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"_7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+
+            $("#tabel_dua").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__upah"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__1"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__2"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__3"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__4"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__5"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__6"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"__7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+
+		}
+
+        //    Event Listener Untuk Jenis
+        var classname = document.getElementsByClassName("jenis_upah_klik");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_jenis_upah").val(attribute);
+            $("#jenisUpah").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+	}
+
+    function rowTiga()
+    {
+        $("#tabel_tiga").append('\t\t<tr>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
@@ -241,10 +372,63 @@ else
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
             '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
             '\t\t\t\t\t\t\t\t\t</tr>');
-	}
+
+
+    }
 </script>
 
 
+
+
+
+<!--Kumpulan Modal-->
+<!-- Modal -->
+<div class="modal fade" id="jenisUpah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form form-control" id="id_jenis_upah" disabled>
+				<b>Jenis Upah</b>
+				<select id="data_jenis_upah" class="form form-control">
+					<?php
+					$data=$this->db->get("jenis_upah")->result();
+					$count=count($data);
+					$i=0;
+
+					while($i<$count)
+					{
+						?>
+						<option value="<?php echo $data[$i]->id_jenis_upah; ?>"><?php echo $data[$i]->id_jenis_upah."_".$data[$i]->nama; ?></option>
+					<?php
+						$i++;
+					}
+					?>
+				</select>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveUpah()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function saveUpah()
+	{
+	    let id=$("#id_jenis_upah").val();
+	    let data=$("#data_jenis_upah option:selected").text();
+
+	    $("#"+id).text(data);
+	    $("#jenisUpah").modal("hide");
+	}
+</script>
 
 
 
