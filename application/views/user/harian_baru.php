@@ -320,13 +320,13 @@ else
             $("#tabel_satu").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+pekerjaan_id+"_upah"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_1"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_2"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_3"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_4"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_5"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"_6"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+pekerjaan_id+"_7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_1"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_2"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_3"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_4"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_5"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_6"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai" id="'+pekerjaan_id+"_7"+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t</tr>');
 
             $("#tabel_dua").append('\t\t<tr>\n' +
@@ -351,6 +351,20 @@ else
             console.log(attribute);
             $("#id_jenis_upah").val(attribute);
             $("#jenisUpah").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
+        //    Event Listener Untuk Hari Warnai
+        var classname = document.getElementsByClassName("warnai");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_hari").val(attribute);
+            $("#dataHari").modal("show");
         };
 
         for (var i = 0; i < classname.length; i++) {
@@ -419,15 +433,54 @@ else
 	</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="dataHari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form form-control" id="id_hari" disabled>
+				<b>Jumlah</b>
+				<input type="text" class="form form-control" id="hari_value">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveHari()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	function saveUpah()
 	{
 	    let id=$("#id_jenis_upah").val();
 	    let data=$("#data_jenis_upah option:selected").text();
+	    let id2=id.replace("_","__");
 
 	    $("#"+id).text(data);
+        $("#"+id2).text(data);
 	    $("#jenisUpah").modal("hide");
 	}
+
+    function saveHari()
+    {
+        let id=$("#id_hari").val();
+        let data=$("#hari_value").val();
+        let id2=id.replace("_","__");
+
+        // $("#"+id).text(data);
+        $("#"+id).css("background-color", "#3b5998");
+        $("#"+id2).text(data);
+        $("#dataHari").modal("hide");
+    }
 </script>
 
 
