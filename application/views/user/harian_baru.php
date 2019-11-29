@@ -733,22 +733,59 @@ else
                     // alert(data);  //as a debugging message.
 
 					console.log(data);
+                    while(j<length)
+                    {
+                        transform=dataArray[j].replace("_","__");
+                        let jumlah_pekerja=$("#"+transform).text();
+                        let upah=transform.split("__");
+                        let ambil=dataArray[j].split("_");
+
+                        upah=upah[0]+"_upah";
+                        upah=$("#"+upah).text();
+                        upah=upah.split("_");
+                        upah=upah[0];
+                        //Ambil Jnis Upah
+						// ambil=dataArray[i].split("_");
+						console.log("---------");
+						console.log(transform);
+						console.log(jumlah_pekerja);
+                        console.log(upah);
+                        console.log("---------");
+						//Ambil yang sesuai
+						// ambil1=$("#"+ambil[0]+"upah").text();
+						// console.log(ambil);
+                        // console.log(ambil1);
+						// ambil2=ambil.split("_");
+                        // console.log(ambil2);
+						// upah=ambil2[0]; //Ini Id Upah nya
+						//
+                        // jumlah_pekerja=$("#"+transform).text();
+
+                        //Ajax Disini untuk menambahkan
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost/pupr_new/user/baru_pekerjaan",
+                            data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket,"id_upah":upah,"hari":ambil[1],"jenis_pekerjaan":ambil[0],"total":jumlah_pekerja},
+                            dataType: "text",
+                            cache:false,
+                            success:
+                                function(data){
+                                    console.log(data);
+                                }
+                        });
+
+
+
+
+
+
+                        j++;
+                    }
                 }
         });
 
-        while(j<length)
-		{
-		    transform=dataArray[j].replace("_","__");
-		    jumlah_pekerja=$("#"+transform).text();
 
 
-
-
-
-
-		    j++;
-		}
-    //    Dapat data array kemudian ambil data masing-masing angka dari id tersebut
 
     }
 </script>
