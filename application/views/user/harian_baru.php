@@ -252,6 +252,21 @@ else
 								<b>Diperiksa Oleh</b>
 								<select id="diperiksa_oleh" class="form form-control">
 
+									<?php
+									$data=$this->db->get("konfigurasi")->result();
+									$count=count($data);
+									$i=0;
+
+									while($i<$count)
+									{
+										?>
+									<option value="<?php echo $data[$i]->id_konfigurasi; ?>"><?php echo $data[$i]->nama; ?></option>
+									<?php
+
+										$i++;
+									}
+									?>
+
 								</select>
 
 
