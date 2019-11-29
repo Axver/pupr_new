@@ -844,11 +844,59 @@ public function pekerjaan()
 			"total"=>$total
 		);
 
-		var_dump($data);
+//		var_dump($data);
 
 		$this->db->insert("detail_bahan_alat_harian",$data);
 
 	}
+
+
+
+	public function baru_alat()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$id_harian=$this->input->post("id_harian");
+
+//		Select tahun dulu
+		$tahun=$this->db->get_where("paket",array("id_paket"=>$id_paket))->result();
+		$count=count($tahun);
+		$i=0;
+
+
+		$tahun1=0;
+		while($i<$count)
+		{
+
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+		$id_satuan=$this->input->post("id_satuan");
+		$hari=$this->input->post("hari");
+		$jenis_bahan_alat=$this->input->post("jenis_bahan_alat");
+		$total=$this->input->post("total");
+
+
+		$data=array(
+			"id_lap_harian_mingguan"=>$id_harian,
+			"id_lap_perencanaan"=>$id_perencanaan,
+			"id_paket"=>$id_paket,
+			"tahun"=>$tahun1,
+			"id_jenis_bahan_alat"=>$jenis_bahan_alat,
+			"hari"=>$hari,
+			"id_satuan"=>$id_satuan,
+			"jumlah"=>$total
+		);
+
+//		var_dump($data);
+
+		$this->db->insert("detail_alat_harian",$data);
+
+	}
+
 
 
 

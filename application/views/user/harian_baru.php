@@ -484,6 +484,9 @@ else
         var myFunction = function() {
             var attribute = this.id;
             console.log(attribute);
+            $("#"+attribute).text("");
+            $("#"+attribute).removeClass("Active2");
+            $("#"+attribute).addClass("nonActive2");
             $("#id_warnai").val(attribute);
             $("#wAlat").modal("show");
         };
@@ -685,6 +688,8 @@ else
 		// alert("test");
 		let id_warnai=$("#id_warnai").val();
 		let jumlah_alat=$("#jumlah_alat").val();
+        $("#"+id_warnai).removeClass("nonActive2");
+        $("#"+id_warnai).addClass("Active2");
 
 		$("#"+id_warnai).text(jumlah_alat);
 		$("#wAlat").modal("hide");
@@ -695,6 +700,7 @@ else
     function save() {
 		// alert("Save");
         let i=0;
+        let l=0;
         let dataArray=new Array();
         let dataArray1=new Array();
 
@@ -703,18 +709,26 @@ else
             i++;
         });
 
+        $(".Active2").each(function (index, element) {
+            dataArray1[l]=$(this).attr("id");
+            l++;
+        });
+
+
         console.log(dataArray);
 
         let length=dataArray.length;
+        let length1=dataArray1.length;
         let j=0;
+        let q=0;
         let id_paket=$("#id_paket").val();
         let id=$("#hari_tanggal").val();
         let id_perencanaan=$("#id_perencanaan").val();
 
 
-        console.log(id_paket);
-        console.log(id);
-        console.log(id_perencanaan);
+        // console.log(id_paket);
+        // console.log(id);
+        // console.log(id_perencanaan);
 
         let jumlah_pekerja;
         let transform;
@@ -732,7 +746,7 @@ else
                 function(data){
                     // alert(data);  //as a debugging message.
 
-					console.log(data);
+					// console.log(data);
                     while(j<length)
                     {
                         transform=dataArray[j].replace("_","__");
@@ -746,11 +760,11 @@ else
                         upah=upah[0];
                         //Ambil Jnis Upah
 						// ambil=dataArray[i].split("_");
-						console.log("---------");
-						console.log(transform);
-						console.log(jumlah_pekerja);
-                        console.log(upah);
-                        console.log("---------");
+						// console.log("---------");
+						// console.log(transform);
+						// console.log(jumlah_pekerja);
+                        // console.log(upah);
+                        // console.log("---------");
 						//Ambil yang sesuai
 						// ambil1=$("#"+ambil[0]+"upah").text();
 						// console.log(ambil);
@@ -770,7 +784,7 @@ else
                             cache:false,
                             success:
                                 function(data){
-                                    console.log(data);
+                                    // console.log(data);
                                 }
                         });
 
@@ -781,6 +795,66 @@ else
 
                         j++;
                     }
+
+
+                    while(q<length1)
+					{
+					    let transform1;
+
+					    // console.log("hnnnnn");
+					    // console.log(dataArray1[q]);
+					    // console.log("hnnnnnn");
+
+                        transform1=dataArray1[q];
+                        let jumlah_alat=$("#"+transform1).text();
+
+                        // console.log("hmmmmm");
+                        // console.log(transform1);
+                        // console.log("hmmmmm");
+                        let satuan=transform1.split("___");
+                        console.log("hmmm");
+                        console.log(satuan);
+                        console.log("jmmmm");
+                        let ambil=dataArray1[q].split("___");
+
+                        satuan=satuan[0]+"___satuan";
+                        satuan=$("#"+satuan).text();
+                        satuan=satuan.split("_");
+                        satuan=satuan[0];
+                        //Ambil Jnis Upah
+                        // ambil=dataArray[i].split("_");
+                        // console.log("---------");
+                        // console.log(transform);
+                        // console.log(jumlah_alat);
+                        // console.log(satuan);
+                        // console.log("---------");
+                        //Ambil yang sesuai
+                        // ambil1=$("#"+ambil[0]+"upah").text();
+                        // console.log(ambil);
+                        // console.log(ambil1);
+                        // ambil2=ambil.split("_");
+                        // console.log(ambil2);
+                        // upah=ambil2[0]; //Ini Id Upah nya
+                        //
+                        // jumlah_pekerja=$("#"+transform).text();
+
+                        //Ajax Disini untuk menambahkan
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost/pupr_new/user/baru_alat",
+                            data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket,"id_satuan":satuan,"hari":ambil[1],"jenis_bahan_alat":ambil[0],"total":jumlah_alat},
+                            dataType: "text",
+                            cache:false,
+                            success:
+                                function(data){
+                                    console.log(data);
+                                }
+                        });
+
+
+
+                        q++;
+					}
                 }
         });
 
