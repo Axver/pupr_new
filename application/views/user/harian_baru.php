@@ -366,6 +366,7 @@ else
 
 
 <script>
+	let kuy=0;
 	function rowSatu()
 	{
 	    let pekerjaan=$("#pekerjaan option:selected").text();
@@ -373,35 +374,61 @@ else
 
 	    if($("#"+pekerjaan_id+"_pekerjaan").length>0)
 		{
-          alert("Pakaerjaan Sudah Ditambahkan Sebelumnya!!");
-		}
-	    else
-		{
             $("#tabel_satu").append('\t\t<tr>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+pekerjaan_id+"_upah"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_1"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_2"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_3"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_4"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_5"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_6"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_pekerjaan"+"_"+kuy+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+pekerjaan_id+"_upah"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_1"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_2"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_3"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_4"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_5"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_6"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_7"+"_"+kuy+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t</tr>');
 
             $("#tabel_dua").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__upah"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__1"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__2"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__3"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__4"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__5"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__6"+'"></td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__upah"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__1"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__2"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__3"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__4"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__5"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__6"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__7"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+		}
+	    else
+		{
+            $("#tabel_satu").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+pekerjaan_id+"_pekerjaan"+"_"+kuy+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+pekerjaan_id+"_upah"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_1"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_2"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_3"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_4"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_5"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_6"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+pekerjaan_id+"_7"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+
+            $("#tabel_dua").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__upah"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__1"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__2"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__3"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__4"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__5"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__6"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__7"+"_"+kuy+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t</tr>');
 
 		}
+
+        kuy++;
 
         //    Event Listener Untuk Jenis
         var classname = document.getElementsByClassName("jenis_upah_klik");
@@ -642,6 +669,8 @@ else
 	function saveUpah()
 	{
 	    let id=$("#id_jenis_upah").val();
+        let hm=$("#"+id);
+		console.log(hm[0].id);
 	    let data=$("#data_jenis_upah option:selected").text();
 	    let id2=id.replace("_","__");
 
@@ -746,15 +775,20 @@ else
                 function(data){
                     // alert(data);  //as a debugging message.
 
-					// console.log(data);
+					console.log(data);
                     while(j<length)
                     {
                         transform=dataArray[j].replace("_","__");
                         let jumlah_pekerja=$("#"+transform).text();
-                        let upah=transform.split("__");
+                        let upah=dataArray[j].split("_");
                         let ambil=dataArray[j].split("_");
 
-                        upah=upah[0]+"_upah";
+                        console.log("testing");
+                        console.log(upah);
+
+                        upah=upah[0]+"_upah"+"_"+upah[2];
+                        console.log(upah);
+                        console.log("testing");
                         upah=$("#"+upah).text();
                         upah=upah.split("_");
                         upah=upah[0];
