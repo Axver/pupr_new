@@ -336,7 +336,7 @@ class View_harian extends CI_Controller {
 
        $data=$this->db->query("SELECT *,SUM(total) as total FROM detail_bahan_alat_harian 
 INNER JOIN jenis_upah ON detail_bahan_alat_harian.id_jenis_upah=jenis_upah.id_jenis_upah
-WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerjaan")->result();
+WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaan' GROUP BY jenis_pekerjaan,detail_bahan_alat_harian .id_jenis_upah")->result();
 
 		echo json_encode($data);
 	}
