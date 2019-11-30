@@ -185,9 +185,33 @@ else
 										<div class="row">
 											<div class="col-sm-6">Pagu</div>
 											<div class="col-sm-6" id="pagu">:<?php echo $nilai_paket; ?></div>
+											<input type="hidden" id="nilai_paket" value="<?php echo $nilai_paket; ?>">
 										</div>
 									</div>
-									<div class="col-sm-6"></div>
+									<div class="col-sm-5" style="border: 2px solid black;">
+										<div class="row">
+											<div class="col-sm-6">Progress Pekerjaan</div>
+											<div class="col-sm-6" id="progres_sekarang">:</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Periode Lalu</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Minggu Ke-</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Selanjutnya</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Total</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+									</div>
 								</div>
 								<br/>
 								<br/>
@@ -446,6 +470,90 @@ $.ajax({
 
         }
 });
+</script>
+
+
+<script>
+<!--	Script untuk mencari Progress-->
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/jenis_pekerjaan_baru_sum",
+    data: {"id_harian":id_harian,"id_perencanaan":id_perencanaan},
+	async:false,
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            // alert(data);  //as a debugging message.
+            data=JSON.parse(data);
+            console.log(data);
+            let length=data.length;
+            let i=0;
+            console.log("hmmm");
+
+            let total_pekerja=0;
+
+            while(i<length)
+			{
+               total_pekerja=total_pekerja+(parseInt(data[i].total)*parseInt(data[i].harga));
+
+			    i++;
+			}
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/view_harian/jenis_alat_baru_sum",
+                data: {"id_harian":id_harian,"id_perencanaan":id_perencanaan},
+                async:false,
+                dataType: "text",
+                cache:false,
+                success:
+                    function(data){
+                        // alert(data);  //as a debugging message.
+                        data=JSON.parse(data);
+                        console.log(data);
+                        let length=data.length;
+                        let i=0;
+                        console.log("hmmm");
+
+                        let total_alat=0;
+
+                        while(i<length)
+                        {
+                            total_alat=total_alat+(parseInt(data[i].total)*parseInt(data[i].harga));
+
+                            i++;
+                        }
+
+                        console.log(total_pekerja);
+                        console.log(total_alat);
+                        let nilai_paket=0;
+                        nilai_paket=$("#nilai_paket").val();
+                        nilai_paket=parseInt(nilai_paket);
+
+                    //    Progres sekarang
+						let progres_sekarang=total_alat+total_pekerja;
+                        progres_sekarang=progres_sekarang/nilai_paket;
+                        progres_sekarang=progres_sekarang*100;
+
+                        // alert(progres_sekarang);
+						progres_sekarang=progres_sekarang.toFixed(2);
+
+                        $("#progres_sekarang").append(progres_sekarang+"%");
+
+
+
+
+
+                    }
+            });
+
+
+
+        }
+});
+
 </script>
 
 
