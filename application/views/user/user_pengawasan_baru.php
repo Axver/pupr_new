@@ -33,6 +33,11 @@ else
 		body{
 			color:black;
 		}
+
+		th,td,table{
+			border: 2px solid black;
+			color: black;
+		}
 	</style>
 
 
@@ -167,7 +172,7 @@ else
 								<br/>
 
 								<div class="row">
-									<div class="col-sm-1"><button class="btn btn-facebook">+</button></div>
+									<div class="col-sm-1"><button class="btn btn-facebook" onclick="tambahRow()">+</button></div>
 									<div class="col-sm-5">
 										<select class="form form-control" id="jenis_pekerjaan">
 
@@ -176,6 +181,16 @@ else
 
 
 								<b>Rekapitulasi Hasil Pengawasan</b>
+
+								<table class="tg table" id="tabel_satu">
+									<tr>
+										<th class="tg-cly1">Jenis Pekerjaan</th>
+										<th class="tg-cly1">Jenis Pekerja</th>
+										<th class="tg-cly1">Jumlah</th>
+										<th class="tg-0lax">Progress Pekerjaan %</th>
+									</tr>
+
+								</table>
 
 
 
@@ -246,6 +261,7 @@ else
 
 	function ubahPekerjaan()
 	{
+	    $("#jenis_pekerjaan").empty();
 	    let id_perencanaan=$("#id_perencanaan").val();
 
 	    // alert("test");
@@ -273,6 +289,17 @@ else
 					}
                 }
         });
+	}
+
+
+	function tambahRow()
+	{
+      $("#tabel_satu").append('\t\t<tr>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t</tr>');
 	}
 </script>
 
