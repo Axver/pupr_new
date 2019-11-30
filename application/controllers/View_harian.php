@@ -289,4 +289,24 @@ class View_harian extends CI_Controller {
 	}
 
 
+
+	public function jenis_pekerjaan_baru()
+	{
+		$id_harian=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
+//		Select Jenis Pekerjaan
+		$this->db->select('*');
+		$this->db->from('detail_bahan_alat_harian');
+		$this->db->join('jenis_pekerjaan', 'detail_bahan_alat_harian.jenis_pekerjaan = jenis_pekerjaan.id');
+		$this->db->join('jenis_upah', 'detail_bahan_alat_harian.id_jenis_upah = jenis_upah.id_jenis_upah');
+		$this->db->where("id_lap_harian_mingguan",$id_harian);
+		$this->db->where("id_lap_perencanaan",$id_perencanaan);
+//		$data=$this->db->get_where("detail_bahan_alat_harian",array("id_lap_harian_mingguan"=>$id_harian,"id_lap_perencanaan"=>$id_perencanaan))->result();
+
+		$data=$this->db->get()->result();
+		echo json_encode($data);
+	}
+
+
 }
