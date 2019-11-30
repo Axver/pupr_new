@@ -344,6 +344,53 @@ $.ajax({
 			}
         }
 });
+
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/pupr_new/view_harian/jenis_alat_baru",
+    data: {"id_harian":id_harian,"id_perencanaan":id_perencanaan},
+    dataType: "text",
+    cache:false,
+    success:
+        function(data){
+            // alert(data);  //as a debugging message.
+            data=JSON.parse(data);
+            console.log(data);
+            let length=data.length;
+            let i=0;
+
+            while(i<length)
+			{
+			    if($("#"+data[i].id_jenis_bahan_alat+"___alat").length>0)
+				{
+
+				}
+			    else
+				{
+                    $("#tabel_tiga").append('\t\t<tr>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+"___alat"+'">'+data[i].jenis_bahan_alat+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 satuan" id="'+data[i].id_jenis_bahan_alat+"___satuan"+'">'+data[i].satuan+'</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___1"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___2"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___3"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___4"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___5"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___6"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___7"+'"></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t</tr>');
+
+				}
+
+                $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).text(data[i].jumlah);
+
+
+
+			    i++;
+			}
+
+        }
+});
 </script>
 
 

@@ -309,4 +309,23 @@ class View_harian extends CI_Controller {
 	}
 
 
+	public function jenis_alat_baru()
+	{
+		$id_harian=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
+		$this->db->select('*');
+		$this->db->from('detail_alat_harian');
+		$this->db->join('jenis_bahan_alat', 'detail_alat_harian.id_jenis_bahan_alat = jenis_bahan_alat.id_jenis_bahan_alat');
+		$this->db->join('satuan', 'detail_alat_harian.id_satuan = satuan.id_satuan');
+		$this->db->where("id_lap_harian_mingguan",$id_harian);
+		$this->db->where("id_lap_perencanaan",$id_perencanaan);
+
+		$data=$this->db->get()->result();
+		echo json_encode($data);
+
+
+	}
+
+
 }
