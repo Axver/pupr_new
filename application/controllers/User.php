@@ -904,6 +904,16 @@ public function pekerjaan()
 	}
 
 
+	public function list_pekerjaan()
+	{
+      $id_perencanaan=$this->input->post("id_perencanaan");
+
+      $data=$this->db->query("SELECT * FROM detail_jenis_pekerjaan INNER JOIN jenis_pekerjaan ON detail_jenis_pekerjaan.id=jenis_pekerjaan.id WHERE id_lap_perencanaan='$id_perencanaan' GROUP BY detail_jenis_pekerjaan.id")->result();
+      echo json_encode($data);
+
+	}
+
+
 
 
 

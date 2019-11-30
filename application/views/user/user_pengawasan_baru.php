@@ -246,10 +246,33 @@ else
 
 	function ubahPekerjaan()
 	{
+	    let id_perencanaan=$("#id_perencanaan").val();
 
 	    // alert("test");
 	//	Select Semua Jenis Pekerjaan Laporan Tersebut
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/user/list_pekerjaan",
+            data: {"id_perencanaan":id_perencanaan},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    // alert(data);  //as a debugging message.
+					data=JSON.parse(data);
+					console.log(data);
 
+					let length=data.length;
+					let i=0;
+
+					while(i<length)
+					{
+
+					    $("#jenis_pekerjaan").append('<option value="'+data[i].id+'">'+data[i].nama_jenis+'</option>');
+					    i++;
+					}
+                }
+        });
 	}
 </script>
 
