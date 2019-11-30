@@ -291,15 +291,21 @@ else
         });
 	}
 
+	let kuy=0;
+
 
 	function tambahRow()
 	{
+	    let jenis_pekerjaan=$("#jenis_pekerjaan").val();
+	    let jenis_pekerjaan_text=$("#jenis_pekerjaan option:selected").text();
       $("#tabel_satu").append('\t\t<tr>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerjaan" id="'+jenis_pekerjaan+"_pekerjaan_"+kuy+'">'+jenis_pekerjaan_text+'</td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerja" id="'+jenis_pekerjaan+"_pekerja_"+kuy+'"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah" id="'+jenis_pekerjaan+"_jumlah_"+kuy+'"></td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
           '\t\t\t\t\t\t\t\t\t</tr>');
+
+      kuy++;
 	}
 </script>
 
