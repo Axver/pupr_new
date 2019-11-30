@@ -252,6 +252,12 @@ public function user_pengawasan_create($i)
    $this->load->view("user/user_pengawasan");
 }
 
+	public function user_pengawasan_create_baru($i)
+
+	{
+		$this->load->view("user/user_pengawasan_baru");
+	}
+
 
 public function save_pengawasan()
 {

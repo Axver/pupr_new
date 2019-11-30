@@ -37,25 +37,25 @@
 	</li>
 
 	<!-- Nav Item - Pages Collapse Menu -->
-	<li class="nav-item">
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo113" aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-cog"></i>
-			<span>Paket User</span>
-		</a>
-		<div id="collapseTwo113" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Paket User</h6>
-				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
+<!--	<li class="nav-item">-->
+<!--		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo113" aria-expanded="true" aria-controls="collapseTwo">-->
+<!--			<i class="fas fa-fw fa-cog"></i>-->
+<!--			<span>Paket User</span>-->
+<!--		</a>-->
+<!--		<div id="collapseTwo113" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">-->
+<!--			<div class="bg-white py-2 collapse-inner rounded">-->
+<!--				<h6 class="collapse-header">Paket User</h6>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('user') ?><!--">Paket</a>-->
 <!--				<a class="collapse-item" href="--><?php //echo base_url('user_perencanaan') ?><!--">Laporan Perencanaan</a>-->
-				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
-				<a class="collapse-item" href="<?php echo base_url('user_pengawasan_data') ?>">Laporan Pengawasan</a>
-
-
-
-
-			</div>
-		</div>
-	</li>
+<!--				<a class="collapse-item" href="--><?php //echo base_url('user_harian_data') ?><!--">Laporan Harian</a>-->
+<!--				<a class="collapse-item" href="--><?php //echo base_url('user_pengawasan_data') ?><!--">Laporan Pengawasan</a>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</li>-->
 
 	<!-- Nav Item - Pages Collapse Menu -->
 	<li class="nav-item">

@@ -29,6 +29,12 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+	<style>
+		body{
+			color:black;
+		}
+	</style>
+
 
 </head>
 
@@ -102,7 +108,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-
+				<?php $this->load->view('admin_content/card_list_user');?>
 
 				<!-- Content Row -->
 
@@ -113,7 +119,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Paket <?php echo $this->uri->segment("3"); ?></h6>
+								<h6 class="m-0 font-weight-bold text-primary">User Pengawasan Baru</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -124,64 +130,62 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<center>
+									<b><h3>Laporan Pengawasan</h3></b>
+								</center>
+
+								<center>
+									<b><h3>Minggu Ke - X</h3></b>
+								</center>
+								<br/>
+								<br/>
+								<b>Id Paket</b>
+								<input type="text" class="form form-control" id="id_paket" value="<?php echo $this->uri->segment('3') ?>" disabled>
+								<b>Id Laporan Perencanaan</b>
+								<select class="form form-control" id="id_perencanaan" onchange="ubahPekerjaan()">
+									<option>--PILIH--</option>
+									<?php
+
+									$data=$this->db->get_where("lap_perencanaan",array("id_paket"=>$this->uri->segment("3")))->result();
+									$count=count($data);
+
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+									<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->id_lap_perencanaan; ?></option>
+									<?php
+
+										$i++;
+									}
+//
+									?>
+								</select>
+								<br/>
+								<br/>
+
 								<div class="row">
-									<div class="col-sm-4"><a href="../perencanaan/<?php echo $this->uri->segment('3'); ?>">Laporan Perencanaan</a> </div>
-									<div class="col-sm-4"><a href="../user_harian_baru/<?php echo $this->uri->segment('3'); ?>">Laporan Harian</a></div>
-									<div class="col-sm-4"><a href="../user_pengawasan_create_baru/<?php echo $this->uri->segment('3'); ?>">Laporan Pengawasan</a></div>
+									<div class="col-sm-1"><button class="btn btn-facebook">+</button></div>
+									<div class="col-sm-5">
+										<select class="form form-control" id="jenis_pekerjaan">
 
+										</select></div>
 								</div>
 
-								<br>
-								<b>Grafik</b>
-								<input type="hidden" id="id_paket_hidden" value="<?php echo $this->uri->segment('3'); ?>">
-								<div class="panel panel-info">
-									<div class="panel-head"></div>
-									<div class="panel-body">
-										<canvas id="bar-chart" width="800" height="450"></canvas>
-										<script>
-//Ajaxnya
-let id_paket_hidden=$("#id_paket_hidden").val();
-// alert(id_paket_hidden);
-$.ajax({
-    type: "POST",
-    url: "http://localhost/pupr_new/user/chart",
-    data: {"id_paket":id_paket_hidden},
-    dataType: "text",
-    cache:false,
-    success:
-        function(data){
-            data=JSON.parse(data);
-            console.log(data);
-            new Chart(document.getElementById("bar-chart"), {
-                type: 'bar',
-                data: {
-                    labels: ["Laporan Harian", "Laporan Perencanaan","Laporan Pengawasan"],
-                    datasets: [
-                        {
-                            label: "Laporan",
-                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                            data: [data.harian,data.perencanaan,data.pengawasan]
-                        }
-                    ]
-                },
-                options: {
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Jumlah Laporan Dikerjakan'
-                    }
-                }
-            });
 
-        }
-});
-                                            // Bar chart
+								<b>Rekapitulasi Hasil Pengawasan</b>
 
-										</script>
-									</div>
-								</div>
+
 
 							</div>
+
+							<script>
+                                $(document).ready(function() {
+                                    $('#example').DataTable();
+                                } );
+							</script>
 						</div>
 					</div>
 
@@ -237,6 +241,17 @@ $.ajax({
 </div>
 
 
+
+<script>
+
+	function ubahPekerjaan()
+	{
+
+	    // alert("test");
+	//	Select Semua Jenis Pekerjaan Laporan Tersebut
+
+	}
+</script>
 
 
 
