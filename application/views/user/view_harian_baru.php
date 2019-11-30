@@ -139,6 +139,60 @@ else
 								<br/>
 								<br/>
 
+<!--								Disini Informasi Paket-->
+								<?php
+								$paket=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+                                $nama_paket="-";
+                                $nilai_paket="-";
+                                $lokasi="-";
+								$count=count($paket);
+								$i=0;
+
+								while($i<$count)
+								{
+									$paket_info=$this->db->get_where("paket",array("id_paket"=>$paket[$i]->id_paket))->result();
+									$count1=count($paket_info);
+
+									$ii=0;
+
+									while($ii<$count1)
+									{
+										$nama_paket=$paket_info[$ii]->nama;
+										$nilai_paket=$paket_info[$ii]->nilai_paket;
+										$lokasi=$paket_info[$ii]->lokasi;
+
+										$ii++;
+									}
+
+									$i++;
+								}
+
+								?>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="row">
+											<div class="col-sm-6">Nama Paket</div>
+											<div class="col-sm-6" id="nama_paket">:<?php echo $nama_paket ?></div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Jenis Pekerjaan</div>
+											<div class="col-sm-6" id="jenis_pekerjaan">:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Lokasi</div>
+											<div class="col-sm-6" id="lokasi">:<?php echo $lokasi ?></div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Pagu</div>
+											<div class="col-sm-6" id="pagu">:<?php echo $nilai_paket; ?></div>
+										</div>
+									</div>
+									<div class="col-sm-6"></div>
+								</div>
+								<br/>
+								<br/>
+								<br/>
+
 
 
 								<table class="table table-responsive-lg" id="tabel_satu">
@@ -307,6 +361,7 @@ $.ajax({
 				}
 			    else
 				{
+				    $("#jenis_pekerjaan").append("<br/>"+"-"+data[i].nama_jenis);
                     $("#tabel_satu").append('\t\t<tr>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+'">'+data[i].nama_jenis+'</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+'">'+data[i].nama+'</td>\n' +
