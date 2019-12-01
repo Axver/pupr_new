@@ -87,9 +87,9 @@
 		<div id="collapseTwo114" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Generate</h6>
-				<a class="collapse-item" href="<?php echo base_url('generate_minggu') ?>">Laporan Mingguan</a>
+<!--				<a class="collapse-item" href="--><?php //echo base_url('generate_minggu') ?><!--">Laporan Mingguan</a>-->
 				<a class="collapse-item" href="<?php echo base_url('generate_bulan') ?>">Laporan Bulanan</a>
-				<a class="collapse-item" href="<?php echo base_url('catur_wulan') ?>">Create Caturwulan</a>
+				<a class="collapse-item" href="<?php echo base_url('catur_wulan') ?>">Laporan Pertahap</a>
 <!--				<a class="collapse-item" href="--><?php //echo base_url('generate_catur') ?><!--">Laporan Caturwulan</a>-->
 
 

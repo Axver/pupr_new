@@ -169,6 +169,8 @@ else
 									?>
 								</select>
 								<br/>
+								<b>Tanggal</b>
+								<input type="date" class="form form-control" id="hari_tanggal">
 								<br/>
 
 								<div class="row">
@@ -191,6 +193,8 @@ else
 									</tr>
 
 								</table>
+								
+								<button class="btn btn-facebook" onclick="save()">Save</button>
 
 
 
@@ -302,7 +306,7 @@ else
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerjaan" id="'+jenis_pekerjaan+"_pekerjaan_"+kuy+'">'+jenis_pekerjaan_text+'</td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerja nonActive" id="'+jenis_pekerjaan+"_pekerja_"+kuy+'"></td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah" id="'+jenis_pekerjaan+"_jumlah_"+kuy+'"></td>\n' +
-          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax"></td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" style="background-color:#3b5998;color:white;"><center>Tidak Diisi</center></td>\n' +
           '\t\t\t\t\t\t\t\t\t</tr>');
 
         //    Event Listener Untuk Jenis
@@ -322,7 +326,57 @@ else
             classname[i].addEventListener('click', myFunction, false);
         }
 
+        var classname = document.getElementsByClassName("jumlah");
+
+        var myFunction = function() {
+            var attribute = this.id;
+            console.log(attribute);
+            $("#id_jumlah").val(attribute);
+            $("#wJumlah").modal("show");
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
+
       kuy++;
+	}
+
+
+	function jenisPekerja()
+	{
+	    $("#wPekerja").modal("hide");
+	    let id=$("#id_warnai").val();
+	    let jenis_pekerja=$("#jenis_pekerja").val();
+	    let jenis_pekerja_text=$("#jenis_pekerja option:selected").text();
+
+        $("#"+id).removeClass("nonActive");
+        $("#"+id).addClass("Active");
+	    // alert("hai");
+		$("#"+id).text(jenis_pekerja+"_"+jenis_pekerja_text);
+	}
+
+	function jumlah()
+	{
+	    let id=$("#id_jumlah").val();
+	    let jumlah=$("#jumlah").val();
+	    $("#wJumlah").modal("hide");
+
+	    $("#"+id).text(jumlah);
+	}
+
+	function save()
+	{
+        let i=0;
+
+        let dataArray=new Array();
+
+        $(".Active").each(function (index, element) {
+            dataArray[i]=$(this).attr("id");
+            i++;
+        });
+
+		console.log(dataArray);
 	}
 </script>
 
@@ -342,10 +396,51 @@ else
 			</div>
 			<div class="modal-body">
 				<input type="text" id="id_warnai" class="form form-control" disabled>
+				<b>Pilih Jenis Pekerja</b>
+				<select class="form form-control" id="jenis_pekerja">
+					<?php
+					$data=$this->db->get("jenis_upah")->result();
+					$count=count($data);
+
+					$i=0;
+
+					while($i<$count)
+					{
+						?>
+						<option value="<?php echo $data[$i]->id_jenis_upah ?>"><?php echo $data[$i]->nama ?></option>
+					<?php
+
+						$i++;
+					}
+					?>
+
+				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" onclick="jenisPekerja()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="wJumlah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="id_jumlah" class="form form-control" disabled>
+				<b>Masukkan Jumlah</b>
+	             <input type="text" class="form form-control" id="jumlah">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="jumlah()">Save changes</button>
 			</div>
 		</div>
 	</div>
