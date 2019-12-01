@@ -444,6 +444,13 @@ let tanggal=$("#tanggal").val();
 
 					i++;
 				}
+
+				$("#tabel_satu").append('<tr>'+
+					'<td></td>'+
+					'<td></td>'+
+					'<td></td>'+
+					'<td id="total">Total:</td>'+
+					'</tr>');
               }
           });
 </script>
