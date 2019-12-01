@@ -173,6 +173,7 @@ else
 								<input type="date" class="form form-control" id="hari_tanggal">
 								<br/>
 
+
 								<div class="row">
 									<div class="col-sm-1"><button class="btn btn-facebook" onclick="tambahRow()">+</button></div>
 									<div class="col-sm-5">
@@ -367,7 +368,29 @@ else
 
 	function save()
 	{
+
+	    let id_paket=$("#id_paket").val();
+	    let id_perencanaan=$("#id_perencanaan").val();
+	    let tanggal=$("#hari_tanggal").val();
+	    let minggu;
+
+        let m=1;
+        while(m<54)
+        {
+            let data=getDateRangeOfWeek(m);
+            data=data.split(" to ");
+            let first=new Date(data[0]);
+            let middle= new Date(tanggal);
+            let last= new Date(data[1]);
+
+            if(first<=middle && middle<=last)
+			{
+			    minggu=m;
+			}
+            m++;
+        }
         let i=0;
+
 
         let dataArray=new Array();
 
@@ -377,7 +400,70 @@ else
         });
 
 		console.log(dataArray);
+
+		let length=dataArray.length;
+		let j=0;
+		//Simpan laporan pengawasan terlebih dahulu
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pupr_new/user/save_pengawasan_baru",
+            data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    alert(data);  //as a debugging message.
+                }
+        });
+
+
+		//Untuk menyimpan detail laporan pengawasan
+
+		while(j<length)
+		{
+		    let id_all=dataArray[j];
+		    let jenis_pekerjaan=id_all.split("_");
+		    jenis_pekerjaan=jenis_pekerjaan[0];
+		    let jenis_pekerja=$("#"+id_all).text();
+		    jenis_pekerja=jenis_pekerja.split("_");
+		    jenis_pekerja=jenis_pekerja[0];
+		    let jumlah=id_all.replace("pekerja","jumlah");
+		    jumlah=$("#"+jumlah).text();
+
+		    console.log("jenis_pekerja:"+jenis_pekerja);
+            console.log("jenis_pekerjaan:"+jenis_pekerjaan);
+            console.log("jumlah:"+jumlah);
+		    j++;
+		}
 	}
+
+
+
+    //	Mencari rentang tanggal minggu tertentu
+    Date.prototype.getWeek = function () {
+        var target  = new Date(this.valueOf());
+        var dayNr   = (this.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        var firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() != 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
+    }
+
+    function getDateRangeOfWeek(weekNo){
+        var d1 = new Date();
+        numOfdaysPastSinceLastMonday = eval(d1.getDay()- 1);
+        d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+        var weekNoToday = d1.getWeek();
+        var weeksInTheFuture = eval( weekNo - weekNoToday );
+        d1.setDate(d1.getDate() + eval( 7 * weeksInTheFuture ));
+        var rangeIsFrom = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear();
+        d1.setDate(d1.getDate() + 6);
+        var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
+        return rangeIsFrom + " to "+rangeIsTo;
+    };
 </script>
 
 

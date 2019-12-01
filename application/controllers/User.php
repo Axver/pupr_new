@@ -914,6 +914,38 @@ public function pekerjaan()
 	}
 
 
+	public function save_pengawasan_baru()
+	{
+      $id_perencanaan=$this->input->post("id_perencanaan");
+      $id_paket=$this->input->post("id_paket");
+      $tanggal=$this->input->post("tanggal");
+      $minggu=$this->input->post("minggu");
+
+//      Select tahun
+		$tahun=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$id_perencanaan))->result();
+		$count=count($tahun);
+		$i=0;
+
+		while($i<$count)
+		{
+			$tahun1=$tahun[$i]->tahun;
+
+			$i++;
+		}
+
+//		Input ke database sekarang
+		$data=array(
+		"id_lap_pengawasan"=>$tanggal,
+		"id_lap_perencanaan"=>$id_perencanaan,
+			"id_paket"=>$id_paket,
+			"tahun"=>$tahun1,
+			"minggu"=>$minggu
+		);
+
+		$this->db->insert("lap_pengawasan",$data);
+	}
+
+
 
 
 
