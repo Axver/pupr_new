@@ -494,7 +494,7 @@ else
         id=id.split("_");
         // alert(id);
         // console.log(id);
-        window.location="http://localhost/pupr_new/user_pengawasan_data/view/"+id[0]+"/"+id[1]+"/"+id[2];
+        window.location="http://localhost/pupr_new/user_pengawasan_data/view_baru/"+id[0]+"/"+id[1]+"/"+id[2];
     }
 
     function edit1(id)

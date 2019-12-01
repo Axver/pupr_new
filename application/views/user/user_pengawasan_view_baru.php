@@ -29,6 +29,17 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+	<style>
+		body{
+			color:black;
+		}
+
+		th,td,table{
+			border: 2px solid black;
+			color: black;
+		}
+	</style>
+
 
 </head>
 
@@ -113,7 +124,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">View Laporan Harian Mingguan</h6>
+								<h6 class="m-0 font-weight-bold text-primary">View Laporan Pengawasan</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -121,8 +132,23 @@ else
 
 								</div>
 							</div>
+							<input type="hidden" id="minggu" value="<?php echo $this->uri->segment('5'); ?>">
 							<!-- Card Body -->
 							<div class="card-body">
+								<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
+								<center><b><h3>MINGGU KE-<b id="romawi"></b> (<b id="huruf"></b>)</h3></b></center>
+
+								<b>Rekapitulasi Hasil Pengawasan</b>
+
+								<table class="tg table" id="tabel_satu">
+									<tr>
+										<th class="tg-cly1">Jenis Pekerjaan</th>
+										<th class="tg-cly1">Jenis Pekerja</th>
+										<th class="tg-cly1">Jumlah</th>
+										<th class="tg-0lax">Progress Pekerjaan %</th>
+									</tr>
+
+								</table>
 
 
 
@@ -186,6 +212,142 @@ else
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+    function romanize (num) {
+        if (isNaN(num))
+            return NaN;
+        var digits = String(+num).split(""),
+            key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                "","I","II","III","IV","V","VI","VII","VIII","IX"],
+            roman = "",
+            i = 3;
+        while (i--)
+            roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+        return Array(+digits.join("") + 1).join("M") + roman;
+    }
+
+	let minggu=$("#minggu").val();
+    let romawi=romanize(minggu);
+    // alert(romawi);
+	$("#romawi").text(romawi);
+
+</script>
+
+
+
+<script>
+<!--	Ubah angka ke huruf-->
+var daftarAngka=new Array("","satu","dua","tiga","empat","lima","enam","tujuh","delapan","sembilan");
+function terbilang(nilai){
+    var temp='';
+    var hasilBagi,sisaBagi;
+//batas untuk ribuan
+    var batas=3;
+//untuk menentukan ukuran array, jumlahnya sesuaikan dengan jumlah anggota dari array gradeNilai[]
+    var maxBagian = 5;
+    var gradeNilai=new Array("","ribu","juta","milyar","triliun");
+//cek apakah ada angka 0 didepan ==> 00098, harus diubah menjadi 98
+    nilai = this.hapusNolDiDepan(nilai);
+    var nilaiTemp = ubahStringKeArray(batas, maxBagian, nilai);
+//ubah menjadi bentuk terbilang
+    var j = nilai.length;
+//menentukan batas array
+    var banyakBagian = (j % batas) == 0 ? (j / batas) : Math.round(j / batas + 0.5);
+    var h=0;
+    for(var i = banyakBagian - 1; i >=0; i-- ){
+        var nilaiSementara = parseInt(nilaiTemp[h]);
+        if (nilaiSementara == 1 && i == 1){
+            temp +="seribu ";
+        }
+        else {
+            temp +=this.ubahRatusanKeHuruf(nilaiTemp[h])+" ";
+// cek apakah string bernilai 000, maka jangan tambahkan gradeNilai[i]
+            if(nilaiTemp[h] != "000"){
+                temp += gradeNilai[i]+" ";
+            }
+        }
+        h++;
+    }
+    return temp;
+}
+function ubahStringKeArray(batas, maxBagian,kata){
+// maksimal 999 milyar
+    var temp= new Array(maxBagian);
+    var j = kata.length;
+//menentukan batas array
+    var banyakBagian = (j % batas) == 0 ? (j / batas) : Math.round(j / batas + 0.5);
+    for(var i = banyakBagian - 1; i >= 0 ; i--){
+        var k = j - batas;
+        if(k < 0) k = 0;
+        temp[i]=kata.substring(k,j);
+        j = k ;
+        if (j == 0)
+            break;
+    }
+    return temp;
+}
+
+function ubahRatusanKeHuruf(nilai){
+//maksimal 3 karakter
+    var batas = 2;
+//membagi string menjadi 2 bagian, misal 123 ==> 1 dan 23
+    var maxBagian = 2;
+    var temp = this.ubahStringKeArray(batas, maxBagian, nilai);
+    var j = nilai.length;
+    var hasil="";
+//menentukan batas array
+    var banyakBagian = (j % batas) == 0 ? (j / batas) : Math.round(j / batas + 0.5);
+    for(var i = 0; i < banyakBagian ;i++){
+//cek string yang memiliki panjang lebih dari satu ==> belasan atau puluhan
+        if(temp[i].length > 1){
+//cek untuk yang bernilai belasan ==> angka pertama 1 dan angka kedua 0 - 9, seperti 11,16 dst
+            if(temp[i].charAt(0) == '1'){
+                if(temp[i].charAt(1) == '1') {
+                    hasil += "sebelas";
+                }
+                else if(temp[i].charAt(1) == '0') {
+                    hasil += "sepuluh";
+                }
+                else hasil += daftarAngka[temp[i].charAt(1) - '0']+ " belas ";
+            }
+            //cek untuk string dengan format angka  pertama 0 ==> 09,05 dst
+            else if(temp[i].charAt(0) == '0'){
+                hasil += daftarAngka[temp[i].charAt(1) - '0'] ;
+            }
+            //cek string dengan format selain angka pertama 0 atau 1
+            else
+                hasil += daftarAngka[temp[i].charAt(0) - '0']+ " puluh " +daftarAngka[temp[i].charAt(1) - '0'] ;
+        }
+        else {
+//cek string yang memiliki panjang = 1 dan berada pada posisi ratusan
+            if(i == 0 && banyakBagian !=1){
+                if (temp[i].charAt(0) == '1')
+                    hasil+=" seratus ";
+                else if (temp[i].charAt(0) == '0')
+                    hasil+=" ";
+                else hasil+= daftarAngka[parseInt(temp[i])]+" ratus ";
+            }
+//string dengan panjang satu dan tidak berada pada posisi ratusan ==> satuan
+            else hasil+= daftarAngka[parseInt(temp[i])];
+        }
+    }
+    return hasil;
+}
+function hapusNolDiDepan(nilai){
+    while(nilai.indexOf("0") == 0){
+        nilai = nilai.substring(1, nilai.length);
+    }
+    return nilai;
+}
+
+
+console.log(terbilang(minggu));
+$("#huruf").text(terbilang(minggu));
+</script>
 
 
 
