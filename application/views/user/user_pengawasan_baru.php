@@ -377,11 +377,11 @@ else
         let m=1;
         while(m<54)
         {
-            let data=getDateRangeOfWeek(m);
-            data=data.split(" to ");
-            let first=new Date(data[0]);
+            let data1=getDateRangeOfWeek(m);
+            data1=data1.split(" to ");
+            let first=new Date(data1[0]);
             let middle= new Date(tanggal);
-            let last= new Date(data[1]);
+            let last= new Date(data1[1]);
 
             if(first<=middle && middle<=last)
 			{
@@ -409,32 +409,49 @@ else
             url: "http://localhost/pupr_new/user/save_pengawasan_baru",
             data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu},
             dataType: "text",
+			async:false,
             cache:false,
             success:
                 function(data){
-                    alert(data);  //as a debugging message.
+
+                    //Untuk menyimpan detail laporan pengawasan
+
+                    while(j<length)
+                    {
+                        let id_all=dataArray[j];
+                        let jenis_pekerjaan=id_all.split("_");
+                        jenis_pekerjaan=jenis_pekerjaan[0];
+                        let jenis_pekerja=$("#"+id_all).text();
+                        jenis_pekerja=jenis_pekerja.split("_");
+                        jenis_pekerja=jenis_pekerja[0];
+                        let jumlah=id_all.replace("pekerja","jumlah");
+                        jumlah=$("#"+jumlah).text();
+
+                        //Tambakan detail menggunakan ajax
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost/pupr_new/user/pengawasan_detail_baru",
+							async:false,
+                            data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu,"jenis_pekerja":jenis_pekerja,"jenis_pekerjaan":jenis_pekerjaan,"jumlah":jumlah},
+                            dataType: "text",
+                            cache:false,
+                            success:
+                                function(data){
+                                    console.log(data);
+                                }
+                        });
+
+                        console.log("jenis_pekerja:"+jenis_pekerja);
+                        console.log("jenis_pekerjaan:"+jenis_pekerjaan);
+                        console.log("jumlah:"+jumlah);
+                        j++;
+                    }
+
                 }
         });
 
 
-		//Untuk menyimpan detail laporan pengawasan
 
-		while(j<length)
-		{
-		    let id_all=dataArray[j];
-		    let jenis_pekerjaan=id_all.split("_");
-		    jenis_pekerjaan=jenis_pekerjaan[0];
-		    let jenis_pekerja=$("#"+id_all).text();
-		    jenis_pekerja=jenis_pekerja.split("_");
-		    jenis_pekerja=jenis_pekerja[0];
-		    let jumlah=id_all.replace("pekerja","jumlah");
-		    jumlah=$("#"+jumlah).text();
-
-		    console.log("jenis_pekerja:"+jenis_pekerja);
-            console.log("jenis_pekerjaan:"+jenis_pekerjaan);
-            console.log("jumlah:"+jumlah);
-		    j++;
-		}
 	}
 
 
