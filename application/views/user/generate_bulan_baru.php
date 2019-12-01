@@ -244,8 +244,8 @@ else
 
 <table class="tg table" id="tabel_tiga">
   <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
-    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
+    <th class="tg-cly1" rowspan="3">Bahan/Alat</th>
+    <th class="tg-cly1" rowspan="3">Satuan</th>
     <th class="tg-cly1" colspan="5">Bulan</th>
   </tr>
   <tr>
@@ -382,6 +382,52 @@ else
         // Tahun yang dipaket, bukan tahun sekarang
         let tahun;
         tahun=$("#tahun").val();
+
+		// Buat dulu row tabelnya sesuai dengan jumlah yang ada di db
+		$.ajax({
+         type: "POST",
+		 async:false,
+         url: "http://localhost/pupr_new/generate_bulan_baru/row", 
+         data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                data=JSON.parse(data);
+				console.log("jumlah row");
+				console.log(data);
+
+				let length=data.length;
+				// Buat Row sebanyak data length tersebut
+				// Jangan lupa id row didasarkan pada id Pekerjaan dan id jenis upah, serta untuk minggu ditambahkan urutan
+
+	             let i=0;
+
+				 while(i<length)
+				 {
+
+					$("#tabel_satu").append("<tr>"+
+                      "<td class='tg-0lax'></td>"+
+                      "<td class='tg-0lax'></td>"+
+                       "<td class='tg-0lax'></td>"+
+                       "<td class='tg-0lax'></td>"+
+                       "<td class='tg-0lax'></td>"+
+                       "<td class='tg-0lax'></td>"+
+                       "<td class='tg-0lax'></td>"+"</tr>");
+
+                    $("#tabel_dua").append(" <tr>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+
+                     "<td class='tg-0lax'></td>"+ "</tr>");
+
+					 i++;
+				 }
+              }
+          });
 
 
 
