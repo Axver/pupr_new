@@ -180,6 +180,29 @@ class User_pengawasan_data extends CI_Controller {
 	}
 
 
+	public function data_view_baru()
+	{
+
+		$tanggal=$this->input->post("tanggal");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$minggu=$this->input->post("minggu");
+
+		// Select datanya sekarang
+		$this->db->select('*');
+		$this->db->from('detail_laporan_pengawasan');
+		$this->db->join('jenis_pekerjaan', 'detail_laporan_pengawasan.jenis_pekerjaan = jenis_pekerjaan.id');
+		$this->db->join('jenis_upah', 'detail_laporan_pengawasan.jenis_pekerja = jenis_upah.id_jenis_upah');
+		$this->db->where("id_lap_pengawasan",$tanggal);
+		$this->db->where("id_lap_perencanaan",$id_perencanaan);
+		$this->db->where("minggu",$minggu);
+
+		// $data=$this->db->get_where("detail_laporan_pengawasan",array("id_lap_pengawasan"=>$tanggal,"id_lap_perencanaan"=>$id_perencanaan,"minggu"=>$minggu))->result();
+		$data=$this->db->get()->result();
+		echo json_encode($data);
+
+	}
+
+
 
 
 

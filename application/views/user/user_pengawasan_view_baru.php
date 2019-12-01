@@ -133,11 +133,76 @@ else
 								</div>
 							</div>
 							<input type="hidden" id="minggu" value="<?php echo $this->uri->segment('5'); ?>">
+							<input type="hidden" id="tanggal" value="<?php echo $this->uri->segment('3'); ?>">
+							<input type="hidden" id="id_perencanaan" value="<?php echo $this->uri->segment('4'); ?>">
+							<?php
+//							Pilih paket
+							$pil=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("4")))->result();
+							$conunt=count($pil);
+							$nama_paket="";
+							$lokasi="";
+							$periode="";
+							$tanggal="";
+							$tahun="";
+
+							$i=0;
+							while($i<$conunt)
+							{
+								$data=$this->db->get_where("paket",array("id_paket"=>$pil[$i]->id_paket))->result();
+								$count=count($data);
+								$ii=0;
+								while($ii<$count)
+								{
+									$nama_paket=$data[$ii]->nama;
+									$lokasi=$data[$ii]->lokasi;
+									$tahun=$data[$ii]->tahun;
+
+									$ii++;
+								}
+								$i++;
+							}
+							?>
 							<!-- Card Body -->
 							<div class="card-body">
 								<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
 								<center><b><h3>MINGGU KE-<b id="romawi"></b> (<b id="huruf"></b>)</h3></b></center>
 
+
+							<div class="row">
+								<div class="col-sm-8">
+									<div class="row">
+										<div class="col-sm-4">Nama Paket</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-6"><?php echo $nama_paket; ?></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4">Lokasi Pekerjaan</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-6"><?php echo $lokasi; ?></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4">Periode Pengawasan</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-6"></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4">Tanggal</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-6"></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4">Tahun Anggaran</div>
+										<div class="col-sm-1">:</div>
+										<div class="col-sm-6"><?php echo $tahun; ?></div>
+									</div>
+
+								</div>
+								<br/>
+								<br/>
+
+							</div>
+								<br/>
+								<br/>
 								<b>Rekapitulasi Hasil Pengawasan</b>
 
 								<table class="tg table" id="tabel_satu">
@@ -348,6 +413,41 @@ function hapusNolDiDepan(nilai){
 console.log(terbilang(minggu));
 $("#huruf").text(terbilang(minggu));
 </script>
+
+<script>
+let id_perencanaan=$("#id_perencanaan").val();
+let minggu1=$("#minggu").val();
+let tanggal=$("#tanggal").val();
+    $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/data_view_baru", 
+         data: {"tanggal":tanggal,"id_perencanaan":id_perencanaan,"minggu":minggu1},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+				// alert(data);  //as a debugging message.
+				
+				data=JSON.parse(data);
+				console.log(data);
+				let length=data.length;
+				let i=0;
+
+				while(i<length)
+				{
+					$("#tabel_satu").append('<tr>'+
+					'<td>'+data[i].nama_jenis+'</td>'+
+					'<td>'+data[i].nama+'</td>'+
+					'<td>'+data[i].jumlah+'</td>'+
+					'<td></td>'+
+					'</tr>');
+
+					i++;
+				}
+              }
+          });
+</script>
+
 
 
 
