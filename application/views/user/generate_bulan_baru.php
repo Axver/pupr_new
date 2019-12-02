@@ -407,22 +407,22 @@ else
 				 {
 
 					$("#tabel_satu").append("<tr>"+
-                      "<td class='tg-0lax'></td>"+
-                      "<td class='tg-0lax'></td>"+
-                       "<td class='tg-0lax'></td>"+
-                       "<td class='tg-0lax'></td>"+
-                       "<td class='tg-0lax'></td>"+
-                       "<td class='tg-0lax'></td>"+
-                       "<td class='tg-0lax'></td>"+"</tr>");
+                      "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
+                      "<td class='tg-0lax'>"+data[i].nama+"</td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_1"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_2"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_3"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_4"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_5"+"'></td >"+"</tr>");
 
                     $("#tabel_dua").append(" <tr>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+
-                     "<td class='tg-0lax'></td>"+ "</tr>");
+                     "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
+                     "<td class='tg-0lax'>"+data[i].nama+"</td>"+
+                     "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__1"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__2"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__3"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__4"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__5"+"'></td>"+ "</tr>");
 
 					 i++;
 				 }
@@ -442,6 +442,33 @@ else
         while(x<=jumlah)
         {
             // Cari tanggal mulai dan tanggal selesai dari masing-masing minggu didalam bulan tersebut
+            $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/minggu", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("jumlah Data Per Minggu:");
+				         console.log(data);
+                 console.log("jumlah Data Per Minggu:");
+				         let length=data.length;
+	               let i=0;
+
+
+                 while(i<length)
+                 {
+                    
+                    $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
+                    $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+x).text(data[i].sum);
+
+                   i++;
+                 }
+              }
+          });
 
             x++;
         }
@@ -451,6 +478,8 @@ else
 
 
 </script>
+
+
 
 
 
