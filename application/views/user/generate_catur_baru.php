@@ -29,6 +29,23 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+    <style>
+    th,td,table{
+        color:black;
+        border:2px solid black;
+    }
+
+    table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+body{
+    color:black;
+}
+    </style>
+
 
 </head>
 
@@ -123,7 +140,197 @@ else
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
+                            <center><b><h3>LAPORAN PER TAHAP</h3></b></center>
+                            <center><b><h3>PELAKSANAAN KEGIATAN</h3></b></center>
 
+                            <b>Jadwal Rencana Pelaksanaan Kegiatan</b>
+                            <table class="tg table" id="tabel_satu">
+  <tr>
+    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
+    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
+    <th class="tg-cly1" colspan="20">Tahap</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1" colspan="5">Bulan 1</td>
+    <td class="tg-0lax" colspan="5">Bulan 2</td>
+    <td class="tg-0lax" colspan="5">Bulan 3</td>
+    <td class="tg-0lax" colspan="5">Bulan 4</td>
+  
+  </tr>
+  <tr>
+    <td class="tg-cly1">1</td>
+    <td class="tg-cly1">2</td>
+    <td class="tg-cly1">3</td>
+    <td class="tg-cly1">4</td>
+    <td class="tg-cly1">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+  
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+   
+  </tr>
+</table>
+
+<b>Perencanaan Penggunaan Jumlah Pekerja</b>
+
+
+<table class="tg table" id="tabel_dua">
+  <tr>
+    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
+    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
+    <th class="tg-cly1" colspan="20">Tahap</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1" colspan="5">Bulan 1</td>
+    <td class="tg-0lax" colspan="5">Bulan 2</td>
+    <td class="tg-0lax" colspan="5">Bulan 3</td>
+    <td class="tg-0lax" colspan="5">Bulan 4</td>
+   
+  </tr>
+  <tr>
+    <td class="tg-cly1">1</td>
+    <td class="tg-cly1">2</td>
+    <td class="tg-cly1">3</td>
+    <td class="tg-cly1">4</td>
+    <td class="tg-cly1">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+  
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    
+  </tr>
+</table>
+
+<b>Perencanaan Penggunaan Bahan/Alat</b>
+<table class="tg table" id="tabel_tiga">
+  <tr>
+    <th class="tg-cly1" rowspan="3">Jenis Bahan/Alat</th>
+    <th class="tg-cly1" colspan="20">Tahap</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1" colspan="5">Bulan 1</td>
+    <td class="tg-0lax" colspan="5">Bulan 2</td>
+    <td class="tg-0lax" colspan="5">Bulan 3</td>
+    <td class="tg-0lax" colspan="5">Bulan 4</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">1</td>
+    <td class="tg-cly1">2</td>
+    <td class="tg-cly1">3</td>
+    <td class="tg-cly1">4</td>
+    <td class="tg-cly1">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">5</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+</table>
 
 
 
