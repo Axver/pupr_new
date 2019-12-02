@@ -194,21 +194,7 @@ else
 							<!-- Tabel Disini -->
 
 							<table class="tg table" id="tabel_satu">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
-    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
-    <th class="tg-cly1" colspan="5">Bulan</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Minggu</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  </tr>
+
 </table>
 
 
@@ -219,21 +205,7 @@ else
 <br/>
 
 <table class="tg table" id="tabel_dua">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
-    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
-    <th class="tg-cly1" colspan="5">Bulan</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Minggu</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  </tr>
+
 </table>
 
 <br/>
@@ -243,21 +215,7 @@ else
 <br/>
 
 <table class="tg table" id="tabel_tiga">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Bahan/Alat</th>
-    <th class="tg-cly1" rowspan="3">Satuan</th>
-    <th class="tg-cly1" colspan="5">Bulan</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Minggu</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  </tr>
+ 
 </table>
 		
 
@@ -373,6 +331,58 @@ else
 
     function generate()
     {
+
+      hapus();
+      $("#tabel_satu").append('<tr>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
+    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-cly1" colspan="5">Minggu</td>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+  $("#tabel_dua").append('<tr>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
+    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-cly1" colspan="5">Minggu</td>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+
+  $("#tabel_tiga").append('<tr>'+
+    +'<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'
+    +'<th class="tg-cly1" rowspan="3">Satuan</th>'
+    +'<th class="tg-cly1" colspan="5">Bulan</th>'
+  +'</tr>'
+  +'<tr>'
+    +'<td class="tg-cly1" colspan="5">Minggu</td>'
+  +'</tr>'
+  +'<tr>'
+    +'<td class="tg-0lax">1</td>'
+    +'<td class="tg-0lax">2</td>'
+    +'<td class="tg-0lax">3</td>'
+    +'<td class="tg-0lax">4</td>'
+    +'<td class="tg-0lax">5</td>'
+  +'</tr>'
+  );
+
         let id_paket=$("#id_paket").val();
         let id_perencanaan=$("#id_perencanaan").val();
         let bulan=$("#bulan").val();
@@ -474,6 +484,14 @@ else
         }
 
 
+    }
+
+
+    function hapus()
+    {
+      $("#tabel_satu").empty();
+      $("#tabel_dua").empty();
+      $("#tabel_tiga").empty();
     }
 
 
