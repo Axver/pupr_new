@@ -673,6 +673,9 @@ else
         let data=$("#hari_value").val();
         let id2=id.replace("_","__");
 
+        alert(id);
+        alert(id2);
+
         //Ubah Status Class
         $( "#"+id ).removeClass( "nonActive" );
         $( "#"+id2 ).removeClass( "nonActive1" );
@@ -943,7 +946,7 @@ $.ajax({
 		{
             $("#tabel_satu").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+i+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"_"+i+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"_"+i+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_1"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_2"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_3"+"_"+i+'"></td>\n' +
@@ -955,7 +958,7 @@ $.ajax({
 
             $("#tabel_dua").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__pekerjaan"+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__upah"+"_"+i+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__upah"+"_"+i+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__1"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__2"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__3"+"_"+i+'"></td>\n' +
@@ -971,7 +974,7 @@ $.ajax({
 		{
             $("#tabel_satu").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+i+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"_"+i+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"__"+i+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_1"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_2"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_3"+"_"+i+'"></td>\n' +
@@ -983,7 +986,7 @@ $.ajax({
 
             $("#tabel_dua").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__pekerjaan"+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__upah"+"_"+i+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__upah"+"_"+i+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__1"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__2"+"_"+i+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__3"+"_"+i+'"></td>\n' +
@@ -1031,10 +1034,27 @@ $.ajax({
         for (var j = 0; j < classname.length; j++) {
             classname[j].addEventListener('click', myFunction, false);
         }
+
+
+        // Beri warna dan isikan data terlebih dahulu
+        $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+i).css("background-color","yellow");
+        $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"_"+i).text(data[i].total);
+
+        $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+i).removeClass("nonActive");
+        $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+i).addClass("Active");
+
+        
+        $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"_"+i).removeClass("nonActive1");
+        $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"_"+i).addClass("Active1");
+
+
                     i++;
                 }
               }
           });
+
+        //   Sekarang Jenis Bahan Alat yang diambil dari database
+
               }
           });
 
