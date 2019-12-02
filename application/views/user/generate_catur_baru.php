@@ -140,196 +140,80 @@ body{
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
+                            <!-- Pilih Datanya Dulu -->
+                            <b>Pilih Paket</b>
+                            <select onchange="listPerencanaan()" id="id_paket" class="form form-control">
+                            <option>--Pilih Paket--</option>
+                            <?php
+                            
+                            $paket=$this->db->get_where("detail_paket",array("nip"=>$this->session->userdata("nip")))->result();
+                            $count=count($paket);
+                            $i=0;
+
+                            while($i<$count)
+                            {
+                                ?>
+                                <option value="<?php echo $paket[$i]->id_paket; ?>"><?php echo $paket[$i]->id_paket; ?></option>
+                                <?php
+
+                                $i++;
+                            }
+                            
+                            ?>
+                            </select>
+
+                            <input type="hidden" id="tahun">
+                            <br/>
+                            <b>Pilih Perencanaan</b>
+                            <select class="form form-control" id="id_perencanaan">
+                            <option>--Pilih Perencanaan--</option>
+                            </select>
+
+                            <br/>
+                            <b>Pilih Bulan</b>
+
+
+                            <select class="form form-control" id="bulan">
+                            <option value="">--Pilih Bulan--</option>
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                            </select>
+
+                            <br/>
+                            <br/>
+
+                            <button class="btn btn-facebook" onclick="generate()">Generate</button>
                             <center><b><h3>LAPORAN PER TAHAP</h3></b></center>
                             <center><b><h3>PELAKSANAAN KEGIATAN</h3></b></center>
 
                             <b>Jadwal Rencana Pelaksanaan Kegiatan</b>
                             <table class="tg table" id="tabel_satu">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
-    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
-    <th class="tg-cly1" colspan="20">Tahap</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Bulan 1</td>
-    <td class="tg-0lax" colspan="5">Bulan 2</td>
-    <td class="tg-0lax" colspan="5">Bulan 3</td>
-    <td class="tg-0lax" colspan="5">Bulan 4</td>
-  
-  </tr>
-  <tr>
-    <td class="tg-cly1">1</td>
-    <td class="tg-cly1">2</td>
-    <td class="tg-cly1">3</td>
-    <td class="tg-cly1">4</td>
-    <td class="tg-cly1">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-   
-  </tr>
+
+
 </table>
 
 <b>Perencanaan Penggunaan Jumlah Pekerja</b>
 
 
 <table class="tg table" id="tabel_dua">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>
-    <th class="tg-cly1" rowspan="3">Jenis Upah</th>
-    <th class="tg-cly1" colspan="20">Tahap</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Bulan 1</td>
-    <td class="tg-0lax" colspan="5">Bulan 2</td>
-    <td class="tg-0lax" colspan="5">Bulan 3</td>
-    <td class="tg-0lax" colspan="5">Bulan 4</td>
-   
-  </tr>
-  <tr>
-    <td class="tg-cly1">1</td>
-    <td class="tg-cly1">2</td>
-    <td class="tg-cly1">3</td>
-    <td class="tg-cly1">4</td>
-    <td class="tg-cly1">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    
-  </tr>
+
+
+ 
 </table>
 
 <b>Perencanaan Penggunaan Bahan/Alat</b>
 <table class="tg table" id="tabel_tiga">
-  <tr>
-    <th class="tg-cly1" rowspan="3">Jenis Bahan/Alat</th>
-    <th class="tg-cly1" colspan="20">Tahap</th>
-  </tr>
-  <tr>
-    <td class="tg-cly1" colspan="5">Bulan 1</td>
-    <td class="tg-0lax" colspan="5">Bulan 2</td>
-    <td class="tg-0lax" colspan="5">Bulan 3</td>
-    <td class="tg-0lax" colspan="5">Bulan 4</td>
-  </tr>
-  <tr>
-    <td class="tg-cly1">1</td>
-    <td class="tg-cly1">2</td>
-    <td class="tg-cly1">3</td>
-    <td class="tg-cly1">4</td>
-    <td class="tg-cly1">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-    <td class="tg-0lax">1</td>
-    <td class="tg-0lax">2</td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax">4</td>
-    <td class="tg-0lax">5</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-    <td class="tg-0lax"></td>
-  </tr>
+
 </table>
 
 
@@ -394,6 +278,391 @@ body{
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+    function listPerencanaan()
+    {
+        $("#id_perencanaan").empty();
+        let id_paket=$("#id_paket").val();
+        // Ajax untuk mengambil data laporan perencanaan
+        $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/generate_bulan_baru/perencanaan", 
+         data: {"id_paket":id_paket},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                data=JSON.parse(data);
+                console.log(data);
+
+                let length=data.length;
+                let i=0;
+
+                $("#id_perencanaan").append("<option >"+"--Pilih--"+"</option>")
+
+
+
+
+
+                while(i<length)
+                {      $("#tahun").val(data[i].tahun);
+                       $("#id_perencanaan").append("<option value='"+data[i].id_lap_perencanaan+"'>"+data[i].id_lap_perencanaan+"</option>")
+
+                    i++;
+                }
+              }
+          });
+    }
+</script>
+
+
+
+
+<script>
+    function generate()
+    {
+
+      hapus();
+      $("#tabel_satu").append('    <tr>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
+    '<th class="tg-cly1" colspan="20">Tahap</th>'+
+  '</tr><tr>'+
+    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+  '</tr>'+
+  '<tr>'+
+   '<td class="tg-cly1">1</td>'+
+    '<td class="tg-cly1">2</td>'+
+    '<td class="tg-cly1">3</td>'+
+    '<td class="tg-cly1">4</td>'+
+    '<td class="tg-cly1">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+  $("#tabel_dua").append('    <tr>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
+    '<th class="tg-cly1" colspan="20">Tahap</th>'+
+  '</tr><tr>'+
+    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+  '</tr>'+
+  '<tr>'+
+   '<td class="tg-cly1">1</td>'+
+    '<td class="tg-cly1">2</td>'+
+    '<td class="tg-cly1">3</td>'+
+    '<td class="tg-cly1">4</td>'+
+    '<td class="tg-cly1">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    '<td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+  $("#tabel_tiga").append('<tr>'+
+    '<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'+
+    '<th class="tg-cly1" rowspan="3">Satuan</th>'+
+    '<th class="tg-cly1" colspan="20">Tahap</th>'+
+  '</tr>'+
+  '<tr>'+
+    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
+    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+  '</tr>'+
+ 
+  '<tr>'+
+   ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+    ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+
+ 
+
+        let id_paket=$("#id_paket").val();
+        let id_perencanaan=$("#id_perencanaan").val();
+        let bulan=$("#bulan").val();
+
+        
+
+        // Tahun yang dipaket, bukan tahun sekarang
+        let tahun;
+        tahun=$("#tahun").val();
+
+		// Buat dulu row tabelnya sesuai dengan jumlah yang ada di db
+		$.ajax({
+         type: "POST",
+		 async:false,
+         url: "http://localhost/pupr_new/generate_bulan_baru/row", 
+         data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                data=JSON.parse(data);
+				console.log("jumlah row");
+				console.log(data);
+
+				let length=data.length;
+				// Buat Row sebanyak data length tersebut
+				// Jangan lupa id row didasarkan pada id Pekerjaan dan id jenis upah, serta untuk minggu ditambahkan urutan
+
+	             let i=0;
+
+				 while(i<length)
+				 {
+
+					$("#tabel_satu").append("<tr>"+
+                      "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
+                      "<td class='tg-0lax'>"+data[i].nama+"</td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_1"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_2"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_3"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_4"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_5"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_6"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_7"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_8"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_9"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_10"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_11"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_12"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_13"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_14"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_15"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_16"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_17"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_18"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_19"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_20"+"'></td >"+
+                       "</tr>");
+
+                       $("#tabel_dua").append("<tr>"+
+                      "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
+                      "<td class='tg-0lax'>"+data[i].nama+"</td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__1"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__2"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__3"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__4"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__5"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__6"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__7"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__8"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__9"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__10"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__11"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__12"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__13"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__14"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__15"+"'></td >"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__16"+"' ></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__17"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__18"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__19"+"'></td>"+
+                       "<td class='tg-0lax' id='"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__20"+"'></td >"+
+                       "</tr>");
+
+
+					 i++;
+				 }
+              }
+          });
+
+
+          // Ajax untuk mengenerate tabel alat_bahan
+          
+          $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/generate_alat", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("jumlah Data Per Minggu:");
+				         console.log(data);
+                 console.log("jumlah Data Per Minggu:");
+				         let length=data.length;
+	               let i=0;
+
+                 
+                 while(i<length)
+                 {
+                    
+                  $("#tabel_tiga").append(" <tr>"+
+                     "<td class='tg-0lax'>"+data[i].jenis_bahan_alat+"</td>"+
+                     "<td class='tg-0lax'>"+data[i].satuan+"</td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___1"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___2"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___3"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___4"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___5"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___6"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___7"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___8"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___9"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___10"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___11"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___12"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___13"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___14"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___15"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___16"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___17"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___18"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___19"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___20"+"'></td>"+
+                     "</tr>");
+
+
+                   i++;
+                 }
+              }
+          });
+
+
+
+
+        // Selenjutnya ambil data yang sesuai dengan kriteria diatas
+        // Select Sum Kan masing-masing per minggu
+
+        let jumlah=getWeeksInMonth(bulan, tahun);
+
+        // alert(jumlah);
+        let x=1;
+
+        while(x<=jumlah)
+        {
+            // Cari tanggal mulai dan tanggal selesai dari masing-masing minggu didalam bulan tersebut
+            $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/minggu", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("jumlah Data Per Minggu:");
+				         console.log(data);
+                 console.log("jumlah Data Per Minggu:");
+				         let length=data.length;
+	               let i=0;
+
+
+                 while(i<length)
+                 {
+                    
+                    $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
+                    $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+x).text(data[i].sum);
+
+                   i++;
+                 }
+              }
+          });
+
+           // Select semua bahan alat yang digunakan dalam bulan tersebut
+
+           $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/alat_minggu", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("Jesi Test:");
+				         console.log(data);
+                 console.log("Jesi Test:");
+				         let length=data.length;
+	               let i=0;
+
+
+                 while(i<length)
+                 {
+                    
+                    // $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
+                    $("#"+data[i].id_jenis_bahan_alat+"___"+x).text(data[i].sum);
+
+                   i++;
+                 }
+              }
+          });
+
+            x++;
+        }
+
+
+
+       
+
+
+    }
+
+
+    function hapus()
+    {
+      $("#tabel_satu").empty();
+      $("#tabel_dua").empty();
+      $("#tabel_tiga").empty();
+    }
+</script>
 
 
 
