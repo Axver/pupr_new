@@ -444,15 +444,14 @@ body{
 		$.ajax({
          type: "POST",
 		 async:false,
-         url: "http://localhost/pupr_new/generate_bulan_baru/row", 
+         url: "http://localhost/pupr_new/generate_bulan_baru/row1", 
          data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
          dataType: "text",  
          cache:false,
          success: 
               function(data){
                 data=JSON.parse(data);
-				console.log("jumlah row");
-				console.log(data);
+			
 
 				let length=data.length;
 				// Buat Row sebanyak data length tersebut
@@ -525,16 +524,14 @@ body{
           $.ajax({
                type: "POST",
 		           async:false,
-               url: "http://localhost/pupr_new/generate_bulan_baru/generate_alat", 
+               url: "http://localhost/pupr_new/generate_bulan_baru/generate_alat1", 
                data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
                dataType: "text",  
                cache:false,
                success: 
               function(data){
                  data=JSON.parse(data);
-				         console.log("jumlah Data Per Minggu:");
-				         console.log(data);
-                 console.log("jumlah Data Per Minggu:");
+				     
 				         let length=data.length;
 	               let i=0;
 
@@ -576,10 +573,37 @@ body{
 
 
 
-        // Selenjutnya ambil data yang sesuai dengan kriteria diatas
+    //    Perulangan 4 kali
+    let m=0;
+
+    while(m<4)
+    {
+        let bulan=$("#bulan").val();
+        if(m==0)
+        {
+            bulan=bulan;
+        }
+        else if(m==1)
+        {
+            bulan=parseInt(bulan)+1;
+        }
+        else if(m==2)
+        {
+            bulan=parseInt(bulan)+2;
+        }
+        else if(m==3)
+        {
+            bulan=parseInt(bulan)+3;
+        }
+              // Selenjutnya ambil data yang sesuai dengan kriteria diatas
         // Select Sum Kan masing-masing per minggu
 
         let jumlah=getWeeksInMonth(bulan, tahun);
+
+        console.log("hmmm");
+        console.log(jumlah);
+        console.log(bulan);
+        console.log("hmmm");
 
         // alert(jumlah);
         let x=1;
@@ -597,18 +621,45 @@ body{
                success: 
               function(data){
                  data=JSON.parse(data);
-				         console.log("jumlah Data Per Minggu:");
-				         console.log(data);
-                 console.log("jumlah Data Per Minggu:");
-				         let length=data.length;
+				       
+				let length=data.length;
 	               let i=0;
 
 
                  while(i<length)
                  {
-                    
-                    $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
+                     if(m==1)
+                     {
+                         let sup=parseInt(x)+5;
+
+                    $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+sup).css("background-color","#3b5998");
+                    $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].sum);
+
+                     }
+                     else if(m==2)
+                     {
+                        let sup=parseInt(x)+10;
+                        $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+sup).css("background-color","#3b5998");
+                    $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].sum);
+                         
+                     }
+                     else if(m==3)
+                     {
+                        let sup=parseInt(x)+15;
+
+$("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+sup).css("background-color","#3b5998");
+$("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].sum);
+
+                     }
+                     else
+                     {
+                        $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
                     $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+x).text(data[i].sum);
+                     }
+
+                   
+                    
+                  
 
                    i++;
                  }
@@ -627,9 +678,7 @@ body{
                success: 
               function(data){
                  data=JSON.parse(data);
-				         console.log("Jesi Test:");
-				         console.log(data);
-                 console.log("Jesi Test:");
+				      
 				         let length=data.length;
 	               let i=0;
 
@@ -648,6 +697,10 @@ body{
             x++;
         }
 
+        m++;
+       
+    }
+
 
 
        
@@ -662,6 +715,31 @@ body{
       $("#tabel_dua").empty();
       $("#tabel_tiga").empty();
     }
+</script>
+
+
+<script>
+function getWeeksInMonth(month_number, year) {
+                        // console.log("year - "+year+" month - "+month_number+1);
+
+                        var day = 0;
+                        var firstOfMonth = new Date(year, month_number, 1);
+                        var lastOfMonth = new Date(year, parseInt(month_number)+1, 0);
+
+                        if (firstOfMonth.getDay() == 0) {
+                            day = 2;
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        } else if (firstOfMonth.getDay() != 1) {
+                            day = 9-(firstOfMonth.getDay());
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        }
+
+                        var days = (lastOfMonth.getDate() - firstOfMonth.getDate())+1
+                        return Math.ceil( days / 7);
+                    }
+
 </script>
 
 
