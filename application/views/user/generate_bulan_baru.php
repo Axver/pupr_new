@@ -532,9 +532,9 @@ else
                success: 
               function(data){
                  data=JSON.parse(data);
-				         console.log("jumlah Data Per Minggu:");
+				         console.log("Jesi Test:");
 				         console.log(data);
-                 console.log("jumlah Data Per Minggu:");
+                 console.log("Jesi Test:");
 				         let length=data.length;
 	               let i=0;
 
@@ -543,7 +543,7 @@ else
                  {
                     
                     // $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
-                    // $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+x).text(data[i].sum);
+                    $("#"+data[i].id_jenis_bahan_alat+"___"+x).text(data[i].sum);
 
                    i++;
                  }
