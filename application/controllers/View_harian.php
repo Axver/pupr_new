@@ -70,7 +70,7 @@ class View_harian extends CI_Controller {
 			"lapar"=>$data,
 		);
 
-		$this->load->view("user/view_harian_edit",$data);
+		$this->load->view("user/view_harian_edit_baru",$data);
 	}
 
 	public function detail_harian()
@@ -352,6 +352,48 @@ INNER JOIN jenis_bahan_alat ON detail_alat_harian.id_jenis_bahan_alat=jenis_baha
 WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaan' GROUP BY detail_alat_harian.id_jenis_bahan_alat")->result();
 
 		echo json_encode($data);
+	}
+
+
+
+	public function id_baru()
+	{
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
+		$data=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$id_perencanaan))->result();
+
+		$count=count($data);
+
+		$i=0;
+
+		$hasil="";
+
+
+		while($i<$count)
+		{
+           $hasil=$data[$i]->id_paket;
+
+			$i++;
+		}
+
+		echo $hasil;
+	}
+
+
+
+	public function all_data()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+
+
+		// Select data
+		$data=$this->db->query("SELECT *,SUM(total) FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerjaan=jenis_pekerjaan.id INNER JOIN jenis_upah ON detail_bahan_alat_harian.id_jenis_upah=jenis_upah.id_jenis_upah WHERE id_lap_harian_mingguan='$tanggal' AND id_lap_perencanaan='$id_perencanaan' AND id_paket='$id_paket' GROUP BY detail_bahan_alat_harian.jenis_pekerjaan,detail_bahan_alat_harian.id_jenis_upah")->result();
+		
+		echo json_encode($data);
+	
 	}
 
 
