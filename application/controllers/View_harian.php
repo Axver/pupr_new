@@ -397,4 +397,20 @@ WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaa
 	}
 
 
+	public function all_data1()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+
+
+		// Select data
+		$data=$this->db->query("SELECT * FROM detail_bahan_alat_harian INNER JOIN jenis_pekerjaan ON detail_bahan_alat_harian.jenis_pekerjaan=jenis_pekerjaan.id INNER JOIN jenis_upah ON detail_bahan_alat_harian.id_jenis_upah=jenis_upah.id_jenis_upah WHERE id_lap_harian_mingguan='$tanggal' AND id_lap_perencanaan='$id_perencanaan' AND id_paket='$id_paket'")->result();
+		
+		echo json_encode($data);
+	
+	}
+
+
 }
