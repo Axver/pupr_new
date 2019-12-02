@@ -137,7 +137,17 @@ else
 								<div class="panel panel-info">
 									<div class="panel-head"></div>
 									<div class="panel-body">
-										<canvas id="bar-chart" width="800" height="450"></canvas>
+										<div class="row">
+										<div class="col-sm-6">
+										<canvas id="bar-chart" width="800" height="450"></canvas></div>
+
+										<div class="col-sm-6">
+
+<canvas id="bar-chart1" width="800" height="450"></canvas>
+</div>
+										</div>
+
+									
 										<script>
 //Ajaxnya
 let id_paket_hidden=$("#id_paket_hidden").val();
@@ -153,13 +163,35 @@ $.ajax({
             data=JSON.parse(data);
             console.log(data);
             new Chart(document.getElementById("bar-chart"), {
-                type: 'bar',
+                type: 'pie',
                 data: {
                     labels: ["Laporan Harian", "Laporan Perencanaan","Laporan Pengawasan"],
                     datasets: [
                         {
                             label: "Laporan",
-                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+                            data: [data.harian,data.perencanaan,data.pengawasan]
+                        }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Jumlah Laporan Dikerjakan'
+                    }
+                }
+            });
+
+
+			new Chart(document.getElementById("bar-chart1"), {
+                type: 'line',
+                data: {
+                    labels: ["Laporan Harian", "Laporan Perencanaan","Laporan Pengawasan"],
+                    datasets: [
+                        {
+                            label: "Laporan",
+                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
                             data: [data.harian,data.perencanaan,data.pengawasan]
                         }
                     ]
