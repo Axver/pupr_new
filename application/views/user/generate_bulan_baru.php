@@ -365,23 +365,24 @@ else
     '<td class="tg-0lax">5</td>'+
   '</tr>');
 
-
   $("#tabel_tiga").append('<tr>'+
-    +'<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'
-    +'<th class="tg-cly1" rowspan="3">Satuan</th>'
-    +'<th class="tg-cly1" colspan="5">Bulan</th>'
-  +'</tr>'
-  +'<tr>'
-    +'<td class="tg-cly1" colspan="5">Minggu</td>'
-  +'</tr>'
-  +'<tr>'
-    +'<td class="tg-0lax">1</td>'
-    +'<td class="tg-0lax">2</td>'
-    +'<td class="tg-0lax">3</td>'
-    +'<td class="tg-0lax">4</td>'
-    +'<td class="tg-0lax">5</td>'
-  +'</tr>'
-  );
+    '<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'+
+    '<th class="tg-cly1" rowspan="3">Satuan</th>'+
+    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-cly1" colspan="5">Minggu</td>'+
+  '</tr>'+
+  '<tr>'+
+   ' <td class="tg-0lax">1</td>'+
+    '<td class="tg-0lax">2</td>'+
+    '<td class="tg-0lax">3</td>'+
+    '<td class="tg-0lax">4</td>'+
+    '<td class="tg-0lax">5</td>'+
+  '</tr>');
+
+
+ 
 
         let id_paket=$("#id_paket").val();
         let id_perencanaan=$("#id_perencanaan").val();
@@ -440,6 +441,45 @@ else
           });
 
 
+          // Ajax untuk mengenerate tabel alat_bahan
+          
+          $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/generate_alat", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("jumlah Data Per Minggu:");
+				         console.log(data);
+                 console.log("jumlah Data Per Minggu:");
+				         let length=data.length;
+	               let i=0;
+
+                 
+                 while(i<length)
+                 {
+                    
+                  $("#tabel_tiga").append(" <tr>"+
+                     "<td class='tg-0lax'>"+data[i].jenis_bahan_alat+"</td>"+
+                     "<td class='tg-0lax'>"+data[i].satuan+"</td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___1"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___2"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___3"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___4"+"'></td>"+
+                     "<td class='tg-0lax' id='"+data[i].id_jenis_bahan_alat+"___5"+"'></td>"+ "</tr>");
+
+
+                   i++;
+                 }
+              }
+          });
+
+
+
 
         // Selenjutnya ambil data yang sesuai dengan kriteria diatas
         // Select Sum Kan masing-masing per minggu
@@ -480,8 +520,42 @@ else
               }
           });
 
+           // Select semua bahan alat yang digunakan dalam bulan tersebut
+
+           $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/alat_minggu", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				         console.log("jumlah Data Per Minggu:");
+				         console.log(data);
+                 console.log("jumlah Data Per Minggu:");
+				         let length=data.length;
+	               let i=0;
+
+
+                 while(i<length)
+                 {
+                    
+                    // $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
+                    // $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+x).text(data[i].sum);
+
+                   i++;
+                 }
+              }
+          });
+
             x++;
         }
+
+
+
+       
 
 
     }
