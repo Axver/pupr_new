@@ -854,9 +854,57 @@ Date.prototype.getWeek = function () {
 
 	function convert(str) {
   var date = new Date(str),
-    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-    day = ("0" + date.getDate()).slice(-2);
-  return [date.getFullYear(), mnth, day].join("-");
+    mnth = ((date.getMonth() + 1));
+    day = (date.getDate());
+	if(mnth==1)
+	{
+		mnth="Januari";
+	}
+	else if(mnth==2)
+	{
+		mnth="Februari";
+	}
+	else if(mnth==3)
+	{
+		mnth="Maret";
+	}
+	else if(mnth==4)
+	{
+		mnth="April";
+	}
+	else if(mnth==5)
+	{
+		mnth="Mei";
+	}
+	else if(mnth==6)
+	{
+		mnth="Juni";
+	}
+	else if(mnth==7)
+	{
+		mnth="Juli";
+	}
+	else if(mnth==8)
+	{
+		mnth="Agustus";
+	}
+	else if(mnth==9)
+	{
+		mnth="September";
+	}
+	else if(mnth==10)
+	{
+		mnth="Oktober";
+	}
+	else if(mnth==11)
+	{
+		mnth="November";
+	}
+	else if(mnth==12)
+	{
+		mnth="Desember";
+	}
+  return [ day,mnth, date.getFullYear()].join(" ");
 }
 
 
