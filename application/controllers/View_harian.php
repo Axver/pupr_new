@@ -413,4 +413,38 @@ WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaa
 	}
 
 
+
+	public function list_alat_baru()
+	{
+
+		// echo "hmm";
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+
+
+		$data=$this->db->query("SELECT *, SUM(jumlah) FROM detail_alat_harian INNER JOIN jenis_bahan_alat ON detail_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat INNER JOIN satuan ON detail_alat_harian.id_satuan=satuan.id_satuan WHERE id_lap_harian_mingguan='$tanggal' AND id_lap_perencanaan='$id_perencanaan' AND id_paket='$id_paket' GROUP BY detail_alat_harian.id_jenis_bahan_alat")->result();
+
+
+		echo json_encode($data);
+
+	}
+
+
+	public function all_alat()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+
+
+		$data=$this->db->query("SELECT * FROM detail_alat_harian INNER JOIN jenis_bahan_alat ON detail_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat INNER JOIN satuan ON detail_alat_harian.id_satuan=satuan.id_satuan WHERE id_lap_harian_mingguan='$tanggal' AND id_lap_perencanaan='$id_perencanaan' AND id_paket='$id_paket'")->result();
+
+
+		echo json_encode($data);
+
+	}
+
+
 }

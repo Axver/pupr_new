@@ -1097,6 +1097,75 @@ $.ajax({
           });
 
 
+
+        //   Select Bahan/Alat dari database
+        $.ajax({
+         type: "POST",
+         async:false,
+         url: "http://localhost/pupr_new/view_harian/list_alat_baru", 
+         data: {"id_perencanaan":id_perencanaan_baru,"id_paket":id_paket_baru,"tanggal":tanggal_baru},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+
+                console.log("Bahan alat yang ditemukan");
+                console.log(data);
+                console.log("finished");
+
+
+                let length=data.length;
+
+                let i=0;
+
+                while(i<length)
+                {
+                    $("#tabel_tiga").append('\t\t<tr>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1" id="'+data[i].id_jenis_bahan_alat+"___alat"+'">'+data[i].jenis_bahan_alat+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 satuan" id="'+data[i].id_jenis_bahan_alat+"___satuan"+'">'+data[i].id_satuan+"_"+data[i].satuan+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___1"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___2"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___3"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___4"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___5"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___6"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai1" id="'+data[i].id_jenis_bahan_alat+"___7"+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t</tr>');
+
+                    i++;
+                }
+
+                // Baru isi datanya sekarang
+
+                $.ajax({
+                type: "POST",
+                async:false,
+                url: "http://localhost/pupr_new/view_harian/all_alat", 
+                data: {"id_perencanaan":id_perencanaan_baru,"id_paket":id_paket_baru,"tanggal":tanggal_baru},
+                dataType: "text",  
+                cache:false,
+                success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+                {
+
+                    $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).text(data[i].jumlah);
+
+                    i++;
+                }
+              }
+          });
+              }
+          });
+
+
 </script>
 
 
