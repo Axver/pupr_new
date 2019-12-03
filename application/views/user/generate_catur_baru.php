@@ -205,6 +205,8 @@ body{
 
 </table>
 
+<div class="break"></div>
+
 <b>Perencanaan Penggunaan Jumlah Pekerja</b>
 
 
@@ -213,11 +215,14 @@ body{
 
  
 </table>
+<div class="break"></div>
 
 <b>Perencanaan Penggunaan Bahan/Alat</b>
 <table class="tg table" id="tabel_tiga">
 
-</table></div>
+</table>
+
+</div>
 
 
 

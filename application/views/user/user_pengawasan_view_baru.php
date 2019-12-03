@@ -162,9 +162,14 @@ else
 								$i++;
 							}
 							?>
+
 							<!-- Card Body -->
 							<div class="card-body">
-								<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
+
+                            <button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
+                            <div id="cetak">
+							
+							<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
 								<center><b><h3>MINGGU KE-<b id="romawi"></b> (<b id="huruf"></b>)</h3></b></center>
 
 
@@ -214,6 +219,7 @@ else
 									</tr>
 
 								</table>
+							</div>
 
 
 
@@ -453,6 +459,26 @@ let tanggal=$("#tanggal").val();
 					'</tr>');
               }
           });
+
+
+		  
+function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak");
+        // Choose the element and save the PDF for our user.
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+            pagebreak: { before: '.break'}
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
+
+        swal("PDF Digenerate!!");
+    }
 </script>
 
 
