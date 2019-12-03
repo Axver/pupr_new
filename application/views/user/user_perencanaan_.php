@@ -502,7 +502,7 @@ else
         id=id.split("_");
         // alert(id);
         // console.log(id);
-        window.location="http://localhost/pupr_new/user_pengawasan_data/edit/"+id[0]+"/"+id[1]+"/"+id[2];
+        window.location="http://localhost/pupr_new/user_pengawasan_data/edit_baru/"+id[0]+"/"+id[1]+"/"+id[2];
     }
     function image(id)
     {
