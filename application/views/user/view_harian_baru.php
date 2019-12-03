@@ -808,9 +808,9 @@ Date.prototype.getWeek = function () {
 		    console.log(minggu_get);
 
             console.log("Wahahaha");
-			let m=0;
+			let m=1;
 			let tanggal_ambil=tanggal_start;
-			while(m<7)
+			while(m<=7)
 			{
 
 
@@ -819,6 +819,8 @@ Date.prototype.getWeek = function () {
 				var tomorrow = new Date(tanggal_ambil);
                 tomorrow.setDate(tomorrow.getDate() + 1);
 				tanggal_ambil=tomorrow;
+
+				$("."+m).text(convert(tanggal_ambil));
 				
 				m++;
 			}
