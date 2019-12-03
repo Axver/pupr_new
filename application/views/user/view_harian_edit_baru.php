@@ -357,6 +357,7 @@ else
 	let kuy=0;
 	function rowSatu()
 	{
+        kuy=parseInt(kuy)+5;
 	    let pekerjaan=$("#pekerjaan option:selected").text();
 	    let pekerjaan_id=$("#pekerjaan").val();
 
@@ -736,6 +737,7 @@ else
 
 
         console.log(dataArray);
+        console.log(dataArray1)
 
         let length=dataArray.length;
         let length1=dataArray1.length;
@@ -766,7 +768,7 @@ else
                 function(data){
                     // alert(data);  //as a debugging message.
 
-					console.log(data);
+					
                     while(j<length)
                     {
                         transform=dataArray[j].replace("_","__");
@@ -774,12 +776,10 @@ else
                         let upah=dataArray[j].split("_");
                         let ambil=dataArray[j].split("_");
 
-                        console.log("testing");
-                        console.log(upah);
+                      
 
                         upah=upah[0]+"_upah"+"_"+upah[2];
-                        console.log(upah);
-                        console.log("testing");
+                     
                         upah=$("#"+upah).text();
                         upah=upah.split("_");
                         upah=upah[0];
@@ -799,6 +799,16 @@ else
 						// upah=ambil2[0]; //Ini Id Upah nya
 						//
                         // jumlah_pekerja=$("#"+transform).text();
+
+                        console.log("kenapa semua terhapus?");
+                        console.log(id);
+                        console.log(id_perencanaan);
+                        console.log(id_paket);
+                        console.log(upah);
+                        console.log(ambil[1]);
+                        console.log(jumlah_pekerja);
+
+
 
                         //Ajax Disini untuk menambahkan
                         $.ajax({
@@ -841,28 +851,27 @@ else
                      
                         let ambil=dataArray1[q].split("___");
 
-                        console.log("data untuk alat harian");
-                        console.log(ambil);
+                        
 
                         satuan=satuan[0]+"___satuan";
-                        console.log(satuan);
+                        // console.log(satuan);
                         satuan=$("#"+satuan).text();
-                        console.log(satuan);
+                        // console.log(satuan);
                         satuan=satuan.split("_");
-                        console.log(satuan);
+                        // console.log(satuan);
                         satuan=satuan[0];
-                        console.log(satuan);
+                        // console.log(satuan);
 
 
 
-                        console.log("list lengkap");
-                        console.log(id);
-                        console.log(id_perencanaan);
-                        console.log(id_paket);
-                        console.log(satuan);
-                        console.log(ambil[1]);
-                        console.log(ambil[0]);
-                        console.log(jumlah_alat);
+                        // console.log("list lengkap");
+                        // console.log(id);
+                        // console.log(id_perencanaan);
+                        // console.log(id_paket);
+                        // console.log(satuan);
+                        // console.log(ambil[1]);
+                        // console.log(ambil[0]);
+                        // console.log(jumlah_alat);
 
 
 
@@ -972,7 +981,7 @@ $.ajax({
 	    if($("#"+data[i].jenis_pekerjaan+"_pekerjaan").length>0)
 		{
             $("#tabel_satu").append('\t\t<tr>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+i+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+data[i].id_jenis_upah+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"_"+data[i].id_jenis_upah+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_1"+"_"+data[i].id_jenis_upah+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_2"+"_"+data[i].id_jenis_upah+'"></td>\n' +
@@ -984,7 +993,7 @@ $.ajax({
                 '\t\t\t\t\t\t\t\t\t</tr>');
 
             $("#tabel_dua").append('\t\t<tr>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__pekerjaan"+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__pekerjaan"+"_"+data[i].id_jenis_upah+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__upah"+"_"+data[i].id_jenis_upah+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__1"+"_"+data[i].id_jenis_upah+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+data[i].jenis_pekerjaan+"__2"+"_"+data[i].id_jenis_upah+'"></td>\n' +
@@ -1000,8 +1009,8 @@ $.ajax({
 	    else
 		{
             $("#tabel_satu").append('\t\t<tr>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+i+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"__"+data[i].id_jenis_upah+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_pekerjaan"+"_"+data[i].id_jenis_upah+'">'+data[i].jenis_pekerjaan+"_"+data[i].nama_jenis+'</td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_upah"+"_"+data[i].id_jenis_upah+'">'+data[i].id_jenis_upah+"_"+data[i].nama+'</td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_1"+"_"+data[i].id_jenis_upah+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_2"+"_"+data[i].id_jenis_upah+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 warnai nonActive" id="'+data[i].jenis_pekerjaan+"_3"+"_"+data[i].id_jenis_upah+'"></td>\n' +
