@@ -193,6 +193,9 @@ body{
                             <br/>
 
                             <button class="btn btn-facebook" onclick="generate()">Generate</button>
+                            <button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
+
+                            <div id="cetak">
                             <center><b><h3>LAPORAN PER TAHAP</h3></b></center>
                             <center><b><h3>PELAKSANAAN KEGIATAN</h3></b></center>
 
@@ -214,7 +217,7 @@ body{
 <b>Perencanaan Penggunaan Bahan/Alat</b>
 <table class="tg table" id="tabel_tiga">
 
-</table>
+</table></div>
 
 
 
@@ -687,7 +690,33 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
                  {
                     
                     // $("#"+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_"+x).css("background-color","#3b5998");
-                    $("#"+data[i].id_jenis_bahan_alat+"___"+x).text(data[i].sum);
+                   
+
+
+                    if(m==1)
+                     {
+                         let sup=parseInt(x)+5;
+
+                         $("#"+data[i].id_jenis_bahan_alat+"___"+sup).text(data[i].sum);
+
+                     }
+                     else if(m==2)
+                     {
+                        let sup=parseInt(x)+10;
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+sup).text(data[i].sum);
+                         
+                     }
+                     else if(m==3)
+                     {
+                        let sup=parseInt(x)+15;
+
+                        $("#"+data[i].id_jenis_bahan_alat+"___"+sup).text(data[i].sum);
+
+                     }
+                     else
+                     {
+                      $("#"+data[i].id_jenis_bahan_alat+"___"+sup).text(data[i].sum);
+                     }
 
                    i++;
                  }
@@ -739,6 +768,26 @@ function getWeeksInMonth(month_number, year) {
                         var days = (lastOfMonth.getDate() - firstOfMonth.getDate())+1
                         return Math.ceil( days / 7);
                     }
+
+
+
+                    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak");
+        // Choose the element and save the PDF for our user.
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+            pagebreak: { before: '.break'}
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
+
+        swal("PDF Digenerate!!");
+    }
 
 </script>
 
