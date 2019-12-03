@@ -915,6 +915,20 @@ else
 
                         q++;
 					}
+
+                    let diperiksa_oleh=$("#diperiksa_oleh").val();
+                    $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/view_harian/ttd_update", 
+         data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket,"diperiksa_oleh":diperiksa_oleh},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                alert("Data Berhasil Di Update!!");
+              }
+          });
                 }
         });
 
@@ -1233,6 +1247,43 @@ for (var k = 0; k < classname.length; k++) {
 
               }
           });
+              }
+          });
+
+
+</script>
+
+
+
+<script>
+
+
+// Script untuk memastikan kolom tandatangan sesuai dengan apa yang telah diinputkan user
+
+let id_perencanaan_x=$("#id_perencanaan").val();
+let tanggal_x=$("#hari_tanggal").val();
+
+// Select dari db
+
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/view_harian/ttd_edit", 
+         data: {"id_perencanaan":id_perencanaan_x,"tanggal":tanggal_x},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+                {
+                    $('#diperiksa_oleh option[value="'+data[i].id_diperiksa+'"]').attr('selected','selected');
+                    i++;
+                }
               }
           });
 

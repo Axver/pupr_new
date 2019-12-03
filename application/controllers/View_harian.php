@@ -447,4 +447,49 @@ WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaa
 	}
 
 
+	public function ttd_update()
+	{
+
+		
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("id_harian");
+
+		$diperiksa_oleh=$this->input->post("diperiksa_oleh");
+
+
+
+		// Delete dari database dulu
+
+		$this->db->query("DELETE FROM ttd_harian WHERE id_lap_harian='$tanggal' AND id_lap_perencanaan='$id_perencanaan'");
+
+		// Setelah di delete baru inputkan
+
+		$data=array(
+		 "id_lap_harian"=>$tanggal,
+		 "id_lap_perencanaan"=>$id_perencanaan,
+		 "id_dibuat"=>$this->session->userdata("nip"),
+		 "id_diperiksa"=>$diperiksa_oleh,
+		);
+
+		// Input data
+		$this->db->insert("ttd_harian",$data);
+
+
+	}
+
+
+	public function ttd_edit()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$tanggal=$this->input->post("tanggal");
+
+		$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$tanggal,"id_lap_perencanaan"=>$id_perencanaan))->result();
+
+		echo json_encode($data);
+		
+	}
+
+
 }
