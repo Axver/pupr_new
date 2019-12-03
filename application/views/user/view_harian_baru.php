@@ -134,7 +134,10 @@ else
 							<input type="hidden" class="form form-control" id="id_harian" value="<?php echo $this->uri->segment('3') ?>">
 							<input type="hidden" class="form form-control" id="id_perencanaan" value="<?php echo $this->uri->segment('4') ?>">
 							<div class="card-body">
-								<center><b>LAPORAN MINGGUAN</b></center>
+							<button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
+							  <div id="cetak">
+							  
+							  <center><b>LAPORAN MINGGUAN</b></center>
 								<center><b>PELAKSANAAN KEGIATAN</b></center>
 								<br/>
 								<br/>
@@ -239,6 +242,7 @@ else
 									</tr>
 
 								</table>
+								<div class="break"></div>
 								<br/>
 								<br/>
 								<br/>
@@ -263,9 +267,11 @@ else
 									</tr>
 
 								</table>
+								
 							    <br/>
 								<br/>
 								<br/>
+								<div class="break"></div>
 
 
 
@@ -294,6 +300,7 @@ else
 
 								<br/>
 								<br/>
+								
 
 								<?php
 								function tgl_indo($tanggal){
@@ -342,7 +349,7 @@ else
 								<div class="col-sm-1"></div>
 
 								</div>
-
+</div>
 
 
 
@@ -906,6 +913,25 @@ Date.prototype.getWeek = function () {
 	}
   return [ day,mnth, date.getFullYear()].join(" ");
 }
+
+
+function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak");
+        // Choose the element and save the PDF for our user.
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+            pagebreak: { before: '.break'}
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
+
+        swal("PDF Digenerate!!");
+    }
 
 
 

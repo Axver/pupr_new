@@ -191,11 +191,68 @@ else
 							<br/>
 							<br/>
 
+							<button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
+
+
+              <div id="cetak">
+
+              
+              <div class="row">
+									<div class="col-sm-6">
+										<div class="row">
+											<div class="col-sm-6">Nama Paket</div>
+											<div class="col-sm-6" id="nama_paket">:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Jenis Pekerjaan</div>
+											<div class="col-sm-6" id="jenis_pekerjaan">:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Lokasi</div>
+											<div class="col-sm-6" id="lokasi">:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Pagu</div>
+											<div class="col-sm-6" id="pagu">:</div>
+											<input type="hidden" id="nilai_paket" ">
+										</div>
+									</div>
+									<div class="col-sm-5" style="border: 2px solid black;">
+										<div class="row">
+											<div class="col-sm-6">Progress Pekerjaan</div>
+											<div class="col-sm-6" id="progres_sekarang">:</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Periode Lalu</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Minggu Ke-</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Selanjutnya</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">Progress Fisik Total</div>
+											<div class="col-sm-6" >:</div>
+										</div>
+									</div>
+								</div>
+								<br/>
+								<br/>
+								<br/>
+
 							<!-- Tabel Disini -->
 
 							<table class="tg table" id="tabel_satu">
 
 </table>
+
+<div class="break"></div>
 
 
 <br/>
@@ -208,6 +265,8 @@ else
 
 </table>
 
+<div class="break"></div>
+
 <br/>
 
 <b>Rekapitulasi Penggunaan Bahan/Alat</b>
@@ -217,6 +276,8 @@ else
 <table class="tg table" id="tabel_tiga">
  
 </table>
+              
+              </div>
 		
 
 							</div>
@@ -566,6 +627,25 @@ else
       $("#tabel_satu").empty();
       $("#tabel_dua").empty();
       $("#tabel_tiga").empty();
+    }
+
+
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById("cetak");
+        // Choose the element and save the PDF for our user.
+        var opt = {
+            margin:       1,
+            filename:     'myfile.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+            pagebreak: { before: '.break'}
+        };
+        // Choose the element and save the PDF for our user.
+        html2pdf().set(opt).from(element).save();
+
+        swal("PDF Digenerate!!");
     }
 
 
