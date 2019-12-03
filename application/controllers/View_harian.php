@@ -488,7 +488,24 @@ WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaa
 		$data=$this->db->get_where("ttd_harian",array("id_lap_harian"=>$tanggal,"id_lap_perencanaan"=>$id_perencanaan))->result();
 
 		echo json_encode($data);
-		
+
+	}
+
+
+	public function ttd_view()
+	{
+		$id_harian=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+
+
+		// Select disini
+
+		$data=$this->db->query("SELECT *,account.nip as account_nip,konfigurasi.nip as konfigurasi_nip,konfigurasi.nama as konfigurasi_nama,account.nama as account_nama FROM ttd_harian INNER JOIN konfigurasi ON ttd_harian.id_diperiksa=konfigurasi.id_konfigurasi
+		INNER JOIN account ON ttd_harian.id_dibuat=account.nip WHERE id_lap_harian='$id_harian' AND id_lap_perencanaan='$id_perencanaan'")->result();
+
+
+
+		echo json_encode($data);
 	}
 
 
