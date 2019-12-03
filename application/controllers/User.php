@@ -1000,6 +1000,17 @@ public function pekerjaan()
 	}
 
 
+	public function save_pengawasan_baru1()
+	{
+      $id_perencanaan=$this->input->post("id_perencanaan");
+      $id_paket=$this->input->post("id_paket");
+      $tanggal=$this->input->post("tanggal");
+      $minggu=$this->input->post("minggu");
+
+  $this->db->query("DELETE FROM detail_laporan_pengawasan WHERE id_lap_perencanaan='$id_perencanaan' AND id_lap_pengawasan='$tanggal' AND minggu='$minggu'");
+	}
+
+
 
 
 

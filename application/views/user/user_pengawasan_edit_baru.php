@@ -402,10 +402,10 @@ else
 
 		let length=dataArray.length;
 		let j=0;
-		//Simpan laporan pengawasan terlebih dahulu
+		//Hapus data laporan pengawasan terlebih dahulu
         $.ajax({
             type: "POST",
-            url: "http://localhost/pupr_new/user/save_pengawasan_baru",
+            url: "http://localhost/pupr_new/user/save_pengawasan_baru1",
             data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu},
             dataType: "text",
 			async:false,
@@ -532,6 +532,9 @@ $.ajax({
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah" id="'+data[i].jenis_pekerjaan+"_jumlah_"+kuy+'">'+data[i].jumlah+'</td>\n' +
           '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" style="background-color:#3b5998;color:white;"><center>Tidak Diisi</center></td>\n' +
           '\t\t\t\t\t\t\t\t\t</tr>');
+
+          $("#"+data[i].jenis_pekerjaan+"_pekerja_"+kuy).removeClass("nonActive");
+          $("#"+data[i].jenis_pekerjaan+"_pekerja_"+kuy).addClass("Active");
 
 
                //    Event Listener Untuk Jenis
