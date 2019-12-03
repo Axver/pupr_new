@@ -145,32 +145,32 @@ else
 								<br/>
 								<br/>
 								<b>Id Paket</b>
-								<input type="text" class="form form-control" id="id_paket" value="<?php echo $this->uri->segment('3') ?>" disabled>
+
+                                <?php
+
+                                $data=$this->db->get_where("lap_perencanaan",array("id_lap_perencanaan"=>$this->uri->segment("4")))->result();
+                                $count=count($data);
+                                $id_paket="";
+
+
+                                $i=0;
+
+                                while($i<$count)
+                                {
+
+                                    $id_paket=$data[$i]->id_paket;
+
+                                    
+                                    $i++;
+                                }
+
+                                ?>
+								<input type="text" class="form form-control" id="id_paket" value="<?php echo $id_paket ?>" disabled>
 								<b>Id Laporan Perencanaan</b>
-								<select class="form form-control" id="id_perencanaan" onchange="ubahPekerjaan()">
-									<option>--PILIH--</option>
-									<?php
-
-									$data=$this->db->get_where("lap_perencanaan",array("id_paket"=>$this->uri->segment("3")))->result();
-									$count=count($data);
-
-									$i=0;
-
-
-									while($i<$count)
-									{
-										?>
-									<option value="<?php echo $data[$i]->id_lap_perencanaan; ?>"><?php echo $data[$i]->id_lap_perencanaan; ?></option>
-									<?php
-
-										$i++;
-									}
-//
-									?>
-								</select>
+						        <input type="text" id="id_perencanaan" class='form form-control' value="<?php echo $this->uri->segment("4") ?>" disabled>  
 								<br/>
 								<b>Tanggal</b>
-								<input type="date" class="form form-control" id="hari_tanggal">
+								<input type="text" class="form form-control" id="hari_tanggal" value="<?php echo $this->uri->segment("3") ?>" disabled>
 								<br/>
 
 
@@ -264,8 +264,7 @@ else
 
 <script>
 
-	function ubahPekerjaan()
-	{
+
 	    $("#jenis_pekerjaan").empty();
 	    let id_perencanaan=$("#id_perencanaan").val();
 
@@ -294,7 +293,7 @@ else
 					}
                 }
         });
-	}
+	
 
 	let kuy=0;
 
@@ -481,6 +480,97 @@ else
         var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
         return rangeIsFrom + " to "+rangeIsTo;
     };
+</script>
+
+
+<script>
+
+let id_paket=$("#id_paket").val();
+	    // let id_perencanaan=$("#id_perencanaan").val();
+	    let tanggal=$("#hari_tanggal").val();
+	    let minggu;
+
+        let m=1;
+        while(m<54)
+        {
+            let data1=getDateRangeOfWeek(m);
+            data1=data1.split(" to ");
+            let first=new Date(data1[0]);
+            let middle= new Date(tanggal);
+            let last= new Date(data1[1]);
+
+            if(first<=middle && middle<=last)
+			{
+			    minggu=m;
+			}
+            m++;
+        }
+
+// Select Data dari db lalu masukkan ke dalam tabel
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/all_data", 
+         data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+                console.log(data);
+                // console.log(data);
+
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+                {
+
+                    $("#tabel_satu").append('\t\t<tr>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerjaan" id="'+data[i].jenis_pekerjaan+"_pekerjaan_"+kuy+'">'+data[i].nama_jenis+'</td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 pekerja nonActive" id="'+data[i].jenis_pekerjaan+"_pekerja_"+kuy+'">'+data[i].jenis_pekerja+"_"+data[i].nama+'</td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jumlah" id="'+data[i].jenis_pekerjaan+"_jumlah_"+kuy+'">'+data[i].jumlah+'</td>\n' +
+          '\t\t\t\t\t\t\t\t\t\t<td class="tg-0lax" style="background-color:#3b5998;color:white;"><center>Tidak Diisi</center></td>\n' +
+          '\t\t\t\t\t\t\t\t\t</tr>');
+
+
+               //    Event Listener Untuk Jenis
+        var classname = document.getElementsByClassName("pekerja");
+
+var myFunction = function() {
+    var attribute = this.id;
+    console.log(attribute);
+    $("#"+attribute).text("");
+    $("#"+attribute).removeClass("Active");
+    $("#"+attribute).addClass("nonActive");
+    $("#id_warnai").val(attribute);
+    $("#wPekerja").modal("show");
+};
+
+for (var v = 0; v < classname.length; v++) {
+    classname[v].addEventListener('click', myFunction, false);
+}
+
+var classname = document.getElementsByClassName("jumlah");
+
+var myFunction = function() {
+    var attribute = this.id;
+    console.log(attribute);
+    $("#id_jumlah").val(attribute);
+    $("#wJumlah").modal("show");
+};
+
+for (var v = 0; v < classname.length; v++) {
+    classname[v].addEventListener('click', myFunction, false);
+}
+
+                     kuy++;
+
+                    i++;
+                }
+              }
+          });
+
 </script>
 
 

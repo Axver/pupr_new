@@ -209,6 +209,33 @@ class User_pengawasan_data extends CI_Controller {
 	}
 
 
+	public function all_data()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+		$minggu=$this->input->post("minggu");
+
+
+
+		// Selectd ata dari db
+		$data=$this->db->query("
+		SELECT * FROM detail_laporan_pengawasan
+		INNER JOIN jenis_pekerjaan ON detail_laporan_pengawasan.jenis_pekerjaan=jenis_pekerjaan.id
+		INNER JOIN jenis_upah ON detail_laporan_pengawasan.jenis_pekerja=jenis_upah.id_jenis_upah
+		WHERE id_lap_pengawasan='$tanggal' AND id_lap_perencanaan='$id_perencanaan'
+		AND minggu='$minggu'
+		")->result();
+
+
+		echo json_encode($data);
+		
+
+
+	}
+
+
 
 
 
