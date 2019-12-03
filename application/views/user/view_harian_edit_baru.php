@@ -1158,8 +1158,44 @@ $.ajax({
 
                     $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).text(data[i].jumlah);
 
+                    $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).removeClass("nonActive2");
+        $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).addClass("Active2");
+
                     i++;
                 }
+
+
+                var classname = document.getElementsByClassName("satuan");
+
+var myFunction = function() {
+    var attribute = this.id;
+    console.log(attribute);
+    $("#id_satuan").val(attribute);
+    $("#mSatuan").modal("show");
+};
+
+for (var j = 0; j < classname.length; j++) {
+    classname[j].addEventListener('click', myFunction, false);
+}
+
+//    Event Listener Untuk Jenis
+var classname = document.getElementsByClassName("warnai1");
+
+var myFunction = function() {
+    var attribute = this.id;
+    console.log(attribute);
+    $("#"+attribute).text("");
+    $("#"+attribute).removeClass("Active2");
+    $("#"+attribute).addClass("nonActive2");
+    $("#id_warnai").val(attribute);
+    $("#wAlat").modal("show");
+};
+
+for (var k = 0; k < classname.length; k++) {
+    classname[k].addEventListener('click', myFunction, false);
+}
+
+
               }
           });
               }
