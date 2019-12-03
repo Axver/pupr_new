@@ -48,7 +48,7 @@ class Upload extends CI_Controller{
 			$this->db->insert("gambar_harian",$inputGambar);
 
 
-			redirect('user_harian_data');
+			redirect('../user_perencanaan_');
 		}
 	}
 
@@ -91,7 +91,7 @@ class Upload extends CI_Controller{
 			$this->db->insert("gambar_perencanaan",$inputGambar);
 
 
-			redirect('user_perencanaan_');
+			redirect('../user_perencanaan_');
 		}
 	}
 
@@ -136,7 +136,7 @@ class Upload extends CI_Controller{
 			$this->db->insert("gambar_pengawasan",$inputGambar);
 
 
-			redirect('user_pengawasan_data');
+			redirect('../user_perencanaan_');
 		}
 	}
 
