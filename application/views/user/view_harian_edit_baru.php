@@ -404,7 +404,7 @@ else
 
             $("#tabel_dua").append('\t\t<tr>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__pekerjaan"+'">'+pekerjaan_id+"_"+pekerjaan+'</td>\n' +
-                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__upah"+"_"+kuy+'"></td>\n' +
+                '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"_upah"+"_"+kuy+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__1"+"_"+kuy+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__2"+"_"+kuy+'"></td>\n' +
                 '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 nonActive1" id="'+pekerjaan_id+"__3"+"_"+kuy+'"></td>\n' +
@@ -673,8 +673,8 @@ else
         let data=$("#hari_value").val();
         let id2=id.replace("_","__");
 
-        alert(id);
-        alert(id2);
+        // alert(id);
+        // alert(id2);
 
         //Ubah Status Class
         $( "#"+id ).removeClass( "nonActive" );
@@ -758,7 +758,7 @@ else
         $.ajax({
             type: "POST",
 			async:false,
-            url: "http://localhost/pupr_new/user/baru_harian",
+            url: "http://localhost/pupr_new/user/baru_harian_edit",
             data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket},
             dataType: "text",
             cache:false,
@@ -803,6 +803,7 @@ else
                         //Ajax Disini untuk menambahkan
                         $.ajax({
                             type: "POST",
+                            async:false,
                             url: "http://localhost/pupr_new/user/baru_pekerjaan",
                             data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket,"id_upah":upah,"hari":ambil[1],"jenis_pekerjaan":ambil[0],"total":jumlah_pekerja},
                             dataType: "text",
@@ -837,15 +838,39 @@ else
                         // console.log(transform1);
                         // console.log("hmmmmm");
                         let satuan=transform1.split("___");
-                        console.log("hmmm");
-                        console.log(satuan);
-                        console.log("jmmmm");
+                     
                         let ambil=dataArray1[q].split("___");
 
+                        console.log("data untuk alat harian");
+                        console.log(ambil);
+
                         satuan=satuan[0]+"___satuan";
+                        console.log(satuan);
                         satuan=$("#"+satuan).text();
+                        console.log(satuan);
                         satuan=satuan.split("_");
+                        console.log(satuan);
                         satuan=satuan[0];
+                        console.log(satuan);
+
+
+
+                        console.log("list lengkap");
+                        console.log(id);
+                        console.log(id_perencanaan);
+                        console.log(id_paket);
+                        console.log(satuan);
+                        console.log(ambil[1]);
+                        console.log(ambil[0]);
+                        console.log(jumlah_alat);
+
+
+
+
+
+
+
+                        
                         //Ambil Jnis Upah
                         // ambil=dataArray[i].split("_");
                         // console.log("---------");
@@ -866,6 +891,7 @@ else
                         //Ajax Disini untuk menambahkan
                         $.ajax({
                             type: "POST",
+                            async:false,
                             url: "http://localhost/pupr_new/user/baru_alat",
                             data: {"id_harian":id,"id_perencanaan":id_perencanaan,"id_paket":id_paket,"id_satuan":satuan,"hari":ambil[1],"jenis_bahan_alat":ambil[0],"total":jumlah_alat},
                             dataType: "text",
@@ -1159,7 +1185,7 @@ $.ajax({
                     $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).text(data[i].jumlah);
 
                     $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).removeClass("nonActive2");
-        $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).addClass("Active2");
+                    $("#"+data[i].id_jenis_bahan_alat+"___"+data[i].hari).addClass("Active2");
 
                     i++;
                 }
