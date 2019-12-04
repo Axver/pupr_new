@@ -277,6 +277,64 @@ body{
                             <center><b><h3>LAPORAN PER TAHAP</h3></b></center>
                             <center><b><h3>PELAKSANAAN KEGIATAN</h3></b></center>
 
+                            <br/>
+                            <br/>
+
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Nama Paket</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+                            
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Nilai Paket</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+
+                            
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Priode</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+                            
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Jenis Pekerjaan</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+
+                            
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Lokasi</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+
+                            
+                            <div class="row">
+                            
+                            <div class="col-sm-3">Tahun Anggaran</div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-3"></div>
+                            </div>
+
+
+                            <br/>
+                            <br/>
+                            <br/>
+
                             <b>Jadwal Rencana Pelaksanaan Kegiatan</b>
                             <table class="tg table" id="tabel_satu">
 
@@ -953,7 +1011,7 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
                 while(i<length)
                 {
 
-                    $("#tabel_empat").append('<tr><td class="tg-cly1"></td>'+
+                    $("#tabel_empat").append('<tr><td class="tg-cly1">'+data[i].nama_jenis+'</td>'+
                     '<td class="tg-cly1">'+'<img style="width:200px" src="http://localhost/pupr_new/gambar/'+data[i].gambar+'">'+'</td>'+
                     '<td class="tg-0lax"></td></tr> ');
                   i++;
