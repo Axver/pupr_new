@@ -37,6 +37,11 @@ else
 		color:black;
 	}
 
+
+	body{
+		color:black;
+	}
+
 	</style>
 
 
@@ -145,7 +150,7 @@ else
                                         filename:     'myfile.pdf',
                                         image:        { type: 'jpeg', quality: 0.98 },
                                         html2canvas:  { scale: 2 },
-                                        jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
+                                        jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' },
                                         pagebreak: { before: '.break'}
                                     };
                                     // Choose the element and save the PDF for our user.
@@ -155,6 +160,11 @@ else
                                 }
 							</script>
 							<div class="card-body" id="cetak_lampiran">
+
+							<input type="hidden" id="tanggal" value="<?php echo $this->uri->Segment("3") ?>">
+
+							<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
+							<center><b><h3 id="bulan"></h3></b></center>
 
 							<table id="example" class="display" style="width:100%">
 									<thead>
@@ -188,13 +198,40 @@ else
 
 									{
 										?>
-										<tr>
+										
 											
-										<td><?php echo $gambar[$i]->nama_jenis ?></td>
+										<?php 
+										 if($i!=0 && $i%3==0)
+										 {
+
+											?>
+											<tr class="break">
+
+                                        <td><?php echo $gambar[$i]->nama_jenis ?></td>
 										<td><?php echo $gambar[$i]->keterangan ?></td>
-											<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
-											
-										</tr>
+											<td><img style="width:300px;height:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+										
+                                            </tr>
+											<?php
+										 }
+
+										 else
+										 {
+											 ?>
+
+<tr>
+
+<td><?php echo $gambar[$i]->nama_jenis ?></td>
+<td><?php echo $gambar[$i]->keterangan ?></td>
+	<td><img style="width:300px;height:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+
+	</tr>
+
+
+											 <?php
+										 }
+										?>
+										
 										<?php
 
 										$i++;
@@ -293,6 +330,65 @@ else
 
         window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
     }
+</script>
+
+<script>
+
+let tanggal=$("#tanggal").val();
+
+tanggal=tanggal.split("-");
+// alert(tanggal[1]);
+
+if(tanggal[1]=="01")
+{
+	$("#bulan").text("BULAN JANUARI");
+}
+else if(tanggal[1]=="02")
+{
+	$("#bulan").text("BULAN FEBRUARI");
+}
+else if(tanggal[1]=="03")
+{
+	$("#bulan").text("BULAN MARET");
+}
+else if(tanggal[1]=="04")
+{
+	$("#bulan").text("BULAN APRIL");
+}
+else if(tanggal[1]=="05")
+{
+	$("#bulan").text("BULAN MEI");
+}
+else if(tanggal[1]=="06")
+{
+	$("#bulan").text("BULAN JUNI");
+}
+else if(tanggal[1]=="07")
+{
+	$("#bulan").text("BULAN JULI");
+}
+else if(tanggal[1]=="08")
+{
+	$("#bulan").text("BULAN AGUSTUS");
+}
+else if(tanggal[1]=="09")
+{
+	$("#bulan").text("BULAN SEPTEMBER");
+}
+else if(tanggal[1]=="10")
+{
+	$("#bulan").text("BULAN OKTOBER");
+}
+
+else if(tanggal[1]=="11")
+{
+	$("#bulan").text("BULAN NOVEMBER");
+}
+else if(tanggal[1]=="12")
+{
+	$("#bulan").text("BULAN DESEMBER");
+}
+
 </script>
 
 
