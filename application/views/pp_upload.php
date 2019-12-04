@@ -134,6 +134,48 @@ else
 								<input type="file" name="berkas" class="btn btn-info"/>
 
 								<br /><br />
+								<b>Pilih Jenis Pekerjaan:</b>
+                                 
+								 <select name="jenis_pekerjaan" class="form form-control">
+
+								 <?php
+								   
+								   $tanggal=$this->uri->segment("3");
+								   $id_perencanaan=$this->uri->Segment("4");
+								   $minggur=$this->uri->segment("5");
+
+								//    Select dari database
+
+								$data=$this->db->query("SELECT * FROM detail_laporan_pengawasan 
+								INNER JOIN jenis_pekerjaan ON 
+								detail_laporan_pengawasan.jenis_pekerjaan=jenis_pekerjaan.id
+								WHERE detail_laporan_pengawasan.id_lap_pengawasan='$tanggal' AND id_lap_perencanaan='$id_perencanaan'
+								AND minggu='$minggu' GROUP BY jenis_pekerjaan")->result();
+
+
+								 $count=count($data);
+								 $i=0;
+
+
+								 while($i<$count)
+								 {
+
+                                    ?>
+                                     <option value="<?php echo $data[$i]->jenis_pekerjaan ?>"><?php echo $data[$i]->nama_jenis ?></option>
+									<?php
+
+									$i++;
+								 }
+
+                                 ?>
+								 </select>
+								 <br/>
+
+								 <b>Keterangan</b>
+
+								 <input type="keterangan" name="keterangan" class="form form-control">
+
+								<br/>
 
 								<input type="submit" value="upload" class="btn btn-info"/>
 
@@ -150,14 +192,23 @@ else
 									<tr>
 										<th>Name</th>
 										<th>Gambar</th>
+										<th>Jenis Pekerjaan</th>
 										<th>Delete</th>
 
 									</tr>
 									</thead>
 									<tbody>
 									<?php
-									//									echo $this->uri->segment("3");
-									$gambar=$this->db->get_where("gambar_pengawasan",array("id_perencanaan"=>$this->uri->segment("4"),"id_pengawasan"=>$this->uri->segment("3"),"minggu"=>$this->uri->segment("5")))->result();
+									//	
+									$this->db->select('*');
+									$this->db->from('gambar_pengawasan');
+									$this->db->join('jenis_pekerjaan', 'gambar_pengawasan.id_pekerjaan = jenis_pekerjaan.id');	
+									$this->db->where("id_perencanaan",$this->uri->segment("4"));
+									$this->db->where("id_pengawasan",$this->uri->segment("3"));
+									$this->db->where("minggu",$this->uri->segment("5"));
+
+									$gambar=$this->db->get()->result();
+								
 
 									$count=count($gambar);
 
@@ -169,7 +220,9 @@ else
 										?>
 										<tr>
 											<td><?php echo $gambar[$i]->gambar ?></td>
+											
 											<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+											<td><?php echo $gambar[$i]->nama_jenis ?></td>
 											<td><button class="btn btn-danger" onclick="hapus('<?php echo $gambar[$i]->id_perencanaan; ?>','<?php echo $gambar[$i]->gambar; ?>','<?php echo $gambar[$i]->id_pengawasan; ?>','<?php echo $gambar[$i]->minggu; ?>')">Delete</button></td>
 										</tr>
 										<?php

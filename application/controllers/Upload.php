@@ -113,6 +113,7 @@ class Upload extends CI_Controller{
 //			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
+			
 //			Ambil id Gambar
 			$max=0;
 			$datax=$this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_pengawasan")->result();
@@ -131,6 +132,8 @@ class Upload extends CI_Controller{
 				"minggu"=>$minggu,
 				"id_pengawasan"=>$id,
 				"gambar"=>$file_name,
+				'id_pekerjaan' => $this->input->post('jenis_pekerjaan'),
+				'keterangan' => $this->input->post('keterangan'),
 			);
 
 			$this->db->insert("gambar_pengawasan",$inputGambar);
