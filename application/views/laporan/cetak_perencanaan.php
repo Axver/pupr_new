@@ -634,11 +634,7 @@ else
 
 						</thead>
 						<tbody>
-						<tr style="height:300px;">
-							<td cellspacing="'0'" width="20%" id="jenis_pekerjaanM" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
-
-							<td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
-								<?php
+													<?php
 								$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
 								//
 
@@ -648,22 +644,30 @@ else
 								while($i<$count)
 								{
 									?>
+										<tr style="height:300px;">
+							<td cellspacing="'0'" width="20%"  style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
+
+							<td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
+
 									<img style="width:200px;" src="<?php echo base_url('gambar/'.$getImage[$i]->gambar) ?>" />
+
+									</td>
+
+<td cellspacing="'0'" width="100%" id="" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
+	<?php echo "Lokasi:".$loaksiM."<br/>"; ?>
+	<?php echo "Panjang Penanganan:".$panjang_penangananM."<br/>"; ?>
+	<?php echo "Keterangan Dimensi:".$keterangan_dimensiM."<br/>"; ?>
+</td>
+</tr>
 									<?php
 
 									$i++;
 								}
 								?>
 
-							</td>
+						
 
-							<td cellspacing="'0'" width="100%" id="" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
-								<?php echo "Lokasi:".$loaksiM."<br/>"; ?>
-								<?php echo "Panjang Penanganan:".$panjang_penangananM."<br/>"; ?>
-								<?php echo "Keterangan Dimensi:".$keterangan_dimensiM."<br/>"; ?>
-							</td>
-
-						</tr>
+					
 						</tbody>
 					</table>
 				</div>
