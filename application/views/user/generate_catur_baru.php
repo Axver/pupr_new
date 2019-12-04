@@ -229,6 +229,23 @@ body{
                            
                             <br/>
                             <br/>
+                            <select class="form form-control" id="diperiksa_oleh">
+									<?php
+									$diperiksa=$this->db->get("konfigurasi")->result();
+									$count=count($diperiksa);
+									$i=0;
+
+
+									while($i<$count)
+									{
+										?>
+										<option value="<?php echo $diperiksa[$i]->id_konfigurasi; ?>"><?php echo $diperiksa[$i]->nama; ?></option>
+										<?php
+
+										$i++;
+									}
+									?>
+								</select>
 
                             <button class="btn btn-facebook" onclick="generate()">Generate</button>
 
@@ -297,6 +314,65 @@ body{
     <td class="tg-0lax"></td>
   </tr> -->
 </table>
+
+<br/>
+									 <?php
+									 function tgl_indo($tanggal){
+										 $bulan = array (
+											 1 =>   'Januari',
+											 'Februari',
+											 'Maret',
+											 'April',
+											 'Mei',
+											 'Juni',
+											 'Juli',
+											 'Agustus',
+											 'September',
+											 'Oktober',
+											 'November',
+											 'Desember'
+										 );
+										 $pecahkan = explode('-', $tanggal);
+
+										 // variabel pecahkan 0 = tanggal
+										 // variabel pecahkan 1 = bulan
+										 // variabel pecahkan 2 = tahun
+
+										 return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+									 }
+									 ?>
+
+									 <div class="row">
+										 <div class="col-sm-1"></div>
+										 <div class="col-sm-3"><center><b>Diperiksa Oleh</b><br/><b><div id="testsaja"></div></b></center></div>
+										 <div class="col-sm-4"></div>
+										 <div class="col-sm-3"><center><b>Jambi,<?php echo tgl_indo(date('Y-m-d')); ?></b><br/><b>Dibuat Oleh</b></center></div>
+										 <div class="col-sm-1"></div>
+									 </div>
+
+									 <br/>
+									 <br/>
+									 <br/>
+									 <div class="row">
+										 <div class="col-sm-1"></div>
+										 <div class="col-sm-3"><center><u><b id="diperiksa"> </b></u><br/><b id="nip_dip"></b><br/><br/></center></div>
+										 <div class="col-sm-4"></div>
+										 <div class="col-sm-3"><center><b id="dibuat"><?php
+													 $data=$this->db->get_where("account",array("nip"=>$this->session->userdata("nip")))->result();
+													 $count=count($data);
+													 $i=0;
+
+													 while($i<$count)
+													 {
+														 echo "<u>".$data[$i]->nama."</u>";
+														 echo "<br/>";
+														 echo "NIP:".$data[$i]->nip;
+
+														 $i++;
+													 }
+													 ?></b></center></div>
+										 <div class="col-sm-1"></div>
+									 </div>
 
 </div>
 
@@ -408,6 +484,41 @@ body{
 <script>
     function generate()
     {
+
+      let diperiksa_=$("#diperiksa_oleh").val();
+
+        // alert(diperiksa_);
+        // alert(diperiksa_);
+        // alert(diperiksa_);
+        //konf_kerja data
+        $.ajax({
+            type: "POST",
+            async:false,
+            url: "http://localhost/pupr_new/generate_minggu/bidang",
+            data: {"id_konfigurasi":diperiksa_},
+            dataType: "text",
+            cache:false,
+            success:
+                function(data){
+                    data=JSON.parse(data);
+                    let length=data.length;
+                    let i=0;
+
+                    console.log("Hmmmmmm");
+                    console.log(data);
+                    console.log("Hmmmmmm");
+                    // alert(data);
+
+                    while(i<length)
+                    {
+                        $("#testsaja").text(data[i].jabatan);
+                        $("#diperiksa").text(data[i].nama);
+                        $("#nip_dip").text("NIP:"+data[i].nip);
+
+                        i++;
+                    }
+                }
+        });
 
       hapus();
       $("#tabel_satu").append('    <tr>'+
