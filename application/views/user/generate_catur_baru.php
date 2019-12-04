@@ -137,8 +137,11 @@ body{
 							<!-- Card Body -->
 							<div class="card-body">
                             <!-- Pilih Datanya Dulu -->
+                         
+
+                            <?php echo form_open_multipart('upload/aksi_upload_tahap');?>
                             <b>Pilih Paket</b>
-                            <select onchange="listPerencanaan()" id="id_paket" class="form form-control">
+                            <select onchange="listPerencanaan()" id="id_paket" name="id_paket" class="form form-control">
                             <option>--Pilih Paket--</option>
                             <?php
                             
@@ -158,16 +161,14 @@ body{
                             ?>
                             </select>
 
-                            <input type="hidden" id="tahun">
+                            <input type="hidden" id="tahun" name="tahun">
                             <br/>
                             <b>Pilih Perencanaan</b>
-                            <select class="form form-control" id="id_perencanaan">
+                            <select class="form form-control" id="id_perencanaan" name="id_perencanaan">
                             <option>--Pilih Perencanaan--</option>
                             </select>
 
                             <br/>
-
-                            <?php echo form_open_multipart('upload/aksi_upload_tahap/');?>
                 <br/>
 
                 <br/>
@@ -191,8 +192,26 @@ body{
 </select>
 <br/>
 
-<b>*Generate sebelum upload gambar</b>
-                <select class="form form-control" name="jenis_pekerjaan"> </select>
+<b>*Generate dahulu sebelum upload gambar</b>
+                <select class="form form-control" name="jenis_pekerjaan"> 
+                <?php
+
+                 $jp=$this->db->get("jenis_pekerjaan")->result();
+
+                 $count=count($jp);
+                 $i=0;
+
+                 while($i<$count)
+                 {
+
+                  ?>
+                  <option value="<?php echo $jp[$i]->id; ?>"><?php echo $jp[$i]->nama_jenis; ?></option>
+                  <?php
+                  $i++;
+                 }
+                ?>
+                
+                </select>
 
                 <br/>
 
@@ -511,6 +530,8 @@ body{
 
 				 while(i<length)
 				 {
+
+           
 
 					$("#tabel_satu").append("<tr>"+
                       "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
