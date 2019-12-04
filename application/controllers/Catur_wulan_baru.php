@@ -14,4 +14,18 @@ class Catur_wulan_baru extends CI_Controller {
         $this->load->view("user/generate_catur_baru");
     }
 
+
+    public function sketsa()
+    {
+
+        $id_paket=$this->input->post("id_paket");
+        $id_perencanaan=$this->input->post("id_perencanaan");
+        $bulan=$this->input->post("bulan");
+
+
+        $data=$this->db->get_where("gambar_tahap",array("id_paket"=>$id_paket,"id_perencanaan"=>$id_perencanaan,"bulan_start"=>$bulan))->result();
+
+        echo json_encode($data);
+    }
+
 }

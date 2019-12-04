@@ -283,6 +283,21 @@ body{
 
 </table>
 
+
+<br/>
+<br/>
+
+<b>Sketsa Kerja Rencana</b>
+
+<table class="tg table" id="tabel_empat">
+
+  <!-- <tr>
+    <td class="tg-cly1"></td>
+    <td class="tg-cly1"></td>
+    <td class="tg-0lax"></td>
+  </tr> -->
+</table>
+
 </div>
 
 
@@ -797,6 +812,44 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
         m++;
        
     }
+
+
+
+    // Tabel paling bawah yang berisi foto dan ditambahkan secara otomatis
+
+    $("#tabel_empat").append('<tr><th class="tg-cly1">Jenis Pekerjaan</th><th class="tg-cly1">Sketsa</th><th class="tg-0lax">Keterangan</th></tr>');
+
+    // Pilih semua sketsa dari dalam tabel
+    let id_paket_j=$("#id_paket").val();
+    let id_perencanaan_j=$("#id_perencanaan").val();
+    let bulan_j=$("#bulan").val();
+    $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/catur_wulan_baru/sketsa", 
+         data: {"id_paket":id_paket_j,"id_perencanaan":id_perencanaan_j,"bulan":bulan_j},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                data=JSON.parse(data);
+                console.log("gambar");
+                console.log(data);
+
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+                {
+
+                    $("#tabel_empat").append('<tr><td class="tg-cly1"></td>'+
+                    '<td class="tg-cly1">'+'<img style="width:200px" src="http://localhost/pupr_new/gambar/'+data[i].gambar+'">'+'</td>'+
+                    '<td class="tg-0lax"></td></tr> ');
+                  i++;
+                }
+              }
+          });
+
+       
 
 
 
