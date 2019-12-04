@@ -236,6 +236,60 @@ class User_pengawasan_data extends CI_Controller {
 	}
 
 
+	public function ttd_edit_pengawasan()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+		$minggu=$this->input->post("minggu");
+		$id_diperiksa=$this->input->post("id_diperiksa");
+
+
+		// Delete dulu
+
+		$this->db->query("DELETE FROM ttd_pengawasan WHERE minggu='$minggu' AND id_pengawasan='$tanggal' AND id_perencanaan='$id_perencanaan'");
+
+		// Baru inptukan gan
+		$data=array(
+		  "minggu"=>$minggu,
+		  "id_pengawasan"=>$tanggal,
+		  "id_perencanaan"=>$id_perencanaan,
+		  "id_dibuat"=>$this->session->userdata("nip"),
+		  "id_diperiksa"=>$id_diperiksa,
+		);
+
+
+		$this->db->insert("ttd_pengawasan",$data);
+	}
+
+
+	public function ttd_edit_pengawasan1()
+	{
+
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$tanggal=$this->input->post("tanggal");
+		$minggu=$this->input->post("minggu");
+	
+
+
+	
+		// Baru inptukan gan
+		$data=array(
+		  "minggu"=>$minggu,
+		  "id_pengawasan"=>$tanggal,
+		  "id_perencanaan"=>$id_perencanaan,
+		
+		 
+		);
+
+
+		$data=$this->db->get_where("ttd_pengawasan",$data)->result();
+		echo json_encode($data);
+	}
+
+
 
 
 

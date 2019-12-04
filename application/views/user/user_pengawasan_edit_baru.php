@@ -140,7 +140,7 @@ else
 								</center>
 
 								<center>
-									<b><h3>Minggu Ke - X</h3></b>
+									<!-- <b><h3>Minggu Ke - X</h3></b> -->
 								</center>
 								<br/>
 								<br/>
@@ -171,6 +171,8 @@ else
 								<br/>
 								<b>Tanggal</b>
 								<input type="text" class="form form-control" id="hari_tanggal" value="<?php echo $this->uri->segment("3") ?>" disabled>
+                                <b>Minggu</b>
+								<input type="text" class="form form-control" id="minggu" value="<?php echo $this->uri->segment("5") ?>" disabled>
 								<br/>
 
 
@@ -194,6 +196,32 @@ else
 									</tr>
 
 								</table>
+
+
+								<br/>
+								<b>Diperiksa Oleh:</b>
+								<br/>
+
+
+								<select id="diperiksa_oleh" class="form form-control">
+								
+								<?php
+									 $data=$this->db->get("konfigurasi")->result();
+									 $count=count($data);
+									 $i=0;
+
+
+									 while($i<$count)
+									 {
+                                        ?>
+
+                                         <option value="<?php echo $data[$i]->id_konfigurasi ?>"><?php echo $data[$i]->nama ?></option>
+										<?php
+                                         
+										$i++;
+									 }
+								?>
+								</select>
 								
 								<button class="btn btn-facebook" onclick="save()">Save</button>
 
@@ -365,6 +393,41 @@ else
 	    $("#"+id).text(jumlah);
 	}
 
+
+	let id_paket1=$("#id_paket").val();
+	    let id_perencanaan1=$("#id_perencanaan").val();
+	    let tanggal1=$("#hari_tanggal").val();
+	    let minggu1=$("#minggu").val();
+	
+	$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/ttd_edit_pengawasan1", 
+         data: {"id_perencanaan":id_perencanaan1,"id_paket":id_paket1,"tanggal":tanggal1,"minggu":minggu1},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+				data=JSON.parse(data);
+				console.log(data);
+
+				let length=data.length;
+				let i=0;
+
+				while(i<length)
+				{
+                    $('#diperiksa_oleh option[value="'+data[i].id_diperiksa+'"]').attr('selected','selected');
+				
+					// $('#diperiksa_oleh option[value="'+data[i].id_diperiksa+']"').attr('selected','selected');
+
+					i++;
+				}
+              }
+          });
+
+		 
+
+
 	function save()
 	{
 
@@ -448,6 +511,25 @@ else
 
                 }
         });
+
+
+		// Save Tanggal
+
+
+		let id_diperiksa=$("#diperiksa_oleh").val();
+
+		$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/ttd_edit_pengawasan", 
+         data: {"id_perencanaan":id_perencanaan,"id_paket":id_paket,"tanggal":tanggal,"minggu":minggu,"id_diperiksa":id_diperiksa},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+				alert("Success!!");
+              }
+          });
 
 
 
