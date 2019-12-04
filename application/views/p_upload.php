@@ -167,6 +167,17 @@ else
 								?>
 								
 								</select>
+                                <br/>
+								
+								<b>Panjang Penanganan:</b>
+								<input type="text" id="panjang_penanganan" name="panjang_penanganan" class="form form-control">
+								<br/>
+
+								
+								<b>Dimensi: p,l,t</b>
+								<br/>
+
+								<input type="text" id="dimensi" name="dimensi" class="form form-control">
 								<br/>
 
 								<input type="submit" value="upload" class="btn btn-info"/>
