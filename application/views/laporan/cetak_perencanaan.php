@@ -635,7 +635,12 @@ else
 						</thead>
 						<tbody>
 													<?php
-								$getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
+													$this->db->select('*');  
+													$this->db->from('gambar_perencanaan');
+													$this->db->join('jenis_pekerjaan', 'gambar_perencanaan.jenis_pekerjaan = jenis_pekerjaan.id');
+													$this->db->where("id_lap_perencanaan",$this->uri->Segment("2"));
+								// $getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
+								$getImage=$this->db->get()->result();
 								//
 
 								$count=count($getImage);
@@ -645,7 +650,7 @@ else
 								{
 									?>
 										<tr style="height:300px;">
-							<td cellspacing="'0'" width="20%"  style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"></td>
+							<td cellspacing="'0'" width="20%"  style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $getImage[$i]->nama_jenis; ?></td>
 
 							<td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 
