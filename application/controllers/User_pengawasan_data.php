@@ -290,6 +290,27 @@ class User_pengawasan_data extends CI_Controller {
 	}
 
 
+	public function ttd_view_pengawasan()
+	{
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$tanggal=$this->input->post("id_pengawasan");
+		$minggu=$this->input->post("minggu");
+
+		// Select dari db
+		$data=$this->db->query("SELECT * ,konfigurasi.nip as konfigurasi_nip,account.nip as account_nip,konfigurasi.nama as konfigurasi_nama,account.nama as account_nama FROM ttd_pengawasan INNER JOIN konfigurasi ON
+		ttd_pengawasan.id_diperiksa=konfigurasi.id_konfigurasi
+		INNER JOIN account ON ttd_pengawasan.id_dibuat=account.nip
+		WHERE minggu='$minggu' AND id_pengawasan='$tanggal' AND id_perencanaan='$id_perencanaan'")->result();
+
+
+echo json_encode($data);
+
+
+
+
+	}
+
+
 
 
 

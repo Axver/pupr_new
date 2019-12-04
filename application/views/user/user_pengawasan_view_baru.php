@@ -219,6 +219,62 @@ else
 									</tr>
 
 								</table>
+
+								
+
+								<br/>
+								<br/>
+								
+
+								<?php
+								function tgl_indo($tanggal){
+									$bulan = array (
+										1 =>   'Januari',
+										'Februari',
+										'Maret',
+										'April',
+										'Mei',
+										'Juni',
+										'Juli',
+										'Agustus',
+										'September',
+										'Oktober',
+										'November',
+										'Desember'
+									);
+									$pecahkan = explode('-', $tanggal);
+									
+									// variabel pecahkan 0 = tanggal
+									// variabel pecahkan 1 = bulan
+									// variabel pecahkan 2 = tahun
+								 
+									return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+								}
+								 
+
+								?>
+
+
+
+								<div class="row" style="text-align:center;">
+								
+								<div class="col-sm-1"></div>
+								<div class="col-sm-3">Diperiksa Oleh,
+								<div id="jabatan"></div>
+								<br/><br/>
+								<u id="nama"></u>
+								<div id="nip"></div>
+								</div>
+								
+								<div class="col-sm-4"></div>
+							
+								<div class="col-sm-3">Jambi, <?php echo tgl_indo($this->uri->segment("3")); ?><br>Dibuat Oleh<br/><br/><br/>
+								<u id="nama1"></u>
+								<div id="nip1"></div>
+								</div>
+								<div class="col-sm-1"></div>
+
+								</div>
 							</div>
 
 
@@ -479,6 +535,45 @@ function generatePDF() {
 
         swal("PDF Digenerate!!");
     }
+
+
+
+let tanggal1=$("#tanggal").val();
+
+
+	                           $.ajax({
+                                type: "POST",
+                                url: "http://localhost/pupr_new/user_pengawasan_data/ttd_view_pengawasan", 
+                                data: {"id_pengawasan":tanggal,"id_perencanaan":id_perencanaan,"minggu":minggu},
+                                dataType: "text",  
+                                cache:false,
+                                success: 
+                                function(data){
+                                // alert(data);  //as a debugging message.
+								data=JSON.parse(data);
+								let length=data.length;
+								let i=0;
+
+								console.log("Waha");
+								console.log(data);
+								console.log("Waha");
+
+
+								while(i<length)
+								{
+
+
+									$("#jabatan").text(data[i].jabatan);
+									$("#nama").text(data[i].konfigurasi_nama);
+									$("#nip").text("NRP."+data[i].konfigurasi_nip);
+									$("#nama1").text(data[i].account_nama);
+									$("#nip1").text("NRP."+data[i].account_nip);
+
+
+									i++;
+								}
+                                }
+                                });
 </script>
 
 
