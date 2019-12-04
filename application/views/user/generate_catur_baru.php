@@ -35,11 +35,7 @@ else
         border:2px solid black;
     }
 
-    table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
+ 
 
 body{
     color:black;
