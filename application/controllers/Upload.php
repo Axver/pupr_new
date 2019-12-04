@@ -86,6 +86,7 @@ class Upload extends CI_Controller{
 				"id_gambar"=>$max,
 				"id_lap_perencanaan"=>$id,
 				"gambar"=>$file_name,
+				"jenis_pekerjaan"=>$this->input->post("jenis_pekerjaan")
 			);
 
 			$this->db->insert("gambar_perencanaan",$inputGambar);

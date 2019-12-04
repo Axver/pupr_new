@@ -131,6 +131,44 @@ else
 
 								<br /><br />
 
+								<!-- Pilih Jenis Pekrjaan Disini -->
+								<b>Pilih Jenis Pekerjaan</b>
+
+
+                                <br/>
+
+								<select id="jenis_pakerjaan" name="jenis_pekerjaan" class="form form-control">
+								
+								<?php
+                                $id_perencanaan=$this->uri->segment("3");
+								$data11=$this->db->query("SELECT * FROM detail_jenis_pekerjaan 
+								INNER JOIN jenis_pekerjaan ON detail_jenis_pekerjaan.id=jenis_pekerjaan.id
+								WHERE id_lap_perencanaan='$id_perencanaan' GROUP BY detail_jenis_pekerjaan.id")->result();
+
+
+								$count=count($data11);
+								$i=0;
+
+
+								while($i<$count)
+								{
+
+									?>
+
+                                    <option value="<?php echo $data11[$i]->id ?>"><?php echo $data11[$i]->nama_jenis ?></option>
+                                    
+
+									<?php
+
+
+									$i++;
+								}
+
+								?>
+								
+								</select>
+								<br/>
+
 								<input type="submit" value="upload" class="btn btn-info"/>
 
 								</form>
