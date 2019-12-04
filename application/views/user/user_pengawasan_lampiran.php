@@ -30,6 +30,16 @@ else
 	<?php $this->load->view('component/header') ?>
 
 
+	<style>
+	
+	td,table,th{
+		border:1px solid black;
+		color:black;
+	}
+
+	</style>
+
+
 </head>
 
 <body id="page-top">
@@ -146,16 +156,29 @@ else
 							</script>
 							<div class="card-body" id="cetak_lampiran">
 
-								<br/>
-								<br/>
+							<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+									<th>Jenis Pekerjaan</th>
+									<th>Keterangan</th>
+									<th>Foto</th>
+										
+										
 
-								<b>Daftar Gambar</b>
-
-
-
+									</tr>
+									</thead>
+									<tbody>
 									<?php
-									//									echo $this->uri->segment("3");
-									$gambar=$this->db->get_where("gambar_pengawasan",array("id_perencanaan"=>$this->uri->segment("4"),"id_pengawasan"=>$this->uri->segment("3"),"minggu"=>$this->uri->segment("5")))->result();
+									//	
+									$this->db->select('*');
+									$this->db->from('gambar_pengawasan');
+									$this->db->join('jenis_pekerjaan', 'gambar_pengawasan.id_pekerjaan = jenis_pekerjaan.id');	
+									$this->db->where("id_perencanaan",$this->uri->segment("4"));
+									$this->db->where("id_pengawasan",$this->uri->segment("3"));
+									$this->db->where("minggu",$this->uri->segment("5"));
+
+									$gambar=$this->db->get()->result();
+								
 
 									$count=count($gambar);
 
@@ -165,23 +188,21 @@ else
 
 									{
 										?>
-
-
-											<center><img style="width:800px; height:400px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"><br/></center>
-										<br/>
-										<br/>
-										<?php $i++; ?>
-										<center><img style="width:800px; height:400px; align-content: center;" class="img img-responsive" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"><br/></center>
-
-
-
-
-
+										<tr>
+											
+										<td><?php echo $gambar[$i]->nama_jenis ?></td>
+										<td><?php echo $gambar[$i]->keterangan ?></td>
+											<td><img style="width:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+											
+										</tr>
 										<?php
 
 										$i++;
 									}
 									?>
+									</tbody>
+								</table>
+
 
 
 
@@ -189,9 +210,7 @@ else
 
 
 							<script>
-                                $(document).ready(function() {
-                                    $('#example').DataTable();
-                                } );
+                           
 
                                 function hapus(per,gam,peng,ming)
                                 {
