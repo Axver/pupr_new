@@ -816,6 +816,7 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
 
 
     // Tabel paling bawah yang berisi foto dan ditambahkan secara otomatis
+    $("#tabel_empat").empty();
 
     $("#tabel_empat").append('<tr><th class="tg-cly1">Jenis Pekerjaan</th><th class="tg-cly1">Sketsa</th><th class="tg-0lax">Keterangan</th></tr>');
 
@@ -864,6 +865,7 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
       $("#tabel_satu").empty();
       $("#tabel_dua").empty();
       $("#tabel_tiga").empty();
+      $("#tabel_empat").empty();
     }
 </script>
 
