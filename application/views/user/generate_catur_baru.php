@@ -166,29 +166,75 @@ body{
                             </select>
 
                             <br/>
-                            <b>Pilih Bulan</b>
+
+                            <?php echo form_open_multipart('upload/aksi_upload_tahap/');?>
+                <br/>
+
+                <br/>
+                <b>Pilih Bulan</b>
 
 
-                            <select class="form form-control" id="bulan">
-                            <option value="">--Pilih Bulan--</option>
-                            <option value="1">Januari</option>
-                            <option value="2">Februari</option>
-                            <option value="3">Maret</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">Juni</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Agustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                            </select>
+<select name="bulan" class="form form-control" id="bulan">
+<option value="">--Pilih Bulan--</option>
+<option value="1">Januari</option>
+<option value="2">Februari</option>
+<option value="3">Maret</option>
+<option value="4">April</option>
+<option value="5">Mei</option>
+<option value="6">Juni</option>
+<option value="7">Juli</option>
+<option value="8">Agustus</option>
+<option value="9">September</option>
+<option value="10">Oktober</option>
+<option value="11">November</option>
+<option value="12">Desember</option>
+</select>
+<br/>
 
+<b>*Generate sebelum upload gambar</b>
+                <select class="form form-control" name="jenis_pekerjaan"> </select>
+
+                <br/>
+
+								<input type="file" name="berkas" class="btn btn-info"/>
+
+   
+
+
+
+              
+
+								<input type="submit" value="upload" class="btn btn-info"/>
+
+								</form>
+                           
                             <br/>
                             <br/>
 
                             <button class="btn btn-facebook" onclick="generate()">Generate</button>
+
+
+                            <br/>
+
+                            <br/>
+
+                            <b>Gambar Untuk Pekerjaan</b>
+                            <br/>
+                            <br/>
+
+                            <br/>
+                           
+
+
+							
+							
+
+
+
+                            <br/>
+
+                            <br/>
+                            <br/>
                             <button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
 
                             <div id="cetak">
