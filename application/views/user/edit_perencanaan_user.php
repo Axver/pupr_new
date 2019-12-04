@@ -1481,7 +1481,7 @@ $.ajax({
 			let i=0;
 			while(i<length)
 			{
-                if($("#" +data1[x].id+pekerjaan_id).length == 0) {
+                if($("#" +"pekerjaan_waktu_"+data[i].id_jenis_bahan_alat).length == 0) {
                     var newRowX="\t<tr id='pekerjaan_waktu_"+data[i].id_jenis_bahan_alat+"'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000; border-left: 2px solid #000000\" height=\"20\" align=\"left\" valign=\"bottom\">"+data[i].jenis_bahan_alat+"</td>\n" +
                         "\t\t\t\t\t\t\t\t\t\t<td style=\"border-bottom: 2px solid #000000\" align=\"left\" valign=\"bottom\"></td>\n" +
