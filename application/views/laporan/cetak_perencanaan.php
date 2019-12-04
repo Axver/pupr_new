@@ -641,6 +641,8 @@ else
 													$this->db->where("id_lap_perencanaan",$this->uri->Segment("2"));
 								// $getImage=$this->db->get_where("gambar_perencanaan",array("id_lap_perencanaan"=>$this->uri->Segment("2")))->result();
 								$getImage=$this->db->get()->result();
+
+								// var_dump($getImage);
 								//
 
 								$count=count($getImage);
@@ -660,8 +662,8 @@ else
 
 <td cellspacing="'0'" width="100%" id="" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 	<?php echo "Lokasi:".$loaksiM."<br/>"; ?>
-	<?php echo "Panjang Penanganan:".$panjang_penangananM."<br/>"; ?>
-	<?php echo "Keterangan Dimensi:".$keterangan_dimensiM."<br/>"; ?>
+	<?php echo "Panjang Penanganan:".$getImage[$i]->panjang_penanganan."<br/>"; ?>
+	<?php echo "Keterangan Dimensi:".$getImage[$i]->dimensi."<br/>"; ?>
 </td>
 </tr>
 									<?php
