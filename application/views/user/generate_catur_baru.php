@@ -309,7 +309,7 @@ body{
                             
                             <div class="col-sm-3">Jenis Pekerjaan</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="jenis_pekerjaan_x"></div>
                             </div>
 
 
@@ -715,6 +715,8 @@ body{
 				 while(i<length)
 				 {
 
+           $("#jenis_pekerjaan_x").append(data[i].nama_jenis+"<br/>");
+
            
 
 					$("#tabel_satu").append("<tr>"+
@@ -1050,6 +1052,13 @@ $.ajax({
                 }
               }
           });
+
+
+
+          // Generate Jenis Pekerjaannya
+
+          
+
 
        
 

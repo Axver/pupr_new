@@ -45,4 +45,11 @@ $this->db->where("bulan_start",$bulan);
 
     }
 
+
+    public function informasi1()
+    {
+
+        
+    }
+
 }
