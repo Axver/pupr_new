@@ -508,7 +508,7 @@ else
       $("#tabel_satu").append('<tr>'+
     '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
     '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
-    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -524,7 +524,7 @@ else
   $("#tabel_dua").append('<tr>'+
     '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
     '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
-    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -540,7 +540,7 @@ else
   $("#tabel_tiga").append('<tr>'+
     '<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'+
     '<th class="tg-cly1" rowspan="3">Satuan</th>'+
-    '<th class="tg-cly1" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -727,6 +727,16 @@ else
 
 
 
+
+// Generate Nama Bulannya
+let nama_bulan=$("#bulan").val();
+
+
+let data_bulan=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+nama_bulan=parseInt(nama_bulan);
+nama_bulan=nama_bulan-1;
+
+$(".bulanX").text(data_bulan[nama_bulan]);
        
 
 
