@@ -284,7 +284,7 @@ body{
                             
                             <div class="col-sm-3">Nama Paket</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="nama_paket_x"></div>
                             </div>
 
                             
@@ -292,16 +292,16 @@ body{
                             
                             <div class="col-sm-3">Nilai Paket</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="nilai_paket_x"></div>
                             </div>
 
 
                             
                             <div class="row">
                             
-                            <div class="col-sm-3">Priode</div>
+                            <div class="col-sm-3">Periode</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="periode_x"></div>
                             </div>
 
                             
@@ -318,7 +318,7 @@ body{
                             
                             <div class="col-sm-3">Lokasi</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="lokasi_x"></div>
                             </div>
 
 
@@ -327,7 +327,7 @@ body{
                             
                             <div class="col-sm-3">Tahun Anggaran</div>
                             <div class="col-sm-1">:</div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3" id="tahun_x"></div>
                             </div>
 
 
@@ -1022,6 +1022,34 @@ $("#"+data[i].jenis_pekerjaan+"__"+data[i].id_jenis_upah+"__"+sup).text(data[i].
        
 
 
+// Generate Informasinya
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/catur_wulan_baru/informasi", 
+         data: {"id_paket":id_paket_j},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+
+                let length=data.length;
+
+                let i=0;
+
+                while(i<length)
+                {
+                   $("#nama_paket_x").append(data[i].nama);
+                   $("#lokasi_x").append(data[i].lokasi);
+                   $("#periode_x").append(data[i].masa_pelaksanaan);
+                   $("#tahun_x").append(data[i].tahun);
+                   $("#nilai_paket_x").append(data[i].nilai_paket);
+
+                  i++;
+                }
+              }
+          });
 
        
 

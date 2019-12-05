@@ -35,4 +35,14 @@ $this->db->where("bulan_start",$bulan);
         echo json_encode($data);
     }
 
+
+    public function informasi()
+    {
+      $id_paket=$this->input->post("id_paket");
+      $data=$this->db->get_where("paket",array("id_paket",$id_paket))->result();
+
+      echo json_encode($data);
+
+    }
+
 }
