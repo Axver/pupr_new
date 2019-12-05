@@ -187,13 +187,13 @@ else
 										<td class="tg-nrix" colspan="7">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix">1</td>
-										<td class="tg-nrix">2</td>
-										<td class="tg-nrix">3</td>
-										<td class="tg-nrix">4</td>
-										<td class="tg-nrix">5</td>
-										<td class="tg-nrix">6</td>
-										<td class="tg-nrix">7</td>
+										<td class="tg-nrix 1">1</td>
+										<td class="tg-nrix 2">2</td>
+										<td class="tg-nrix 3">3</td>
+										<td class="tg-nrix 4">4</td>
+										<td class="tg-nrix 5">5</td>
+										<td class="tg-nrix 6">6</td>
+										<td class="tg-nrix 7">7</td>
 									</tr>
 
 								</table>
@@ -208,13 +208,13 @@ else
 										<td class="tg-nrix" colspan="7">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix">1</td>
-										<td class="tg-nrix">2</td>
-										<td class="tg-nrix">3</td>
-										<td class="tg-nrix">4</td>
-										<td class="tg-nrix">5</td>
-										<td class="tg-nrix">6</td>
-										<td class="tg-nrix">7</td>
+										<td class="tg-nrix 1">1</td>
+										<td class="tg-nrix 2">2</td>
+										<td class="tg-nrix 3">3</td>
+										<td class="tg-nrix 4">4</td>
+										<td class="tg-nrix 5">5</td>
+										<td class="tg-nrix 6">6</td>
+										<td class="tg-nrix 7">7</td>
 									</tr>
 
 								</table>
@@ -251,13 +251,13 @@ else
 										<td class="tg-nrix" colspan="7">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix">1</td>
-										<td class="tg-nrix">2</td>
-										<td class="tg-nrix">3</td>
-										<td class="tg-nrix">4</td>
-										<td class="tg-nrix">5</td>
-										<td class="tg-nrix">6</td>
-										<td class="tg-nrix">7</td>
+										<td class="tg-nrix 1">1</td>
+										<td class="tg-nrix 2">2</td>
+										<td class="tg-nrix 3">3</td>
+										<td class="tg-nrix 4">4</td>
+										<td class="tg-nrix 5">5</td>
+										<td class="tg-nrix 6">6</td>
+										<td class="tg-nrix 7">7</td>
 									</tr>
 
 								</table>
@@ -1286,6 +1286,202 @@ $.ajax({
                 }
               }
           });
+
+
+</script>
+
+
+
+<script>
+
+function getWeeksInMonth(month_number, year) {
+                        // console.log("year - "+year+" month - "+month_number+1);
+
+                        var day = 0;
+                        var firstOfMonth = new Date(year, month_number, 1);
+                        var lastOfMonth = new Date(year, parseInt(month_number)+1, 0);
+
+                        if (firstOfMonth.getDay() == 0) {
+                            day = 2;
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        } else if (firstOfMonth.getDay() != 1) {
+                            day = 9-(firstOfMonth.getDay());
+                            firstOfMonth = firstOfMonth.setDate(day);
+                            firstOfMonth = new Date(firstOfMonth);
+                        }
+
+                        var days = (lastOfMonth.getDate() - firstOfMonth.getDate())+1
+                        return Math.ceil( days / 7);
+                    }
+
+Date.prototype.getWeek = function () {
+        var target  = new Date(this.valueOf());
+        var dayNr   = (this.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        var firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() != 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
+    }
+
+    function getDateRangeOfWeek(weekNo){
+        var d1 = new Date();
+        numOfdaysPastSinceLastMonday = eval(d1.getDay()- 1);
+        d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+        var weekNoToday = d1.getWeek();
+        var weeksInTheFuture = eval( weekNo - weekNoToday );
+        d1.setDate(d1.getDate() + eval( 7 * weeksInTheFuture ));
+        var rangeIsFrom = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear();
+        d1.setDate(d1.getDate() + 6);
+        var rangeIsTo = eval(d1.getMonth()+1) +"/" + d1.getDate() + "/" + d1.getFullYear() ;
+        return rangeIsFrom + " to "+rangeIsTo;
+    };
+
+let dataM=$("#hari_tanggal").val();
+let id_harian=$("#hari_tanggal").val();
+	dataM=dataM.split("-");
+	let minggu_=0;
+
+
+	let v=1;
+
+	while(v<dataM[1])
+	{
+
+		minggu_=parseInt(minggu_)+parseInt(getWeeksInMonth(v, dataM[0]));
+
+
+
+		v++;
+	}
+
+    console.log("minggu bulan terakhirnya:"+minggu_);
+
+// Kemudian check 5 minggu sesudahnya
+
+let y=1;
+let range;
+
+while(y<=5)
+{
+    hoho=parseInt(minggu_)+parseInt(y);
+
+    range=getDateRangeOfWeek(hoho);
+    range=range.split(" to ");
+
+    tanggal_start=stringToDate(range[0],"MM/dd/yyyy","/");
+    tanggal_end=stringToDate(range[1],"MM/dd/yyyy","/");
+    tanggal_pilihan=new Date(id_harian);
+
+    if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+    {
+        minggu_get=hoho;
+        console.log(minggu_get);
+
+        console.log("Wahahaha");
+        let m=1;
+        let tanggal_ambil=tanggal_start;
+        while(m<=7)
+        {
+
+
+
+            console.log(convert(tanggal_ambil));
+            $("."+m).text(convert(tanggal_ambil));
+            var tomorrow = new Date(tanggal_ambil);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tanggal_ambil=tomorrow;
+
+            
+            
+            m++;
+        }
+        
+
+    }
+
+
+    console.log(range);
+
+    
+    y++;
+}
+
+
+function stringToDate(_date,_format,_delimiter)
+    {
+        var formatLowerCase=_format.toLowerCase();
+        var formatItems=formatLowerCase.split(_delimiter);
+        var dateItems=_date.split(_delimiter);
+        var monthIndex=formatItems.indexOf("mm");
+        var dayIndex=formatItems.indexOf("dd");
+        var yearIndex=formatItems.indexOf("yyyy");
+        var month=parseInt(dateItems[monthIndex]);
+        month-=1;
+        var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        return formatedDate;
+    }
+
+    function convert(str) {
+  var date = new Date(str),
+    mnth = ((date.getMonth() + 1));
+    day = (date.getDate());
+	if(mnth==1)
+	{
+		mnth="Januari";
+	}
+	else if(mnth==2)
+	{
+		mnth="Februari";
+	}
+	else if(mnth==3)
+	{
+		mnth="Maret";
+	}
+	else if(mnth==4)
+	{
+		mnth="April";
+	}
+	else if(mnth==5)
+	{
+		mnth="Mei";
+	}
+	else if(mnth==6)
+	{
+		mnth="Juni";
+	}
+	else if(mnth==7)
+	{
+		mnth="Juli";
+	}
+	else if(mnth==8)
+	{
+		mnth="Agustus";
+	}
+	else if(mnth==9)
+	{
+		mnth="September";
+	}
+	else if(mnth==10)
+	{
+		mnth="Oktober";
+	}
+	else if(mnth==11)
+	{
+		mnth="November";
+	}
+	else if(mnth==12)
+	{
+		mnth="Desember";
+	}
+  return [ day,mnth, date.getFullYear()].join(" ");
+}
+
+
+
 
 
 </script>
