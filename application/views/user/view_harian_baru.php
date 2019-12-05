@@ -199,12 +199,12 @@ else
 
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Periode Lalu</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="periode_lalu" >:</div>
 										</div>
 
 										<div class="row">
-											<div class="col-sm-6">Progress Fisik Minggu Ke-</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="add_gan">Progress Fisik Minggu Ke-</div>
+											<div class="col-sm-6" id="minggu_ke">:</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Selanjutnya</div>
@@ -212,7 +212,7 @@ else
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Total</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="progress_total" >:</div>
 										</div>
 									</div>
 								</div>
@@ -536,6 +536,8 @@ $.ajax({
 
 
 <script>
+
+
 <!--	Script untuk mencari Progress-->
 
 $.ajax({
@@ -601,8 +603,10 @@ $.ajax({
 
                         // alert(progres_sekarang);
 						progres_sekarang=progres_sekarang.toFixed(2);
+						$("#progres_sekarang").append(progres_sekarang+"%");
+						$("#minggu_ke").append(progres_sekarang+"%");
 
-                        $("#progres_sekarang").append(progres_sekarang+"%");
+                        
 
 
 
@@ -618,7 +622,9 @@ $.ajax({
 
 
 
-//Cari Progress Fisik Peiode Sebelumnya
+
+
+   
 
 
 
@@ -770,6 +776,131 @@ Date.prototype.getWeek = function () {
 
 	// Mengganti tulisan tanggal engan tanggal sesungguhnya
 	// Coba disini
+
+	//Cari Progress Fisik Peiode Sebelumnya
+let z=1;
+				       while(z<=54)
+					   {
+
+                           week=getDateRangeOfWeek(z);
+                           week=week.split(" to ")
+						   // console.log(week);
+                           // console.log(week[0].toDateString());
+                           tanggal_start=stringToDate(week[0],"MM/dd/yyyy","/");
+                           tanggal_end=stringToDate(week[1],"MM/dd/yyyy","/");
+                           tanggal_pilihan=new Date(id_harian);
+                           // console.log(tanggal_start);
+                           // console.log(tanggal_end);
+                           // console.log(tanggal_pilihan);
+                           if(tanggal_start<tanggal_pilihan && tanggal_pilihan<tanggal_end)
+						   {
+						       minggu_get=z;
+						       console.log(minggu_get);
+						   }
+
+					       z++;
+					   }
+
+// alert(minggu_get);
+
+$("#add_gan").append(minggu_get);
+
+
+
+// Progress fisik sebelumnya
+minggu_get=parseInt(minggu_get)-1;
+
+let sebelmunya=getDateRangeOfWeek(minggu_get);
+
+// alert(sebelmunya);
+let yamaha=sebelmunya.split(" to ");
+
+
+let sebelmunya1=getDateRangeOfWeek(1);
+let yamaha1=sebelmunya1.split(" to ");
+
+// Ajax untuk mencarinya
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/view_harian/sebelumnya", 
+         data: {"id_perencanaan":id_perencanaan,"start":yamaha1[0],"end":yamaha[1]},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+				data=JSON.parse(data);
+            console.log(data);
+            let length=data.length;
+            let i=0;
+            console.log("hmmm");
+
+            let total_pekerja=0;
+
+            while(i<length)
+			{
+               total_pekerja=total_pekerja+(parseInt(data[i].total)*parseInt(data[i].harga));
+
+			    i++;
+			}
+            console.log("yuhu");
+			console.log(total_pekerja);
+			console.log("yuhu");
+
+             
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pupr_new/view_harian/jenis_alat_baru_sum1",
+                data: {"id_perencanaan":id_perencanaan,"start":yamaha1[0],"end":yamaha[1]},
+                async:false,
+                dataType: "text",
+                cache:false,
+                success:
+                    function(data){
+                        // alert(data);  //as a debugging message.
+                        data=JSON.parse(data);
+                        console.log(data);
+                        let length=data.length;
+                        let i=0;
+                        console.log("hmmm");
+
+                        let total_alat=0;
+
+                        while(i<length)
+                        {
+                            total_alat=total_alat+(parseInt(data[i].total)*parseInt(data[i].harga));
+
+                            i++;
+                        }
+
+                        console.log(total_pekerja);
+                        console.log(total_alat);
+                        let nilai_paket=0;
+                        nilai_paket=$("#nilai_paket").val();
+                        nilai_paket=parseInt(nilai_paket);
+
+                    //    Progres sekarang
+						let progres_sekarang=total_alat+total_pekerja;
+                        progres_sekarang=progres_sekarang/nilai_paket;
+                        progres_sekarang=progres_sekarang*100;
+
+                        // alert(progres_sekarang);
+						progres_sekarang=progres_sekarang.toFixed(2);
+						$("#periode_lalu").append(progres_sekarang+"%");
+						
+
+                        
+
+
+
+
+
+                    }
+            });
+
+
+              }
+});
+
 
 
 
