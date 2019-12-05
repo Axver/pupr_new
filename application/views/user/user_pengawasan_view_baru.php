@@ -144,6 +144,7 @@ else
 							$periode="";
 							$tanggal="";
 							$tahun="";
+							$nilai_paket="";
 
 							$i=0;
 							while($i<$conunt)
@@ -156,6 +157,7 @@ else
 									$nama_paket=$data[$ii]->nama;
 									$lokasi=$data[$ii]->lokasi;
 									$tahun=$data[$ii]->tahun;
+									$nilai_paket=$data[$ii]->nilai_paket;
 
 									$ii++;
 								}
@@ -172,7 +174,7 @@ else
 							<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
 								<center><b><h3>MINGGU KE-<b id="romawi"></b> (<b id="huruf"></b>)</h3></b></center>
 
-
+                             <input type="hidden" id="nilai_paket" value="<?php echo $nilai_paket; ?>">
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="row">
@@ -511,8 +513,10 @@ let tanggal=$("#tanggal").val();
 					'<td></td>'+
 					'<td></td>'+
 					'<td></td>'+
-					'<td id="total">Total:</td>'+
+					'<td id="total_jes">Total:</td>'+
 					'</tr>');
+
+					hehe();
               }
           });
 
@@ -574,6 +578,70 @@ let tanggal1=$("#tanggal").val();
 								}
                                 }
                                 });
+
+
+
+
+
+function hehe()
+{
+
+	// Dapatkan Total
+
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/total_progress", 
+         data: {"id_pengawasan":tanggal,"id_perencanaan":id_perencanaan,"minggu":minggu},
+         dataType: "text",  
+		 async:false,
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+				data=JSON.parse(data);
+				// console.log(data);
+
+				let length=data.length;
+				let i=0;
+
+				console.log("test");
+				console.log(data);
+				console.log("test");
+
+
+				let total=0;
+
+
+				while(i<length)
+				{
+
+					total=parseInt(total)+(parseInt(data[i].harga)*parseInt(data[i].sum));
+				
+
+                    
+					i++;
+				}
+
+
+				$nilai_paket=$("#nilai_paket").val();
+
+
+				console.log(total);
+
+				total=parseInt(total)/parseInt($nilai_paket)*100;
+				total=total.toFixed(2);
+
+				// alert(total);
+
+				$("#total_jes").append(total+"%");
+
+				console.log(total);
+
+				
+
+              }
+          });
+}
 </script>
 
 
