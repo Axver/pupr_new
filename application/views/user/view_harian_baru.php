@@ -974,11 +974,12 @@ $("#progress_total").append(pt+"%");
 
 
                 console.log(convert(tanggal_ambil));
+				$("."+m).text(convert(tanggal_ambil));
 				var tomorrow = new Date(tanggal_ambil);
                 tomorrow.setDate(tomorrow.getDate() + 1);
 				tanggal_ambil=tomorrow;
 
-				$("."+m).text(convert(tanggal_ambil));
+				
 				
 				m++;
 			}

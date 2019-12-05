@@ -263,13 +263,13 @@ else
 										<td class="tg-nrix" colspan="7">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix">1</td>
-										<td class="tg-nrix">2</td>
-										<td class="tg-nrix">3</td>
-										<td class="tg-nrix">4</td>
-										<td class="tg-nrix">5</td>
-										<td class="tg-nrix">6</td>
-										<td class="tg-nrix">7</td>
+										<td class="tg-nrix 1">1</td>
+										<td class="tg-nrix 2">2</td>
+										<td class="tg-nrix 3">3</td>
+										<td class="tg-nrix 4">4</td>
+										<td class="tg-nrix 5">5</td>
+										<td class="tg-nrix 6">6</td>
+										<td class="tg-nrix 7">7</td>
 									</tr>
 
 								</table>
@@ -940,6 +940,8 @@ else
 
 	let v=1;
 
+	console.log(dataM);
+
 	while(v<dataM[1])
 	{
 
@@ -1011,13 +1013,14 @@ else
 
 
 
+				$("."+m).text(convert(tanggal_ambil));
                 // console.log(convert(tanggal_ambil));
 				var tomorrow = new Date(tanggal_ambil);
                 tomorrow.setDate(tomorrow.getDate() + 1);
 				tanggal_ambil=tomorrow;
 				// console.log(tanggal_ambil);
 
-				$("."+m).text(convert(tanggal_ambil));
+				
 				
 				
 				m++;
