@@ -777,7 +777,30 @@ $.ajax({
               }
           });
 
-       
+      //  Progress Pekerjaan
+
+      $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/pekerja_minggu_sum", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                //  data=JSON.parse(data);
+				        //  console.log("Jesi Test Haha:");
+				        //  console.log(data);
+                //  console.log("Jesi Test Haha:");
+
+                console.log(data);
+				      
+
+
+          
+              }
+          });
+
 
 
     }

@@ -147,6 +147,50 @@ class Generate_bulan_baru extends CI_Controller {
       echo json_encode($data);
 
 
+
+    }
+
+
+    public function pekerja_minggu_sum()
+    {
+          $id_paket=$this->input->post("id_paket");
+          $id_perencanaan=$this->input->post("id_perencanaan");
+          $bulan=$this->input->post("bulan");
+          $tahun=$this->input->post("tahun");
+      //     $minggu=$this->input->post("minggu");
+
+
+          $data=$this->db->query("
+          SELECT *,SUM(jumlah) as sum FROM detail_alat_harian
+          INNER JOIN jenis_bahan_alat ON detail_alat_harian.id_jenis_bahan_alat=jenis_bahan_alat.id_jenis_bahan_alat
+          WHERE id_lap_perencanaan='$id_perencanaan' 
+          
+          AND id_paket='$id_paket'
+          AND tahun='$tahun' 
+          AND  MONTH(id_lap_harian_mingguan)='$bulan' GROUP BY detail_alat_harian.id_jenis_bahan_alat
+          ")->result();
+
+          echo json_encode($data);
+    }
+
+
+    public function pekerja_minggu_sum1()
+    {
+          $id_paket=$this->input->post("id_paket");
+          $id_perencanaan=$this->input->post("id_perencanaan");
+          $bulan=$this->input->post("bulan");
+          $tahun=$this->input->post("tahun");
+          $minggu=$this->input->post("minggu");
+
+
+          $data=$this->db->query("
+          SELECT *,SUM(jumlah) as sum FROM detail_alat_harian WHERE id_lap_perencanaan='$id_perencanaan' 
+          AND id_paket='$id_paket' AND WEEK(id_lap_harian_mingguan) - WEEK(id_lap_harian_mingguan)+1=$minggu
+          AND tahun='$tahun' 
+          AND  MONTH(id_lap_harian_mingguan)='$bulan' GROUP BY id_jenis_bahan_alat
+          ")->result();
+
+          echo json_encode($data);
     }
 
 	
