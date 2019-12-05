@@ -822,6 +822,7 @@ let yamaha1=sebelmunya1.split(" to ");
 // Ajax untuk mencarinya
 $.ajax({
          type: "POST",
+		 async:false,
          url: "http://localhost/pupr_new/view_harian/sebelumnya", 
          data: {"id_perencanaan":id_perencanaan,"start":yamaha1[0],"end":yamaha[1]},
          dataType: "text",  
@@ -900,6 +901,25 @@ $.ajax({
 
               }
 });
+
+
+
+let pp=$("#progres_sekarang").text();
+pp=pp.slice(1,-1);
+let pl=$("#periode_lalu").text();
+
+pl=pl.slice(1,-1);
+
+pp=parseFloat(pp);
+pl=parseFloat(pl);
+
+pt=pp+pl;
+
+$("#progress_total").append(pt+"%");
+// alert(pp);
+// alert(pl);
+// alert(pt);
+
 
 
 
