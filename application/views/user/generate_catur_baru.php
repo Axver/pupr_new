@@ -544,6 +544,10 @@ body{
 <script>
     function generate()
     {
+      let bulan_test=$("#bulan").val();
+      bulan_test=parseInt(bulan_test);
+      bulan_test=bulan_test-1;
+      let data=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember','-','-','-'];
 
       let diperiksa_=$("#diperiksa_oleh").val();
 
@@ -586,10 +590,10 @@ body{
     '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
     '<th class="tg-cly1" colspan="20">Tahap</th>'+
   '</tr><tr>'+
-    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+    '<td class="tg-cly1" colspan="5">'+data[bulan_test]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+1]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+2]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+3]+'</td>'+
   '</tr>'+
   '<tr>'+
    '<td class="tg-cly1">1</td>'+
@@ -619,10 +623,10 @@ body{
     '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
     '<th class="tg-cly1" colspan="20">Tahap</th>'+
   '</tr><tr>'+
-    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+    '<td class="tg-cly1" colspan="5">'+data[bulan_test]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+1]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+2]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+3]+'</td>'+
   '</tr>'+
   '<tr>'+
    '<td class="tg-cly1">1</td>'+
@@ -653,10 +657,10 @@ body{
     '<th class="tg-cly1" colspan="20">Tahap</th>'+
   '</tr>'+
   '<tr>'+
-    '<td class="tg-cly1" colspan="5">Bulan 1</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 2</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 3</td>'+
-    '<td class="tg-0lax" colspan="5">Bulan 4</td>'+
+    '<td class="tg-cly1" colspan="5">'+data[bulan_test]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+1]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+2]+'</td>'+
+    '<td class="tg-0lax" colspan="5">'+data[bulan_test+3]+'</td>'+
   '</tr>'+
  
   '<tr>'+
