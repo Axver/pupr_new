@@ -362,6 +362,8 @@ body{
 <br/>
 <br/>
 
+<div class="break"></div>
+
 <b>Sketsa Kerja Rencana</b>
 
 <table class="tg table" id="tabel_empat">
