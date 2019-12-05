@@ -215,6 +215,13 @@ else
 
               <div id="cetak">
 
+
+              <center><b><h3>LAPORAN BULANAN</h3></b></center>
+              <center><b><h3>PELAKSANAAN KEGIATAN</h3></b></center>
+              
+              <br/>
+              <br/>
+
               
               <div class="row">
 									<div class="col-sm-6">
@@ -589,6 +596,8 @@ else
 				 while(i<length)
 				 {
 
+           $("#jenis_pekerjaan").append(data[i].nama_jenis+"<br/>");
+
 					$("#tabel_satu").append("<tr>"+
                       "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
                       "<td class='tg-0lax'>"+data[i].nama+"</td>"+
@@ -737,6 +746,37 @@ nama_bulan=parseInt(nama_bulan);
 nama_bulan=nama_bulan-1;
 
 $(".bulanX").text(data_bulan[nama_bulan]);
+
+
+
+// Informasi Paket dari laporan tersebut
+
+let id_paket_j=$("#id_paket").val();
+$.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/generate_bulan_baru/info_paket", 
+         data: {"id_paket":id_paket_j},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                data=JSON.parse(data);
+                let length=data.length;
+                let i=0;
+
+                while(i<length)
+                {
+                  // isi teks
+                  $("#nama_paket").text(data[i].nama);
+                  $("#lokasi").text(data[i].lokasi);
+                  $("#pagu").text(data[i].nilai_paket);
+
+                  i++;
+                }
+              }
+          });
+
        
 
 

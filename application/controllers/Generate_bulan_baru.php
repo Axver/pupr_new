@@ -135,5 +135,19 @@ class Generate_bulan_baru extends CI_Controller {
           echo json_encode($data);
     }
 
+
+    public function info_paket()
+    {
+
+      $id_paket=$this->input->post("id_paket");
+
+      $data=$this->db->get_where("paket",array("id_paket",$id_paket))->result();
+
+
+      echo json_encode($data);
+
+
+    }
+
 	
 }
