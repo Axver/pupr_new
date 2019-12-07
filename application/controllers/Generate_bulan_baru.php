@@ -180,14 +180,16 @@ class Generate_bulan_baru extends CI_Controller {
           $id_perencanaan=$this->input->post("id_perencanaan");
           $bulan=$this->input->post("bulan");
           $tahun=$this->input->post("tahun");
-          $minggu=$this->input->post("minggu");
+      //     $minggu=$this->input->post("minggu");
 
 
           $data=$this->db->query("
-          SELECT *,SUM(jumlah) as sum FROM detail_alat_harian WHERE id_lap_perencanaan='$id_perencanaan' 
-          AND id_paket='$id_paket' AND WEEK(id_lap_harian_mingguan) - WEEK(id_lap_harian_mingguan)+1=$minggu
+          SELECT *,SUM(total) as sum FROM detail_bahan_alat_harian
+          INNER JOIN jenis_upah ON detail_bahan_alat_harian.id_jenis_upah=jenis_upah.id_jenis_upah
+          WHERE id_lap_perencanaan='$id_perencanaan' 
+          AND id_paket='$id_paket'
           AND tahun='$tahun' 
-          AND  MONTH(id_lap_harian_mingguan)='$bulan' GROUP BY id_jenis_bahan_alat
+          AND  MONTH(id_lap_harian_mingguan)='$bulan' GROUP BY detail_bahan_alat_harian.id_jenis_upah,jenis_pekerjaan
           ")->result();
 
           echo json_encode($data);
