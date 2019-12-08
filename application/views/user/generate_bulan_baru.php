@@ -251,7 +251,7 @@ else
 
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Periode Lalu</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="lalu">:</div>
 										</div>
 
 										<div class="row">
@@ -844,7 +844,7 @@ $.ajax({
                 total2=total2.toFixed(2);
                 console.log(total2);
 
-                $("#progres_sekarang").append(total2);
+                $("#progres_sekarang").append(total2+"%");
                 
                 
 				      
@@ -860,6 +860,96 @@ $.ajax({
           
               }
           });
+
+
+
+
+          // Progress Periode Lalu
+          bulan=parseInt(bulan)-1;
+          $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/pekerja_minggu_sum", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				        //  console.log("Jesi Test Haha:");
+				        //  console.log(data);
+                //  console.log("Jesi Test Haha:");
+                let length=data.length;
+                let i=0;
+                let total=0;
+
+                while(i<length)
+                {
+                  total=parseInt(total)+(parseInt(data[i].sum)*parseInt(data[i].harga));
+
+                  i++;
+                }
+
+                console.log(total);
+
+                // Progress Jenis Pekerja
+                
+      $.ajax({
+               type: "POST",
+		           async:false,
+               url: "http://localhost/pupr_new/generate_bulan_baru/pekerja_minggu_sum1", 
+               data: {"id_paket":id_paket,"id_perencanaan":id_perencanaan,"bulan":bulan,"tahun":tahun,"minggu":x},
+               dataType: "text",  
+               cache:false,
+               success: 
+              function(data){
+                 data=JSON.parse(data);
+				        //  console.log("Jesi Test Haha:");
+				        //  console.log(data);
+                //  console.log("Jesi Test Haha:");
+                let length=data.length;
+                let i=0;
+                let total1=0;
+
+                while(i<length)
+                {
+                  total1=parseInt(total1)+(parseInt(data[i].sum)*parseInt(data[i].harga));
+
+                  i++;
+                }
+
+                console.log(total1);
+
+                // Progress Jenis Pekerja
+
+                let nilai_paket=$("#pagu").text();
+
+                let total2=parseInt(total)+parseInt(total1);
+                total2=parseInt(total2)/parseInt(nilai_paket);
+                total2=total2*100;
+                total2=total2.toFixed(2);
+                console.log(total2);
+
+                $("#lalu").append(total2+"%");
+                
+                
+				      
+
+
+          
+              }
+          });
+
+				      
+
+
+          
+              }
+          });
+
+
+
+          // Sekarang cari total progress bulan tersebut
 
 
 

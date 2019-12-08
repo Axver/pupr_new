@@ -90,6 +90,7 @@
 <!--				<a class="collapse-item" href="--><?php //echo base_url('generate_minggu') ?><!--">Laporan Mingguan</a>-->
 				<a class="collapse-item" href="<?php echo base_url('generate_bulan_baru') ?>">Laporan Bulanan</a>
 				<a class="collapse-item" href="<?php echo base_url('catur_wulan_baru') ?>">Laporan Pertahap</a>
+				<a class="collapse-item" href="<?php echo base_url('catur_wulan_gambar') ?>">Gambar Laporan Pertahap</a>
 <!--				<a class="collapse-item" href="--><?php //echo base_url('generate_catur') ?><!--">Laporan Caturwulan</a>-->
 
 
