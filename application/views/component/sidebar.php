@@ -110,10 +110,11 @@
 				<h6 class="collapse-header">Setting</h6>
 				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat_baru') ?>">Jenis Alat Bahan</a>
 				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
+				<a class="collapse-item" href="<?php echo base_url('upah_pekerja') ?>">Upah Pekerja</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
 				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
 				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
-				<a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a>
+				<!-- <a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a> -->
 
 
 			</div>
