@@ -30,7 +30,7 @@
 		<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Daftar Laporan</h6>
-				<a class="collapse-item" href="<?php echo base_url('paket') ?>">Paket</a>
+				<!-- <a class="collapse-item" href="<?php echo base_url('paket') ?>">Paket</a> -->
 				<a class="collapse-item" href="<?php echo base_url('paket_informasi') ?>">Paket Informasi</a>
 <!--				<a class="collapse-item" href="--><?php //echo base_url('perencanaan_edit_jesi') ?><!--">Info Perencanaan Edit</a>-->
 

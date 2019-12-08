@@ -100,7 +100,8 @@ class Paket_informasi extends CI_Controller
 		'jenis_pekerjaan' => $this->input->post('jenis_pekerjaan',TRUE),
 		'masa_pelaksanaan' => $this->input->post('masa_pelaksanaan',TRUE),
 		'lokasi' => $this->input->post('lokasi',TRUE),
-		'tahun_anggaran' => $this->input->post('tahun_anggaran',TRUE),
+        'tahun_anggaran' => $this->input->post('tahun_anggaran',TRUE),
+        'tahun' => $this->input->post('tahun_anggaran',TRUE),
 		'nilai_paket' => $this->input->post('nilai_paket',TRUE),
 	    );
 
