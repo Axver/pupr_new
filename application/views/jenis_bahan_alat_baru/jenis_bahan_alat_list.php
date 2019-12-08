@@ -4,7 +4,7 @@
 //	echo $this->session->userdata("nip");
 if($this->session->userdata("privilage"))
 {
-	if($this->session->userdata("privilage")==2)
+	if($this->session->userdata("privilage")==1)
 	{
 
 	}
@@ -38,7 +38,7 @@ else
 <div id="wrapper">
 
 	<!-- Sidebar -->
-	<?php $this->load->view('component/sidebar_user'); ?>
+	<?php $this->load->view('component/sidebar'); ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -102,7 +102,7 @@ else
 				</div>
 
 				<!-- Content Row -->
-				<?php $this->load->view('admin_content/card_list_user');?>
+				<?php $this->load->view('admin_content/card_list');?>
 
 				<!-- Content Row -->
 
@@ -113,7 +113,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Daftar Gambar Laporan Pertahap</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -124,75 +124,58 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+								<b style="color:darkgreen">Jenis Pekerjaan</b>
+
+                                <br/>
+                                <br/>
+
+                                <?php echo anchor(site_url('jenis_bahan_alat_baru/create'),'Create', 'class="btn btn-primary"'); ?>
 
 
-                            <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Gambar</th>
-                <th>Jenis Pekerjaan</th>
-                <th>Tahun</th>
-                <th>Paket</th>
-                
-                <th>Bulan Awal</th>
-                <th>Bulan Akhir</th>
-                <th>Hapus</th>
-                
+
+<table class="table table-bordered" id="example" style="margin-bottom: 10px">
+          <thead>
+          <tr>
+                <th>No</th>
+		<th>Jenis Bahan Alat</th>
+		<th>Harga</th>
+		<th>Action</th>
             </tr>
-        </thead>
-        <tbody>
-
-
-        <?php
-        $this->db->select('*'); 
-        $this->db->from('gambar_tahap');
-        $this->db->join('paket', 'gambar_tahap.id_paket = paket.id_paket');
-        $this->db->join('jenis_pekerjaan', 'gambar_tahap.jenis_pekerjaan = jenis_pekerjaan.id');
-
-        $data=$this->db->get()->result();
-
-        $count=count($data);
-
-        $i=0;
-
-        while($i<$count)
-        {
+          </thead>
+          
+          <tbody><?php
+            foreach ($jenis_bahan_alat_baru_data as $jenis_bahan_alat_baru)
+            {
+                ?>
+                <tr>
+			<td width="80px"><?php echo ++$start ?></td>
+			<td><?php echo $jenis_bahan_alat_baru->jenis_bahan_alat ?></td>
+			<td><?php echo $jenis_bahan_alat_baru->harga ?></td>
+			<td style="text-align:center" width="200px">
+				<?php 
+				echo anchor(site_url('jenis_bahan_alat_baru/read/'.$jenis_bahan_alat_baru->id_jenis_bahan_alat),'Read'); 
+				echo ' | '; 
+				echo anchor(site_url('jenis_bahan_alat_baru/update/'.$jenis_bahan_alat_baru->id_jenis_bahan_alat),'Update'); 
+				echo ' | '; 
+				echo anchor(site_url('jenis_bahan_alat_baru/delete/'.$jenis_bahan_alat_baru->id_jenis_bahan_alat),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+				?>
+			</td>
+		</tr>
+                <?php
+            }
             ?>
-             
-
-             <tr>
-                <td><img style="width:100px;height:100px;" src="<?php echo base_url('gambar/'.$data[$i]->gambar) ?>"></td>
-                <td><?php echo $data[$i]->nama_jenis; ?></td>
-                <td><?php echo $data[$i]->tahun; ?></td>
-                <td><?php echo $data[$i]->nama; ?></td>
-                <td><?php echo $data[$i]->bulan_start; ?></td>
-                <td><?php echo $data[$i]->bulan_end; ?></td>
-                <td><button class="btn btn-danger" onclick="hapus('<?php echo $data[$i]->gambar ?>')">Delete</button></td>
-            </tr>
-            <?php
+            </tbody>
+        </table>
 
 
-            $i++;
-        }
+								<script>
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
+                                    } );
+								</script>
 
-
-        
-        ?>
-
-                   </tbody>
-
-                       </table>
-
-
-							
 
 							</div>
-
-							<script>
-                                $(document).ready(function() {
-                                    $('#example').DataTable();
-                                } );
-							</script>
 						</div>
 					</div>
 
@@ -246,22 +229,6 @@ else
 		</div>
 	</div>
 </div>
-
-
-
-<script>
-
-function hapus(img)
-{
-
-  alert(img);
-
-}
-
-</script>
-
-
-
 
 
 

@@ -78,26 +78,7 @@
 		</div>
 	</li>
 
-	<!-- Nav Item - Pages Collapse Menu -->
-	<li class="nav-item">
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11" aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-cog"></i>
-			<span>Setting</span>
-		</a>
-		<div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Setting</h6>
-				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat') ?>">Jenis Alat Bahan</a>
-				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
-				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
-				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
-				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
-				<a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a>
 
-
-			</div>
-		</div>
-	</li>
 
 
 	<!-- Nav Item - Pages Collapse Menu -->
@@ -117,10 +98,32 @@
 		</div>
 	</li>
 
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Setting</span>
+		</a>
+		<div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Setting</h6>
+				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat_baru') ?>">Jenis Alat Bahan</a>
+				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
+				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
+				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
+				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
+				<a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a>
+
+
+			</div>
+		</div>
+	</li>
+
 	<!-- Heading -->
-	<div class="sidebar-heading">
+	<!-- <div class="sidebar-heading">
 		Force Edit
-	</div>
+	</div> -->
 
 	<!-- Nav Item - Pages Collapse Menu -->
 <!--	<li class="nav-item">-->
@@ -147,7 +150,7 @@
 
 
 
-		<li class="nav-item">
+		<!-- <li class="nav-item">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">
 				<i class="fas fa-fw fa-cog"></i>
 				<span>Force Edit/All Data</span>
@@ -168,7 +171,7 @@
 
 				</div>
 			</div>
-		</li>
+		</li> -->
 
 
 		<button class="btn btn-info" onclick="logout()">Logout</button>
