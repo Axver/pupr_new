@@ -78,7 +78,23 @@ class Jenis_bahan_alat_baru extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+
+            $id=$this->db->query("SELECT MAX(CAST(id_jenis_bahan_alat AS int)) as max FROM jenis_bahan_alat")->result();
+            $count=count($id);
+            $id_max=0;
+
+            $i=0;
+
+            while($i<$count)
+            {
+                 $id_max=$id[$i]->max;
+
+                $i++;
+            }
+
+            $id_max=$id_max+1;
             $data = array(
+                'id_jenis_bahan_alat'=>$id_max,
 		'jenis_bahan_alat' => $this->input->post('jenis_bahan_alat',TRUE),
 		'harga' => $this->input->post('harga',TRUE),
 	    );
