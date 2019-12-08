@@ -25,7 +25,7 @@ class Upah_pekerja extends CI_Controller
             $config['first_url'] = base_url() . 'upah_pekerja/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Upah_pekerja_model->total_rows($q);
         $upah_pekerja = $this->Upah_pekerja_model->get_limit_data($config['per_page'], $start, $q);
@@ -78,7 +78,23 @@ class Upah_pekerja extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+
+            $id=$this->db->query("SELECT MAX(CAST(id_jenis_upah AS int)) as max FROM jenis_upah")->result();
+            $count=count($id);
+            $id_max=0;
+
+            $i=0;
+
+            while($i<$count)
+            {
+                 $id_max=$id[$i]->max;
+
+                $i++;
+            }
+
+            $id_max=$id_max+1;
             $data = array(
+                'id_jenis_upah'=>$id_max,
 		'nama' => $this->input->post('nama',TRUE),
 		'harga' => $this->input->post('harga',TRUE),
 	    );
