@@ -231,6 +231,14 @@ while($i<$count)
 <?php echo form_open_multipart('upload/aksi_upload_pengawasan');?>
 
 
+<b>Jenis Pekerjaan</b>
+
+<select class="form form-control" id="jenis_pekerjaan">
+
+</select>
+<br/>
+
+
 
 
 <div class="row">
