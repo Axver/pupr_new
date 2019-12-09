@@ -113,7 +113,7 @@
 				<a class="collapse-item" href="<?php echo base_url('upah_pekerja') ?>">Upah Pekerja</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
 				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
-				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
+				<a class="collapse-item" href="<?php echo base_url('konfigurasi_baru') ?>">Tanda Tangan</a>
 				<!-- <a class="collapse-item" href="<?php echo base_url('Jenis_bahan_alat_harga') ?>">Harga Bahan/Alat</a> -->
 
 
