@@ -29,6 +29,13 @@ else
 
 	<?php $this->load->view('component/header') ?>
 
+    <style>
+    
+    body{
+        color:black;
+    }
+    </style>
+
 
 </head>
 
@@ -168,6 +175,8 @@ else
 
 <select id="paket" class="form form-control">
 
+<option>--Pilih Paket--</option>
+
 <?php
 
 
@@ -190,6 +199,54 @@ while($i<$count)
 
 ?>
 </select>
+
+
+<b>Laporan Perencanaan</b>
+
+<select id="laporan_perencanaan" class="form form-control">
+
+
+</select>
+
+<br/>
+
+
+<button class="btn btn-info">Validasi</button>
+<br/>
+<br/>
+
+
+<br/>
+
+
+<div class="panel panel-danger" style="border:2px solid black;"> 
+<div class="panel-head" style="border:2px solid black;"><b><h2><i>Tambah Lampiran</i></h2></b></div>
+<div class="panel-body" style="height:300px; margin:10px;">
+
+
+<b>Upload Gambar</b>
+<br/>
+<br/>
+
+<?php echo form_open_multipart('upload/aksi_upload_pengawasan');?>
+
+<b>0%:  </b><input type="file" name="berkas1" />
+<br/>
+<b>50%: </b><input type="file" name="berkas2" />
+<br/>
+<b>100%: </b><input type="file" name="berkas3" />
+<br/>
+
+
+<br/>
+
+<input type="submit" value="upload" class="btn btn-info"/>
+
+</form>
+
+
+</div>
+</div>
 
 
 
