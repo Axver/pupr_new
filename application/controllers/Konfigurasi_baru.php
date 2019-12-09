@@ -80,7 +80,23 @@ class Konfigurasi_baru extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+
+            $id=$this->db->query("SELECT MAX(CAST(id_konfigurasi AS int)) as max FROM konfigurasi")->result();
+            $count=count($id);
+            $id_max=0;
+
+            $i=0;
+
+            while($i<$count)
+            {
+                 $id_max=$id[$i]->max;
+
+                $i++;
+            }
+
+            $id_max=$id_max+1;
             $data = array(
+                'id_konfigurasi'=>$id_max,
 		'nama' => $this->input->post('nama',TRUE),
 		'nip' => $this->input->post('nip',TRUE),
 		'jabatan' => $this->input->post('jabatan',TRUE),

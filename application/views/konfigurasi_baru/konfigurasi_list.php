@@ -125,6 +125,7 @@ else
 							<div class="card-body">
 
 								<b style="color:darkgreen">Tanda Tangan</b>
+                                <br/>
 
                                 <?php echo anchor(site_url('konfigurasi_baru/create'),'Create', 'class="btn btn-primary"'); ?>
      
