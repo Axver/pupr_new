@@ -153,109 +153,109 @@ else
 
 										if($data[$i]->bulan_awal==1)
 										{
-											$data[$i]->bulan_awal="Januari";
+											$dari="Januari";
 										} else	if($data[$i]->bulan_awal==2)
 										{
-											$data[$i]->bulan_awal="Februari";
+											$dari="Februari";
 										}
 										else	if($data[$i]->bulan_awal==3)
 										{
-											$data[$i]->bulan_awal="Maret";
+											$dari="Maret";
 										}
 										else	if($data[$i]->bulan_awal==4)
 										{
-											$data[$i]->bulan_awal="April";
+											$dari="April";
 										}
 										else	if($data[$i]->bulan_awal==5)
 										{
-											$data[$i]->bulan_awal="Mei";
+											$dari="Mei";
 										}
 										else	if($data[$i]->bulan_awal==6)
 										{
-											$data[$i]->bulan_awal="Juni";
+											$dari="Juni";
 										}
 										else	if($data[$i]->bulan_awal==7)
 										{
-											$data[$i]->bulan_awal="Juli";
+											$dari="Juli";
 										}
 										else	if($data[$i]->bulan_awal==8)
 										{
-											$data[$i]->bulan_awal="Agustus";
+											$dari="Agustus";
 										}
 										else	if($data[$i]->bulan_awal==9)
 										{
-											$data[$i]->bulan_awal="September";
+											$dari="September";
 										}
 										else	if($data[$i]->bulan_awal==10)
 										{
-											$data[$i]->bulan_awal="Oktober";
+											$dari="Oktober";
 										}
 										else	if($data[$i]->bulan_awal==11)
 										{
-											$data[$i]->bulan_awal="November";
+											$dari="November";
 										}
 										else	if($data[$i]->bulan_awal==12)
 										{
-											$data[$i]->bulan_awal="Desember";
+											$dari="Desember";
 										}
 
 
 										if($data[$i]->bulan_akhir==1)
 										{
-											$data[$i]->bulan_akhir="Januari";
+											$daru="Januari";
 										} else	if($data[$i]->bulan_akhir==2)
 										{
-											$data[$i]->bulan_akhir="Februari";
+											$daru="Februari";
 										}
 										else	if($data[$i]->bulan_akhir==3)
 										{
-											$data[$i]->bulan_akhir="Maret";
+											$daru="Maret";
 										}
 										else	if($data[$i]->bulan_akhir==4)
 										{
-											$data[$i]->bulan_akhir="April";
+											$daru="April";
 										}
 										else	if($data[$i]->bulan_akhir==5)
 										{
-											$data[$i]->bulan_akhir="Mei";
+											$daru="Mei";
 										}
 										else	if($data[$i]->bulan_akhir==6)
 										{
-											$data[$i]->bulan_akhir="Juni";
+											$daru="Juni";
 										}
 										else	if($data[$i]->bulan_akhir==7)
 										{
-											$data[$i]->bulan_akhir="Juli";
+											$daru="Juli";
 										}
 										else	if($data[$i]->bulan_akhir==8)
 										{
-											$data[$i]->bulan_akhir="Agustus";
+											$daru="Agustus";
 										}
 										else	if($data[$i]->bulan_akhir==9)
 										{
-											$data[$i]->bulan_akhir="September";
+											$daru="September";
 										}
 										else	if($data[$i]->bulan_akhir==10)
 										{
-											$data[$i]->bulan_akhir="Oktober";
+											$daru="Oktober";
 										}
 										else	if($data[$i]->bulan_akhir==11)
 										{
-											$data[$i]->bulan_akhir="November";
+											$daru="November";
 										}
 										else	if($data[$i]->bulan_akhir==12)
 										{
-											$data[$i]->bulan_akhir="Desember";
+											$daru="Desember";
 										}
                                         ?>
                                         <tr>
-										<td><?php echo $data[$i]->bulan_awal; ?></td>
-										<td><?php echo $data[$i]->bulan_akhir; ?></td>
+										<td><?php echo $dari; ?></td>
+										<td><?php echo $daru; ?></td>
 										<td><?php echo $data[$i]->tahun; ?></td>
 										<td><?php echo $data[$i]->nama; ?></td>
 										<td><?php echo $data[$i]->id_lap_perencanaan; ?></td>
 										<td><button>Edit</button></td>
-										<td><button>Cetak</button></td>
+										<td><button onclick="cetak('<?php echo $data[$i]->bulan_awal; ?>,<?php echo $data[$i]->bulan_akhir; ?>,<?php echo $data[$i]->id_lap_perencanaan; ?>')">Cetak</button></td>
 										</tr>
 
 										<?php
@@ -333,6 +333,24 @@ else
 	{
 
 	    window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
+	}
+
+
+
+	function cetak(data)
+	{
+
+		data=data.split(",");
+		console.log(data);
+
+		let bulan_awal=data[0];
+		let bulan_akhir=data[1];
+		let perencanaan=data[2];
+
+
+		window.location="http://localhost/pupr_new/lampiran_tahap/cetak_asli/"+bulan_awal+"/"+bulan_akhir+"/"+perencanaan;
+
+
 	}
 </script>
 

@@ -66,4 +66,10 @@ class Lampiran_tahap extends CI_Controller {
     }
 
 
+    public function cetak_asli($awal,$akhir,$perencanaan)
+    {
+        $this->load->view("user/cetak_asli");
+    }
+
+
 }
