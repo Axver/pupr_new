@@ -275,7 +275,7 @@ class Upload extends CI_Controller{
 			$data = array('upload_data' => $this->upload->data());
 //			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
-			$file_name1 = $upload_data['file_name'];
+			$file_name2 = $upload_data['file_name'];
 
 		
 
@@ -302,6 +302,31 @@ class Upload extends CI_Controller{
 
 
 		// Sekarang tinggal masukkan kedalam database
+		$pertama=$this->input->post("pertama");
+		$terakhir=$this->input->post("terakhir");
+		$paket=$this->input->post("paket");
+		$perencanaan=$this->input->post("perencanaan");
+		$jenis_pekerjaan=$this->input->post("jenis_pekerjaan");
+
+
+		// Input kedalam database
+
+		$data=array(
+		 "id_paket"=>$paket,
+		 "id_lap_perencanaan"=>$perencanaan,
+		 "bulan_awal"=>$pertama,
+		 "bulan_akhir"=>$terakhir,
+		 "jenis_pekerjaan"=>$jenis_pekerjaan,
+		 "gambar_0"=>$file_name1,
+		 "gambar_50"=>$file_name2,
+		 "gambar_100"=>$file_name3,
+		);
+
+
+		// Inputkan kedalam database
+		$this->db->insert("lampiran_tahap",$data);
+
+		redirect('../lampiran_tahap');
 
 
 	}

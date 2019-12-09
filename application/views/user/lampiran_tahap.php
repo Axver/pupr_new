@@ -231,9 +231,15 @@ while($i<$count)
 <?php echo form_open_multipart('upload/aksi_upload_lampiran');?>
 
 
+<input type="hidden" class="form form-control" id="pertama1" name="pertama">
+<input type="hidden" class="form form-control" id="terakhir1" name="terakhir">
+<input type="hidden" class="form form-control" id="paket1" name="paket">
+<input type="hidden" class="form form-control" id="perencanaan1" name="perencanaan">
+
+
 <b>Jenis Pekerjaan</b>
 
-<select class="form form-control" id="jenis_pekerjaan">
+<select class="form form-control" id="jenis_pekerjaan" name="jenis_pekerjaan">
 
 </select>
 <br/>
@@ -393,6 +399,12 @@ while($i<$count)
         let bulan_selesai=$("#bulan_selesai").val();
         let id_paket=$("#paket").val();
         let laporan_perencanaan=$("#laporan_perencanaan").val();
+
+
+        $("#pertama1").val(bulan_mulai);
+        $("#terakhir1").val(bulan_selesai);
+        $("#paket1").val(id_paket);
+        $("#perencanaan1").val(laporan_perencanaan);
 
         // Sekarang cek apakah ada laporan untuk cartur wulan tersebut
         $.ajax({
