@@ -211,7 +211,7 @@ while($i<$count)
 <br/>
 
 
-<button class="btn btn-info">Validasi</button>
+<button class="btn btn-info" onclick="validasi()">Validasi</button>
 <br/>
 <br/>
 
@@ -379,6 +379,50 @@ while($i<$count)
 
 
         // alert("test");
+    }
+
+
+
+    function validasi()
+    {
+
+
+        // alert("validasi");
+
+        let bulan_mulai=$("#bulan_mulai").val();
+        let bulan_selesai=$("#bulan_selesai").val();
+        let id_paket=$("#paket").val();
+        let laporan_perencanaan=$("#laporan_perencanaan").val();
+
+        // Sekarang cek apakah ada laporan untuk cartur wulan tersebut
+        $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/lampiran_tahap/validasi", 
+         data: {"bulan_mulai":bulan_mulai,"bulan_selesai":bulan_selesai,"id_paket":id_paket,"laporan_perencanaan":laporan_perencanaan},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+
+                // console.log(data);
+
+                $("#jenis_pekerjaan").empty();
+
+                data=JSON.parse(data);
+                let length=data.length;
+                let i=0;
+
+
+                while(i<length)
+                {
+
+                    $("#jenis_pekerjaan").append("<option value='"+data[i].id+"'>"+data[i].nama_jenis+"</option>")
+                    
+                    i++;  
+                }
+              }
+          });
     }
 </script>
 
