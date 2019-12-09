@@ -230,12 +230,28 @@ while($i<$count)
 
 <?php echo form_open_multipart('upload/aksi_upload_pengawasan');?>
 
-<b>0%:  </b><input type="file" name="berkas1" />
-<br/>
-<b>50%: </b><input type="file" name="berkas2" />
-<br/>
-<b>100%: </b><input type="file" name="berkas3" />
-<br/>
+
+
+
+<div class="row">
+
+<div class="col-sm-1"><b>0%:  </b></div>
+<div class="col-sm-4"> <input type="file" name="berkas1" /></div>
+
+</div>
+<div class="row">
+
+<div class="col-sm-1"><b>50%:  </b></div>
+<div class="col-sm-4"> <input type="file" name="berkas2" /></div>
+
+</div>
+
+<div class="row">
+
+<div class="col-sm-1"><b>100%:  </b></div>
+<div class="col-sm-4"> <input type="file" name="berkas3" /></div>
+
+</div>
 
 
 <br/>
