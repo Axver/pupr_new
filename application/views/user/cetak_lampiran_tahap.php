@@ -140,6 +140,129 @@ else
 									</thead>
 									<tbody>
 
+									<?php
+									 $data=$this->db->query("SELECT * FROM lampiran_tahap
+									 INNER JOIN jenis_pekerjaan ON lampiran_tahap.jenis_pekerjaan=jenis_pekerjaan.id
+									 INNER JOIN paket ON lampiran_tahap.id_paket=paket.id_paket")->result();
+
+									 $count=count($data);
+									 $i=0;
+
+									 while($i<$count)
+									 {
+
+										if($data[$i]->bulan_awal==1)
+										{
+											$data[$i]->bulan_awal="Januari";
+										} else	if($data[$i]->bulan_awal==2)
+										{
+											$data[$i]->bulan_awal="Februari";
+										}
+										else	if($data[$i]->bulan_awal==3)
+										{
+											$data[$i]->bulan_awal="Maret";
+										}
+										else	if($data[$i]->bulan_awal==4)
+										{
+											$data[$i]->bulan_awal="April";
+										}
+										else	if($data[$i]->bulan_awal==5)
+										{
+											$data[$i]->bulan_awal="Mei";
+										}
+										else	if($data[$i]->bulan_awal==6)
+										{
+											$data[$i]->bulan_awal="Juni";
+										}
+										else	if($data[$i]->bulan_awal==7)
+										{
+											$data[$i]->bulan_awal="Juli";
+										}
+										else	if($data[$i]->bulan_awal==8)
+										{
+											$data[$i]->bulan_awal="Agustus";
+										}
+										else	if($data[$i]->bulan_awal==9)
+										{
+											$data[$i]->bulan_awal="September";
+										}
+										else	if($data[$i]->bulan_awal==10)
+										{
+											$data[$i]->bulan_awal="Oktober";
+										}
+										else	if($data[$i]->bulan_awal==11)
+										{
+											$data[$i]->bulan_awal="November";
+										}
+										else	if($data[$i]->bulan_awal==12)
+										{
+											$data[$i]->bulan_awal="Desember";
+										}
+
+
+										if($data[$i]->bulan_akhir==1)
+										{
+											$data[$i]->bulan_akhir="Januari";
+										} else	if($data[$i]->bulan_akhir==2)
+										{
+											$data[$i]->bulan_akhir="Februari";
+										}
+										else	if($data[$i]->bulan_akhir==3)
+										{
+											$data[$i]->bulan_akhir="Maret";
+										}
+										else	if($data[$i]->bulan_akhir==4)
+										{
+											$data[$i]->bulan_akhir="April";
+										}
+										else	if($data[$i]->bulan_akhir==5)
+										{
+											$data[$i]->bulan_akhir="Mei";
+										}
+										else	if($data[$i]->bulan_akhir==6)
+										{
+											$data[$i]->bulan_akhir="Juni";
+										}
+										else	if($data[$i]->bulan_akhir==7)
+										{
+											$data[$i]->bulan_akhir="Juli";
+										}
+										else	if($data[$i]->bulan_akhir==8)
+										{
+											$data[$i]->bulan_akhir="Agustus";
+										}
+										else	if($data[$i]->bulan_akhir==9)
+										{
+											$data[$i]->bulan_akhir="September";
+										}
+										else	if($data[$i]->bulan_akhir==10)
+										{
+											$data[$i]->bulan_akhir="Oktober";
+										}
+										else	if($data[$i]->bulan_akhir==11)
+										{
+											$data[$i]->bulan_akhir="November";
+										}
+										else	if($data[$i]->bulan_akhir==12)
+										{
+											$data[$i]->bulan_akhir="Desember";
+										}
+                                        ?>
+                                        <tr>
+										<td><?php echo $data[$i]->bulan_awal; ?></td>
+										<td><?php echo $data[$i]->bulan_akhir; ?></td>
+										<td><?php echo $data[$i]->tahun; ?></td>
+										<td><?php echo $data[$i]->nama; ?></td>
+										<td><?php echo $data[$i]->id_lap_perencanaan; ?></td>
+										<td><button>Edit</button></td>
+										<td><button>Cetak</button></td>
+										</tr>
+
+										<?php
+										$i++;
+									 }
+									?>
+
 									</tbody>
 								</table>
 
