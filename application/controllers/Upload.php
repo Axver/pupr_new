@@ -236,4 +236,74 @@ class Upload extends CI_Controller{
 		
 	}
 
+
+	public function aksi_upload_lampiran()
+	{
+
+
+		
+		
+		$config['upload_path']          = './gambar/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 1000000;
+		$config['max_width']            = 1000000;
+		$config['max_height']           = 1000000;
+		$config['encrypt_name'] = TRUE;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('berkas1')){
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('v_upload', $error);
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+//			Ubah Data Yg DIdatabase Dulu Gan
+			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+			$file_name1 = $upload_data['file_name'];
+
+
+
+
+		}
+
+
+		
+		if ( ! $this->upload->do_upload('berkas2')){
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('v_upload', $error);
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+//			Ubah Data Yg DIdatabase Dulu Gan
+			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+			$file_name1 = $upload_data['file_name'];
+
+		
+
+
+
+		}
+
+
+		
+		if ( ! $this->upload->do_upload('berkas3')){
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('v_upload', $error);
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+//			Ubah Data Yg DIdatabase Dulu Gan
+			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+			$file_name3 = $upload_data['file_name'];
+
+		
+
+
+
+		}
+
+
+		// Sekarang tinggal masukkan kedalam database
+
+
+	}
+
 }

@@ -228,7 +228,7 @@ while($i<$count)
 <br/>
 <br/>
 
-<?php echo form_open_multipart('upload/aksi_upload_pengawasan');?>
+<?php echo form_open_multipart('upload/aksi_upload_lampiran');?>
 
 
 <b>Jenis Pekerjaan</b>
