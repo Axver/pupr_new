@@ -124,6 +124,73 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
+                            <b>Bulan Pertama</b>
+
+
+                             <select id="bulan_mulai" class="form form-control">
+
+                             <option value="1">Januari</option>
+                             <option value="2">Februari</option>
+                             <option value="3">Maret</option>
+                             <option value="4">April</option>
+                             <option value="5">Mei</option>
+                             <option value="6">Juni</option>
+                             <option value="7">Juli</option>
+                             <option value="8">Agustus</option>
+                             <option value="9">September</option>
+                             <option value="10">Oktober</option>
+                             <option value="11">November</option>
+                             <option value="12">Desember</option>
+                             
+                             </select>
+
+                             <b>Bulan Akhir</b>
+
+
+<select id="bulan_selesai" class="form form-control">
+
+<option value="1">Januari</option>
+<option value="2">Februari</option>
+<option value="3">Maret</option>
+<option value="4">April</option>
+<option value="5">Mei</option>
+<option value="6">Juni</option>
+<option value="7">Juli</option>
+<option value="8">Agustus</option>
+<option value="9">September</option>
+<option value="10">Oktober</option>
+<option value="11">November</option>
+<option value="12">Desember</option>
+
+</select>
+
+<b>Paket</b>
+
+<select id="paket" class="form form-control">
+
+<?php
+
+
+$data=$this->db->get("paket")->result();
+$count=count($data);
+$i=0;
+
+
+while($i<$count)
+{
+
+    ?>
+
+     <option value="<?php echo $data[$i]->id_paket; ?>"><?php echo $data[$i]->nama; ?></option>
+
+    <?php
+    $i++;
+}
+
+
+?>
+</select>
+
 
 
 							</div>
