@@ -173,7 +173,7 @@ else
 
 <b>Paket</b>
 
-<select id="paket" class="form form-control">
+<select onchange="perencanaan()" id="paket" class="form form-control">
 
 <option>--Pilih Paket--</option>
 
@@ -342,6 +342,44 @@ while($i<$count)
 
 	    window.location="http://localhost/pupr_new/user/lihat_paket/"+data;
 	}
+
+
+
+    function perencanaan()
+    {
+
+      let paket=$("#paket").val();
+
+    //   Ajax Untuk mengambil semua data laporan perencanaan
+
+    $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/lampiran_tahap/perencanaan", 
+         data: {"id_paket":paket},
+         dataType: "text",  
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+                $("#laporan_perencanaan").empty();
+
+                data=JSON.parse(data);
+                let length=data.length;
+                let i=0;
+
+
+                while(i<length)
+                {
+                    $("#laporan_perencanaan").append("<option value='"+data[i].id_lap_perencanaan+"'>"+data[i].keterangan+"</option>")
+                    
+                    i++;
+                }
+              }
+          });
+
+
+        // alert("test");
+    }
 </script>
 
 
