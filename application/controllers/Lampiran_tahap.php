@@ -58,4 +58,12 @@ class Lampiran_tahap extends CI_Controller {
     }
 
 
+
+    public function cetak()
+    {
+
+        $this->load->view("user/cetak_lampiran_tahap");
+    }
+
+
 }
