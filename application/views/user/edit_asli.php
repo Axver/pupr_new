@@ -104,7 +104,7 @@ if ($this->session->userdata("privilage")) {
 							<div class="card shadow mb-12">
 								<!-- Card Header - Dropdown -->
 								<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">List Lampiran Pertahap</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Edit Gambar Lampiran </h6>
 									<div class="dropdown no-arrow">
 										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -116,101 +116,90 @@ if ($this->session->userdata("privilage")) {
 								<div class="card-body">
 
 
-									<table id="example" class="display" style="width:100%">
+									<input type="hidden" id="bulan_awal" value="<?php echo $this->uri->segment("3") ?>">
+									<input type="hidden" id="bulan_akhir" value="<?php echo $this->uri->segment("4") ?>">
+									<input type="hidden" id="perencanaan" value="<?php echo $this->uri->segment("5") ?>">
+
+
+
+
+
+									<!-- Tampilkan Gambar Disini -->
+
+
+
+
+									<table id="example" class='table'>
 										<thead>
-											<tr>
-												<th>Bulan Awal</th>
-												<th>Bulan Akhir</th>
-												<th>Tahun</th>
-												<th>Paket</th>
-												<th>Perencanaan</th>
-												<th>Edit</th>
-												<th>Cetak</th>
-
-											</tr>
+											<th>Gambar 0</th>
+											<th>Gambar 50</th>
+											<th>Gambar 100</th>
+											<th>Jenis Pekerjaan</th>
+											<th>Delete</th>
 										</thead>
-										<tbody>
 
+
+										<tbody>
 											<?php
-											$data = $this->db->query("SELECT * FROM lampiran_tahap
-									 INNER JOIN jenis_pekerjaan ON lampiran_tahap.jenis_pekerjaan=jenis_pekerjaan.id
-									 INNER JOIN paket ON lampiran_tahap.id_paket=paket.id_paket GROUP BY lampiran_tahap.id_paket,id_lap_perencanaan,bulan_awal,bulan_akhir")->result();
+											$bulan_awal = $this->uri->segment("3");
+											$bulan_akhir = $this->uri->segment("4");
+											$perencanaan = $this->uri->segment("5");
+
+
+											$param = array(
+												"id_lap_perencanaan" => $perencanaan,
+												"bulan_awal" => $bulan_awal,
+												"bulan_akhir" => $bulan_akhir
+
+											);
+
+
+											$this->db->select('*');
+											$this->db->from('lampiran_tahap');
+											$this->db->join('jenis_pekerjaan', 'lampiran_tahap.jenis_pekerjaan = jenis_pekerjaan.id');
+
+
+											$this->db->where($param);
+
+											$data = $this->db->get()->result();
+
+
 
 											$count = count($data);
+
 											$i = 0;
+
 
 											while ($i < $count) {
 
-												if ($data[$i]->bulan_awal == 1) {
-													$dari = "Januari";
-												} else	if ($data[$i]->bulan_awal == 2) {
-													$dari = "Februari";
-												} else	if ($data[$i]->bulan_awal == 3) {
-													$dari = "Maret";
-												} else	if ($data[$i]->bulan_awal == 4) {
-													$dari = "April";
-												} else	if ($data[$i]->bulan_awal == 5) {
-													$dari = "Mei";
-												} else	if ($data[$i]->bulan_awal == 6) {
-													$dari = "Juni";
-												} else	if ($data[$i]->bulan_awal == 7) {
-													$dari = "Juli";
-												} else	if ($data[$i]->bulan_awal == 8) {
-													$dari = "Agustus";
-												} else	if ($data[$i]->bulan_awal == 9) {
-													$dari = "September";
-												} else	if ($data[$i]->bulan_awal == 10) {
-													$dari = "Oktober";
-												} else	if ($data[$i]->bulan_awal == 11) {
-													$dari = "November";
-												} else	if ($data[$i]->bulan_awal == 12) {
-													$dari = "Desember";
-												}
-
-
-												if ($data[$i]->bulan_akhir == 1) {
-													$daru = "Januari";
-												} else	if ($data[$i]->bulan_akhir == 2) {
-													$daru = "Februari";
-												} else	if ($data[$i]->bulan_akhir == 3) {
-													$daru = "Maret";
-												} else	if ($data[$i]->bulan_akhir == 4) {
-													$daru = "April";
-												} else	if ($data[$i]->bulan_akhir == 5) {
-													$daru = "Mei";
-												} else	if ($data[$i]->bulan_akhir == 6) {
-													$daru = "Juni";
-												} else	if ($data[$i]->bulan_akhir == 7) {
-													$daru = "Juli";
-												} else	if ($data[$i]->bulan_akhir == 8) {
-													$daru = "Agustus";
-												} else	if ($data[$i]->bulan_akhir == 9) {
-													$daru = "September";
-												} else	if ($data[$i]->bulan_akhir == 10) {
-													$daru = "Oktober";
-												} else	if ($data[$i]->bulan_akhir == 11) {
-													$daru = "November";
-												} else	if ($data[$i]->bulan_akhir == 12) {
-													$daru = "Desember";
-												}
 												?>
-												<tr>
-													<td><?php echo $dari; ?></td>
-													<td><?php echo $daru; ?></td>
-													<td><?php echo $data[$i]->tahun; ?></td>
-													<td><?php echo $data[$i]->nama; ?></td>
-													<td><?php echo $data[$i]->id_lap_perencanaan; ?></td>
-													<td><button onclick="edit('<?php echo $data[$i]->bulan_awal; ?>,<?php echo $data[$i]->bulan_akhir; ?>,<?php echo $data[$i]->id_lap_perencanaan; ?>')">Edit</button></td>
-													<td><button onclick="cetak('<?php echo $data[$i]->bulan_awal; ?>,<?php echo $data[$i]->bulan_akhir; ?>,<?php echo $data[$i]->id_lap_perencanaan; ?>')">Cetak</button></td>
-												</tr>
 
+												<tr>
+													<td><img style="width:200px;height:200px;" src="<?php echo base_url('gambar/') . $data[$i]->gambar_0; ?>"></td>
+													<td><img style="width:200px;height:200px;" src="<?php echo base_url('gambar/') . $data[$i]->gambar_50; ?>"></td>
+													<td><img style="width:200px;height:200px;" src="<?php echo base_url('gambar/') . $data[$i]->gambar_100; ?>"></td>
+													<td><?php echo $data[$i]->nama_jenis; ?></td>
+													<td><button class="btn btn-danger" onclick="hapus('<?php echo $data[$i]->jenis_pekerjaan; ?>')">Delete</button></td>
+												</tr>
 											<?php
+
+
+
 												$i++;
 											}
-											?>
 
+
+
+
+
+
+
+											?>
 										</tbody>
 									</table>
+
+
+
 
 								</div>
 
@@ -282,35 +271,34 @@ if ($this->session->userdata("privilage")) {
 
 
 
-		function cetak(data) {
+		function hapus(jp) {
 
-			data = data.split(",");
-			console.log(data);
+			let bulan_awal = $("#bulan_awal").val();
+			let bulan_akhir = $("#bulan_akhir").val();
+			let perencanaan = $("#perencanaan").val();
 
-			let bulan_awal = data[0];
-			let bulan_akhir = data[1];
-			let perencanaan = data[2];
+			console.log(jp + bulan_awal + bulan_akhir + perencanaan);
 
-
-			window.location = "http://localhost/pupr_new/lampiran_tahap/cetak_asli/" + bulan_awal + "/" + bulan_akhir + "/" + perencanaan;
+			// Data sduah masuk sekarang saatnya dlete
 
 
-		}
+			// Ajax Untuk mendeleta data 
 
-
-		function edit(data) {
-
-			data = data.split(",");
-			console.log(data);
-
-			let bulan_awal = data[0];
-			let bulan_akhir = data[1];
-			let perencanaan = data[2];
-
-
-			window.location = "http://localhost/pupr_new/lampiran_tahap/edit_asli/" + bulan_awal + "/" + bulan_akhir + "/" + perencanaan;
-
-
+			$.ajax({
+				type: "POST",
+				url: "http://localhost/pupr_new/lampiran_tahap/hapus",
+				data: {
+					"bulan_awal": bulan_awal,
+					"bulan_akhir": bulan_akhir,
+					"perencanaan": perencanaan,
+					"jenis_pekerjaan": jp
+				},
+				dataType: "text",
+				cache: false,
+				success: function(data) {
+					alert(data); //as a debugging message.
+				}
+			});
 		}
 	</script>
 
