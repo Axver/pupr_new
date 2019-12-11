@@ -90,5 +90,41 @@ class Lampiran_tahap extends CI_Controller
 
 
 		// Query untuk menghapus disini
+
+		// Pertama select terlebih dahulu
+		$data = $this->db->query("SELECT * FROM lampiran_tahap WHERE id_lap_perencanaan='$perencanaan' AND bulan_awal='$bulan_awal' AND bulan_akhir='$bulan_akhir' AND jenis_pekerjaan='$jenis_pekerjaan'")->result();
+
+		$count = count($data);
+
+		$i = 0;
+
+		$gambar1 = "x";
+		$gambar1 = "y";
+		$gambar1 = "z";
+
+
+		while ($i < $count) {
+			$gambar1 = $data[$i]->gambar_0;
+			$gambar2 = $data[$i]->gambar_50;
+			$gambar3 = $data[$i]->gambar_100;
+
+			$i++;
+		}
+
+		// Hapus dari db
+
+		$this->db->query("DELETE FROM lampiran_tahap WHERE id_lap_perencanaan='$perencanaan' AND bulan_awal='$bulan_awal' AND bulan_akhir='$bulan_akhir' AND jenis_pekerjaan='$jenis_pekerjaan'");
+
+		// Hapus file dari folder
+
+		$target1 = "gambar/" . $gambar1;
+		$target2 = "gambar/" . $gambar2;
+		$target3 = "gambar/" . $gambar3;
+
+		// Unlink
+
+		unlink($target1);
+		unlink($target2);
+		unlink($target3);
 	}
 }

@@ -296,7 +296,8 @@ if ($this->session->userdata("privilage")) {
 				dataType: "text",
 				cache: false,
 				success: function(data) {
-					alert(data); //as a debugging message.
+					// alert(data); //as a debugging message.
+					location.reload();
 				}
 			});
 		}
