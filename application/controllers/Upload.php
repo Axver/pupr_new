@@ -1,26 +1,31 @@
 <?php
 
-class Upload extends CI_Controller{
+class Upload extends CI_Controller
+{
 
-	function __construct(){
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
-
 	}
 
-	public function index($id){
-		$this->load->view('v_upload', array('error' => ' ' ));
+	public function index($id)
+	{
+		$this->load->view('v_upload', array('error' => ' '));
 	}
 
-	public function perencanaan($id){
-		$this->load->view('p_upload', array('error' => ' ' ));
+	public function perencanaan($id)
+	{
+		$this->load->view('p_upload', array('error' => ' '));
 	}
 
-	public function pengawasan($id){
-		$this->load->view('pp_upload', array('error' => ' ' ));
+	public function pengawasan($id)
+	{
+		$this->load->view('pp_upload', array('error' => ' '));
 	}
 
-	public function aksi_upload($id,$perencanaan){
+	public function aksi_upload($id, $perencanaan)
+	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 1000000;
@@ -30,22 +35,22 @@ class Upload extends CI_Controller{
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('berkas')){
+		if (!$this->upload->do_upload('berkas')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
-			$inputGambar=array(
-			"id_lap_harian"=>$id,
-				"id_perencanaan"=>$perencanaan,
-				"gambar"=>$file_name,
+			$inputGambar = array(
+				"id_lap_harian" => $id,
+				"id_perencanaan" => $perencanaan,
+				"gambar" => $file_name,
 			);
 
-			$this->db->insert("gambar_harian",$inputGambar);
+			$this->db->insert("gambar_harian", $inputGambar);
 
 
 			redirect('../user_perencanaan_');
@@ -53,7 +58,8 @@ class Upload extends CI_Controller{
 	}
 
 
-	public function aksi_upload_perencanaan($id){
+	public function aksi_upload_perencanaan($id)
+	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 1000000;
@@ -63,42 +69,42 @@ class Upload extends CI_Controller{
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('berkas')){
+		if (!$this->upload->do_upload('berkas')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
-//			Ambil id Gambar
-			$max=0;
-			$datax=$this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_perencanaan")->result();
+			//			Ambil id Gambar
+			$max = 0;
+			$datax = $this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_perencanaan")->result();
 
-			$count=count($datax);
-			if($count>0)
-			{
-				$max=$datax[0]->max;
+			$count = count($datax);
+			if ($count > 0) {
+				$max = $datax[0]->max;
 			}
-			$max=$max+1;
+			$max = $max + 1;
 
-			$inputGambar=array(
-				"id_gambar"=>$max,
-				"id_lap_perencanaan"=>$id,
-				"gambar"=>$file_name,
-				"jenis_pekerjaan"=>$this->input->post("jenis_pekerjaan"),
-				"panjang_penanganan"=>$this->input->post("panjang_penanganan"),
-				"dimensi"=>$this->input->post("dimensi"),
+			$inputGambar = array(
+				"id_gambar" => $max,
+				"id_lap_perencanaan" => $id,
+				"gambar" => $file_name,
+				"jenis_pekerjaan" => $this->input->post("jenis_pekerjaan"),
+				"panjang_penanganan" => $this->input->post("panjang_penanganan"),
+				"dimensi" => $this->input->post("dimensi"),
 			);
 
-			$this->db->insert("gambar_perencanaan",$inputGambar);
+			$this->db->insert("gambar_perencanaan", $inputGambar);
 
 
 			redirect('../user_perencanaan_');
 		}
 	}
 
-	public function aksi_upload_pengawasan($id,$per,$minggu){
+	public function aksi_upload_pengawasan($id, $per, $minggu)
+	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 1000000;
@@ -108,38 +114,37 @@ class Upload extends CI_Controller{
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('berkas')){
+		if (!$this->upload->do_upload('berkas')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
-			
-//			Ambil id Gambar
-			$max=0;
-			$datax=$this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_pengawasan")->result();
+
+			//			Ambil id Gambar
+			$max = 0;
+			$datax = $this->db->query("SELECT MAX(CAST(id_gambar AS INT)) as max FROM gambar_pengawasan")->result();
 
 
-			$count=count($datax);
-			if($count>0)
-			{
-				$max=$datax[0]->max;
+			$count = count($datax);
+			if ($count > 0) {
+				$max = $datax[0]->max;
 			}
-			$max=$max+1;
+			$max = $max + 1;
 
-			$inputGambar=array(
-				"id_gambar"=>$max,
-				"id_perencanaan"=>$per,
-				"minggu"=>$minggu,
-				"id_pengawasan"=>$id,
-				"gambar"=>$file_name,
+			$inputGambar = array(
+				"id_gambar" => $max,
+				"id_perencanaan" => $per,
+				"minggu" => $minggu,
+				"id_pengawasan" => $id,
+				"gambar" => $file_name,
 				'id_pekerjaan' => $this->input->post('jenis_pekerjaan'),
 				'keterangan' => $this->input->post('keterangan'),
 			);
 
-			$this->db->insert("gambar_pengawasan",$inputGambar);
+			$this->db->insert("gambar_pengawasan", $inputGambar);
 
 
 			redirect('../user_perencanaan_');
@@ -149,46 +154,52 @@ class Upload extends CI_Controller{
 
 	public function hapus()
 	{
-       $harian=$this->input->post("harian");
-       $perencanaan=$this->input->post("perencanaan");
-		$nama=$this->input->post("nama");
+		$harian = $this->input->post("harian");
+		$perencanaan = $this->input->post("perencanaan");
+		$nama = $this->input->post("nama");
 
-//       Hapus
+		//       Hapus
 
 		$this->db->query("DELETE FROM gambar_harian WHERE id_lap_harian='$harian' AND id_perencanaan='$perencanaan' AND gambar='$nama'");
+		$target = "gambar/" . $nama;
+		unlink($target);
 	}
 
 	public function hapus1()
 	{
 
-		$perencanaan=$this->input->post("perencanaan");
-		$nama=$this->input->post("nama");
+		$perencanaan = $this->input->post("perencanaan");
+		$nama = $this->input->post("nama");
 
-//       Hapus
+		//       Hapus
 
 		$this->db->query("DELETE FROM gambar_perencanaan WHERE  id_lap_perencanaan='$perencanaan' AND gambar='$nama'");
+		$target = "gambar/" . $nama;
+		unlink($target);
 	}
 
 	public function hapus2()
 	{
 
-		$perencanaan=$this->input->post("perencanaan");
-		$nama=$this->input->post("nama");
-		$pengawasan=$this->input->post("pengawasan");
-		$minggu=$this->input->post("minggu");
+		$perencanaan = $this->input->post("perencanaan");
+		$nama = $this->input->post("nama");
+		$pengawasan = $this->input->post("pengawasan");
+		$minggu = $this->input->post("minggu");
 
-//       Hapus
+		//       Hapus
 
 		$this->db->query("DELETE FROM gambar_pengawasan WHERE  id_perencanaan='$perencanaan' AND gambar='$nama' AND minggu='$minggu' AND id_pengawasan='$pengawasan'");
+		$target = "gambar/" . $nama;
+		unlink($target);
 	}
 
 
 	public function aksi_upload_tahap()
 	{
 
-		
 
-		
+
+
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 1000000;
@@ -198,51 +209,47 @@ class Upload extends CI_Controller{
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('berkas')){
+		if (!$this->upload->do_upload('berkas')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name = $upload_data['file_name'];
 
-			$awal=$this->input->post("bulan");
-			$akhir=$awal+3;
+			$awal = $this->input->post("bulan");
+			$akhir = $awal + 3;
 
 
-			$inputGambar=array(
-				"id_paket"=>$this->input->post("id_paket"),
-				"id_perencanaan"=>$this->input->post("id_perencanaan"),
-				"bulan_start"=>$this->input->post("bulan"),
-				"bulan_end"=>$akhir,
-				"gambar"=>$file_name,
+			$inputGambar = array(
+				"id_paket" => $this->input->post("id_paket"),
+				"id_perencanaan" => $this->input->post("id_perencanaan"),
+				"bulan_start" => $this->input->post("bulan"),
+				"bulan_end" => $akhir,
+				"gambar" => $file_name,
 				'jenis_pekerjaan' => $this->input->post("jenis_pekerjaan")
-			
+
 			);
 
-			$this->db->insert("gambar_tahap",$inputGambar);
+			$this->db->insert("gambar_tahap", $inputGambar);
 
 
 			redirect('../catur_wulan_baru');
 		}
-
 	}
 
 
 	public function sketsa()
-	{
-
-		
-	}
+	{ }
 
 
 	public function aksi_upload_lampiran()
 	{
 
 
-		
-		
+
+
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 1000000;
@@ -252,83 +259,66 @@ class Upload extends CI_Controller{
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload('berkas1')){
+		if (!$this->upload->do_upload('berkas1')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name1 = $upload_data['file_name'];
-
-
-
-
 		}
 
 
-		
-		if ( ! $this->upload->do_upload('berkas2')){
+
+		if (!$this->upload->do_upload('berkas2')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name2 = $upload_data['file_name'];
-
-		
-
-
-
 		}
 
 
-		
-		if ( ! $this->upload->do_upload('berkas3')){
+
+		if (!$this->upload->do_upload('berkas3')) {
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('v_upload', $error);
-		}else{
+		} else {
 			$data = array('upload_data' => $this->upload->data());
-//			Ubah Data Yg DIdatabase Dulu Gan
+			//			Ubah Data Yg DIdatabase Dulu Gan
 			$upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
 			$file_name3 = $upload_data['file_name'];
-
-		
-
-
-
 		}
 
 
 		// Sekarang tinggal masukkan kedalam database
-		$pertama=$this->input->post("pertama");
-		$terakhir=$this->input->post("terakhir");
-		$paket=$this->input->post("paket");
-		$perencanaan=$this->input->post("perencanaan");
-		$jenis_pekerjaan=$this->input->post("jenis_pekerjaan");
+		$pertama = $this->input->post("pertama");
+		$terakhir = $this->input->post("terakhir");
+		$paket = $this->input->post("paket");
+		$perencanaan = $this->input->post("perencanaan");
+		$jenis_pekerjaan = $this->input->post("jenis_pekerjaan");
 
 
 		// Input kedalam database
 
-		$data=array(
-		 "id_paket"=>$paket,
-		 "id_lap_perencanaan"=>$perencanaan,
-		 "bulan_awal"=>$pertama,
-		 "bulan_akhir"=>$terakhir,
-		 "jenis_pekerjaan"=>$jenis_pekerjaan,
-		 "gambar_0"=>$file_name1,
-		 "gambar_50"=>$file_name2,
-		 "gambar_100"=>$file_name3,
+		$data = array(
+			"id_paket" => $paket,
+			"id_lap_perencanaan" => $perencanaan,
+			"bulan_awal" => $pertama,
+			"bulan_akhir" => $terakhir,
+			"jenis_pekerjaan" => $jenis_pekerjaan,
+			"gambar_0" => $file_name1,
+			"gambar_50" => $file_name2,
+			"gambar_100" => $file_name3,
 		);
 
 
 		// Inputkan kedalam database
-		$this->db->insert("lampiran_tahap",$data);
+		$this->db->insert("lampiran_tahap", $data);
 
 		redirect('../lampiran_tahap');
-
-
 	}
-
 }
