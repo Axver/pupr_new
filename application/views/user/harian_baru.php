@@ -896,6 +896,29 @@ if ($this->session->userdata("privilage")) {
 
 			// Save TTD
 
+			let diperiksa_baru=$("#diperiksa_oleh").val();
+
+			$.ajax({
+							type: "POST",
+							async: false,
+							url: "http://localhost/pupr_new/user/ttd_harian_baru",
+							data: {
+								"id_harian": id,
+								"id_perencanaan": id_perencanaan,
+								"id_paket": id_paket,
+								"periksa":diperiksa_baru
+							
+								
+							},
+							dataType: "text",
+							cache: false,
+							success: function(data) {
+								console.log("hhdkjfha");
+								console.log(data);
+								console.log("hhdkjfha");
+							}
+						});
+
 			// Save Progress Selanjutnya
 
 			let prog_sel=$("#progres_selanjutnya").val();
@@ -921,6 +944,7 @@ if ($this->session->userdata("privilage")) {
 						});
 
 
+        swal("Done!");
 
 
 
