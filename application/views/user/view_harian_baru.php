@@ -419,7 +419,7 @@ else
 
 
 <script>
-<!--	Ambil data dan isikan kedalam tabel-->
+
 let id_harian=$("#id_harian").val();
 let id_perencanaan=$("#id_perencanaan").val();
 
@@ -538,7 +538,7 @@ $.ajax({
 <script>
 
 
-<!--	Script untuk mencari Progress-->
+
 
 $.ajax({
     type: "POST",

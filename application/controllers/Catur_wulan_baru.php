@@ -1,55 +1,54 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Catur_wulan_baru extends CI_Controller {
+class Catur_wulan_baru extends CI_Controller
+{
 
-    function __construct(){
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
-
 	}
 
-    public function index()
-    {
-        $this->load->view("user/generate_catur_baru");
-    }
+	public function index()
+	{
+		$this->load->view("user/generate_catur_baru");
+	}
 
 
-    public function sketsa()
-    {
+	public function sketsa()
+	{
 
-        $id_paket=$this->input->post("id_paket");
-        $id_perencanaan=$this->input->post("id_perencanaan");
-        $bulan=$this->input->post("bulan");
+		$id_paket = $this->input->post("id_paket");
+		$id_perencanaan = $this->input->post("id_perencanaan");
+		$bulan = $this->input->post("bulan");
 
-        $this->db->select('*');    
-$this->db->from('gambar_tahap');
-$this->db->join('jenis_pekerjaan', 'gambar_tahap.jenis_pekerjaan = jenis_pekerjaan.id');
-$this->db->where("id_paket",$id_paket);
-$this->db->where("id_perencanaan",$id_perencanaan);
-$this->db->where("bulan_start",$bulan);
-
-
-        $data=$this->db->get()->result();
-
-        echo json_encode($data);
-    }
+		$this->db->select('*');
+		$this->db->from('gambar_tahap');
+		$this->db->join('jenis_pekerjaan', 'gambar_tahap.jenis_pekerjaan = jenis_pekerjaan.id');
+		$this->db->where("id_paket", $id_paket);
+		$this->db->where("id_perencanaan", $id_perencanaan);
+		$this->db->where("bulan_start", $bulan);
 
 
-    public function informasi()
-    {
-      $id_paket=$this->input->post("id_paket");
-      $data=$this->db->get_where("paket",array("id_paket",$id_paket))->result();
+		$data = $this->db->get()->result();
 
-      echo json_encode($data);
-
-    }
+		echo json_encode($data);
+	}
 
 
-    public function informasi1()
-    {
+	public function informasi()
+	{
+		$id_paket = $this->input->post("id_paket");
+		$data = $this->db->get_where("paket", array("id_paket" => $id_paket))->result();
 
-        
-    }
+		echo json_encode($data);
 
+
+		// echo $id_paket;
+	}
+
+
+	public function informasi1()
+	{ }
 }

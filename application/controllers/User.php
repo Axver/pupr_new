@@ -1011,6 +1011,19 @@ public function pekerjaan()
 	}
 
 
+	public function next_progres()
+	{
+		$id_harian=$this->input->post("id_harian");
+		$id_perencanaan=$this->input->post("id_perencanaan");
+		$id_paket=$this->input->post("id_paket");
+		$progres_selanjutnya=$this->input->post("progres_selanjutnya");
+
+
+		// Update Data
+		$this->db->query("UPDATE lap_harian_mingguan SET progres_selanjutnya='$progres_selanjutnya' WHERE id_lap_harian_mingguan='$id_harian' AND id_lap_perencanaan='$id_perencanaan' AND id_paket='$id_paket'");
+	}
+
+
 
 
 
