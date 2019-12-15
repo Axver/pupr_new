@@ -35,7 +35,7 @@ else
 		}
 
 		th,td,table{
-			border: 2px solid black;
+			border: 1px solid black;
 			color: black;
 		}
 	</style>
@@ -214,10 +214,10 @@ else
 
 								<table class="tg table" id="tabel_satu">
 									<tr>
-										<th class="tg-cly1">Jenis Pekerjaan</th>
-										<th class="tg-cly1">Jenis Pekerja</th>
-										<th class="tg-cly1">Jumlah</th>
-										<th class="tg-0lax">Progress Pekerjaan %</th>
+										<th class="tg-cly1" style="text-align:center">Jenis Pekerjaan</th>
+										<th class="tg-cly1" style="text-align:center">Jenis Pekerja</th>
+										<th class="tg-cly1" style="text-align:center">Jumlah</th>
+										<th class="tg-0lax" style="text-align:center">Progress Pekerjaan %</th>
 									</tr>
 
 								</table>
@@ -528,7 +528,7 @@ function generatePDF() {
         // Choose the element and save the PDF for our user.
         var opt = {
             margin:       1,
-            filename:     'myfile.pdf',
+            filename:     'Laporan Pengawasan '+tanggal+'.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
