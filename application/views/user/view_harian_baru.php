@@ -31,7 +31,7 @@ else
 
 	<style>
 		th,td,table{
-			border:2px solid black;
+			border:1px solid black;
 			color:black;
 		}
 		body{
@@ -245,12 +245,12 @@ else
 
 								<table class="table table-responsive-lg" id="tabel_satu">
 									<tr>
-										<th class="tg-nrix" style="text-align:center;vertical-align: middle" rowspan="3">Jenis Pekerjaan</th>
-										<th class="tg-nrix" style="text-align:center;vertical-align: middle" rowspan="3">Jenis Upah</th>
-										<th class="tg-nrix bulan_jesi" style="text-align:center;vertical-align: middle" colspan="7">Bulan</th>
+										<th class="tg-nrix" style="text-align:center;vertical-align: middle; border:1px solid black;" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-nrix" style="text-align:center;vertical-align: middle; border:1px solid black;" rowspan="3">Jenis Upah</th>
+										<th class="tg-nrix bulan_jesi" style="text-align:center;vertical-align: middle; border:1px solid black;" colspan="7">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle;border:1px solid black;">Minggu</td>
 									</tr>
 									<tr>
 										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
@@ -270,12 +270,12 @@ else
 								<b>Rekapitulasi Pekerja Minggu ke-</b>
 								<table class="table table-responsive-lg" id="tabel_dua">
 									<tr>
-										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Pekerjaan</th>
-										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Upah</th>
-										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle">Bulan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Pekerjaan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Upah</th>
+										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle;border:1px solid black;">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle;border:1px solid black;">Minggu</td>
 									</tr>
 									<tr>
 										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
@@ -299,12 +299,12 @@ else
 								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke-</b>
 								<table class="table table-responsive-lg" id="tabel_tiga">
 									<tr>
-										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Bahan/Alat</th>
-										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Satuan</th>
-										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle">Bulan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Bahan/Alat</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Satuan</th>
+										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle;border:1px solid black;">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle;border:1px solid black;">Minggu</td>
 									</tr>
 									<tr>
 										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
@@ -675,7 +675,7 @@ $.ajax({
 
 									$("#jabatan").text(data[i].jabatan);
 									$("#nama").text(data[i].konfigurasi_nama);
-									$("#nip").text("NRP."+data[i].konfigurasi_nip);
+									$("#nip").text("NIP."+data[i].konfigurasi_nip);
 									$("#nama1").text(data[i].account_nama);
 									$("#nip1").text("NRP."+data[i].account_nip);
 
