@@ -1116,13 +1116,16 @@ $("#progress_total").append(pt+"%");
 }
 
 
+let id_harian_akhi=$("#id_harian").val();
+
+
 function generatePDF() {
         // Choose the element that our invoice is rendered in.
         const element = document.getElementById("cetak");
         // Choose the element and save the PDF for our user.
         var opt = {
             margin:       1,
-            filename:     'myfile.pdf',
+            filename:     'Laporan Harian '+id_harian_akhi+'.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
