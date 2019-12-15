@@ -174,7 +174,10 @@ else
 							<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
 								<center><b><h3>MINGGU KE-<b id="romawi"></b> (<b id="huruf"></b>)</h3></b></center>
 
-                             <input type="hidden" id="nilai_paket" value="<?php echo $nilai_paket; ?>">
+							 <input type="hidden" id="nilai_paket" value="<?php echo $nilai_paket; ?>">
+							 
+							 <br/>
+							 <br/>
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="row">
@@ -214,10 +217,10 @@ else
 
 								<table class="tg table" id="tabel_satu">
 									<tr>
-										<th class="tg-cly1" style="text-align:center">Jenis Pekerjaan</th>
-										<th class="tg-cly1" style="text-align:center">Jenis Pekerja</th>
-										<th class="tg-cly1" style="text-align:center">Jumlah</th>
-										<th class="tg-0lax" style="text-align:center">Progress Pekerjaan %</th>
+										<th class="tg-cly1" style="text-align:center;border:1px solid black;">Jenis Pekerjaan</th>
+										<th class="tg-cly1" style="text-align:center;border:1px solid black;">Jenis Pekerja</th>
+										<th class="tg-cly1" style="text-align:center;border:1px solid black;">Jumlah</th>
+										<th class="tg-0lax" style="text-align:center;border:1px solid black;">Progress Pekerjaan %</th>
 									</tr>
 
 								</table>
