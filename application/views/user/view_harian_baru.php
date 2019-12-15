@@ -32,6 +32,7 @@ else
 	<style>
 		th,td,table{
 			border:2px solid black;
+			color:black;
 		}
 		body{
 			color:black;
@@ -178,7 +179,7 @@ else
 											<div class="col-sm-6" id="nama_paket">:<?php echo $nama_paket ?></div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Jenis Pekerjaan</div>
+											<div class="col-sm-6" >Jenis Pekerjaan</div>
 											<div class="col-sm-6" id="jenis_pekerjaan">:</div>
 										</div>
 										<div class="row">
@@ -208,7 +209,27 @@ else
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Selanjutnya</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" >:
+											<?php
+
+											$id_laporan=$this->uri->segment("3");
+											$perencanaan=$this->uri->segment("4");
+
+											// Ambil data
+											$ambil=$this->db->get_where("lap_harian_mingguan",array("id_lap_harian_mingguan"=>$id_laporan,"id_lap_perencanaan"=>$perencanaan))->result();
+											$count=count($ambil);
+											$i=0;
+
+											while($i<$count)
+											{
+ 
+												echo $ambil[$i]->progres_selanjutnya."%";
+
+												$i++;
+											}
+
+                                            ?>
+											</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Total</div>
@@ -224,21 +245,21 @@ else
 
 								<table class="table table-responsive-lg" id="tabel_satu">
 									<tr>
-										<th class="tg-nrix" rowspan="3">Jenis Pekerjaan</th>
-										<th class="tg-nrix" rowspan="3">Jenis Upah</th>
-										<th class="tg-nrix bulan_jesi" colspan="7">Bulan</th>
+										<th class="tg-nrix" style="text-align:center;vertical-align: middle" rowspan="3">Jenis Pekerjaan</th>
+										<th class="tg-nrix" style="text-align:center;vertical-align: middle" rowspan="3">Jenis Upah</th>
+										<th class="tg-nrix bulan_jesi" style="text-align:center;vertical-align: middle" colspan="7">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix" colspan="7">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix 1">1</td>
-										<td class="tg-nrix 2">2</td>
-										<td class="tg-nrix 3">3</td>
-										<td class="tg-nrix 4">4</td>
-										<td class="tg-nrix 5">5</td>
-										<td class="tg-nrix 6">6</td>
-										<td class="tg-nrix 7">7</td>
+										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
+										<td class="tg-nrix 2" style="text-align:center;vertical-align: middle">2</td>
+										<td class="tg-nrix 3" style="text-align:center;vertical-align: middle">3</td>
+										<td class="tg-nrix 4" style="text-align:center;vertical-align: middle">4</td>
+										<td class="tg-nrix 5" style="text-align:center;vertical-align: middle">5</td>
+										<td class="tg-nrix 6" style="text-align:center;vertical-align: middle">6</td>
+										<td class="tg-nrix 7" style="text-align:center;vertical-align: middle">7</td>
 									</tr>
 
 								</table>
@@ -249,21 +270,21 @@ else
 								<b>Rekapitulasi Pekerja Minggu ke-</b>
 								<table class="table table-responsive-lg" id="tabel_dua">
 									<tr>
-										<th class="tg-nrix" rowspan="3">Jenis Pekerjaan</th>
-										<th class="tg-nrix" rowspan="3">Jenis Upah</th>
-										<th class="tg-nrix bulan_jesi" colspan="7">Bulan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Pekerjaan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Upah</th>
+										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix" colspan="7">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix 1">1</td>
-										<td class="tg-nrix 2">2</td>
-										<td class="tg-nrix 3">3</td>
-										<td class="tg-nrix 4">4</td>
-										<td class="tg-nrix 5">5</td>
-										<td class="tg-nrix 6">6</td>
-										<td class="tg-nrix 7">7</td>
+										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
+										<td class="tg-nrix 2" style="text-align:center;vertical-align: middle">2</td>
+										<td class="tg-nrix 3" style="text-align:center;vertical-align: middle">3</td>
+										<td class="tg-nrix 4" style="text-align:center;vertical-align: middle">4</td>
+										<td class="tg-nrix 5" style="text-align:center;vertical-align: middle">5</td>
+										<td class="tg-nrix 6" style="text-align:center;vertical-align: middle">6</td>
+										<td class="tg-nrix 7" style="text-align:center;vertical-align: middle">7</td>
 									</tr>
 
 								</table>
@@ -278,21 +299,21 @@ else
 								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke-</b>
 								<table class="table table-responsive-lg" id="tabel_tiga">
 									<tr>
-										<th class="tg-nrix" rowspan="3">Jenis Bahan/Alat</th>
-										<th class="tg-nrix" rowspan="3">Satuan</th>
-										<th class="tg-nrix bulan_jesi" colspan="7">Bulan</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Jenis Bahan/Alat</th>
+										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle">Satuan</th>
+										<th class="tg-nrix bulan_jesi" colspan="7" style="text-align:center;vertical-align: middle">Bulan</th>
 									</tr>
 									<tr>
-										<td class="tg-nrix" colspan="7">Minggu</td>
+										<td class="tg-nrix minggu_hai" colspan="7"  style="text-align:center;vertical-align: middle">Minggu</td>
 									</tr>
 									<tr>
-										<td class="tg-nrix 1">1</td>
-										<td class="tg-nrix 2">2</td>
-										<td class="tg-nrix 3">3</td>
-										<td class="tg-nrix 4">4</td>
-										<td class="tg-nrix 5">5</td>
-										<td class="tg-nrix 6">6</td>
-										<td class="tg-nrix 7">7</td>
+										<td class="tg-nrix 1" style="text-align:center;vertical-align: middle">1</td>
+										<td class="tg-nrix 2" style="text-align:center;vertical-align: middle">2</td>
+										<td class="tg-nrix 3" style="text-align:center;vertical-align: middle">3</td>
+										<td class="tg-nrix 4" style="text-align:center;vertical-align: middle">4</td>
+										<td class="tg-nrix 5" style="text-align:center;vertical-align: middle">5</td>
+										<td class="tg-nrix 6" style="text-align:center;vertical-align: middle">6</td>
+										<td class="tg-nrix 7" style="text-align:center;vertical-align: middle">7</td>
 									</tr>
 
 								</table>
@@ -796,7 +817,35 @@ let z=1;
 						   {
 						       minggu_get=z;
 						       console.log(minggu_get);
+							//    
+						
+							// alert(minggu_get);
+
+							// Ambil jumlah minggu dalam satu bulan
+							let y=1;
+							let total=0;
+							let id_harian=$("#id_harian").val();
+								id_harian=id_harian.split("-");
+								let minggu_bulan=0;
+							while(y<id_harian[1])
+							{
+
+								
+
+								minggu_bulan=parseInt(minggu_bulan)+parseInt(getWeeksInMonth(y,id_harian[0]));
+                              
+							  
+
+              
+								y++;
+							}
+							// alert(minggu_bulan);
+							total=parseInt(minggu_get)-parseInt(minggu_bulan);
+							// alert(total);
+							$(".minggu_hai").text("Minggu "+total);
 						   }
+
+						  
 
 					       z++;
 					   }
