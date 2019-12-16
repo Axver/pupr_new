@@ -267,7 +267,7 @@ else
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Total</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="total" >:</div>
 										</div>
 									</div>
 								</div>
@@ -876,7 +876,7 @@ $.ajax({
           bulan=parseInt(bulan)-1;
 					let total_akhir=0;
 
-					while(he<=bulan)
+					while(bulan>he)
 					{
 						$.ajax({
                type: "POST",
@@ -935,9 +935,14 @@ $.ajax({
                 // Progress Jenis Pekerja
 
                 let nilai_paket=$("#pagu").text();
-
-                let total2=parseInt(total)+parseInt(total1);
+               let total2=0;
+               total2=parseInt(total)+parseInt(total1);
                 total2=parseInt(total2)/parseInt(nilai_paket);
+
+
+								console.log("penjumlahan persen disini");
+								console.log(total2);
+								console.log("mantap");
                 total2=total2*100;
                 total2=total2.toFixed(2);
 
@@ -961,7 +966,7 @@ $.ajax({
 
 
 
-						he++;
+					bulan--;
 					}
 
 					// total_akhir=total_akhir.toFixed(2);
@@ -985,6 +990,15 @@ $("#lalu").append(total_akhir+"%");
       $("#tabel_satu").empty();
       $("#tabel_dua").empty();
       $("#tabel_tiga").empty();
+			$("#progres_sekarang").empty();
+			$("#lalu").empty();
+			$("#selanjutnya").empty();
+			$("#total").empty();
+			$("#jenis_pekerjaan").empty();
+
+
+
+
     }
 
 
