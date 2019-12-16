@@ -228,7 +228,10 @@ class Upload extends CI_Controller
 				"bulan_start" => $this->input->post("bulan"),
 				"bulan_end" => $akhir,
 				"gambar" => $file_name,
-				'jenis_pekerjaan' => $this->input->post("jenis_pekerjaan")
+				'jenis_pekerjaan' => $this->input->post("jenis_pekerjaan"),
+				'keterangan' => $this->input->post("keterangan"),
+				'dimensi' => $this->input->post("dimensi"),
+				'lokasi' => $this->input->post("lokasi")
 
 			);
 

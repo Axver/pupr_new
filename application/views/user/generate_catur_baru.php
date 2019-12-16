@@ -144,6 +144,7 @@ if ($this->session->userdata("privilage")) {
 
 
 									<?php echo form_open_multipart('upload/aksi_upload_tahap'); ?>
+								
 									<b>Pilih Paket</b>
 									<select onchange="listPerencanaan()" id="id_paket" name="id_paket" class="form form-control">
 										<option>--Pilih Paket--</option>
@@ -216,6 +217,15 @@ if ($this->session->userdata("privilage")) {
 									</select>
 
 									<br />
+									<b>Lokasi</b>
+                                    <input type="text" class="form form-control" name="lokasi">
+									<br/>
+									<b>Dimensi</b>
+                                    <input type="text" class="form form-control" name="dimensi"  placeholder="Contoh:10 m,8 m,1 m">
+									<br/>
+									<b>Panjang Penanganan</b>
+                                    <input type="text" class="form form-control" name="keterangan">
+									<br/>
 
 									<input type="file" name="berkas" class="btn btn-info" />
 
@@ -1026,9 +1036,12 @@ if ($this->session->userdata("privilage")) {
 
 					while (i < length) {
 
+						let split=data[i].dimensi.split(",");
+
+
 						$("#tabel_empat").append('<tr><td style="text-align:left;vertical-align: middle;" class="tg-cly1">' + data[i].nama_jenis + '</td>' +
 							'<td class="tg-cly1">' + '<img style="width:400px;height:300px;" src="http://localhost/pupr_new/gambar/' + data[i].gambar + '">' + '</td>' +
-							'<td class="tg-0lax"></td></tr> ');
+							'<td class="tg-0lax">'+"Lokasi:"+data[i].lokasi+"<br/>"+"Panjang Penanganan:"+data[i].keterangan+"<br/>"+"Dimensi:"+"<br/>"+"P:"+split[0]+"<br/>"+"L:"+split[1]+"<br/>"+"T:"+split[2]+'</td></tr> ');
 						i++;
 					}
 				}

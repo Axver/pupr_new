@@ -232,7 +232,7 @@ else
               <div class="row">
 									<div class="col-sm-6">
 										<div class="row">
-											<div class="col-sm-6">Nama Paket</div>
+											<div class="col-sm-6" >Nama Paket</div>
 											<div class="col-sm-6" id="nama_paket">:</div>
 										</div>
 										<div class="row">
@@ -286,7 +286,7 @@ else
 
 <br/>
 
-<b>Rekapitulasi Pekerjaan Bulan X</b>
+<b id="rekapitulasi">Rekapitulasi Pekerjaan Bulan X</b>
 
 <br/>
 
@@ -520,9 +520,9 @@ else
 
       hapus();
       $("#tabel_satu").append('<tr>'+
-    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
-    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
-    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Upah</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5" style="text-align:center;vertical-align: middle;border:1px solid black;">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -536,9 +536,9 @@ else
   '</tr>');
 
   $("#tabel_dua").append('<tr>'+
-    '<th class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>'+
-    '<th class="tg-cly1" rowspan="3">Jenis Upah</th>'+
-    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Pekerjaan</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Upah</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5" style="text-align:center;vertical-align: middle;border:1px solid black;">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -552,9 +552,9 @@ else
   '</tr>');
 
   $("#tabel_tiga").append('<tr>'+
-    '<th class="tg-cly1" rowspan="3">Bahan/Alat</th>'+
-    '<th class="tg-cly1" rowspan="3">Satuan</th>'+
-    '<th class="tg-cly1 bulanX" colspan="5">Bulan</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Bahan/Alat</th>'+
+    '<th class="tg-cly1" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Satuan</th>'+
+    '<th class="tg-cly1 bulanX" colspan="5" style="text-align:center;vertical-align: middle;border:1px solid black;">Bulan</th>'+
   '</tr>'+
   '<tr>'+
    ' <td class="tg-cly1" colspan="5">Minggu</td>'+
@@ -995,6 +995,10 @@ $("#total").text(totalR+"%");
           swal("Tabel di Generate!!");
 
 
+					// Ganti Namanya disana
+					$("#rekapitulasi").text("Ubah Teks Disini");
+
+
 
 
     }
@@ -1023,7 +1027,7 @@ $("#total").text(totalR+"%");
         // Choose the element and save the PDF for our user.
         var opt = {
             margin:       1,
-            filename:     'myfile.pdf',
+            filename:     'Laporan Bulanan.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'A3', orientation: 'landscape' },
