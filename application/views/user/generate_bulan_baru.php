@@ -359,7 +359,7 @@ else
 													 {
 														 echo "<u>".$data[$i]->nama."</u>";
 														 echo "<br/>";
-														 echo "NIP:".$data[$i]->nip;
+														 echo "NRP:".$data[$i]->nip;
 
 														 $i++;
 													 }
@@ -973,11 +973,26 @@ $.ajax({
 					console.log(total_akhir);
 
 $("#lalu").append(total_akhir+"%");
+
+
+// Progress total
+let prog_sek=$("#progres_sekarang").text();
+let prog_lalu=$("#lalu").text();
+
+console.log("Total");
+prog_sek=prog_sek.substring(0, prog_sek.length - 1);
+prog_lalu=prog_lalu.substring(0, prog_lalu.length - 1);
+console.log(prog_sek);
+console.log(prog_lalu);
+console.log("Total");
+
+let totalR=parseFloat(prog_sek)+parseFloat(prog_lalu);
+$("#total").text(totalR+"%");
       
 
 
           // Sekarang cari total progress bulan tersebut
-
+          swal("Tabel di Generate!!");
 
 
 
@@ -992,7 +1007,7 @@ $("#lalu").append(total_akhir+"%");
       $("#tabel_tiga").empty();
 			$("#progres_sekarang").empty();
 			$("#lalu").empty();
-			$("#selanjutnya").empty();
+	
 			$("#total").empty();
 			$("#jenis_pekerjaan").empty();
 
