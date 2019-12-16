@@ -205,6 +205,12 @@ else
 									?>
 								</select>
 
+								<br/>
+
+                <b>Progres Selanjutnya</b>
+								<input type="number" id="p_selanjutnya" class="form form-control">
+								<br/>
+
                             <button class="btn btn-facebook" onclick="generate()">Generate</button>
 
 							<br/>
@@ -254,13 +260,10 @@ else
 											<div class="col-sm-6" id="lalu">:</div>
 										</div>
 
-										<div class="row">
-											<div class="col-sm-6">Progress Fisik Minggu Ke-</div>
-											<div class="col-sm-6" >:</div>
-										</div>
+								
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Selanjutnya</div>
-											<div class="col-sm-6" >:</div>
+											<div class="col-sm-6" id="selanjutnya" >:</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-6">Progress Fisik Total</div>
@@ -480,6 +483,10 @@ else
 
     function generate()
     {
+
+      $("#selanjutnya").empty();
+			let selanjutnya=$("#p_selanjutnya").val();
+		  $("#selanjutnya").append(":"+selanjutnya+"%");
 
       let diperiksa_=$("#diperiksa_oleh").val();
       $.ajax({
@@ -865,8 +872,13 @@ $.ajax({
 
 
           // Progress Periode Lalu
+					let he=1;
           bulan=parseInt(bulan)-1;
-          $.ajax({
+					let total_akhir=0;
+
+					while(he<=bulan)
+					{
+						$.ajax({
                type: "POST",
 		           async:false,
                url: "http://localhost/pupr_new/generate_bulan_baru/pekerja_minggu_sum", 
@@ -928,9 +940,9 @@ $.ajax({
                 total2=parseInt(total2)/parseInt(nilai_paket);
                 total2=total2*100;
                 total2=total2.toFixed(2);
-                console.log(total2);
 
-                $("#lalu").append(total2+"%");
+								total_akhir=parseFloat(total_akhir)+parseFloat(total2);
+              
                 
                 
 				      
@@ -947,9 +959,21 @@ $.ajax({
               }
           });
 
+
+
+						he++;
+					}
+
+					// total_akhir=total_akhir.toFixed(2);
+					console.log(total_akhir);
+
+$("#lalu").append(total_akhir+"%");
+      
 
 
           // Sekarang cari total progress bulan tersebut
+
+
 
 
 

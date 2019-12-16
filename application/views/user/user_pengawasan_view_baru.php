@@ -572,7 +572,7 @@ let tanggal1=$("#tanggal").val();
 
 									$("#jabatan").text(data[i].jabatan);
 									$("#nama").text(data[i].konfigurasi_nama);
-									$("#nip").text("NRP."+data[i].konfigurasi_nip);
+									$("#nip").text("NIP."+data[i].konfigurasi_nip);
 									$("#nama1").text(data[i].account_nama);
 									$("#nip1").text("NRP."+data[i].account_nip);
 
@@ -682,6 +682,11 @@ rentang=rentang.replace(" to "," sampai ")
 // alert(rentang);
 
 $("#sampai").text(rentang);
+
+
+
+// Ubah Progress Pekerjaan
+// Progress pekerjaan lap pengawasan berdasakan seluruh progress di bulan-bulan sebelumnya
 
 </script>
 
