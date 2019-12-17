@@ -663,7 +663,18 @@ else
 <td cellspacing="'0'" width="100%" id="" style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 	<?php echo "Lokasi:".$loaksiM."<br/>"; ?>
 	<?php echo "Panjang Penanganan:".$getImage[$i]->panjang_penanganan."<br/>"; ?>
-	<?php echo "Keterangan Dimensi:".$getImage[$i]->dimensi."<br/>"; ?>
+	<?php echo "Keterangan Dimensi:";
+	
+	$data=explode(",",$getImage[$i]->dimensi);
+
+	echo "<br/>";
+	echo "P:".$data[0];
+	echo "<br/>";
+	echo "L:".$data[1];
+	echo "<br/>";
+	echo "T:".$data[2];
+	
+	?>
 </td>
 </tr>
 									<?php
