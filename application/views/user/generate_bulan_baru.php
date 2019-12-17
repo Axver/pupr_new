@@ -38,6 +38,15 @@ else
 	body{
 		color:black;
 	}
+
+	.tg-cly1{
+		text-align:center;
+	}
+
+	.tg-0lax{
+
+		text-align:center;
+	}
 	</style>
 
 
@@ -232,27 +241,28 @@ else
               <div class="row">
 									<div class="col-sm-6">
 										<div class="row">
-											<div class="col-sm-6" >Nama Paket</div>
+											<div class="col-sm-2" >Nama Paket</div>
 											<div class="col-sm-6" id="nama_paket">:</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Jenis Pekerjaan</div>
+											<div class="col-sm-2">Jenis Pekerjaan</div>
 											<div class="col-sm-6" id="jenis_pekerjaan">:</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Lokasi</div>
+											<div class="col-sm-2">Lokasi</div>
 											<div class="col-sm-6" id="lokasi">:</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Pagu</div>
+											<div class="col-sm-2">Pagu</div>
 											<div class="col-sm-6" id="pagu">:</div>
 											<input type="hidden" id="nilai_paket" >
 										</div>
 									</div>
-									<div class="col-sm-4" style="border: 1px solid black;">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-3" style="border: 1px solid black;">
 										<div class="row">
 											<div class="col-sm-6">Progress Pekerjaan</div>
-											<div class="col-sm-6" id="progres_sekarang">:</div>
+											<div class="col-sm-6" id="progres_sekarang"></div>
 										</div>
 
 										<div class="row">
@@ -604,7 +614,7 @@ else
 				 while(i<length)
 				 {
 
-           $("#jenis_pekerjaan").append("<br/>"+"  "+data[i].nama_jenis);
+           $("#jenis_pekerjaan").append("<br/>&nbsp&nbsp"+data[i].nama_jenis);
 
 					$("#tabel_satu").append("<tr>"+
                       "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
@@ -754,6 +764,7 @@ nama_bulan=parseInt(nama_bulan);
 nama_bulan=nama_bulan-1;
 
 $(".bulanX").text(data_bulan[nama_bulan]);
+$("#rekapitulasi").text("Rekapitulasi Pekerja Bulan "+data_bulan[nama_bulan]);
 
 
 
@@ -777,9 +788,9 @@ $.ajax({
                 while(i<length)
                 {
                   // isi teks
-                  $("#nama_paket").text(":"+data[i].nama);
-                  $("#lokasi").text(":"+data[i].lokasi);
-                  $("#pagu").text(":"+data[i].nilai_paket);
+                  $("#nama_paket").text(": "+data[i].nama);
+                  $("#lokasi").text(": "+data[i].lokasi);
+                  $("#pagu").text(": "+data[i].nilai_paket);
 
                   i++;
                 }
@@ -852,7 +863,7 @@ $.ajax({
                 total2=total2.toFixed(2);
                 console.log(total2);
 
-                $("#progres_sekarang").append(total2+"%");
+                $("#progres_sekarang").append(":"+total2+"%");
                 
                 
 				      
@@ -973,7 +984,7 @@ $.ajax({
 					// total_akhir=total_akhir.toFixed(2);
 					console.log(total_akhir);
 
-$("#lalu").append(total_akhir+"%");
+$("#lalu").append(":"+total_akhir+"%");
 
 
 // Progress total
@@ -988,7 +999,7 @@ console.log(prog_lalu);
 console.log("Total");
 
 let totalR=parseFloat(prog_sek)+parseFloat(prog_lalu);
-$("#total").text(totalR+"%");
+$("#total").text(":"+totalR+"%");
       
 
 
@@ -997,7 +1008,7 @@ $("#total").text(totalR+"%");
 
 
 					// Ganti Namanya disana
-					$("#rekapitulasi").text("Ubah Teks Disini");
+					// $("#rekapitulasi").text("Rekapitulasi Pekerjaan Bulan");
 
 
 

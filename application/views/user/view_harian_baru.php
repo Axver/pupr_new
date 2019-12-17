@@ -37,6 +37,10 @@ else
 		body{
 			color:black;
 		}
+
+		.tg-cly1{
+			text-align:center;
+		}
 	</style>
 
 
@@ -138,7 +142,7 @@ else
 							<button class="btn btn-facebook" style="width:100%;" onclick="generatePDF()">Cetak PDF</button>
 							  <div id="cetak">
 							  
-							  <center><b>LAPORAN MINGGUAN</b></center>
+							  <center><b>LAPORAN HARIAN MINGGUAN</b></center>
 								<center><b>PELAKSANAAN KEGIATAN</b></center>
 								<br/>
 								<br/>
@@ -173,26 +177,26 @@ else
 
 								?>
 								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-sm-7">
 										<div class="row">
-											<div class="col-sm-6">Nama Paket</div>
-											<div class="col-sm-6" id="nama_paket">:<?php echo $nama_paket ?></div>
+											<div class="col-sm-3">Nama Paket</div>
+											<div class="col-sm-8" id="nama_paket">:  <?php echo "  ".$nama_paket ?></div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6" >Jenis Pekerjaan</div>
-											<div class="col-sm-6" id="jenis_pekerjaan">:</div>
+											<div class="col-sm-3" >Jenis Pekerjaan</div>
+											<div class="col-sm-8" id="jenis_pekerjaan">:  </div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Lokasi</div>
-											<div class="col-sm-6" id="lokasi">:<?php echo $lokasi ?></div>
+											<div class="col-sm-3">Lokasi</div>
+											<div class="col-sm-8" id="lokasi">:  <?php echo "  ".$lokasi ?></div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">Pagu</div>
-											<div class="col-sm-6" id="pagu">:<?php echo $nilai_paket; ?></div>
-											<input type="hidden" id="nilai_paket" value="<?php echo $nilai_paket; ?>">
+											<div class="col-sm-3">Pagu</div>
+											<div class="col-sm-8" id="pagu">:  <?php echo $nilai_paket; ?></div>
+											<input type="hidden" id="nilai_paket" value="<?php echo "  ".$nilai_paket; ?>">
 										</div>
 									</div>
-									<div class="col-sm-5" style="border: 2px solid black;">
+									<div class="col-sm-3" style="border: 1px solid black;">
 										<div class="row">
 											<div class="col-sm-6">Progress Pekerjaan</div>
 											<div class="col-sm-6" id="progres_sekarang">:</div>
@@ -267,7 +271,7 @@ else
 								<br/>
 								<br/>
 								<br/>
-								<b>Rekapitulasi Pekerja Minggu ke-</b>
+								<b>Rekapitulasi Pekerja Minggu ke-<span class="mingguke"></span></b>
 								<table class="table table-responsive-lg" id="tabel_dua">
 									<tr>
 										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Pekerjaan</th>
@@ -296,7 +300,8 @@ else
 
 
 
-								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke-</b>
+								<b>Rekapitulasi Penggunaan Bahan/Alat Minggu ke- <span class="mingguke"></span></b>
+							
 								<table class="table table-responsive-lg" id="tabel_tiga">
 									<tr>
 										<th class="tg-nrix" rowspan="3" style="text-align:center;vertical-align: middle;border:1px solid black;">Jenis Bahan/Alat</th>
@@ -468,7 +473,7 @@ $.ajax({
 				}
 			    else
 				{
-				    $("#jenis_pekerjaan").append("<br/>"+"-"+data[i].nama_jenis);
+				    $("#jenis_pekerjaan").append("<br/>&nbsp&nbsp"+data[i].nama_jenis);
                     $("#tabel_satu").append('\t\t<tr>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 " id="'+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_pekerjaan"+'">'+data[i].nama_jenis+'</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t<td class="tg-cly1 jenis_upah_klik" id="'+data[i].jenis_pekerjaan+"_"+data[i].id_jenis_upah+"_upah"+'">'+data[i].nama+'</td>\n' +
@@ -843,6 +848,7 @@ let z=1;
 							total=parseInt(minggu_get)-parseInt(minggu_bulan);
 							// alert(total);
 							$(".minggu_hai").text("Minggu "+total);
+							$(".mingguke").text(" "+total);
 						   }
 
 						  

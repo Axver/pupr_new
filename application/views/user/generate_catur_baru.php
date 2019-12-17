@@ -381,14 +381,16 @@ if ($this->session->userdata("privilage")) {
 
 										<b>Sketsa Kerja Rencana</b>
 
-										<table class="tg table" id="tabel_empat">
+										<!-- <table class="tg table" id="tabel_empat"> -->
 
 											<!-- <tr>
     <td class="tg-cly1"></td>
     <td class="tg-cly1"></td>
     <td class="tg-0lax"></td>
   </tr> -->
-										</table>
+										<!-- </table> -->
+                                        <div id="khusus_break"></div>
+										<div id="tabel_khusus"></div>
 
 										<br />
 										<?php
@@ -1008,7 +1010,7 @@ if ($this->session->userdata("privilage")) {
 
 
 			// Tabel paling bawah yang berisi foto dan ditambahkan secara otomatis
-			$("#tabel_empat").empty();
+			$("#tabel_khusus").empty();
 
 			$("#tabel_empat").append('<tr><th style="text-align:center;vertical-align: middle;border:1px solid black;width:200px;" class="tg-cly1">Jenis Pekerjaan</th><th style="text-align:center;border:1px solid black;width:450px;" class="tg-cly1">Sketsa</th><th style="text-align:center;border:1px solid black;" class="tg-0lax">Keterangan</th></tr>');
 
@@ -1033,15 +1035,50 @@ if ($this->session->userdata("privilage")) {
 
 					let length = data.length;
 					let i = 0;
+					let xx=0;
+					let length1=i;
 
 					while (i < length) {
 
 						let split=data[i].dimensi.split(",");
 
+						if(length1<3)
+						{
 
-						$("#tabel_empat").append('<tr><td style="text-align:left;vertical-align: middle;" class="tg-cly1">' + data[i].nama_jenis + '</td>' +
-							'<td class="tg-cly1">' + '<img style="width:400px;height:300px;" src="http://localhost/pupr_new/gambar/' + data[i].gambar + '">' + '</td>' +
+							if(length1==0)
+							{
+								$("#tabel_khusus").append('<table style="margin-top:10px;" class="table" id="tabel_'+xx+'"><tr><th style="text-align:center;vertical-align: middle;border:1px solid black;width:200px;" class="tg-cly1">Jenis Pekerjaan</th><th style="text-align:center;border:1px solid black;width:450px;" class="tg-cly1">Sketsa</th><th style="text-align:center;border:1px solid black;" class="tg-0lax">Keterangan</th></tr></table>');
+								
+							}
+							$("#tabel_"+xx).append('<tr><td style="text-align:left;vertical-align: middle;" class="tg-cly1">' + data[i].nama_jenis + '</td>' +
+							'<td class="tg-cly1">' + '<img style="width:380x;height:250px;" src="http://localhost/pupr_new/gambar/' + data[i].gambar + '">' + '</td>' +
 							'<td class="tg-0lax">'+"Lokasi:"+data[i].lokasi+"<br/>"+"Panjang Penanganan:"+data[i].keterangan+"<br/>"+"Dimensi:"+"<br/>"+"P:"+split[0]+"<br/>"+"L:"+split[1]+"<br/>"+"T:"+split[2]+'</td></tr> ');
+                            
+							
+							length1++;
+							
+						}
+						else 
+						{
+							xx++;
+							$("#tabel_khusus").append("<div class='break'></div>");
+							$("#tabel_khusus").append('<table style="margin-top:10px;" class="table" id="tabel_'+xx+'"><tr><th style="text-align:center;vertical-align: middle;border:1px solid black;width:200px;" class="tg-cly1">Jenis Pekerjaan</th><th style="text-align:center;border:1px solid black;width:450px;" class="tg-cly1">Sketsa</th><th style="text-align:center;border:1px solid black;" class="tg-0lax">Keterangan</th></tr></table>');
+							$("#tabel_"+xx).append('<tr><td style="text-align:left;vertical-align: middle;" class="tg-cly1">' + data[i].nama_jenis + '</td>' +
+							'<td class="tg-cly1">' + '<img style="width:375x;height:250px;" src="http://localhost/pupr_new/gambar/' + data[i].gambar + '">' + '</td>' +
+							'<td class="tg-0lax">'+"Lokasi:"+data[i].lokasi+"<br/>"+"Panjang Penanganan:"+data[i].keterangan+"<br/>"+"Dimensi:"+"<br/>"+"P:"+split[0]+"<br/>"+"L:"+split[1]+"<br/>"+"T:"+split[2]+'</td></tr> ');
+							
+
+							
+
+
+							length1=0;
+							length1++;
+							
+						
+						}
+
+
+					
 						i++;
 					}
 				}
@@ -1100,7 +1137,7 @@ if ($this->session->userdata("privilage")) {
 			$("#tabel_satu").empty();
 			$("#tabel_dua").empty();
 			$("#tabel_tiga").empty();
-			$("#tabel_empat").empty();
+			$("#tabel_khusus").empty();
 		}
 	</script>
 
