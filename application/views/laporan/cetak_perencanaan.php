@@ -222,7 +222,7 @@ else
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Nama Paket</div>
+					<div class="col-sm-2">Nama Paket</div>
 					<div>:</div>
 					<div class="col-sm-8">
 						<?php echo $info_paket[0]->nama ?>
@@ -230,41 +230,41 @@ else
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Nilai Paket</div>
+					<div class="col-sm-2">Nilai Paket</div>
 					<div >:</div>
 					<div class="col-sm-8">  <?php echo $info_paket[0]->nilai_paket ?></div>
 
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Jumlah Tahap</div>
+					<div class="col-sm-2">Jumlah Tahap</div>
 					<div>:</div>
 					<div class="col-sm-8"> <?php echo $info_paket[0]->jumlah_tahap ?></div>
 
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Jenis Pekerjaan</div>
+					<div class="col-sm-2">Jenis Pekerjaan</div>
 					<div >:</div>
 					<div class="col-sm-8" id="jenis_pekerjaan_jesi"> </div>
 
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Masa Pelaksanaan</div>
+					<div class="col-sm-2">Masa Pelaksanaan</div>
 					<div>:</div>
 					<div class="col-sm-8"> <?php echo $info_paket[0]->masa_pelaksanaan ?></div>
 
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Lokasi</div>
+					<div class="col-sm-2">Lokasi</div>
 					<div>:</div>
 					<div class="col-sm-8"> <?php echo $info_paket[0]->lokasi ?></div>
 
 				</div>
 				<div class="row">
-					<div class="col-sm-3">Tahun Anggaran</div>
+					<div class="col-sm-2">Tahun Anggaran</div>
 					<div>:</div>
 					<div class="col-sm-8"> <?php echo $info_paket[0]->tahun_anggaran ?></div>
 
@@ -296,7 +296,7 @@ else
 				<table id="tabel_jadwal" width="400" class="table " style="border-top: 0px solid #000000; border-bottom: 0px solid #000000; border-left: 1px solid #000000; border-right: 0px solid #000000" cellspacing="0" border="0">
 
 					<tr>
-						<td cellspacing="'0'" colspan="1" rowspan="4" height="80" style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</font></td>
+						<td cellspacing="'0'" colspan="1" rowspan="4" height="80" style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000 text-align:left;vertical-align: middle;">Jenis Pekerjaan</font></td>
 						<td cellspacing="'0'"  colspan="60" style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
 
 					</tr>
@@ -394,7 +394,7 @@ else
 				<table id="tabel_jumlah"  class="table " cellspacing="0" border="0">
 
 					<tr>
-						<td cellspacing="'0'"  colspan="0" rowspan="4" height="80" align="center" valign="middle" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Jenis Pekerjaan</font></td>
+						<td cellspacing="'0'"  colspan="0" rowspan="4" height="80" align="center" valign="middle" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000 text-align:left;vertical-align: middle;"><font >Jenis Pekerjaan</font></td>
 						<td cellspacing="'0'"  colspan="60" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font >Tahap/Bulan/Minggu</font></td>
 
 					</tr>
@@ -500,7 +500,7 @@ else
 				<table id="tabel_alat" class="table table-striped" cellspacing="0" border="0">
 
 					<tr>
-						<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000" colspan="3" rowspan="4" height="80" align="center" valign="middle"><font face="Comic Sans MS" color="#000000">Jenis Bahan/Alat</font></td>
+						<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000 ;vertical-align: middle;" colspan="3" rowspan="4" height="80" align="center" valign="middle"><font face="Comic Sans MS" color="#000000">Jenis Bahan/Alat</font></td>
 						<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000" colspan="60" align="center" valign="bottom"><font face="Comic Sans MS" color="#000000">Tahap/Bulan/Minggu</font></td>
 
 					</tr>
@@ -608,7 +608,7 @@ else
 				<div >
 					<table id="tabel_sketsa"class="table" cellspacing="0" border="0">
 						<thead style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
-						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Jenis Pekerjaan</th>
+						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000 ">Jenis Pekerjaan</th>
 						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Sketsa Kerja</th>
 						<th style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">Keterangan</th>
 
@@ -652,11 +652,11 @@ else
 								{
 									?>
 										<tr style="height:300px;">
-							<td cellspacing="'0'" width="20%"  style="text-align:left;border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><?php echo $getImage[$i]->nama_jenis; ?></td>
+							<td cellspacing="'0'" width="20%"  style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000 text-align:center;vertical-align: middle;"><?php echo $getImage[$i]->nama_jenis; ?></td>
 
 							<td cellspacing="'0'" style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000">
 
-									<img style="width:200px;" src="<?php echo base_url('gambar/'.$getImage[$i]->gambar) ?>" />
+									<img style="width:380px;height:260px;" src="<?php echo base_url('gambar/'.$getImage[$i]->gambar) ?>" />
 
 									</td>
 
@@ -717,12 +717,12 @@ else
 
 
 							echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							echo "<b>NRP. ".$ambil[0]->nip."</b>";
+							echo "<b>NIP. ".$ambil[0]->nip."</b>";
 						}
 						?>
 
 					</div>
-					<div class="col-sm-2"></div>
+					<div class="col-sm-1"></div>
 					<div class="col-sm-3 row_ttd">
 						<b>Diperiksa Oleh</b>
 						<br>
@@ -756,12 +756,13 @@ else
 							$ambil=$this->db->get_where("konfigurasi",array("id_konfigurasi"=>$data[0]->id_diperiksa))->result();
 
 							echo "<b><u>".$ambil[0]->nama."</u></b><br>";
-							echo "<b>"."NRP:".$ambil[0]->nip."</b>";
+							echo "<b>"."NIP:".$ambil[0]->nip."</b>";
 						}
 						?>
 						<div class="row"></div>
 					</div>
 					<div class="col-sm-1"></div>
+				
 					<div class="col-sm-3 row_ttd">
 						<?php
 						date_default_timezone_set('Asia/Jakarta');

@@ -28,7 +28,7 @@ class Upload extends CI_Controller
 	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000000;
+		$config['max_size']             = 1000;
 		$config['max_width']            = 1000000;
 		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
@@ -62,7 +62,7 @@ class Upload extends CI_Controller
 	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000000;
+		$config['max_size']             = 1000;
 		$config['max_width']            = 1000000;
 		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
@@ -107,7 +107,7 @@ class Upload extends CI_Controller
 	{
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000000;
+		$config['max_size']             = 1000;
 		$config['max_width']            = 1000000;
 		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
@@ -202,7 +202,7 @@ class Upload extends CI_Controller
 
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000000;
+		$config['max_size']             = 1000;
 		$config['max_width']            = 1000000;
 		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
@@ -255,7 +255,7 @@ class Upload extends CI_Controller
 
 		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000000;
+		$config['max_size']             = 1000;
 		$config['max_width']            = 1000000;
 		$config['max_height']           = 1000000;
 		$config['encrypt_name'] = TRUE;
