@@ -31,7 +31,7 @@ else
 
 	<style>
 	td,th,table{
-		border:2px solid black;
+		border:1px solid black;
 		color:black;
 	}
 
@@ -249,7 +249,7 @@ else
 											<input type="hidden" id="nilai_paket" >
 										</div>
 									</div>
-									<div class="col-sm-5" style="border: 2px solid black;">
+									<div class="col-sm-4" style="border: 1px solid black;">
 										<div class="row">
 											<div class="col-sm-6">Progress Pekerjaan</div>
 											<div class="col-sm-6" id="progres_sekarang">:</div>
@@ -599,11 +599,12 @@ else
 				// Jangan lupa id row didasarkan pada id Pekerjaan dan id jenis upah, serta untuk minggu ditambahkan urutan
 
 	             let i=0;
+							 $("#jenis_pekerjaan").append(":");
 
 				 while(i<length)
 				 {
 
-           $("#jenis_pekerjaan").append(data[i].nama_jenis+"<br/>");
+           $("#jenis_pekerjaan").append("<br/>"+"  "+data[i].nama_jenis);
 
 					$("#tabel_satu").append("<tr>"+
                       "<td class='tg-0lax'>"+data[i].nama_jenis+"</td>"+
@@ -776,9 +777,9 @@ $.ajax({
                 while(i<length)
                 {
                   // isi teks
-                  $("#nama_paket").text(data[i].nama);
-                  $("#lokasi").text(data[i].lokasi);
-                  $("#pagu").text(data[i].nilai_paket);
+                  $("#nama_paket").text(":"+data[i].nama);
+                  $("#lokasi").text(":"+data[i].lokasi);
+                  $("#pagu").text(":"+data[i].nilai_paket);
 
                   i++;
                 }
