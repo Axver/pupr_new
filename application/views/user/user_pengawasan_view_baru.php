@@ -181,29 +181,29 @@ else
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="row">
-										<div class="col-sm-4">Nama Paket</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-6"><?php echo $nama_paket; ?></div>
+										<div class="col-sm-3">Nama Paket</div>
+										
+										<div class="col-sm-6">:<?php echo $nama_paket; ?></div>
 									</div>
 									<div class="row">
-										<div class="col-sm-4">Lokasi Pekerjaan</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-6"><?php echo $lokasi; ?></div>
+										<div class="col-sm-3">Lokasi Pekerjaan</div>
+										
+										<div class="col-sm-6">:<?php echo $lokasi; ?></div>
 									</div>
 									<div class="row">
-										<div class="col-sm-4">Periode Pengawasan</div>
-										<div class="col-sm-1">:</div>
+										<div class="col-sm-3">Periode Pengawasan</div>
+									
 										<div class="col-sm-6" id="sampai"></div>
 									</div>
 									<div class="row">
-										<div class="col-sm-4">Tanggal</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-6"><?php echo $this->uri->segment("3") ?></div>
+										<div class="col-sm-3">Tanggal</div>
+										
+										<div class="col-sm-6" id="tanggal_baru"><?php echo $this->uri->segment("3") ?></div>
 									</div>
 									<div class="row">
-										<div class="col-sm-4">Tahun Anggaran</div>
-										<div class="col-sm-1">:</div>
-										<div class="col-sm-6"><?php echo $tahun; ?></div>
+										<div class="col-sm-3">Tahun Anggaran</div>
+										
+										<div class="col-sm-6">:<?php echo $tahun; ?></div>
 									</div>
 
 								</div>
@@ -505,7 +505,7 @@ let tanggal=$("#tanggal").val();
 					$("#tabel_satu").append('<tr>'+
 					'<td>'+data[i].nama_jenis+'</td>'+
 					'<td>'+data[i].nama+'</td>'+
-					'<td>'+data[i].jumlah+'</td>'+
+					'<td style="text-align:center">'+data[i].jumlah+'</td>'+
 					'<td></td>'+
 					'</tr>');
 
@@ -681,7 +681,70 @@ let rentang=getDateRangeOfWeek(minggu);
 rentang=rentang.replace(" to "," sampai ")
 // alert(rentang);
 
-$("#sampai").text(rentang);
+let tgl_dapat=$("#tanggal").val();
+let str_builder=$("#tanggal").val();
+let tgl_final;
+tgl_dapat=tgl_dapat.split("-");
+
+if(tgl_dapat[1]==1)
+{
+	tgl_final="Januari";
+
+}
+else if(tgl_dapat[1]==2)
+{
+	tgl_final="Februari";
+
+}else if(tgl_dapat[1]==3)
+{
+	tgl_final="Maret";
+
+}else if(tgl_dapat[1]==4)
+{
+	tgl_final="April";
+
+}else if(tgl_dapat[1]==5)
+{
+	tgl_final="Mei";
+
+}else if(tgl_dapat[1]==6)
+{
+	tgl_final="Juni";
+}else if(tgl_dapat[1]==7)
+{
+	
+	tgl_final="Juli";
+}else if(tgl_dapat[1]==8)
+{
+	
+	tgl_final="Agustus";
+
+}else if(tgl_dapat[1]==9)
+{
+	tgl_final="September";
+
+}else if(tgl_dapat[1]==10)
+{
+	tgl_final="Oktober";
+
+}else if(tgl_dapat[1]==11)
+{
+	tgl_final="November";
+
+}
+else if(tgl_dapat[1]==12)
+{
+	tgl_final="Desember";
+
+}
+
+// String builder edit
+
+
+
+
+$("#sampai").text(":Bulan "+tgl_final);
+$("#tanggal_baru").text(":"+tgl_dapat[2]+" "+tgl_final+" "+tgl_dapat[0]);
 
 
 

@@ -35,6 +35,7 @@ else
 	td,table,th{
 		border:1px solid black;
 		color:black;
+		text-align:Center;
 	}
 
 
@@ -163,7 +164,7 @@ else
 
 							<input type="hidden" id="tanggal" value="<?php echo $this->uri->Segment("3") ?>">
 
-							<center><b><h3>LAPORAN PENGAWASAN</h3></b></center>
+							<center><b><h3>LAMPIRAN LAPORAN PENGAWASAN</h3></b></center>
 							<center><b><h3 id="bulan"></h3></b></center>
 
 							<table id="example" class="display" style="width:100%">
@@ -205,11 +206,11 @@ else
 										 {
 
 											?>
-											<tr class="break">
+											<tr >
 
                                         <td><?php echo $gambar[$i]->nama_jenis ?></td>
 										<td><?php echo $gambar[$i]->keterangan ?></td>
-											<td><img style="width:300px;height:200px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
+											<td><img style="width:300px;height:190px;" src="<?php echo base_url('gambar/'.$gambar[$i]->gambar) ?>"></td>
 										
                                             </tr>
 											<?php
