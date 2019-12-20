@@ -176,7 +176,7 @@ if ($this->session->userdata("privilage")) {
 									<br />
 
 									<br />
-									<b>Pilih Bulan</b>
+									<b>Pilih Bulan Awal</b>
 
 
 									<select name="bulan" class="form form-control" id="bulan">
@@ -195,6 +195,26 @@ if ($this->session->userdata("privilage")) {
 										<option value="12">Desember</option>
 									</select>
 									<br />
+
+									<b>Pilih Bulan Akhir</b>
+
+
+<select name="bulan_akhir" class="form form-control" id="bulan_akhir">
+	<option value="">--Pilih Bulan--</option>
+	<option value="1">Januari</option>
+	<option value="2">Februari</option>
+	<option value="3">Maret</option>
+	<option value="4">April</option>
+	<option value="5">Mei</option>
+	<option value="6">Juni</option>
+	<option value="7">Juli</option>
+	<option value="8">Agustus</option>
+	<option value="9">September</option>
+	<option value="10">Oktober</option>
+	<option value="11">November</option>
+	<option value="12">Desember</option>
+</select>
+<br />
 
 									<b>*Generate dahulu sebelum upload gambar</b>
 									<select class="form form-control" name="jenis_pekerjaan">
@@ -571,8 +591,14 @@ if ($this->session->userdata("privilage")) {
 	<script>
 		function generate() {
 			let bulan_test = $("#bulan").val();
+			
+			let bulan_akhir=$("#bulan_akhir").val();
 			bulan_test = parseInt(bulan_test);
 			bulan_test = bulan_test - 1;
+			// alert(bulan_akhir);
+			// alert(bulan_test);
+			let jarak=parseInt(bulan_akhir)-parseInt(bulan_test);
+			// alert(jarak);
 			let data = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', '-', '-', '-'];
 
 			let diperiksa_ = $("#diperiksa_oleh").val();
@@ -611,105 +637,73 @@ if ($this->session->userdata("privilage")) {
 			});
 
 			hapus();
-			$("#tabel_satu").append('    <tr>' +
-				'<th style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>' +
-				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Upah</th>' +
-				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="20">Tahap</th>' +
-				'</tr><tr>' +
-				'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 1] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 2] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 3] + '</td>' +
-				'</tr>' +
-				'<tr>' +
-				'<td class="tg-cly1 fix">1</td>' +
+			let tabel_satu_builder='';
+			let tabel_satu_minggu='';
+			let tabel_dua_builder='';
+			let tabel_dua_minggu='';
+			let tabel_tiga_builder='';
+			let tabel_tiga_minggu='';
+			let mm=0;
+			let colspan=parseInt(jarak)*5;
+			// alert(jarak);
+
+			while(mm<jarak)
+			{
+				tabel_satu_builder=tabel_satu_builder+'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test+mm] + '</td>';
+                tabel_satu_minggu=tabel_satu_minggu+'<td class="tg-cly1 fix">1</td>' +
 				'<td class="tg-cly1 fix">2</td>' +
 				'<td class="tg-cly1 fix">3</td>' +
 				'<td class="tg-cly1 fix">4</td>' +
-				'<td class="tg-cly1 fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
+				'<td class="tg-cly1 fix">5</td>';
+				tabel_dua_builder=tabel_dua_builder+'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test+mm] + '</td>';
+                tabel_dua_minggu=tabel_dua_minggu+'<td class="tg-cly1 fix">1</td>' +
+				'<td class="tg-cly1 fix">2</td>' +
+				'<td class="tg-cly1 fix">3</td>' +
+				'<td class="tg-cly1 fix">4</td>' +
+				'<td class="tg-cly1 fix">5</td>';
+				tabel_tiga_builder=tabel_tiga_builder+'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test+mm] + '</td>';
+                tabel_tiga_minggu=tabel_tiga_minggu+'<td class="tg-cly1 fix">1</td>' +
+				'<td class="tg-cly1 fix">2</td>' +
+				'<td class="tg-cly1 fix">3</td>' +
+				'<td class="tg-cly1 fix">4</td>' +
+				'<td class="tg-cly1 fix">5</td>';
+				mm++;
+			}
+
+			console.log(tabel_satu_builder);
+			$("#tabel_satu").append('    <tr>' +
+				'<th style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>' +
+				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Upah</th>' +
+				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="'+colspan+'">Tahap</th>' +
+				'</tr><tr>' +
+				tabel_satu_builder+
+				'</tr>' +
+				'<tr>' +
+		        tabel_satu_minggu+
 				'</tr>');
 
 			$("#tabel_dua").append('    <tr>' +
 				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Pekerjaan</th>' +
 				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Jenis Upah</th>' +
-				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="20">Tahap</th>' +
+				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="'+colspan+'">Tahap</th>' +
 				'</tr><tr>' +
-				'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 1] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 2] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 3] + '</td>' +
+				tabel_dua_builder+
 				'</tr>' +
 				'<tr>' +
-				'<td class="tg-cly1 fix">1</td>' +
-				'<td class="tg-cly1 fix">2</td>' +
-				'<td class="tg-cly1 fix">3</td>' +
-				'<td class="tg-cly1 fix">4</td>' +
-				'<td class="tg-cly1 fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				'<td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
+				tabel_dua_minggu+
 				'</tr>');
 
 			$("#tabel_tiga").append('<tr>' +
 				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Bahan/Alat</th>' +
 				'<th  style="text-align:center;vertical-align: middle;border:1px solid black;" class="tg-cly1" rowspan="3">Satuan</th>' +
-				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="20">Tahap</th>' +
+				'<th  style="text-align:center;border:1px solid black;" class="tg-cly1" colspan="'+colspan+'">Tahap</th>' +
 				'</tr>' +
 				'<tr>' +
-				'<td  style="text-align:center;" class="tg-cly1" colspan="5">' + data[bulan_test] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 1] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 2] + '</td>' +
-				'<td  style="text-align:center;" class="tg-0lax" colspan="5">' + data[bulan_test + 3] + '</td>' +
+				tabel_tiga_builder+
 				'</tr>' +
 
 				'<tr>' +
-				' <td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				' <td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				' <td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
-				' <td class="tg-0lax fix">1</td>' +
-				'<td class="tg-0lax fix">2</td>' +
-				'<td class="tg-0lax fix">3</td>' +
-				'<td class="tg-0lax fix">4</td>' +
-				'<td class="tg-0lax fix">5</td>' +
+				tabel_tiga_minggu+
 				'</tr>');
 
 
@@ -752,56 +746,32 @@ if ($this->session->userdata("privilage")) {
 
 						$("#jenis_pekerjaan_x").append(data[i].nama_jenis + "<br/>");
 
+						let uwu=1;
+						let baris='';
+						let baris2='';
+
+						while(uwu<=colspan)
+						{
+
+							baris=baris+"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_"+uwu+"" + "' ></td>";
+							baris2=baris2+"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__"+uwu+"" + "' ></td>";
+
+
+							uwu++;
+						}
+
 
 
 						$("#tabel_satu").append("<tr>" +
 							"<td class='tg-0lax'>" + data[i].nama_jenis + "</td>" +
 							"<td class='tg-0lax'>" + data[i].nama + "</td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_1" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_2" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_3" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_4" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_5" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_6" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_7" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_8" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_9" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_10" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_11" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_12" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_13" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_14" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_15" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_16" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_17" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_18" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_19" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_20" + "'></td >" +
+							baris+
 							"</tr>");
 
 						$("#tabel_dua").append("<tr>" +
 							"<td class='tg-0lax'>" + data[i].nama_jenis + "</td>" +
 							"<td class='tg-0lax'>" + data[i].nama + "</td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__1" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__2" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__3" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__4" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__5" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__6" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__7" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__8" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__9" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__10" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__11" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__12" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__13" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__14" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__15" + "'></td >" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__16" + "' ></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__17" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__18" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__19" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__20" + "'></td >" +
+							baris2+
 							"</tr>");
 
 
@@ -831,32 +801,27 @@ if ($this->session->userdata("privilage")) {
 					let length = data.length;
 					let i = 0;
 
+					let uwu=1;
+						let baris3='';
+				
+
+						while(uwu<=colspan)
+						{
+
+							baris3=baris3+"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___"+uwu+"" + "'></td>";
+
+
+							uwu++;
+						}
+
+
 
 					while (i < length) {
 
 						$("#tabel_tiga").append(" <tr>" +
 							"<td class='tg-0lax'>" + data[i].jenis_bahan_alat + "</td>" +
 							"<td class='tg-0lax'>" + data[i].satuan + "</td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___1" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___2" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___3" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___4" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___5" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___6" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___7" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___8" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___9" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___10" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___11" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___12" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___13" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___14" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___15" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___16" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___17" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___18" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___19" + "'></td>" +
-							"<td class='tg-0lax' id='" + data[i].id_jenis_bahan_alat + "___20" + "'></td>" +
+							baris3+
 							"</tr>");
 
 
@@ -871,7 +836,7 @@ if ($this->session->userdata("privilage")) {
 			//    Perulangan 4 kali
 			let m = 0;
 
-			while (m < 4) {
+			while (m < jarak) {
 				let bulan = $("#bulan").val();
 				if (m == 0) {
 					bulan = bulan;
@@ -881,6 +846,33 @@ if ($this->session->userdata("privilage")) {
 					bulan = parseInt(bulan) + 2;
 				} else if (m == 3) {
 					bulan = parseInt(bulan) + 3;
+				}
+				else if (m == 4) {
+					bulan = parseInt(bulan) + 4;
+				}
+				else if (m == 5) {
+					bulan = parseInt(bulan) + 5;
+				}
+				else if (m == 6) {
+					bulan = parseInt(bulan) + 6;
+				}
+				else if (m == 7) {
+					bulan = parseInt(bulan) + 7;
+				}
+				else if (m == 8) {
+					bulan = parseInt(bulan) + 8;
+				}
+				else if (m == 9) {
+					bulan = parseInt(bulan) + 9;
+				}
+				else if (m == 10) {
+					bulan = parseInt(bulan) + 10;
+				}
+				else if (m == 11) {
+					bulan = parseInt(bulan) + 11;
+				}
+				else if (m == 12) {
+					bulan = parseInt(bulan) + 12;
 				}
 				// Selenjutnya ambil data yang sesuai dengan kriteria diatas
 				// Select Sum Kan masing-masing per minggu
@@ -935,7 +927,71 @@ if ($this->session->userdata("privilage")) {
 									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
 									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
 
-								} else {
+								} 
+								else if (m == 4) {
+									let sup = parseInt(x) + 20;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 5) {
+									let sup = parseInt(x) + 25;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 6) {
+									let sup = parseInt(x) + 30;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 7) {
+									let sup = parseInt(x) + 35;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 8) {
+									let sup = parseInt(x) + 40;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 9) {
+									let sup = parseInt(x) + 45;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 10) {
+									let sup = parseInt(x) + 50;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 11) {
+									let sup = parseInt(x) + 55;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else if (m == 12) {
+									let sup = parseInt(x) + 60;
+
+									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + sup).css("background-color", "#3b5998");
+									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + sup).text(data[i].sum);
+
+								}
+								else {
 									$("#" + data[i].jenis_pekerjaan + "_" + data[i].id_jenis_upah + "_" + x).css("background-color", "#3b5998");
 									$("#" + data[i].jenis_pekerjaan + "__" + data[i].id_jenis_upah + "__" + x).text(data[i].sum);
 								}
