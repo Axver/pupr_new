@@ -589,12 +589,20 @@ let tanggal1=$("#tanggal").val();
 function hehe()
 {
 
+	let bulan=tanggal.split("-");
+	let bayar_pekerja=0;
+	let total=0;
+
+
+	let bayar_alat=0;
+	let total1=0;
+
 	// Dapatkan Total
 
 $.ajax({
          type: "POST",
          url: "http://localhost/pupr_new/user_pengawasan_data/total_progress", 
-         data: {"id_pengawasan":tanggal,"id_perencanaan":id_perencanaan,"minggu":minggu},
+         data: {"tahun":bulan[0],"bulan":bulan[1],tanggal,"id_perencanaan":id_perencanaan},
          dataType: "text",  
 		 async:false,
          cache:false,
@@ -602,48 +610,99 @@ $.ajax({
               function(data){
                 // alert(data);  //as a debugging message.
 				data=JSON.parse(data);
-				// console.log(data);
+				console.log(data);
 
 				let length=data.length;
 				let i=0;
-
-				console.log("test");
-				console.log(data);
-				console.log("test");
-
-
-				let total=0;
-
+				
 
 				while(i<length)
 				{
 
-					total=parseInt(total)+(parseInt(data[i].harga)*parseInt(data[i].sum));
-				
+					total=parseInt(total)+parseInt(data[i].total)*parseInt(data[i].harga);
 
-                    
+
 					i++;
 				}
 
-
-				$nilai_paket=$("#nilai_paket").val();
-
-
 				console.log(total);
+				bayar_pekerja=total;
 
-				total=parseInt(total)/parseInt($nilai_paket)*100;
-				total=total.toFixed(2);
+			
 
-				// alert(total);
 
-				$("#total_jes").append(total+"%");
 
-				console.log(total);
+		
+
+
+		
 
 				
 
               }
           });
+
+
+		  $.ajax({
+         type: "POST",
+         url: "http://localhost/pupr_new/user_pengawasan_data/total_progress1", 
+         data: {"tahun":bulan[0],"bulan":bulan[1],tanggal,"id_perencanaan":id_perencanaan},
+         dataType: "text",  
+		 async:false,
+         cache:false,
+         success: 
+              function(data){
+                // alert(data);  //as a debugging message.
+				data=JSON.parse(data);
+				console.log(data);
+
+				let length=data.length;
+				let i=0;
+				
+
+				while(i<length)
+				{
+
+					total1=parseInt(total1)+parseInt(data[i].total)*parseInt(data[i].harga);
+
+
+					i++;
+				}
+
+				console.log(total1);
+				bayar_alat=total1;
+
+			
+
+
+
+		
+
+
+		
+
+				
+
+              }
+          });
+
+		  let nilai_paket=$("#nilai_paket").val();
+
+
+		//   console.log("jesi");
+		//   console.log(bayar_pekerja);
+		//   console.log(bayar_alat);
+		//   console.log("jesi");
+
+		  let total_akhir=parseInt(bayar_pekerja)+parseInt(bayar_alat);
+		  total_akhir=parseInt(total_akhir)/parseInt(nilai_paket);
+		  total_akhir=total_akhir*100;
+
+
+		//   console.log(total_akhir);
+
+		  $("#total_jes").text("Total:"+total_akhir+"%");
+
 }
 
 
