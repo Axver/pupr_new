@@ -22,6 +22,7 @@ class Catur_wulan_baru extends CI_Controller
 		$id_paket = $this->input->post("id_paket");
 		$id_perencanaan = $this->input->post("id_perencanaan");
 		$bulan = $this->input->post("bulan");
+		$bulan_z=$this->input->post("bulan_z");
 
 		$this->db->select('*');
 		$this->db->from('gambar_tahap');
@@ -29,6 +30,7 @@ class Catur_wulan_baru extends CI_Controller
 		$this->db->where("id_paket", $id_paket);
 		$this->db->where("id_perencanaan", $id_perencanaan);
 		$this->db->where("bulan_start", $bulan);
+		$this->db->where("bulan_end", $bulan_z);
 
 
 		$data = $this->db->get()->result();

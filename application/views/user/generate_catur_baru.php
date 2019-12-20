@@ -1074,13 +1074,15 @@ if ($this->session->userdata("privilage")) {
 			let id_paket_j = $("#id_paket").val();
 			let id_perencanaan_j = $("#id_perencanaan").val();
 			let bulan_j = $("#bulan").val();
+			let bulan_z=$("#bulan_akhir").val();
 			$.ajax({
 				type: "POST",
 				url: "http://localhost/pupr_new/catur_wulan_baru/sketsa",
 				data: {
 					"id_paket": id_paket_j,
 					"id_perencanaan": id_perencanaan_j,
-					"bulan": bulan_j
+					"bulan": bulan_j,
+					"bulan_z":bulan_z
 				},
 				dataType: "text",
 				cache: false,
